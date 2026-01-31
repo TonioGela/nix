@@ -49,7 +49,6 @@ nixos {
         "rd.udev.log_level=3"
         "udev.log_priority=3"
         "vt.global_cursor_default=0"
-        "video=2880x1920@120"
       ];
       initrd = {
         verbose = false;
