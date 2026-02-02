@@ -53,6 +53,7 @@ nixos {
         "vt.global_cursor_default=0"
         "i8042.nopnp"
         "nvme_load=YES"
+        "pcie_aspm=off"
       ];
       initrd = {
         verbose = false;
@@ -82,6 +83,7 @@ nixos {
     hardware.graphics.enable = true;
     hardware.graphics.enable32Bit = true;
     hardware.enableAllFirmware = true;
+    hardware.enableRedistributableFirmware = true;
 
     security.rtkit.enable = true;
 
