@@ -39,6 +39,7 @@ nixos {
     boot = {
       loader.timeout = 0;
       consoleLogLevel = 0;
+      kernelPackages = pkgs.linuxPackages_latest;
       kernelParams = [
         "quiet"
         "splash"
@@ -55,7 +56,6 @@ nixos {
         verbose = false;
         systemd.enable = true;
       };
-      extraModprobeConfig = "options ucsi_acpi debug=0";
       loader = {
         efi.canTouchEfiVariables = true;
         systemd-boot = {
