@@ -37,6 +37,7 @@ nixos {
     };
 
     boot = {
+      loader.timeout = 0;
       consoleLogLevel = 0;
       kernelParams = [
         "quiet"
