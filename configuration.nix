@@ -51,6 +51,8 @@ nixos {
         "rd.udev.log_level=3"
         "udev.log_priority=3"
         "vt.global_cursor_default=0"
+        "i8042.nopnp"
+        "nvme_load=YES"
       ];
       initrd = {
         verbose = false;
