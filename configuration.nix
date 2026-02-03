@@ -188,8 +188,16 @@ nixos {
 
     services.power-profiles-daemon.enable = false;
     services.tlp = {
-      enable = false;
+      enable = true;
       settings = {
+        WIFI_PWR_ON_BAT = "off";
+        WIFI_PWR_ON_AC = "off";
+
+        RUNTIME_PM_DRIVER_DENYLIST = "mei_me nouveau radeon xhci_hcd mt7925e";
+
+        AHCI_RUNTIME_PM_ON_AC = "on";
+        AHCI_RUNTIME_PM_ON_BAT = "on";
+
         CPU_SCALING_GOVERNOR_ON_AC = "performance";
         CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
       };
