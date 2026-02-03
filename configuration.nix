@@ -39,7 +39,7 @@ nixos {
     boot = {
       loader.timeout = 0;
       consoleLogLevel = 0;
-      kernelPackages = pkgs.linuxPackages_latest;
+      kernelPackages = pkgsUnstable.linuxPackages_latest;
       kernelParams = [
         "quiet"
         "splash"
@@ -188,7 +188,7 @@ nixos {
 
     services.power-profiles-daemon.enable = false;
     services.tlp = {
-      enable = true;
+      enable = false;
       settings = {
         CPU_SCALING_GOVERNOR_ON_AC = "performance";
         CPU_SCALING_GOVERNOR_ON_BAT = "powersave";

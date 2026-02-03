@@ -10,3 +10,11 @@ Install comma and nix-index
 Document a bit all the TUIs to change settings
 ricing di fuzzel
 WayDroid per NOWTV
+
+# 5 WALKING HACKS
+
+1. Glucose Sponge Walk - Walk 10-15 minutes immediately after largest meal
+2. The Nasal Only Rule - Close your mouth and breathing exclusively through your nose during the entire walk
+3. The Rocking Lite - Add light load while you walk
+4. The Optic Flow Reset - Lowering stress by having panoramic view
+5. The Fasted Morning Activation - 20 minutes walk before breakfast
