@@ -38,6 +38,16 @@
     ];
   };
 
+  fileSystems."/mnt/moon" = {
+    device = "/dev/disk/by-uuid/2c58c8db-6f8c-4aca-a69e-63780b8e9b89";
+    fsType = "ext4";
+    options = [
+      "nofail"
+      "users"
+      "rw"
+    ];
+  };
+
   swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

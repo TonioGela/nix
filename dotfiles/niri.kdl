@@ -177,7 +177,7 @@ binds {
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
 
     Mod+Shift+Delete hotkey-overlay-title="Shutdown" { spawn "sh" "-c" "systemctl poweroff"; }
-    Mod+Shift+Backspace hotkey-overlay-title="Shutdown" { spawn "sh" "-c" "systemctl reboot"; }
+    Mod+Shift+XF86AudioMedia hotkey-overlay-title="Shutdown" { spawn "sh" "-c" "systemctl reboot"; }
     Mod+N hotkey-overlay-title="Open Nixos config in VsCodium" { spawn "sh" "-c" "codium ~/.config/nixos"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
