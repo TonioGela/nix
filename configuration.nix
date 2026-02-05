@@ -150,6 +150,7 @@ nixos {
       npins
       neovim
       mpv
+      fd
       comma
       bluetui
       brightnessctl
