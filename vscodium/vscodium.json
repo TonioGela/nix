@@ -126,7 +126,6 @@
     "window.commandCenter": false,
     "window.customTitleBarVisibility": "never",
     "window.titleBarStyle": "native",
-    "window.zoomLevel": 1,
     "workbench.colorCustomizations": {
         "editorOverviewRuler.addedForeground": "#00000000",
         "editorOverviewRuler.deletedForeground": "#00000000",
