@@ -9,7 +9,8 @@ let
   nixos = import (sources.nixpkgs + "/nixos");
   fw13-hardware = import (sources.nixos-hardware + "/framework/13-inch/amd-ai-300-series");
   homeManager = import (sources.home-manager + "/nixos");
-  diskoModule = sources.disko + "/module.nix";
+  compat = import sources.flake-compat;
+  noctalia-shell = compat { src = sources.noctalia-shell; };
 in
 nixos {
   configuration = {
@@ -17,8 +18,10 @@ nixos {
       fw13-hardware
       ./hardware-configuration.nix
       homeManager
-      diskoModule
+      noctalia-shell.outputs.nixosModules.default
     ];
+
+    # services.noctalia-shell.enable = true;
 
     nixpkgs.config.allowUnfree = true; # Apparently the bt firmware is not free
 

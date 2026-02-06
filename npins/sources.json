@@ -16,6 +16,22 @@
       "url": "https://api.github.com/repos/nix-community/disko/tarball/v1.13.0",
       "hash": "03jz60kw0khm1lp72q65z8gq69bfrqqbj08kw0hbiav1qh3g7p08"
     },
+    "flake-compat": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "NixOS",
+        "repo": "flake-compat"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "v1.1.0",
+      "revision": "ff81ac966bb2cae68946d5ed5fc4994f96d0ffec",
+      "url": "https://api.github.com/repos/NixOS/flake-compat/tarball/v1.1.0",
+      "hash": "19d2z6xsvpxm184m41qrpi1bplilwipgnzv9jy17fgw421785q1m"
+    },
     "home-manager": {
       "type": "Git",
       "repository": {
@@ -53,6 +69,22 @@
       "name": "nixpkgs-unstable",
       "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.05pre935717.afce96367b2e/nixexprs.tar.xz",
       "hash": "1ris54b81dadzckl48agq50xv0m0girdpfammmkpmi67wa11jxf0"
+    },
+    "noctalia-shell": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "noctalia-dev",
+        "repo": "noctalia-shell"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "v4.3.3",
+      "revision": "a7befc1f26f0f5bf6686f5c1d9dfe7ea094bbc8c",
+      "url": "https://api.github.com/repos/noctalia-dev/noctalia-shell/tarball/v4.3.3",
+      "hash": "03sb4kqr6bvdbf32fs27xaf2ghd9dmrrjnqvrj6mzhwslvdhqvcj"
     }
   },
   "version": 5
