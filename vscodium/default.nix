@@ -39,7 +39,9 @@ in
 
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
+    package = pkgs.vscodium.override {
+      commandLineArgs = [ "--ozone-platform=wayland" ];
+    };
     mutableExtensionsDir = false;
     profiles.default = {
       enableExtensionUpdateCheck = true;
