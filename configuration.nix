@@ -21,7 +21,7 @@ nixos {
       noctalia-shell.outputs.nixosModules.default
     ];
 
-    # services.noctalia-shell.enable = true;
+    services.noctalia-shell.enable = true;
 
     nixpkgs.config.allowUnfree = true; # Apparently the bt firmware is not free
 
@@ -137,6 +137,37 @@ nixos {
           ".config/kitty/kitty.conf".source = ./dotfiles/kitty.conf;
           "notes.md".source = config.lib.file.mkOutOfStoreSymlink ./dotfiles/notes.md;
         };
+
+        xdg.desktopEntries = {
+          "yazi" = {
+            name = "yazi";
+            noDisplay = true;
+          };
+          "nvim" = {
+            name = "nvim";
+            noDisplay = true;
+          };
+          "mpv" = {
+            name = "mpv";
+            noDisplay = true;
+          };
+          "kitty" = {
+            name = "kitty";
+            noDisplay = true;
+          };
+          "nixos-manual" = {
+            name = "nixos-manual";
+            noDisplay = true;
+          };
+          "firefox" = {
+            name = "firefox";
+            noDisplay = true;
+          };
+          "codium" = {
+            name = "codium";
+            noDisplay = true;
+          };
+        };
         programs.home-manager.enable = true;
         home.stateVersion = "25.11";
       };
@@ -146,7 +177,6 @@ nixos {
       bat
       eza
       nh
-      swaybg
       nixd
       nixfmt
       nixfmt-tree
@@ -155,13 +185,10 @@ nixos {
       mpv
       fd
       comma
-      bluetui
       brightnessctl
       playerctl
       framework-tool-tui
       kitty
-      pavucontrol
-      fuzzel
       yazi
       gh
       ripgrep
@@ -182,6 +209,7 @@ nixos {
 
     services.fwupd.enable = true;
     services.fprintd.enable = true;
+    services.upower.enable = true;
 
     services.logind.settings.Login = {
       HandleLidSwitch = "suspend";
@@ -190,22 +218,7 @@ nixos {
       HoldoffTimeoutSec = 10;
     };
 
-    services.power-profiles-daemon.enable = false;
-    services.tlp = {
-      enable = true;
-      settings = {
-        WIFI_PWR_ON_BAT = "off";
-        WIFI_PWR_ON_AC = "off";
-
-        RUNTIME_PM_DRIVER_DENYLIST = "mei_me nouveau radeon xhci_hcd mt7925e";
-
-        AHCI_RUNTIME_PM_ON_AC = "on";
-        AHCI_RUNTIME_PM_ON_BAT = "on";
-
-        CPU_SCALING_GOVERNOR_ON_AC = "performance";
-        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-      };
-    };
+    services.power-profiles-daemon.enable = true;
 
     services.greetd = {
       enable = true;

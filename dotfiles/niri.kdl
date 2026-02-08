@@ -134,7 +134,6 @@ layout {
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
-spawn-sh-at-startup "swaybg -i ~/.config/wallpaper.svg -m fill"
 
 hotkey-overlay {
     skip-at-startup
@@ -174,7 +173,7 @@ binds {
 
     Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
     Mod+Shift+Return hotkey-overlay-title="Open Firefox" { spawn "firefox"; }
-    Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn-sh "noctalia-shell ipc call launcher toggle"; }
 
     Mod+Shift+Delete hotkey-overlay-title="Shutdown" { spawn "sh" "-c" "systemctl poweroff"; }
     Mod+Shift+XF86AudioMedia hotkey-overlay-title="Shutdown" { spawn "sh" "-c" "systemctl reboot"; }
