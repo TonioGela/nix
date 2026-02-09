@@ -45,7 +45,6 @@ nixos {
       kernelPackages = pkgsUnstable.linuxPackages_latest;
       kernelParams = [
         "quiet"
-        "splash"
         "nowatchdog"
         "loglevel=3"
         "systemd.show_status=false"
@@ -55,7 +54,6 @@ nixos {
         "udev.log_priority=3"
         "vt.global_cursor_default=0"
         "i8042.nopnp"
-        "nvme_load=YES"
         "pcie_aspm=off"
       ];
       initrd = {
@@ -136,6 +134,8 @@ nixos {
           ".config/wallpaper.svg".source = ./dotfiles/wallpaper.svg;
           ".config/kitty/kitty.conf".source = ./dotfiles/kitty.conf;
           "notes.md".source = config.lib.file.mkOutOfStoreSymlink ./dotfiles/notes.md;
+          ".config/noctalia/settings.json".source =
+            config.lib.file.mkOutOfStoreSymlink ./dotfiles/noctalia-settings.json;
         };
 
         xdg.desktopEntries = {

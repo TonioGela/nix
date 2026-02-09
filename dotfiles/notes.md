@@ -1,11 +1,9 @@
-Salva configurazione di noctalia
 LUKS encrypted disk, btrfs
 Auto mount dischi esterni
 Power profile daemon, configura
-Finire di configurare Noctalia
 Lanzaboote
 Read niri documentation and rice it
-Microfono e camera, audio e video migliori con impostazioni
+Microfono e camera, audio e video migliori con impostazioni?
 Nixos wiki about niri mentions a few stuff
 add secretservice, polkit and a polkit-agent
 laptop things in nixos, like power management
