@@ -87,8 +87,8 @@
                 ]
             },
             "options": {
-                "home-manager": {
-                    "expr": "(import ~/.config/home-manager/home.nix {}).personal.options"
+                "nixos": {
+                    "expr": "(import ~/.config/nixos/configuration.nix {}).options"
                 }
             }
         }
