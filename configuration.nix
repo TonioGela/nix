@@ -80,11 +80,15 @@ nixos {
       hostName = "toniogela-nixos-fw13"; # Define your hostname.
     };
 
-    hardware.bluetooth.enable = true;
-    hardware.graphics.enable = true;
-    hardware.graphics.enable32Bit = true;
-    hardware.enableAllFirmware = true;
-    hardware.enableRedistributableFirmware = true;
+    hardware = {
+      bluetooth.enable = true;
+      graphics = {
+        enable = true;
+        enable32Bit = true;
+      };
+      enableAllFirmware = true;
+      enableRedistributableFirmware = true;
+    };
 
     security.rtkit.enable = true;
 

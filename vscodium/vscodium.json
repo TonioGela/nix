@@ -78,7 +78,7 @@
     "metals.superMethodLensesEnabled": false,
     "metals.verboseCompilation": true,
     "nix.enableLanguageServer": true,
-    "nix.serverPath": "nixd",
+    "nix.serverPath": "/run/current-system/sw/bin/nixd",
     "nix.serverSettings": {
         "nixd": {
             "formatting": {
@@ -88,7 +88,7 @@
             },
             "options": {
                 "nixos": {
-                    "expr": "(import ~/.config/nixos/configuration.nix {}).options"
+                    "expr": "(import ~/.config/nixos/configuration.nix).options"
                 }
             }
         }
