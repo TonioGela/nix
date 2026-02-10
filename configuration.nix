@@ -23,7 +23,7 @@ nixos {
 
     services.noctalia-shell.enable = true;
 
-    nixpkgs.config.allowUnfree = true; # Apparently the bt firmware is not free
+    nixpkgs.pkgs = pkgs;
 
     nix = {
       channel.enable = false;
@@ -55,6 +55,7 @@ nixos {
         "vt.global_cursor_default=0"
         "i8042.nopnp"
         "pcie_aspm=off"
+        "amdgpu.dcdebugmask=0"
       ];
       initrd = {
         verbose = false;

@@ -489,7 +489,7 @@
         "sortOrder": "name",
         "transitionDuration": 500,
         "transitionEdgeSmoothness": 0.05,
-        "transitionType": "random",
+        "transitionType": "stripes",
         "useSolidColor": false,
         "useWallhaven": false,
         "viewMode": "recursive",

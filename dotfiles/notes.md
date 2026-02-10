@@ -1,4 +1,5 @@
 LUKS encrypted disk, btrfs
+idle daemon
 Auto mount dischi esterni
 Power profile daemon, configura
 Lanzaboote
