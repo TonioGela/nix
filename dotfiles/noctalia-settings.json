@@ -12,7 +12,8 @@
         "enableWindowsSearch": false,
         "iconMode": "native",
         "ignoreMouseInput": true,
-        "pinnedApps": [],
+        "pinnedApps": [
+        ],
         "position": "center",
         "screenshotAnnotationTool": "",
         "showCategories": false,
@@ -24,7 +25,8 @@
     },
     "audio": {
         "cavaFrameRate": 30,
-        "mprisBlacklist": [],
+        "mprisBlacklist": [
+        ],
         "preferredPlayer": "mpv",
         "visualizerType": "linear",
         "volumeFeedback": false,
@@ -45,10 +47,12 @@
         "hideOnOverview": true,
         "marginHorizontal": 0,
         "marginVertical": 0,
-        "monitors": [],
+        "monitors": [
+        ],
         "outerCorners": true,
         "position": "top",
-        "screenOverrides": [],
+        "screenOverrides": [
+        ],
         "showCapsule": true,
         "showOutline": false,
         "useSeparateOpacity": true,
@@ -106,15 +110,18 @@
                     "useDistroLogo": true
                 }
             ],
-            "left": [],
+            "left": [
+            ],
             "right": [
                 {
-                    "blacklist": [],
+                    "blacklist": [
+                    ],
                     "colorizeIcons": false,
                     "drawerEnabled": true,
                     "hidePassive": false,
                     "id": "Tray",
-                    "pinned": []
+                    "pinned": [
+                    ]
                 }
             ]
         }
@@ -210,7 +217,8 @@
         "monitorWidgets": [
             {
                 "name": "eDP-1",
-                "widgets": []
+                "widgets": [
+                ]
             }
         ]
     },
@@ -223,9 +231,11 @@
         "enabled": false,
         "floatingRatio": 1,
         "inactiveIndicators": false,
-        "monitors": [],
+        "monitors": [
+        ],
         "onlySameOutput": true,
-        "pinnedApps": [],
+        "pinnedApps": [
+        ],
         "pinnedStatic": false,
         "position": "bottom",
         "size": 1
@@ -311,7 +321,8 @@
         "enabled": true,
         "location": "top_right",
         "lowUrgencyDuration": 3,
-        "monitors": [],
+        "monitors": [
+        ],
         "normalUrgencyDuration": 8,
         "overlayLayer": true,
         "respectExpireTimeout": false,
@@ -337,11 +348,11 @@
         "enabledTypes": [
             0,
             1,
-            2,
-            3
+            2
         ],
         "location": "top",
-        "monitors": [],
+        "monitors": [
+        ],
         "overlayLayer": true
     },
     "sessionMenu": {
@@ -467,7 +478,8 @@
         "fillColor": "#000000",
         "fillMode": "crop",
         "hideWallpaperFilenames": true,
-        "monitorDirectories": [],
+        "monitorDirectories": [
+        ],
         "overviewEnabled": false,
         "panelPosition": "follow_bar",
         "randomIntervalSec": 300,

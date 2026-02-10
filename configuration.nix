@@ -11,6 +11,7 @@ let
   homeManager = import (sources.home-manager + "/nixos");
   compat = import sources.flake-compat;
   noctalia-shell = compat { src = sources.noctalia-shell; };
+  disko = import sources.disko + "/module.nix";
 in
 nixos {
   configuration = {
@@ -19,6 +20,8 @@ nixos {
       ./hardware-configuration.nix
       homeManager
       noctalia-shell.outputs.nixosModules.default
+      disko
+      ./disko.nix
     ];
 
     services.noctalia-shell.enable = true;
@@ -194,6 +197,8 @@ nixos {
       ripgrep
       qbittorrent
       xwayland-satellite
+      zathura
+      calibre
       (retroarch.withCores (
         cores: with cores; [
           mgba
