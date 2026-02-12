@@ -1,6 +1,6 @@
 In order for the autocompletion to work, the configuration needs to be a module. You can change its shape and import everything in configuration.nix
+Configura calibre con HM
 LUKS encrypted disk, btrfs
-idle daemon
 Auto mount dischi esterni
 Power profile daemon, configura
 Lanzaboote
@@ -13,7 +13,6 @@ optimise store
 Install comma and nix-index
 Set dark mode in system to tell apps to be dark in dconf
 Rifai configurazione da capo?
-
 
 Remote builder
 Document a bit all the TUIs to change settings

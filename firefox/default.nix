@@ -179,6 +179,9 @@
         "sidebar.revamp" = true;
         "sidebar.verticalTabs" = false;
         "sidebar.visibility" = "hide-sidebar";
+        "browser.startup.page" = 3;
+        "browser.sessionstore.resume_from_crash" = true;
+        "browser.sessionstore.max_resumed_crashes" = -1;
         "browser.aboutConfig.showWarning" = false;
         "browser.uidensity" = 1;
         "browser.search.suggest.enabled" = "lock-false";
