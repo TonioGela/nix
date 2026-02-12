@@ -168,8 +168,7 @@ binds {
     Mod+Shift+Return hotkey-overlay-title="Open Firefox" { spawn "firefox"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn-sh "noctalia-shell ipc call launcher toggle"; }
 
-    Mod+Shift+Delete hotkey-overlay-title="Shutdown" { spawn "sh" "-c" "systemctl poweroff"; }
-    Mod+Shift+XF86AudioMedia hotkey-overlay-title="Shutdown" { spawn "sh" "-c" "systemctl reboot"; }
+    Mod+Shift+Delete { spawn "sh" "-c" "noctalia-shell ipc call sessionMenu toggle"; }
     Mod+N hotkey-overlay-title="Open Nixos config in VsCodium" { spawn "sh" "-c" "codium ~/.config/nixos"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
