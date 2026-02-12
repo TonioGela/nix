@@ -43,6 +43,8 @@
     fsType = "ext4";
     options = [
       "nofail"
+      "x-systemd.automount" # Mount it only when accessed (speeds up boot)
+      "x-systemd.device-timeout=5s" # Give up waiting quickly
       "users"
       "rw"
     ];

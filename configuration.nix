@@ -42,24 +42,25 @@ nixos {
     boot = {
       loader.timeout = 0;
       consoleLogLevel = 0;
-      kernelPackages = pkgsUnstable.linuxPackages_latest;
+      kernelPackages = pkgs.linuxPackages;
       kernelParams = [
         "quiet"
-        "nowatchdog"
-        "loglevel=3"
+        "loglevel=0"
         "systemd.show_status=false"
         "rd.systemd.show_status=false"
-        "udev.log_level=3"
-        "rd.udev.log_level=3"
-        "udev.log_priority=3"
+        "udev.log_level=0"
+        "rd.udev.log_level=0"
+        "udev.log_priority=0"
         "vt.global_cursor_default=0"
+        "amdgpu.dcdebugmask=0"
+        "nowatchdog"
         "i8042.nopnp"
         "pcie_aspm=off"
-        "amdgpu.dcdebugmask=0"
       ];
       initrd = {
         verbose = false;
         systemd.enable = true;
+        kernelModules = [ "amdgpu" ];
       };
       loader = {
         efi.canTouchEfiVariables = true;
@@ -72,7 +73,7 @@ nixos {
       };
       plymouth = {
         enable = true;
-        theme = "breeze"; # "breeze"
+        theme = "breeze"; # "breeze" or bgrt
       };
     };
 
@@ -143,6 +144,26 @@ nixos {
             config.lib.file.mkOutOfStoreSymlink ./dotfiles/noctalia-settings.json;
         };
 
+        services.swayidle = {
+          enable = true;
+          timeouts = [
+            {
+              timeout = 120;
+              command = "${pkgs.lib.getExe noctalia-shell.outputs.packages.x86_64-linux.default} ipc call lockScreen lock";
+            }
+            {
+              timeout = 300;
+              command = "${pkgs.lib.getExe noctalia-shell.outputs.packages.x86_64-linux.default} ipc call sessionMenu lockAndSuspend";
+            }
+          ];
+          events = [
+            {
+              event = "before-sleep";
+              command = "${pkgs.lib.getExe noctalia-shell.outputs.packages.x86_64-linux.default} ipc call lockScreen lock";
+            }
+          ];
+        };
+
         xdg.desktopEntries = {
           "yazi" = {
             name = "yazi";
@@ -201,6 +222,7 @@ nixos {
       xwayland-satellite
       zathura
       calibre
+      icdiff
       (retroarch.withCores (
         cores: with cores; [
           mgba

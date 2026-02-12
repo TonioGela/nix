@@ -1,3 +1,4 @@
+In order for the autocompletion to work, the configuration needs to be a module. You can change its shape and import everything in configuration.nix
 LUKS encrypted disk, btrfs
 idle daemon
 Auto mount dischi esterni
