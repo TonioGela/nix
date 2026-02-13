@@ -131,9 +131,10 @@
             "right": [
                 {
                     "blacklist": [
+                        "udiskie"
                     ],
-                    "chevronColor": "none",
-                    "colorizeIcons": false,
+                    "chevronColor": "primary",
+                    "colorizeIcons": true,
                     "drawerEnabled": true,
                     "hidePassive": false,
                     "id": "Tray",
@@ -265,7 +266,7 @@
         "autoStartAuth": false,
         "avatarImage": "/home/toniogela/.face",
         "boxRadiusRatio": 1,
-        "clockFormat": "hh\\nmm",
+        "clockFormat": "HH\\nmm",
         "clockStyle": "custom",
         "compactLockScreen": true,
         "dimmerOpacity": 0.1,

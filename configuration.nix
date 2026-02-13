@@ -144,6 +144,8 @@ nixos {
             config.lib.file.mkOutOfStoreSymlink ./dotfiles/noctalia-settings.json;
         };
 
+        services.udiskie.enable = true;
+
         services.swayidle = {
           enable = true;
           timeouts = [
@@ -198,38 +200,45 @@ nixos {
         home.stateVersion = "25.11";
       };
 
-    environment.systemPackages = with pkgs; [
-      git
-      bat
-      eza
-      nh
-      nixd
-      nixfmt
-      nixfmt-tree
-      npins
-      neovim
-      mpv
-      fd
-      comma
-      brightnessctl
-      playerctl
-      framework-tool-tui
-      kitty
-      yazi
-      gh
-      ripgrep
-      qbittorrent
-      xwayland-satellite
-      zathura
-      calibre
-      icdiff
-      (retroarch.withCores (
-        cores: with cores; [
-          mgba
-          play
-        ]
-      ))
-    ];
+    environment.systemPackages =
+      with pkgs;
+      [
+        git
+        bat
+        eza
+        nh
+        nixd
+        nixfmt
+        nixfmt-tree
+        npins
+        neovim
+        mpv
+        fd
+        comma
+        brightnessctl
+        playerctl
+        framework-tool-tui
+        kitty
+        yazi
+        gh
+        ripgrep
+        qbittorrent
+        xwayland-satellite
+        zathura
+        icdiff
+        (retroarch.withCores (
+          cores: with cores; [
+            mgba
+            play
+          ]
+        ))
+      ]
+      ++ [ pkgsUnstable.calibre ];
+
+    services.udisks2 = {
+      enable = true;
+      mountOnMedia = true;
+    };
 
     services.udev.packages = [ pkgs.game-devices-udev-rules ];
     services.udev.extraRules = ''
