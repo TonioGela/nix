@@ -1,6 +1,4 @@
 # This is nixos-rebuild switch compatible file
-# Remember to re-clone this repo in ~/.config/nixos
-# and create a symlink with `sudo ln -s ~/.config/nixos /etc/nixos`
 let
   sources = import ./npins;
   pkgs = import sources.nixpkgs {
