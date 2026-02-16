@@ -41,9 +41,9 @@
       },
       "branch": "release-25.11",
       "submodules": false,
-      "revision": "75ed713570ca17427119e7e204ab3590cc3bf2a5",
-      "url": "https://github.com/nix-community/home-manager/archive/75ed713570ca17427119e7e204ab3590cc3bf2a5.tar.gz",
-      "hash": "1j6rrqd4y8d1sly1bzlg3mbpmmxsn6dw7y3yhwgm7mm0gj0wmn2f"
+      "revision": "0d782ee42c86b196acff08acfbf41bb7d13eed5b",
+      "url": "https://github.com/nix-community/home-manager/archive/0d782ee42c86b196acff08acfbf41bb7d13eed5b.tar.gz",
+      "hash": "1kqxy6r4ahnbazmpa4pncdp62najdikdaw8hvrv8nl6qxvbmf9fy"
     },
     "nixos-hardware": {
       "type": "Git",
@@ -54,21 +54,21 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "cce68f4a54fa4e3d633358364477f5cc1d782440",
-      "url": "https://github.com/NixOS/nixos-hardware/archive/cce68f4a54fa4e3d633358364477f5cc1d782440.tar.gz",
-      "hash": "0pf6zb2gnhib7mlgnc155m622v02779j7zqkdqqzrd3nwlhfc4r1"
+      "revision": "af04cb78aa85b2a4d1c15fc7270347e0d0eda97b",
+      "url": "https://github.com/NixOS/nixos-hardware/archive/af04cb78aa85b2a4d1c15fc7270347e0d0eda97b.tar.gz",
+      "hash": "1qgqaxz1fmvysj2xdaygz81h9lynzipjgcb6zadfggbp37xn03lz"
     },
     "nixpkgs": {
       "type": "Channel",
       "name": "nixos-25.11",
-      "url": "https://releases.nixos.org/nixos/25.11/nixos-25.11.3928.2c3e5ec5df46/nixexprs.tar.xz",
-      "hash": "0r03spjgx0460h8k2f8xpky7j2d169zx9ycw52czfri537708vi4"
+      "url": "https://releases.nixos.org/nixos/25.11/nixos-25.11.5776.6c5e707c6b53/nixexprs.tar.xz",
+      "hash": "09710k3r97qrwihp5wmnc9bw1awlpkdcszpc8cx5vyxvwkvwwgjm"
     },
     "nixpkgs-unstable": {
       "type": "Channel",
       "name": "nixpkgs-unstable",
-      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.05pre935717.afce96367b2e/nixexprs.tar.xz",
-      "hash": "1ris54b81dadzckl48agq50xv0m0girdpfammmkpmi67wa11jxf0"
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.05pre944764.2343bbb58f99/nixexprs.tar.xz",
+      "hash": "19w5xjmkph3h0qlfacpi983rv3yb8haydiz9xaak792w8mk448gm"
     },
     "noctalia-shell": {
       "type": "GitRelease",
@@ -81,10 +81,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": false,
-      "version": "v4.4.2",
-      "revision": "58850aa38e3238c6b97e50ea15db882e75016021",
-      "url": "https://api.github.com/repos/noctalia-dev/noctalia-shell/tarball/v4.4.2",
-      "hash": "0g629a6cc9ig0g9qdjnmcmdkwg7cgr1q9ydhgq32k1s775zwxlmq"
+      "version": "v4.4.3",
+      "revision": "3e0cd031ffe7b8f00e18a38864709c2b221fff6d",
+      "url": "https://api.github.com/repos/noctalia-dev/noctalia-shell/tarball/v4.4.3",
+      "hash": "1bcllxzpc3viyxizv9qqckbzxgsgsdki8pp60cns4nwzk89q4yp4"
     }
   },
   "version": 5

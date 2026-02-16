@@ -264,7 +264,7 @@ nixos {
       settings = {
         switch = false;
         default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'niri-session &> /dev/null' --asterisks --remember --theme 'border=red;time=green;title=green;prompt=green;button=black;action=black'";
+          command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'niri-session &> /dev/null' --asterisks --remember --theme 'border=white;time=black;title=white;prompt=white;button=black;action=black'";
           user = "toniogela";
         };
       };
