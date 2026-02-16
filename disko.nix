@@ -10,7 +10,6 @@
             ESP = {
               priority = 1;
               name = "ESP";
-              start = "1M";
               end = "512M";
               type = "EF00";
               content = {
@@ -31,13 +30,18 @@
             root = {
               size = "100%";
               content = {
-                type = "btrfs";
-                extraArgs = [ "-f" ];
-                mountpoint = "/";
-                mountOptions = [
-                  "compress=zstd"
-                  "noatime"
-                ];
+                type = "luks";
+                name = "crypted";
+                settings.allowDiscards = true;
+                content = {
+                  type = "btrfs";
+                  extraArgs = [ "-f" ];
+                  mountpoint = "/";
+                  mountOptions = [
+                    "compress=zstd"
+                    "noatime"
+                  ];
+                };
               };
             };
           };
