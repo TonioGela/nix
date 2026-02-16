@@ -1,5 +1,6 @@
 # This is nixos-rebuild switch compatible
 let
+  pwd = builtins.toString ./.;
   sources = import ./npins;
   pkgs = import sources.nixpkgs {
     config.allowUnfree = true;
@@ -32,13 +33,13 @@ in
     settings.experimental-features = [ "nix-command" ];
     nixPath = [
       "nixpkgs=/etc/nixos/nixpkgs"
-      "nixos-config=/etc/nixos/configuration.nix"
+      "nixos-config=${pwd}/configuration.nix"
     ];
   };
 
   environment = {
     etc."nixos/nixpkgs".source = builtins.storePath pkgs.path;
-    variables."NH_FILE" = "/etc/nixos/configuration.nix";
+    variables."NH_FILE" = "${pwd}/configuration.nix";
   };
 
   boot = {
