@@ -9,13 +9,13 @@ let
   compat = import sources.flake-compat;
   disko = compat { src = sources.disko; };
   command = ''
-    echo "\e[1;32mClone your config then run[0m"
-    echo "\e[1;32m  \`disko --mode destroy,format,mount <disko.nix>\`\e[0m"
-    echo "\e[1;32mMove the config in /mnt/etc/nixos with \e[0m"
-    echo "\e[1;32m  \`sudo cp -r <cloned-folder>/* /etc/nixos\`\e[0m"
-    echo "\e[1;32mAnd then \`nixos-install\`\e[0m"
-    echo "\e[1;32mTo set a password for a user\e[0m"
-    echo "\e[1;32m \`nixos-enter --root /mnt -c 'passwd <user>'\`\e[0m"
+    echo -e "\e[1;32mClone your config then run[0m"
+    echo -e "\e[1;32m  \`disko --mode destroy,format,mount <disko.nix>\`\e[0m"
+    echo -e "\e[1;32mMove the config in /mnt/etc/nixos with \e[0m"
+    echo -e "\e[1;32m  \`sudo cp -r <cloned-folder>/* /etc/nixos\`\e[0m"
+    echo -e "\e[1;32mAnd then \`nixos-install\`\e[0m"
+    echo -e "\e[1;32mTo set a password for a user\e[0m"
+    echo -e "\e[1;32m \`nixos-enter --root /mnt -c 'passwd <user>'\`\e[0m"
   '';
   # channel = import (nixpkgs + "/nixos/modules/installer/cd-dvd/channel.nix");
 in
