@@ -18,8 +18,11 @@ in
     ];
 
     programs.bash.interactiveShellInit = ''
-      echo "\e[1;32mClone your config right in /mnt/etc/nixos after creating it\e[0m"
-      echo "\e[1;32mThen run `disko --mode destroy,format,mount /mnt/etc/nixos/<disko file>\e[0m"
+      echo "\e[1;32mClone your config then run[0m"
+      echo "\e[1;32m  `disko --mode destroy,format,mount <disko.nix>\e[0m"
+      echo "\e[1;32mMove the config in /mnt/etc/nixos with \e[0m"
+      echo "\e[1;32m  `sudo cp -r <cloned-folder>/* /etc/nixos`\e[0m"
+      echo "\e[1;32mAnd then `nixos-install`"
     '';
 
     environment.systemPackages = [
