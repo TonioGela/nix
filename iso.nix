@@ -9,7 +9,7 @@ let
   compat = import sources.flake-compat;
   disko = compat { src = sources.disko; };
   command = ''
-    echo -e "\e[1;32mClone your config then run[0m"
+    echo -e "\e[1;32mClone your config then run\e[0m"
     echo -e "\e[1;32m  \`disko --mode destroy,format,mount <disko.nix>\`\e[0m"
     echo -e "\e[1;32mMove the config in /mnt/etc/nixos with \e[0m"
     echo -e "\e[1;32m  \`sudo cp -r <cloned-folder>/* /etc/nixos\`\e[0m"
