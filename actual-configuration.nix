@@ -32,7 +32,7 @@ in
     settings.experimental-features = [ "nix-command" ];
     nixPath = [
       "nixpkgs=/etc/nixos/nixpkgs"
-      "nixos-config=etc/nixos/configuration.nix"
+      "nixos-config=/etc/nixos/configuration.nix"
     ];
   };
 
