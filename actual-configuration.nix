@@ -1,6 +1,7 @@
-# This is nixos-rebuild switch compatible
+# This is nixos-rebuild switch compatible file
+# Remember to re-clone this repo in ~/.config/nixos
+# and create a symlink with `sudo ln -s ~/.config/nixos /etc/nixos`
 let
-  pwd = builtins.toString ./.;
   sources = import ./npins;
   pkgs = import sources.nixpkgs {
     config.allowUnfree = true;
@@ -33,13 +34,13 @@ in
     settings.experimental-features = [ "nix-command" ];
     nixPath = [
       "nixpkgs=/etc/nixos/nixpkgs"
-      "nixos-config=${pwd}/configuration.nix"
+      "nixos-config=etc/nixos/configuration.nix"
     ];
   };
 
   environment = {
     etc."nixos/nixpkgs".source = builtins.storePath pkgs.path;
-    variables."NH_FILE" = "${pwd}/configuration.nix";
+    variables."NH_FILE" = "/etc/nixos/configuration.nix";
   };
 
   boot = {

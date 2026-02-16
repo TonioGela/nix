@@ -17,6 +17,11 @@ in
       # <nixpkgs/nixos/modules/installer/cd-dvd/channel.nix>
     ];
 
+    programs.bash.interactiveShellInit = ''
+      echo "\e[1;32mClone your config right in /mnt/etc/nixos after creating it\e[0m"
+      echo "\e[1;32mThen run `disko --mode destroy,format,mount /mnt/etc/nixos/<disko file>\e[0m"
+    '';
+
     environment.systemPackages = [
       pkgs.neovim
       disko.outputs.packages.x86_64-linux.disko
