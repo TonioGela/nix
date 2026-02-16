@@ -24,34 +24,6 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/4e337faf-fe1f-42fe-b4bc-659cd3443b6d";
-    fsType = "ext4";
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/C8A0-E416";
-    fsType = "vfat";
-    options = [
-      "fmask=0077"
-      "dmask=0077"
-    ];
-  };
-
-  fileSystems."/media/moon" = {
-    device = "/dev/disk/by-uuid/2c58c8db-6f8c-4aca-a69e-63780b8e9b89";
-    fsType = "ext4";
-    options = [
-      "nofail"
-      "x-systemd.automount" # Mount it only when accessed (speeds up boot)
-      "x-systemd.device-timeout=5s" # Give up waiting quickly
-      "users"
-      "rw"
-    ];
-  };
-
-  swapDevices = [ ];
-
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
