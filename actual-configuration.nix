@@ -48,6 +48,7 @@ in
     consoleLogLevel = 0;
     kernelPackages = pkgs.linuxPackages;
     kernelParams = [
+      "console=tty1"
       "quiet"
       "loglevel=0"
       "systemd.show_status=false"
