@@ -1,16 +1,23 @@
-In order for the autocompletion to work, the configuration needs to be a module. You can change its shape and import everything in configuration.nix
-Configura calibre con HM
-Power profile daemon, configura
+Import git config from HM
+firefox unmute by default and set font
+disko: partition order and names in content
+Refactor the config
+pkgsUnstable as pkgs.unstable
+VSCode UI state in hm
+Autologin as in Gemini or look at ben config
+Configure Noctalia with HM
+Configure calibre con HM
+Test hibernation closing the lid
+Power profile daemon, configure
 Lanzaboote
 Read niri documentation and rice it
-Microfono e camera, audio e video migliori con impostazioni?
+Microphone and camera, better audio and video with settings?
 Nixos wiki about niri mentions a few stuff
 add secretservice, polkit and a polkit-agent
 laptop things in nixos, like power management
 optimise store
 Install comma and nix-index
 Set dark mode in system to tell apps to be dark in dconf
-Rifai configurazione da capo?
 
 Remote builder
 Document a bit all the TUIs to change settings
