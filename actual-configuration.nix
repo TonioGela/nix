@@ -41,6 +41,8 @@ in
     variables."NH_FILE" = "/etc/nixos/configuration.nix";
   };
 
+  systemd.services.NetworkManager-wait-online.enable = false;
+
   boot = {
     loader.timeout = 0;
     consoleLogLevel = 0;
