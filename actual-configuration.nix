@@ -48,7 +48,6 @@ in
     consoleLogLevel = 0;
     kernelPackages = pkgs.linuxPackages;
     kernelParams = [
-      "console=tty1"
       "quiet"
       "loglevel=0"
       "systemd.show_status=false"
@@ -61,6 +60,7 @@ in
       "nowatchdog"
       "i8042.nopnp"
       "pcie_aspm=off"
+      "8250.nr_uarts=0"
     ];
     initrd = {
       verbose = false;
