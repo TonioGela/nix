@@ -176,6 +176,14 @@
         };
       };
       settings = {
+        "font.name.serif.x-western" = "SauceCodePro Nerd Font Propo";
+        "font.name.sans-serif.x-western" = "SauceCodePro Nerd Font Propo";
+        "font.name.monospace.x-western" = "SauceCodePro Nerd Font Propo";
+        "layout.css.prefers-color-scheme.content-override" = 0;
+        "browser.ml.linkPreview.enabled" = false;
+        "browser.ml.enable" = false;
+        "browser.ml.chat.enabled" = false;
+        "browser.ml.chat.menu" = false;
         "sidebar.revamp" = true;
         "sidebar.verticalTabs" = false;
         "sidebar.visibility" = "hide-sidebar";
@@ -196,6 +204,7 @@
         "browser.urlbar.suggest.yelp" = false;
         "browser.urlbar.suggest.pocket" = false;
         "browser.urlbar.suggest.fakespot" = false;
+        "media.autoplay.default" = 0;
         "extensions.update.enabled" = true;
         "extensions.webcompat.enable_picture_in_picture_overrides" = true;
         "print.print_footerleft" = "";
