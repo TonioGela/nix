@@ -255,9 +255,9 @@ in
   services.upower.enable = true;
 
   services.logind.settings.Login = {
-    HandleLidSwitch = "suspend";
-    HandleLidSwitchExternalPower = "suspend";
-    HandleLidSwitchDocked = "ignore";
+    HandleLidSwitch = "suspend-then-hibernate";
+    HandleLidSwitchExternalPower = "suspend-then-hibernate";
+    HandleLidSwitchDocked = "suspend-then-hibernate";
     HoldoffTimeoutSec = 10;
   };
 
@@ -269,7 +269,7 @@ in
     settings = {
       switch = false;
       initial_session = {
-        command = "niri-session";
+        command = "niri-session &> /dev/null";
         user = "toniogela";
       };
 
