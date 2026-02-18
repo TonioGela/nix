@@ -8,15 +8,17 @@ let
   );
   compat = import sources.flake-compat;
   disko = compat { src = sources.disko; };
-  command = ''
-    echo -e "\e[1;32mClone your config then run\e[0m"
-    echo -e "\e[1;32m  \`disko --mode destroy,format,mount <disko.nix>\`\e[0m"
-    echo -e "\e[1;32mMove the config in /mnt/etc/nixos with \e[0m"
-    echo -e "\e[1;32m  \`cp -r <cloned-folder>/* /mnt/etc/nixos\`\e[0m"
-    echo -e "\e[1;32mAnd then \`nixos-install -f /mnt/etc/nixos/configuration.nix\`\e[0m"
-    echo -e "\e[1;32mTo set a password for a user\e[0m"
-    echo -e "\e[1;32m \`nixos-enter --root /mnt -c 'passwd <user>'\`\e[0m"
-  '';
+  line = s: ''echo -e "\e[1;32m${s}\e[0m"'';
+  lines = [
+    (line "Clone your config then run")
+    (line "  disko --mode destroy,format,mount <disko.nix> (aliased to disko-destroy-format-mount)")
+    (line "Move the config in /mnt/etc/nixos with")
+    (line "  cp -r <cloned-folder>/* /mnt/etc/nixos")
+    (line "And then nixos-install -f /mnt/etc/nixos/configuration.nix")
+    (line "To set a password for a user")
+    (line "  nixos-enter --root /mnt -c 'passwd <user>' (aliased to user-passwd)")
+  ];
+  command = builtins.concatStringsSep "\n" lines;
   # channel = import (nixpkgs + "/nixos/modules/installer/cd-dvd/channel.nix");
 in
 (nixos {
@@ -33,6 +35,8 @@ in
       disko.outputs.packages.x86_64-linux.disko
       pkgs.git
       (pkgs.writeShellScriptBin "instructions" "${command}")
+      (pkgs.writeShellScriptBin "disko-destroy-format-mount" ''disko --mode destroy,format,mount "$@"'')
+      (pkgs.writeShellScriptBin "user-passwd" ''nixos-enter --root /mnt -c 'passwd "$@"' '')
     ];
   };
 }).config.system.build.isoImage

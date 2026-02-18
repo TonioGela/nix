@@ -268,6 +268,11 @@ in
     useTextGreeter = true;
     settings = {
       switch = false;
+      initial_session = {
+        command = "niri-session";
+        user = "toniogela";
+      };
+
       default_session = {
         command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'niri-session &> /dev/null' --asterisks --remember --theme 'border=white;time=black;title=white;prompt=white;button=black;action=black'";
         user = "toniogela";

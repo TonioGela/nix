@@ -15,7 +15,8 @@
         "iconMode": "native",
         "ignoreMouseInput": true,
         "overviewLayer": false,
-        "pinnedApps": [],
+        "pinnedApps": [
+        ],
         "position": "center",
         "screenshotAnnotationTool": "",
         "showCategories": false,
@@ -27,7 +28,8 @@
     },
     "audio": {
         "cavaFrameRate": 30,
-        "mprisBlacklist": [],
+        "mprisBlacklist": [
+        ],
         "preferredPlayer": "mpv",
         "visualizerType": "linear",
         "volumeFeedback": false,
@@ -49,7 +51,8 @@
         "hideOnOverview": true,
         "marginHorizontal": 0,
         "marginVertical": 0,
-        "monitors": [],
+        "monitors": [
+        ],
         "outerCorners": true,
         "position": "top",
         "screenOverrides": [
@@ -124,7 +127,8 @@
                     "useDistroLogo": true
                 }
             ],
-            "left": [],
+            "left": [
+            ],
             "right": [
                 {
                     "blacklist": [
@@ -135,13 +139,14 @@
                     "drawerEnabled": true,
                     "hidePassive": false,
                     "id": "Tray",
-                    "pinned": []
+                    "pinned": [
+                    ]
                 }
             ]
         }
     },
     "brightness": {
-        "brightnessStep": 5,
+        "brightnessStep": 10,
         "enableDdcSupport": false,
         "enforceMinimum": true
     },
@@ -163,7 +168,7 @@
     },
     "colorSchemes": {
         "darkMode": true,
-        "generationMethod": "faithful",
+        "generationMethod": "dysfunctional",
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
         "monitorForColors": "",
@@ -231,7 +236,8 @@
         "monitorWidgets": [
             {
                 "name": "eDP-1",
-                "widgets": []
+                "widgets": [
+                ]
             }
         ]
     },
@@ -244,9 +250,11 @@
         "enabled": false,
         "floatingRatio": 1,
         "inactiveIndicators": false,
-        "monitors": [],
+        "monitors": [
+        ],
         "onlySameOutput": true,
-        "pinnedApps": [],
+        "pinnedApps": [
+        ],
         "pinnedStatic": false,
         "position": "bottom",
         "size": 1
@@ -292,7 +300,8 @@
         "lockScreenAnimations": false,
         "lockScreenBlur": 0,
         "lockScreenCountdownDuration": 10000,
-        "lockScreenMonitors": [],
+        "lockScreenMonitors": [
+        ],
         "lockScreenTint": 0,
         "radiusRatio": 1,
         "scaleRatio": 0.8,
@@ -301,7 +310,7 @@
         "shadowOffsetX": 2,
         "shadowOffsetY": 3,
         "showChangelogOnStartup": true,
-        "showHibernateOnLockScreen": false,
+        "showHibernateOnLockScreen": true,
         "showScreenCorners": true,
         "showSessionButtonsOnLockScreen": false,
         "telemetryEnabled": false
@@ -357,7 +366,8 @@
         "enabled": true,
         "location": "top_right",
         "lowUrgencyDuration": 3,
-        "monitors": [],
+        "monitors": [
+        ],
         "normalUrgencyDuration": 8,
         "overlayLayer": true,
         "respectExpireTimeout": false,
@@ -386,7 +396,8 @@
             2
         ],
         "location": "top",
-        "monitors": [],
+        "monitors": [
+        ],
         "overlayLayer": true
     },
     "plugins": {
@@ -482,10 +493,6 @@
             },
             {
                 "enabled": true,
-                "id": "kitty"
-            },
-            {
-                "enabled": true,
                 "id": "yazi"
             },
             {
@@ -494,7 +501,7 @@
             },
             {
                 "enabled": true,
-                "id": "spicetify"
+                "id": "kitty"
             }
         ],
         "enableUserTheming": false
@@ -519,11 +526,26 @@
         "directory": "/home/toniogela/.config/nixos/dotfiles",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
-        "favorites": [],
+        "favorites": [
+            {
+                "colorScheme": "Nord",
+                "darkMode": true,
+                "generationMethod": "dysfunctional",
+                "paletteColors": [
+                    "#8fbcbb",
+                    "#88c0d0",
+                    "#5e81ac",
+                    "#bf616a"
+                ],
+                "path": "/home/toniogela/.config/nixos/dotfiles/wallpaper.svg",
+                "useWallpaperColors": false
+            }
+        ],
         "fillColor": "#000000",
         "fillMode": "crop",
         "hideWallpaperFilenames": true,
-        "monitorDirectories": [],
+        "monitorDirectories": [
+        ],
         "overviewBlur": 0.4,
         "overviewEnabled": false,
         "overviewTint": 0.6,
@@ -539,7 +561,7 @@
         "transitionType": "stripes",
         "useSolidColor": false,
         "useWallhaven": false,
-        "viewMode": "recursive",
+        "viewMode": "browse",
         "wallhavenApiKey": "",
         "wallhavenCategories": "111",
         "wallhavenOrder": "desc",
