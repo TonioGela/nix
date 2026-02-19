@@ -15,7 +15,7 @@ input {
         // drag false
         // drag-lock
         natural-scroll
-	click-method "clickfinger"
+        click-method "clickfinger"
         // accel-speed 0.2
         // accel-profile "flat"
         // scroll-method "two-finger"
@@ -65,10 +65,14 @@ output "eDP-1" {
     position x=1280 y=0
 }
 
+layer-rule {
+  match namespace="^noctalia-wallpaper*"
+  place-within-backdrop true
+}
+
 overview {
- backdrop-color "#3B4252"
  workspace-shadow {
-    on
+    off
  }
 }
 
@@ -77,6 +81,7 @@ recent-windows {
 }
 
 layout {
+    background-color "transparent"
     gaps 8
     center-focused-column "never"
 
