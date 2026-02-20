@@ -77,6 +77,12 @@ overview {
  }
 }
 
+gestures {
+    hot-corners {
+        off
+    }
+}
+
 recent-windows {
   off
 }
