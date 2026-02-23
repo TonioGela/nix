@@ -1,8 +1,6 @@
 Import git config from HM
-firefox unmute by default and set font
 disko: partition order and names in content
 Refactor the config
-pkgsUnstable as pkgs.unstable
 VSCode UI state in hm
 Autologin as in Gemini or look at ben config
 Configure Noctalia with HM

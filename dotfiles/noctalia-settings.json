@@ -15,7 +15,8 @@
         "iconMode": "native",
         "ignoreMouseInput": true,
         "overviewLayer": false,
-        "pinnedApps": [],
+        "pinnedApps": [
+        ],
         "position": "center",
         "screenshotAnnotationTool": "",
         "showCategories": false,
@@ -27,7 +28,8 @@
     },
     "audio": {
         "cavaFrameRate": 30,
-        "mprisBlacklist": [],
+        "mprisBlacklist": [
+        ],
         "preferredPlayer": "mpv",
         "visualizerType": "linear",
         "volumeFeedback": false,
@@ -49,7 +51,8 @@
         "hideOnOverview": true,
         "marginHorizontal": 0,
         "marginVertical": 0,
-        "monitors": [],
+        "monitors": [
+        ],
         "outerCorners": true,
         "position": "top",
         "screenOverrides": [
@@ -124,7 +127,8 @@
                     "useDistroLogo": true
                 }
             ],
-            "left": [],
+            "left": [
+            ],
             "right": [
                 {
                     "blacklist": [
@@ -135,7 +139,8 @@
                     "drawerEnabled": true,
                     "hidePassive": false,
                     "id": "Tray",
-                    "pinned": []
+                    "pinned": [
+                    ]
                 }
             ]
         }
@@ -231,7 +236,8 @@
         "monitorWidgets": [
             {
                 "name": "eDP-1",
-                "widgets": []
+                "widgets": [
+                ]
             }
         ]
     },
@@ -244,9 +250,11 @@
         "enabled": false,
         "floatingRatio": 1,
         "inactiveIndicators": false,
-        "monitors": [],
+        "monitors": [
+        ],
         "onlySameOutput": true,
-        "pinnedApps": [],
+        "pinnedApps": [
+        ],
         "pinnedStatic": false,
         "position": "bottom",
         "size": 1
@@ -256,7 +264,7 @@
         "allowPasswordWithFprintd": true,
         "animationDisabled": false,
         "animationSpeed": 1,
-        "autoStartAuth": false,
+        "autoStartAuth": true,
         "avatarImage": "/home/toniogela/.face",
         "boxRadiusRatio": 1,
         "clockFormat": "HH\\nmm",
@@ -292,7 +300,8 @@
         "lockScreenAnimations": false,
         "lockScreenBlur": 0,
         "lockScreenCountdownDuration": 10000,
-        "lockScreenMonitors": [],
+        "lockScreenMonitors": [
+        ],
         "lockScreenTint": 0,
         "radiusRatio": 1,
         "scaleRatio": 0.8,
@@ -357,7 +366,8 @@
         "enabled": true,
         "location": "top_right",
         "lowUrgencyDuration": 3,
-        "monitors": [],
+        "monitors": [
+        ],
         "normalUrgencyDuration": 8,
         "overlayLayer": true,
         "respectExpireTimeout": false,
@@ -386,7 +396,8 @@
             2
         ],
         "location": "top",
-        "monitors": [],
+        "monitors": [
+        ],
         "overlayLayer": true
     },
     "plugins": {
@@ -533,7 +544,8 @@
         "fillColor": "#000000",
         "fillMode": "crop",
         "hideWallpaperFilenames": true,
-        "monitorDirectories": [],
+        "monitorDirectories": [
+        ],
         "overviewBlur": 0.4,
         "overviewEnabled": false,
         "overviewTint": 0.6,
