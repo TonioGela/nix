@@ -1,14 +1,9 @@
 { sources, ... }:
 let
-  files = builtins.attrNames (builtins.readDir ./.);
-  modules = builtins.filter (
-    m:
-    builtins.trace "The current directory is ${toString m}" (
-      builtins.readFileType ./${m} == "directory"
-    )
-  ) files;
-  modulesImports = map (
-    m: builtins.trace "About to import ${m}" (import ./${m} { inherit sources; })
-  ) modules;
+  filterAttrs =
+    pred: set:
+    removeAttrs set (builtins.filter (name: !pred name set.${name}) (builtins.attrNames set));
+  modules = filterAttrs (key: value: value == "directory") (builtins.readDir ./.);
+  modulesImports = map (m: import ./${m} { inherit sources; }) (builtins.attrNames modules);
 in
-[ (import ./hardware { inherit sources; }) ]
+modulesImports
