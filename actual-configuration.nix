@@ -1,26 +1,17 @@
 # This is nixos-rebuild switch compatible file
 let
   sources = import ./npins;
-  pkgs = import sources.nixpkgs {
-    config.allowUnfree = true;
-  };
-  pkgsUnstable = import sources.nixpkgs-unstable {
-    config.allowUnfree = true;
-  };
-  fw13-hardware = import (sources.nixos-hardware + "/framework/13-inch/amd-ai-300-series");
+  pkgs = import sources.nixpkgs { config.allowUnfree = true; };
+  pkgsUnstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
+  modules = import ./modules { inherit sources; };
   homeManager = import (sources.home-manager + "/nixos");
   compat = import sources.flake-compat;
   noctalia-shell = compat { src = sources.noctalia-shell; };
-  diskoModule = sources.disko + "/module.nix";
 in
 {
-  imports = [
-    fw13-hardware
-    ./hardware-configuration.nix
+  imports = modules ++ [
     homeManager
     noctalia-shell.outputs.nixosModules.default
-    diskoModule
-    ./disko.nix
   ];
 
   services.noctalia-shell.enable = true;
@@ -149,8 +140,6 @@ in
           config.lib.file.mkOutOfStoreSymlink ./dotfiles/noctalia-settings.json;
       };
 
-      services.udiskie.enable = true;
-
       services.swayidle = {
         enable = true;
         timeouts = [
@@ -171,36 +160,6 @@ in
         ];
       };
 
-      xdg.desktopEntries = {
-        "yazi" = {
-          name = "yazi";
-          noDisplay = true;
-        };
-        "nvim" = {
-          name = "nvim";
-          noDisplay = true;
-        };
-        "mpv" = {
-          name = "mpv";
-          noDisplay = true;
-        };
-        "kitty" = {
-          name = "kitty";
-          noDisplay = true;
-        };
-        "nixos-manual" = {
-          name = "nixos-manual";
-          noDisplay = true;
-        };
-        "firefox" = {
-          name = "firefox";
-          noDisplay = true;
-        };
-        "codium" = {
-          name = "codium";
-          noDisplay = true;
-        };
-      };
       programs.home-manager.enable = true;
       home.stateVersion = "25.11";
     };
@@ -231,6 +190,7 @@ in
       xwayland-satellite
       zathura
       icdiff
+      vesktop
       (retroarch.withCores (
         cores: with cores; [
           mgba
@@ -328,12 +288,6 @@ in
       };
     };
   };
-
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
 
   system.copySystemConfiguration = true;
 

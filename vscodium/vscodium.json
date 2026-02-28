@@ -146,7 +146,6 @@
     "workbench.settings.openDefaultKeybindings": true,
     "workbench.settings.openDefaultSettings": true,
     "workbench.startupEditor": "newUntitledFile",
-    "workbench.statusBar.visible": false,
     "workbench.tips.enabled": false,
     "workbench.tree.enableStickyScroll": false,
     "workbench.tree.indent": 4,
@@ -171,5 +170,6 @@
     "rust-analyzer.completion.fullFunctionSignatures.enable": true,
     "editor.inlayHints.enabled": "offUnlessPressed",
     "window.menuBarVisibility": "toggle",
-    "workbench.activityBar.location": "hidden"
+    "workbench.activityBar.location": "hidden",
+    "workbench.statusBar.visible": false
 }

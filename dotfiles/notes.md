@@ -1,3 +1,5 @@
+gamescope -w 1440 -h 960 -W 2880 -H 1920 -F nis -- %command%
+
 Import git config from HM
 disko: partition order and names in content
 Refactor the config

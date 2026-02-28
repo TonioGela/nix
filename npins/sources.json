@@ -81,10 +81,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": false,
-      "version": "v4.4.3",
-      "revision": "3e0cd031ffe7b8f00e18a38864709c2b221fff6d",
-      "url": "https://api.github.com/repos/noctalia-dev/noctalia-shell/tarball/v4.4.3",
-      "hash": "1bcllxzpc3viyxizv9qqckbzxgsgsdki8pp60cns4nwzk89q4yp4"
+      "version": "v4.5.0",
+      "revision": "dbfe3634df0c57faf9772cecae1f2e92bd04de66",
+      "url": "https://api.github.com/repos/noctalia-dev/noctalia-shell/tarball/v4.5.0",
+      "hash": "1syqsml49jfjpngi7b099jcggp66lrls0ha6w5daqd5xhd2z94v3"
     }
   },
   "version": 5
