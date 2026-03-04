@@ -1,8 +1,8 @@
 gamescope -w 1440 -h 960 -W 2880 -H 1920 -F nis -- %command%
 
+Refactor the config
 Import git config from HM
 disko: partition order and names in content
-Refactor the config
 VSCode UI state in hm
 Autologin as in Gemini or look at ben config
 Configure Noctalia with HM

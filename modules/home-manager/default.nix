@@ -1,8 +1,6 @@
 { ... }:
 {
-  home-manager.users.toniogela =
-    { ... }:
-    {
-      services.udiskie.enable = true;
-    };
+  home-manager.users.toniogela = {
+    services.udiskie.enable = true;
+  };
 }

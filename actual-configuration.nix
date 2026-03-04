@@ -47,11 +47,12 @@ in
       "rd.udev.log_level=0"
       "udev.log_priority=0"
       "vt.global_cursor_default=0"
-      "amdgpu.dcdebugmask=0"
+      "amdgpu.dcdebugmask=0x10"
       "nowatchdog"
       "i8042.nopnp"
       "pcie_aspm=off"
       "8250.nr_uarts=0"
+      "plymouth.use-simpledrm"
     ];
     initrd = {
       verbose = false;
