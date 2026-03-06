@@ -1,13 +1,9 @@
 { sources, ... }:
-let
-  fw13-hardware = import (sources.nixos-hardware + "/framework/13-inch/amd-ai-300-series");
-  diskoModule = sources.disko + "/module.nix";
-in
 {
   imports = [
-    fw13-hardware
+    sources.fw13-hardware
     ./hardware-configuration.nix
-    diskoModule
+    sources.diskoModule
     ./disko.nix
   ];
 }

@@ -1,12 +1,24 @@
 # This is nixos-rebuild switch compatible file
 let
-  sources = import ./npins;
-  pkgs = import sources.nixpkgs { config.allowUnfree = true; };
-  pkgsUnstable = import sources.nixpkgs-unstable { config.allowUnfree = true; };
+  pins = import ./npins;
+  sources = {
+    pkgs = import pins.nixpkgs { config.allowUnfree = true; };
+    pkgsUnstable = import pins.nixpkgs-unstable { config.allowUnfree = true; };
+    homeManager = import (pins.home-manager + "/nixos");
+    fw13-hardware = import (pins.nixos-hardware + "/framework/13-inch/amd-ai-300-series");
+    diskoModule = pins.disko + "/module.nix";
+    compat = import pins.flake-compat;
+    noctalia = pins.noctalia-shell;
+  };
+
   modules = import ./modules { inherit sources; };
-  homeManager = import (sources.home-manager + "/nixos");
-  compat = import sources.flake-compat;
-  noctalia-shell = compat { src = sources.noctalia-shell; };
+
+  homeManager = import ./home-manager {
+    username = "toniogela";
+    inherit sources;
+  };
+
+  noctalia-shell = sources.compat { src = sources.noctalia; };
 in
 {
   imports = modules ++ [
@@ -14,9 +26,7 @@ in
     noctalia-shell.outputs.nixosModules.default
   ];
 
-  services.noctalia-shell.enable = true;
-
-  nixpkgs.pkgs = pkgs;
+  nixpkgs.pkgs = sources.pkgs;
 
   nix = {
     channel.enable = false;
@@ -28,7 +38,7 @@ in
   };
 
   environment = {
-    etc."nixos/nixpkgs".source = builtins.storePath pkgs.path;
+    etc."nixos/nixpkgs".source = builtins.storePath sources.pkgs.path;
     variables."NH_FILE" = "/etc/nixos/configuration.nix";
   };
 
@@ -37,7 +47,7 @@ in
   boot = {
     loader.timeout = 0;
     consoleLogLevel = 0;
-    kernelPackages = pkgs.linuxPackages;
+    kernelPackages = sources.pkgs.linuxPackages;
     kernelParams = [
       "quiet"
       "loglevel=0"
@@ -93,7 +103,7 @@ in
 
   time.timeZone = "Europe/Rome";
 
-  fonts.packages = [ pkgs.nerd-fonts.sauce-code-pro ];
+  fonts.packages = [ sources.pkgs.nerd-fonts.sauce-code-pro ];
 
   i18n = {
     defaultLocale = "en_GB.UTF-8";
@@ -106,7 +116,7 @@ in
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
-  users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = sources.pkgs.zsh;
   users.users.toniogela = {
     isNormalUser = true;
     extraGroups = [
@@ -126,10 +136,7 @@ in
       imports = [
         ./firefox
         ./zsh
-        ./neovim
-        ./vscodium
       ];
-      _module.args = { inherit pkgsUnstable; };
       home.packages = [ ];
       home.enableNixpkgsReleaseCheck = true;
       home.file = {
@@ -146,17 +153,17 @@ in
         timeouts = [
           {
             timeout = 120;
-            command = "${pkgs.lib.getExe noctalia-shell.outputs.packages.x86_64-linux.default} ipc call lockScreen lock";
+            command = "${sources.pkgs.lib.getExe noctalia-shell.outputs.packages.x86_64-linux.default} ipc call lockScreen lock";
           }
           {
             timeout = 300;
-            command = "${pkgs.lib.getExe noctalia-shell.outputs.packages.x86_64-linux.default} ipc call sessionMenu lockAndSuspend";
+            command = "${sources.pkgs.lib.getExe noctalia-shell.outputs.packages.x86_64-linux.default} ipc call sessionMenu lockAndSuspend";
           }
         ];
         events = [
           {
             event = "before-sleep";
-            command = "${pkgs.lib.getExe noctalia-shell.outputs.packages.x86_64-linux.default} ipc call lockScreen lock";
+            command = "${sources.pkgs.lib.getExe noctalia-shell.outputs.packages.x86_64-linux.default} ipc call lockScreen lock";
           }
         ];
       };
@@ -166,7 +173,7 @@ in
     };
 
   environment.systemPackages =
-    with pkgs;
+    with sources.pkgs;
     [
       git
       bat
@@ -199,14 +206,15 @@ in
         ]
       ))
     ]
-    ++ [ pkgsUnstable.calibre ];
+    ++ [ sources.pkgsUnstable.calibre ];
 
   services.udisks2 = {
     enable = true;
     mountOnMedia = true;
   };
 
-  services.udev.packages = [ pkgs.game-devices-udev-rules ];
+  services.noctalia-shell.enable = true;
+  services.udev.packages = [ sources.pkgs.game-devices-udev-rules ];
   services.udev.extraRules = ''
     KERNEL=="event*", SUBSYSTEM=="input", MODE="0660", GROUP="input"
   '';
@@ -235,7 +243,7 @@ in
       };
 
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'niri-session &> /dev/null' --asterisks --remember --theme 'border=white;time=black;title=white;prompt=white;button=black;action=black'";
+        command = "${sources.pkgs.tuigreet}/bin/tuigreet --time --cmd 'niri-session &> /dev/null' --asterisks --remember --theme 'border=white;time=black;title=white;prompt=white;button=black;action=black'";
         user = "toniogela";
       };
     };
@@ -249,7 +257,7 @@ in
 
   services.printing = {
     enable = true;
-    drivers = with pkgs; [
+    drivers = with sources.pkgs; [
       cups-filters
       cups-browsed
       brlaser
