@@ -133,10 +133,6 @@ in
   home-manager.users.toniogela =
     { config, ... }:
     {
-      imports = [
-        ./firefox
-        ./zsh
-      ];
       home.packages = [ ];
       home.enableNixpkgsReleaseCheck = true;
       home.file = {
