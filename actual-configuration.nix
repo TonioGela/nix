@@ -9,6 +9,7 @@ let
     diskoModule = pins.disko + "/module.nix";
     compat = import pins.flake-compat;
     noctalia = pins.noctalia-shell;
+    nix-index-database = pins.nix-index-database + "/nixos-module.nix";
   };
 
   modules = import ./modules { inherit sources; };
@@ -23,10 +24,13 @@ in
 {
   imports = modules ++ [
     homeManager
+    (import sources.nix-index-database)
     noctalia-shell.outputs.nixosModules.default
   ];
 
   nixpkgs.pkgs = sources.pkgs;
+
+  programs.nix-index-database.comma.enable = true;
 
   nix = {
     channel.enable = false;
@@ -182,7 +186,6 @@ in
       neovim
       mpv
       fd
-      comma
       brightnessctl
       playerctl
       framework-tool-tui

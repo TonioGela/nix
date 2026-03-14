@@ -192,6 +192,14 @@
         "browser.sessionstore.max_resumed_crashes" = -1;
         "browser.aboutConfig.showWarning" = false;
         "browser.uidensity" = 1;
+        "browser.translations.select.enable" = false;
+        "screenshots.browser.component.enabled" = false;
+        "dom.text_fragments.enabled" = false;
+        "dom.text-recognition.enabled" = false;
+        "browser.search.visualSearch.featureGate" = false;
+        "widget.macos.native-context-menus" = false;
+        "devtools.accessibility.enabled" = false;
+        "privacy.query_stripping.strip_on_share.enabled" = false;
         "browser.search.suggest.enabled" = "lock-false";
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "browser.urlbar.quickactions.enabled" = false;
