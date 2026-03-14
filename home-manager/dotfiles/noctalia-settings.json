@@ -578,7 +578,7 @@
     },
     "wallpaper": {
         "automationEnabled": false,
-        "directory": "/home/toniogela/.config/nixos/dotfiles",
+        "directory": "/home/toniogela/.config/.wallpapers/",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [
@@ -592,7 +592,7 @@
                     "#5e81ac",
                     "#bf616a"
                 ],
-                "path": "/home/toniogela/.config/nixos/dotfiles/wallpaper.svg",
+                "path": "/home/toniogela/.config/.wallpapers/wallpaper.svg",
                 "useWallpaperColors": false
             }
         ],

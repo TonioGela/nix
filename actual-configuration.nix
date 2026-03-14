@@ -44,6 +44,7 @@ in
   environment = {
     etc."nixos/nixpkgs".source = builtins.storePath sources.pkgs.path;
     variables."NH_FILE" = "/etc/nixos/configuration.nix";
+    variables."NH_ATTRP" = "framework";
   };
 
   systemd.services.NetworkManager-wait-online.enable = false;
@@ -135,19 +136,9 @@ in
   home-manager.useUserPackages = true;
   # You should fix the modules to be as shallow as possible and to install packages in global packages (the reason some stuff is installed but not available is this one)
   home-manager.users.toniogela =
-    { config, ... }:
+    { ... }:
     {
-      home.packages = [ ];
       home.enableNixpkgsReleaseCheck = true;
-      home.file = {
-        ".config/niri/config.kdl".source = ./dotfiles/niri.kdl;
-        ".config/wallpaper.svg".source = ./dotfiles/wallpaper.svg;
-        ".config/kitty/kitty.conf".source = ./dotfiles/kitty.conf;
-        "notes.md".source = config.lib.file.mkOutOfStoreSymlink ./dotfiles/notes.md;
-        ".config/noctalia/settings.json".source =
-          config.lib.file.mkOutOfStoreSymlink ./dotfiles/noctalia-settings.json;
-      };
-
       services.swayidle = {
         enable = true;
         timeouts = [
@@ -190,7 +181,6 @@ in
       playerctl
       framework-tool-tui
       kitty
-      yazi
       gh
       ripgrep
       qbittorrent
