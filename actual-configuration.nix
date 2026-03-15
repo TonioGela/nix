@@ -177,6 +177,7 @@ in
       neovim
       mpv
       fd
+      ripdrag
       brightnessctl
       playerctl
       framework-tool-tui
