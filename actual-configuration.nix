@@ -203,6 +203,8 @@ in
     mountOnMedia = true;
   };
 
+  services.gvfs.enable = true;
+
   services.noctalia-shell.enable = true;
   services.udev.packages = [ sources.pkgs.game-devices-udev-rules ];
   services.udev.extraRules = ''
