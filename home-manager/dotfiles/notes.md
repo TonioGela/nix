@@ -11,7 +11,6 @@ Test hibernation closing the lid
 Power profile daemon, configure
 Lanzaboote
 Read niri documentation and rice it
-Microphone and camera, better audio and video with settings?
 Nixos wiki about niri mentions a few stuff
 add secretservice, polkit and a polkit-agent
 laptop things in nixos, like power management
@@ -22,8 +21,6 @@ Set dark mode in system to tell apps to be dark in dconf
 Remote builder
 Document a bit all the TUIs to change settings
 WayDroid per NOWTV
-
-Champ Team 1: 61 Jolteon, 62 Alakazam, 61 Pidgeot, 61 Aracanine, 61 Gyarados, 60 Venasuar (Starter)
 
 Final Champ Team: 100 Zapdos, 100 Mew, 100 Mewtwo, 100 Victreebel, 100 Arcanine, 100 Blastoise
 

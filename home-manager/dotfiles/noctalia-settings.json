@@ -192,6 +192,7 @@
         "monitorForColors": "",
         "predefinedScheme": "Nord",
         "schedulingMode": "off",
+        "syncGsettings": true,
         "useWallpaperColors": false
     },
     "controlCenter": {
@@ -356,6 +357,7 @@
         "showHibernateOnLockScreen": true,
         "showScreenCorners": true,
         "showSessionButtonsOnLockScreen": false,
+        "smoothScrollEnabled": true,
         "telemetryEnabled": false
     },
     "hooks": {
@@ -386,6 +388,7 @@
     },
     "location": {
         "analogClockInCalendar": false,
+        "autoLocate": false,
         "firstDayOfWeek": 1,
         "hideWeatherCityName": true,
         "hideWeatherTimezone": true,
@@ -396,10 +399,10 @@
         "use12hourFormat": false,
         "useFahrenheit": false,
         "weatherEnabled": false,
-        "weatherShowEffects": true
+        "weatherShowEffects": true,
+        "weatherTaliaMascotAlways": false
     },
     "network": {
-        "airplaneModeEnabled": false,
         "bluetoothAutoConnect": true,
         "bluetoothDetailsViewMode": "grid",
         "bluetoothHideUnnamedDevices": false,
@@ -611,6 +614,7 @@
         "fillColor": "#000000",
         "fillMode": "crop",
         "hideWallpaperFilenames": true,
+        "linkLightAndDarkWallpapers": true,
         "monitorDirectories": [
         ],
         "overviewBlur": 0.4,
@@ -620,11 +624,11 @@
         "randomIntervalSec": 300,
         "setWallpaperOnAllMonitors": true,
         "showHiddenFiles": false,
-        "skipStartupTransition": false,
+        "skipStartupTransition": true,
         "solidColor": "#1a1a2e",
         "sortOrder": "name",
         "transitionDuration": 500,
-        "transitionEdgeSmoothness": 0.05,
+        "transitionEdgeSmoothness": 0,
         "transitionType": [
             "stripes"
         ],
