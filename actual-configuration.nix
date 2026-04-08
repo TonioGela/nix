@@ -189,6 +189,8 @@ in
       zathura
       icdiff
       vesktop
+      dolphin-emu
+      mangohud
       (retroarch.withCores (
         cores: with cores; [
           mgba
@@ -209,6 +211,8 @@ in
   services.udev.packages = [ sources.pkgs.game-devices-udev-rules ];
   services.udev.extraRules = ''
     KERNEL=="event*", SUBSYSTEM=="input", MODE="0660", GROUP="input"
+    # Allow Dolphin emulator to access the Bluetooth adapter directly for Passthrough
+    ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="0a12", ATTRS{idProduct}=="0001", RUN+="/bin/sh -c 'echo $kernel > /sys/bus/usb/drivers/btusb/unbind'"
   '';
 
   services.fwupd.enable = true;

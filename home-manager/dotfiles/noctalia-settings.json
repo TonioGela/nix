@@ -8,7 +8,9 @@
         "customLaunchPrefixEnabled": false,
         "density": "compact",
         "enableClipPreview": true,
+        "enableClipboardChips": true,
         "enableClipboardHistory": true,
+        "enableClipboardSmartIcons": true,
         "enableSessionSearch": true,
         "enableSettingsSearch": false,
         "enableWindowsSearch": false,
@@ -23,14 +25,14 @@
         "showIconBackground": false,
         "sortByMostUsed": true,
         "terminalCommand": "",
-        "useApp2Unit": false,
         "viewMode": "list"
     },
     "audio": {
-        "cavaFrameRate": 30,
         "mprisBlacklist": [
         ],
         "preferredPlayer": "mpv",
+        "spectrumFrameRate": 30,
+        "spectrumMirrored": true,
         "visualizerType": "linear",
         "volumeFeedback": false,
         "volumeFeedbackSoundFile": "",
@@ -47,7 +49,7 @@
         "contentPadding": 2,
         "density": "default",
         "displayMode": "auto_hide",
-        "floating": true,
+        "enableExclusionZoneInset": true,
         "fontScale": 1,
         "frameRadius": 12,
         "frameThickness": 8,
@@ -249,6 +251,7 @@
     "desktopWidgets": {
         "enabled": false,
         "gridSnap": false,
+        "gridSnapScale": false,
         "monitorWidgets": [
             {
                 "name": "eDP-1",
@@ -275,8 +278,10 @@
         "indicatorColor": "primary",
         "indicatorOpacity": 0.6,
         "indicatorThickness": 3,
+        "launcherIcon": "",
         "launcherIconColor": "none",
         "launcherPosition": "end",
+        "launcherUseDistroLogo": false,
         "monitors": [
         ],
         "onlySameOutput": true,
@@ -334,15 +339,15 @@
         "language": "",
         "lockOnSuspend": true,
         "lockScreenAnimations": false,
-        "lockScreenBlur": 0,
+        "lockScreenBlur": 0.5,
         "lockScreenCountdownDuration": 10000,
         "lockScreenMonitors": [
         ],
-        "lockScreenTint": 0,
-        "passwordChars": false,
+        "lockScreenTint": 0.5,
+        "passwordChars": true,
         "radiusRatio": 1,
         "reverseScroll": false,
-        "scaleRatio": 0.8,
+        "scaleRatio": 0.9,
         "screenRadiusRatio": 1,
         "shadowDirection": "bottom_right",
         "shadowOffsetX": 2,
@@ -354,6 +359,7 @@
         "telemetryEnabled": false
     },
     "hooks": {
+        "colorGeneration": "",
         "darkModeChange": "",
         "enabled": false,
         "performanceModeDisabled": "",
@@ -401,8 +407,7 @@
         "bluetoothRssiPollingEnabled": true,
         "disableDiscoverability": false,
         "networkPanelView": "wifi",
-        "wifiDetailsViewMode": "list",
-        "wifiEnabled": true
+        "wifiDetailsViewMode": "list"
     },
     "nightLight": {
         "autoSchedule": true,
@@ -412,6 +417,10 @@
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
         "nightTemp": "4000"
+    },
+    "noctaliaPerformance": {
+        "disableDesktopWidgets": true,
+        "disableWallpaper": true
     },
     "notifications": {
         "backgroundOpacity": 0.9,
@@ -460,7 +469,8 @@
         "overlayLayer": true
     },
     "plugins": {
-        "autoUpdate": false
+        "autoUpdate": false,
+        "notifyUpdates": true
     },
     "sessionMenu": {
         "countdownDuration": 10000,
@@ -515,7 +525,7 @@
         "showHeader": false,
         "showKeybinds": true
     },
-    "settingsVersion": 56,
+    "settingsVersion": 59,
     "systemMonitor": {
         "batteryCriticalThreshold": 5,
         "batteryWarningThreshold": 20,
@@ -572,9 +582,11 @@
         "fontFixedScale": 1,
         "panelBackgroundOpacity": 0.9,
         "panelsAttachedToBar": false,
+        "scrollbarAlwaysVisible": true,
         "settingsPanelMode": "centered",
         "settingsPanelSideBarCardStyle": false,
-        "tooltipsEnabled": false
+        "tooltipsEnabled": false,
+        "translucentWidgets": false
     },
     "wallpaper": {
         "automationEnabled": false,
@@ -613,7 +625,10 @@
         "sortOrder": "name",
         "transitionDuration": 500,
         "transitionEdgeSmoothness": 0.05,
-        "transitionType": "stripes",
+        "transitionType": [
+            "stripes"
+        ],
+        "useOriginalImages": false,
         "useSolidColor": false,
         "useWallhaven": false,
         "viewMode": "browse",

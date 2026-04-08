@@ -1,4 +1,4 @@
-gamescope -w 1440 -h 960 -W 2880 -H 1920 -F nis -- %command%
+gamemoderun gamescope -w 1440 -h 960 -W 2880 -H 1920 -F nis --adaptive-sync -f --mangoapp --force-grab-cursor -- %command
 
 Refactor the config
 Import git config from HM
@@ -22,6 +22,10 @@ Set dark mode in system to tell apps to be dark in dconf
 Remote builder
 Document a bit all the TUIs to change settings
 WayDroid per NOWTV
+
+Champ Team 1: 61 Jolteon, 62 Alakazam, 61 Pidgeot, 61 Aracanine, 61 Gyarados, 60 Venasuar (Starter)
+
+Final Champ Team: 100 Zapdos, 100 Mew, 100 Mewtwo, 100 Victreebel, 100 Arcanine, 100 Blastoise
 
 # 5 WALKING HACKS
 

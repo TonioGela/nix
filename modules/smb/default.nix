@@ -1,7 +1,7 @@
 { ... }:
 {
-  fileSystems."/media/knulli" = {
-    device = "//knulli.local/share";
+  fileSystems."/media/trimui" = {
+    device = "//trimui.local/share";
     fsType = "cifs";
     options = [
       "x-systemd.automount"
