@@ -170,6 +170,6 @@
     "rust-analyzer.completion.fullFunctionSignatures.enable": true,
     "editor.inlayHints.enabled": "offUnlessPressed",
     "window.menuBarVisibility": "toggle",
-    "workbench.activityBar.location": "hidden",
-    "workbench.statusBar.visible": false
+    "workbench.statusBar.visible": false,
+    "workbench.activityBar.location": "hidden"
 }

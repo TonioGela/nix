@@ -1,4 +1,6 @@
-gamemoderun gamescope -w 1440 -h 960 -W 2880 -H 1920 -F nis --adaptive-sync -f --mangoapp --force-grab-cursor -- %command
+gamemoderun gamescope -w 1440 -h 960 -W 2880 -H 1920 -F nis --adaptive-sync -f --mangoapp --force-grab-cursor -- %command%
+
+SDL_VIDEODRIVER=wayland qemu-system-x86_64 -enable-kvm -m 4G -smp 4 -drive file=nixos.img,format=qcow2 -device virtio-vga-gl -display sdl,gl=on
 
 Refactor the config
 Import git config from HM
