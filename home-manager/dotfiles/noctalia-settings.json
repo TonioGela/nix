@@ -374,17 +374,17 @@
     },
     "idle": {
         "customCommands": "[]",
-        "enabled": false,
+        "enabled": true,
         "fadeDuration": 5,
         "lockCommand": "",
-        "lockTimeout": 660,
+        "lockTimeout": 120,
         "resumeLockCommand": "",
         "resumeScreenOffCommand": "",
         "resumeSuspendCommand": "",
         "screenOffCommand": "",
-        "screenOffTimeout": 600,
-        "suspendCommand": "",
-        "suspendTimeout": 1800
+        "screenOffTimeout": 180,
+        "suspendCommand": "systemctl suspend-then-hibernate",
+        "suspendTimeout": 300
     },
     "location": {
         "analogClockInCalendar": false,
@@ -522,6 +522,20 @@
                 "command": "",
                 "countdownEnabled": true,
                 "enabled": false,
+                "keybind": ""
+            },
+            {
+                "action": "userspaceReboot",
+                "command": "",
+                "countdownEnabled": true,
+                "enabled": false,
+                "keybind": ""
+            },
+            {
+                "action": "rebootToUefi",
+                "command": "",
+                "countdownEnabled": true,
+                "enabled": true,
                 "keybind": "6"
             }
         ],

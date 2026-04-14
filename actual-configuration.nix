@@ -124,6 +124,7 @@ in
   };
 
   security.rtkit.enable = true;
+  security.polkit.enable = true;
 
   time.timeZone = "Europe/Rome";
 
@@ -159,26 +160,6 @@ in
     { ... }:
     {
       home.enableNixpkgsReleaseCheck = true;
-      services.swayidle = {
-        enable = true;
-        timeouts = [
-          {
-            timeout = 120;
-            command = "${sources.pkgs.lib.getExe noctalia-shell.outputs.packages.x86_64-linux.default} ipc call lockScreen lock";
-          }
-          {
-            timeout = 300;
-            command = "${sources.pkgs.lib.getExe noctalia-shell.outputs.packages.x86_64-linux.default} ipc call sessionMenu lockAndSuspend";
-          }
-        ];
-        events = [
-          {
-            event = "before-sleep";
-            command = "${sources.pkgs.lib.getExe noctalia-shell.outputs.packages.x86_64-linux.default} ipc call lockScreen lock";
-          }
-        ];
-      };
-
       programs.home-manager.enable = true;
       home.stateVersion = "25.11";
     };
@@ -213,6 +194,7 @@ in
       mangohud
       qemu_full
       wl-clipboard-rs
+      libnotify
       (retroarch.withCores (
         cores: with cores; [
           mgba
@@ -246,6 +228,36 @@ in
     HandleLidSwitchExternalPower = "suspend-then-hibernate";
     HandleLidSwitchDocked = "suspend-then-hibernate";
     HoldoffTimeoutSec = 10;
+  };
+
+  systemd.sleep.extraConfig = "HibernateDelaySec=5m";
+
+  systemd.user.services.lock-before-sleep = {
+    description = "Lock Wayland session before sleep or hibernation";
+
+    # The NixOS equivalent of the [Unit] Before= block
+    before = [
+      "sleep.target"
+      "suspend.target"
+      "hibernate.target"
+      "suspend-then-hibernate.target"
+      "hybrid-sleep.target"
+    ];
+
+    # The NixOS equivalent of the [Install] WantedBy= block
+    wantedBy = [
+      "sleep.target"
+      "suspend.target"
+      "hibernate.target"
+      "suspend-then-hibernate.target"
+      "hybrid-sleep.target"
+    ];
+
+    # The NixOS equivalent of the [Service] block
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "noctalia ipc call lockScreen lock";
+    };
   };
 
   services.power-profiles-daemon.enable = true;

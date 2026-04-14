@@ -1,12 +1,4 @@
 { pkgs, ... }:
-let
-  what-size-plugin = pkgs.fetchFromGitHub {
-    owner = "pirafrank";
-    repo = "what-size.yazi";
-    rev = "main";
-    hash = "sha256-7q/45TopqbojNRvYDmP9+hgSGPmiyLHBcV051qpOB2Y=";
-  };
-in
 {
   programs.yazi = {
     enable = true;
@@ -17,7 +9,6 @@ in
       full-border = pkgs.yaziPlugins.full-border;
       smart-enter = pkgs.yaziPlugins.smart-enter;
       chmod = pkgs.yaziPlugins.chmod;
-      what-size = what-size-plugin;
     };
     initLua = ''
       -- Available values: ui.Border.PLAIN, ui.Border.ROUNDED
@@ -33,16 +24,6 @@ in
     '';
     settings = {
       mgr.linemode = "size";
-
-      # opener.image = [
-      #   {
-      #     run = "loupe \"$@\"";
-      #     desc = "Loupe image viewer";
-      #     orphan = true;
-      #     for = "unix";
-      #   }
-      # ];
-
     };
     keymap = {
       mgr.prepend_keymap = [
@@ -81,14 +62,6 @@ in
         {
           run = "plugin mount";
           on = [ "M" ];
-        }
-        {
-          run = "plugin what-size";
-          on = [
-            "."
-            "s"
-          ];
-          desc = "Calc size of selection or cwd";
         }
       ];
     };
