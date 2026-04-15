@@ -231,32 +231,6 @@ in
 
   systemd.sleep.extraConfig = "HibernateDelaySec=5m";
 
-  systemd.services.lock-before-sleep = {
-    description = "Lock Wayland session before sleep or hibernation";
-
-    before = [
-      "sleep.target"
-      "suspend.target"
-      "hibernate.target"
-      "suspend-then-hibernate.target"
-      "hybrid-sleep.target"
-    ];
-
-    wantedBy = [
-      "sleep.target"
-      "suspend.target"
-      "hibernate.target"
-      "suspend-then-hibernate.target"
-      "hybrid-sleep.target"
-    ];
-
-    serviceConfig = {
-      Type = "oneshot";
-      User = "toniogela";
-      ExecStart = "noctalia ipc call lockScreen lock";
-    };
-  };
-
   services.power-profiles-daemon.enable = true;
 
   services.greetd = {

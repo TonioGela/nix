@@ -480,7 +480,7 @@
         "enableCountdown": false,
         "largeButtonsLayout": "single-row",
         "largeButtonsStyle": false,
-        "position": "top_center",
+        "position": "center",
         "powerOptions": [
             {
                 "action": "lock",
@@ -498,7 +498,7 @@
             },
             {
                 "action": "hibernate",
-                "command": "",
+                "command": "noctalia-shell ipc call lockScreen lock && systemctl hibernate",
                 "countdownEnabled": true,
                 "enabled": true,
                 "keybind": "3"
@@ -535,8 +535,8 @@
                 "action": "rebootToUefi",
                 "command": "",
                 "countdownEnabled": true,
-                "enabled": true,
-                "keybind": "6"
+                "enabled": false,
+                "keybind": ""
             }
         ],
         "showHeader": false,
