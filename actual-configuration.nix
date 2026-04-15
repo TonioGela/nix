@@ -194,7 +194,6 @@ in
       mangohud
       qemu_full
       wl-clipboard-rs
-      libnotify
       (retroarch.withCores (
         cores: with cores; [
           mgba
@@ -232,10 +231,9 @@ in
 
   systemd.sleep.extraConfig = "HibernateDelaySec=5m";
 
-  systemd.user.services.lock-before-sleep = {
+  systemd.services.lock-before-sleep = {
     description = "Lock Wayland session before sleep or hibernation";
 
-    # The NixOS equivalent of the [Unit] Before= block
     before = [
       "sleep.target"
       "suspend.target"
@@ -244,7 +242,6 @@ in
       "hybrid-sleep.target"
     ];
 
-    # The NixOS equivalent of the [Install] WantedBy= block
     wantedBy = [
       "sleep.target"
       "suspend.target"
@@ -253,9 +250,9 @@ in
       "hybrid-sleep.target"
     ];
 
-    # The NixOS equivalent of the [Service] block
     serviceConfig = {
       Type = "oneshot";
+      User = "toniogela";
       ExecStart = "noctalia ipc call lockScreen lock";
     };
   };
