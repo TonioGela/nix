@@ -24,7 +24,47 @@
     '';
     settings = {
       mgr.linemode = "size";
+      open.prepend_rules = [
+        {
+          mime = "image/*";
+          use = "image";
+        }
+        {
+          mime = "application/pdf";
+          use = "pdf";
+        }
+        {
+          mime = "video/*";
+          use = "play";
+        }
+      ];
+
+      # opener.image = [
+      #   {
+      #     run = "loupe \"$@\"";
+      #     desc = "Loupe image viewer";
+      #     orphan = true;
+      #     for = "unix";
+      #   }
+      # ];
+
+      opener.play = [
+        {
+          run = "mpv \"$@\"";
+          desc = "mpv player";
+          orphan = true;
+        }
+      ];
+
+      opener.pdf = [
+        {
+          run = "zathura \"$@\"";
+          desc = "Zathura PDF viewer";
+          orphan = true;
+        }
+      ];
     };
+
     keymap = {
       mgr.prepend_keymap = [
         {

@@ -17,8 +17,7 @@
         "iconMode": "native",
         "ignoreMouseInput": true,
         "overviewLayer": false,
-        "pinnedApps": [
-        ],
+        "pinnedApps": [],
         "position": "center",
         "screenshotAnnotationTool": "",
         "showCategories": false,
@@ -28,8 +27,7 @@
         "viewMode": "list"
     },
     "audio": {
-        "mprisBlacklist": [
-        ],
+        "mprisBlacklist": [],
         "preferredPlayer": "mpv",
         "spectrumFrameRate": 30,
         "spectrumMirrored": true,
@@ -59,8 +57,7 @@
         "middleClickAction": "none",
         "middleClickCommand": "",
         "middleClickFollowMouse": false,
-        "monitors": [
-        ],
+        "monitors": [],
         "mouseWheelAction": "none",
         "mouseWheelWrap": true,
         "outerCorners": true,
@@ -143,27 +140,22 @@
                     "useDistroLogo": true
                 }
             ],
-            "left": [
-            ],
+            "left": [],
             "right": [
                 {
-                    "blacklist": [
-                        "*disk*"
-                    ],
+                    "blacklist": [],
                     "chevronColor": "primary",
                     "colorizeIcons": true,
-                    "drawerEnabled": true,
-                    "hidePassive": false,
+                    "drawerEnabled": false,
+                    "hidePassive": true,
                     "id": "Tray",
-                    "pinned": [
-                    ]
+                    "pinned": []
                 }
             ]
         }
     },
     "brightness": {
-        "backlightDeviceMappings": [
-        ],
+        "backlightDeviceMappings": [],
         "brightnessStep": 10,
         "enableDdcSupport": false,
         "enforceMinimum": true
@@ -256,8 +248,7 @@
         "monitorWidgets": [
             {
                 "name": "eDP-1",
-                "widgets": [
-                ]
+                "widgets": []
             }
         ],
         "overviewEnabled": true
@@ -283,11 +274,9 @@
         "launcherIconColor": "none",
         "launcherPosition": "end",
         "launcherUseDistroLogo": false,
-        "monitors": [
-        ],
+        "monitors": [],
         "onlySameOutput": true,
-        "pinnedApps": [
-        ],
+        "pinnedApps": [],
         "pinnedStatic": false,
         "position": "bottom",
         "showDockIndicator": false,
@@ -298,7 +287,7 @@
     "general": {
         "allowPanelsOnScreenWithoutBar": true,
         "allowPasswordWithFprintd": true,
-        "animationDisabled": false,
+        "animationDisabled": true,
         "animationSpeed": 1,
         "autoStartAuth": true,
         "avatarImage": "/home/toniogela/.face",
@@ -307,7 +296,7 @@
         "clockStyle": "custom",
         "compactLockScreen": true,
         "dimmerOpacity": 0.1,
-        "enableBlurBehind": true,
+        "enableBlurBehind": false,
         "enableLockScreenCountdown": false,
         "enableLockScreenMediaControls": false,
         "enableShadows": false,
@@ -342,8 +331,7 @@
         "lockScreenAnimations": false,
         "lockScreenBlur": 0.5,
         "lockScreenCountdownDuration": 10000,
-        "lockScreenMonitors": [
-        ],
+        "lockScreenMonitors": [],
         "lockScreenTint": 0.5,
         "passwordChars": true,
         "radiusRatio": 1,
@@ -404,7 +392,7 @@
     },
     "network": {
         "bluetoothAutoConnect": true,
-        "bluetoothDetailsViewMode": "grid",
+        "bluetoothDetailsViewMode": "list",
         "bluetoothHideUnnamedDevices": false,
         "bluetoothRssiPollIntervalMs": 10000,
         "bluetoothRssiPollingEnabled": true,
@@ -437,8 +425,7 @@
         "enabled": true,
         "location": "top_right",
         "lowUrgencyDuration": 3,
-        "monitors": [
-        ],
+        "monitors": [],
         "normalUrgencyDuration": 8,
         "overlayLayer": true,
         "respectExpireTimeout": false,
@@ -467,8 +454,7 @@
             2
         ],
         "location": "top",
-        "monitors": [
-        ],
+        "monitors": [],
         "overlayLayer": true
     },
     "plugins": {
@@ -592,14 +578,14 @@
         "enableUserTheming": false
     },
     "ui": {
-        "boxBorderEnabled": false,
+        "boxBorderEnabled": true,
         "fontDefault": "SauceCodePro Nerd Font",
         "fontDefaultScale": 1,
         "fontFixed": "SauceCodePro Nerd Font",
         "fontFixedScale": 1,
         "panelBackgroundOpacity": 0.9,
         "panelsAttachedToBar": false,
-        "scrollbarAlwaysVisible": true,
+        "scrollbarAlwaysVisible": false,
         "settingsPanelMode": "centered",
         "settingsPanelSideBarCardStyle": false,
         "tooltipsEnabled": false,
@@ -609,7 +595,7 @@
         "automationEnabled": false,
         "directory": "/home/toniogela/.config/.wallpapers/",
         "enableMultiMonitorDirectories": false,
-        "enabled": true,
+        "enabled": false,
         "favorites": [
             {
                 "colorScheme": "Nord",
@@ -629,8 +615,7 @@
         "fillMode": "crop",
         "hideWallpaperFilenames": true,
         "linkLightAndDarkWallpapers": true,
-        "monitorDirectories": [
-        ],
+        "monitorDirectories": [],
         "overviewBlur": 0.4,
         "overviewEnabled": false,
         "overviewTint": 0.6,

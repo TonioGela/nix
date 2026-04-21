@@ -8,5 +8,6 @@
     "notes.md".source = config.lib.file.mkOutOfStoreSymlink ./notes.md;
     ".config/noctalia/settings.json".source =
       config.lib.file.mkOutOfStoreSymlink ./noctalia-settings.json;
+    ".config/zathura/zathurarc".source = ./zathurarc;
   };
 }

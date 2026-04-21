@@ -190,10 +190,13 @@ in
       zathura
       icdiff
       vesktop
-      dolphin-emu
+      swaybg
       mangohud
       qemu_full
+      lutris
+      pgcli
       wl-clipboard-rs
+      scanmem
       (retroarch.withCores (
         cores: with cores; [
           mgba

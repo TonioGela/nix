@@ -1,3 +1,5 @@
+spawn-sh-at-startup "swaybg -i .config/.wallpapers/wallpaper.svg -m fill"
+
 input {
     keyboard {
         xkb {
