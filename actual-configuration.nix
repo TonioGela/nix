@@ -43,6 +43,8 @@ in
     };
   };
 
+  systemd.services.systemd-resolved.enable = true;
+
   virtualisation.vmVariant = {
     environment.variables.SDL_VIDEODRIVER = "wayland";
     boot.kernelParams = [ "video=1920x1080" ];
