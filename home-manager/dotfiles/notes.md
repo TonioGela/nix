@@ -1,5 +1,7 @@
 Refactor the config
-install polkit agent and a secret service agent
+install polkit agent and a secret service agent?
+Learn how to manage gpg keys and then consider using pass
+firefox vim extension?
 Import git config from HM
 disko: partition order and names in content
 VSCode UI state in hm

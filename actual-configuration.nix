@@ -28,6 +28,21 @@ in
     noctalia-shell.outputs.nixosModules.default
   ];
 
+  services.gnome.gnome-keyring.enable = true;
+  systemd.user.services.polkit-gnome-authentication-agent-1 = {
+    description = "polkit-gnome-authentication-agent-1";
+    wantedBy = [ "graphical-session.target" ];
+    wants = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${sources.pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+      Restart = "on-failure";
+      RestartSec = 1;
+      TimeoutStopSec = 10;
+    };
+  };
+
   virtualisation.vmVariant = {
     environment.variables.SDL_VIDEODRIVER = "wayland";
     boot.kernelParams = [ "video=1920x1080" ];
@@ -198,6 +213,7 @@ in
       wl-clipboard-rs
       scanmem
       scala-cli
+      bitwarden-desktop
       (retroarch.withCores (
         cores: with cores; [
           mgba
