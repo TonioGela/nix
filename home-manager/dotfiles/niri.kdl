@@ -1,5 +1,9 @@
 spawn-sh-at-startup "swaybg -i .config/.wallpapers/wallpaper.svg -m fill"
 
+switch-events {
+    lid-close { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+}
+
 input {
     keyboard {
         xkb {
@@ -69,7 +73,6 @@ output "eDP-1" {
 }
 
 layer-rule {
-  match namespace="^noctalia-wallpaper*"
   place-within-backdrop true
 }
 

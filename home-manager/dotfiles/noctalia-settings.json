@@ -17,7 +17,8 @@
         "iconMode": "native",
         "ignoreMouseInput": true,
         "overviewLayer": false,
-        "pinnedApps": [],
+        "pinnedApps": [
+        ],
         "position": "center",
         "screenshotAnnotationTool": "",
         "showCategories": false,
@@ -27,7 +28,8 @@
         "viewMode": "list"
     },
     "audio": {
-        "mprisBlacklist": [],
+        "mprisBlacklist": [
+        ],
         "preferredPlayer": "mpv",
         "spectrumFrameRate": 30,
         "spectrumMirrored": true,
@@ -57,7 +59,8 @@
         "middleClickAction": "none",
         "middleClickCommand": "",
         "middleClickFollowMouse": false,
-        "monitors": [],
+        "monitors": [
+        ],
         "mouseWheelAction": "none",
         "mouseWheelWrap": true,
         "outerCorners": true,
@@ -140,22 +143,26 @@
                     "useDistroLogo": true
                 }
             ],
-            "left": [],
+            "left": [
+            ],
             "right": [
                 {
-                    "blacklist": [],
+                    "blacklist": [
+                    ],
                     "chevronColor": "primary",
                     "colorizeIcons": true,
                     "drawerEnabled": false,
                     "hidePassive": true,
                     "id": "Tray",
-                    "pinned": []
+                    "pinned": [
+                    ]
                 }
             ]
         }
     },
     "brightness": {
-        "backlightDeviceMappings": [],
+        "backlightDeviceMappings": [
+        ],
         "brightnessStep": 10,
         "enableDdcSupport": false,
         "enforceMinimum": true
@@ -248,7 +255,8 @@
         "monitorWidgets": [
             {
                 "name": "eDP-1",
-                "widgets": []
+                "widgets": [
+                ]
             }
         ],
         "overviewEnabled": true
@@ -274,9 +282,11 @@
         "launcherIconColor": "none",
         "launcherPosition": "end",
         "launcherUseDistroLogo": false,
-        "monitors": [],
+        "monitors": [
+        ],
         "onlySameOutput": true,
-        "pinnedApps": [],
+        "pinnedApps": [
+        ],
         "pinnedStatic": false,
         "position": "bottom",
         "showDockIndicator": false,
@@ -329,10 +339,11 @@
         "language": "",
         "lockOnSuspend": true,
         "lockScreenAnimations": false,
-        "lockScreenBlur": 0.5,
+        "lockScreenBlur": 0,
         "lockScreenCountdownDuration": 10000,
-        "lockScreenMonitors": [],
-        "lockScreenTint": 0.5,
+        "lockScreenMonitors": [
+        ],
+        "lockScreenTint": 0,
         "passwordChars": true,
         "radiusRatio": 1,
         "reverseScroll": false,
@@ -425,7 +436,8 @@
         "enabled": true,
         "location": "top_right",
         "lowUrgencyDuration": 3,
-        "monitors": [],
+        "monitors": [
+        ],
         "normalUrgencyDuration": 8,
         "overlayLayer": true,
         "respectExpireTimeout": false,
@@ -454,7 +466,8 @@
             2
         ],
         "location": "top",
-        "monitors": [],
+        "monitors": [
+        ],
         "overlayLayer": true
     },
     "plugins": {
@@ -573,12 +586,16 @@
             {
                 "enabled": true,
                 "id": "discord"
+            },
+            {
+                "enabled": true,
+                "id": "qt"
             }
         ],
         "enableUserTheming": false
     },
     "ui": {
-        "boxBorderEnabled": true,
+        "boxBorderEnabled": false,
         "fontDefault": "SauceCodePro Nerd Font",
         "fontDefaultScale": 1,
         "fontFixed": "SauceCodePro Nerd Font",
@@ -611,14 +628,15 @@
                 "useWallpaperColors": false
             }
         ],
-        "fillColor": "#000000",
+        "fillColor": "#3b4252",
         "fillMode": "crop",
         "hideWallpaperFilenames": true,
         "linkLightAndDarkWallpapers": true,
-        "monitorDirectories": [],
-        "overviewBlur": 0.4,
-        "overviewEnabled": false,
-        "overviewTint": 0.6,
+        "monitorDirectories": [
+        ],
+        "overviewBlur": 0,
+        "overviewEnabled": true,
+        "overviewTint": 0,
         "panelPosition": "follow_bar",
         "randomIntervalSec": 300,
         "setWallpaperOnAllMonitors": true,
@@ -629,7 +647,6 @@
         "transitionDuration": 500,
         "transitionEdgeSmoothness": 0,
         "transitionType": [
-            "stripes"
         ],
         "useOriginalImages": false,
         "useSolidColor": false,

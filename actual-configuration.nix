@@ -197,6 +197,7 @@ in
       pgcli
       wl-clipboard-rs
       scanmem
+      scala-cli
       (retroarch.withCores (
         cores: with cores; [
           mgba
@@ -205,6 +206,11 @@ in
       ))
     ]
     ++ [ sources.pkgsUnstable.calibre ];
+
+  programs.nix-ld = {
+    enable = true;
+    libraries = with sources.pkgs; [ zlib ];
+  };
 
   services.udisks2 = {
     enable = true;
@@ -287,8 +293,6 @@ in
   programs.zoxide.enable = true;
 
   programs.niri.enable = true;
-  programs.waybar.enable = false;
-  programs.firefox.enable = false;
 
   programs.steam.enable = true;
   programs.gamescope.enable = true;

@@ -1,6 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, pkgsUnstable, ... }:
 {
   programs.yazi = {
+    package = pkgsUnstable.yazi;
     enable = true;
     enableZshIntegration = true;
     shellWrapperName = "y";
