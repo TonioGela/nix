@@ -122,8 +122,11 @@
                     "textColor": "none"
                 },
                 {
+                    "displayMode": "onhover",
                     "iconColor": "none",
-                    "id": "NightLight"
+                    "id": "Microphone",
+                    "middleClickCommand": "pwvucontrol || pavucontrol",
+                    "textColor": "none"
                 },
                 {
                     "hideWhenZero": false,

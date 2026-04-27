@@ -1,4 +1,3 @@
-# This is nixos-rebuild switch compatible file
 let
   pins = import ./npins;
   sources = {
@@ -43,7 +42,7 @@ in
     };
   };
 
-  systemd.services.systemd-resolved.enable = true;
+  services.resolved.enable = true;
 
   virtualisation.vmVariant = {
     environment.variables.SDL_VIDEODRIVER = "wayland";
@@ -86,9 +85,8 @@ in
   systemd.services.NetworkManager-wait-online.enable = false;
 
   boot = {
-    loader.timeout = 0;
     consoleLogLevel = 0;
-    kernelPackages = sources.pkgs.linuxPackages;
+    kernelPackages = sources.pkgsUnstable.linuxPackages;
     kernelParams = [
       "quiet"
       "loglevel=0"
@@ -98,19 +96,13 @@ in
       "rd.udev.log_level=0"
       "udev.log_priority=0"
       "vt.global_cursor_default=0"
-      "amdgpu.dcdebugmask=0x10"
       "nowatchdog"
       "i8042.nopnp"
       "pcie_aspm=off"
       "8250.nr_uarts=0"
-      "plymouth.use-simpledrm"
     ];
-    initrd = {
-      verbose = false;
-      systemd.enable = true;
-      kernelModules = [ "amdgpu" ];
-    };
     loader = {
+      timeout = 0;
       efi.canTouchEfiVariables = true;
       systemd-boot = {
         enable = true;
@@ -118,10 +110,6 @@ in
         consoleMode = "5";
         configurationLimit = 10;
       };
-    };
-    plymouth = {
-      enable = true;
-      theme = "breeze"; # "breeze" or bgrt
     };
   };
 
@@ -152,12 +140,6 @@ in
     extraLocales = [ "it_IT.UTF-8/UTF-8" ];
   };
 
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkb.options in tty.
-  # };
-
   users.defaultUserShell = sources.pkgs.zsh;
   users.users.toniogela = {
     isNormalUser = true;
@@ -173,13 +155,11 @@ in
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   # You should fix the modules to be as shallow as possible and to install packages in global packages (the reason some stuff is installed but not available is this one)
-  home-manager.users.toniogela =
-    { ... }:
-    {
-      home.enableNixpkgsReleaseCheck = true;
-      programs.home-manager.enable = true;
-      home.stateVersion = "25.11";
-    };
+  home-manager.users.toniogela = {
+    home.enableNixpkgsReleaseCheck = true;
+    programs.home-manager.enable = true;
+    home.stateVersion = "25.11";
+  };
 
   environment.systemPackages =
     with sources.pkgs;
