@@ -86,6 +86,7 @@ in
 
   boot = {
     consoleLogLevel = 0;
+    kernelModules = [ "uinput" ];
     kernelPackages = sources.pkgsUnstable.linuxPackages;
     kernelParams = [
       "quiet"
@@ -124,6 +125,7 @@ in
       enable = true;
       enable32Bit = true;
     };
+    steam-hardware.enable = true;
     enableAllFirmware = true;
     enableRedistributableFirmware = true;
   };
@@ -196,6 +198,7 @@ in
       scanmem
       scala-cli
       bitwarden-desktop
+      protonup-qt
       (retroarch.withCores (
         cores: with cores; [
           mgba
@@ -203,7 +206,9 @@ in
         ]
       ))
     ]
-    ++ [ sources.pkgsUnstable.calibre ];
+    ++ [
+      sources.pkgsUnstable.nix-fast-build
+    ];
 
   programs.nix-ld = {
     enable = true;
@@ -291,6 +296,8 @@ in
   programs.zoxide.enable = true;
 
   programs.niri.enable = true;
+
+  hardware.xpadneo.enable = true;
 
   programs.steam.enable = true;
   programs.gamescope.enable = true;

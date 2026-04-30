@@ -1,4 +1,4 @@
-{ ... }:
+{ sources, ... }:
 {
   boot = {
     initrd = {
@@ -20,7 +20,11 @@
     };
     plymouth = {
       enable = true;
-      theme = "breeze";
+      theme = "nixos-bgrt-2";
+      themePackages = [
+        sources.pkgs.nixos-bgrt-plymouth
+        (import ../../derivations/plymouth-nixos-theme { inherit sources; })
+      ];
     };
   };
 }
