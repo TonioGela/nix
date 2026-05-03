@@ -28,17 +28,19 @@ in
   ];
 
   services.gnome.gnome-keyring.enable = true;
-  systemd.user.services.polkit-gnome-authentication-agent-1 = {
-    description = "polkit-gnome-authentication-agent-1";
+
+  security.pam.services = {
+    login.enableGnomeKeyring = true;
+    greetd.enableGnomeKeyring = true;
+  };
+
+  systemd.user.services.gnome-keyring = {
+    description = "GNOME Keyring daemon";
+    partOf = [ "graphical-session.target" ];
     wantedBy = [ "graphical-session.target" ];
-    wants = [ "graphical-session.target" ];
-    after = [ "graphical-session.target" ];
     serviceConfig = {
-      Type = "simple";
-      ExecStart = "${sources.pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+      ExecStart = "${sources.pkgs.gnome-keyring}/bin/gnome-keyring-daemon --start --foreground --components=pkcs11,secrets,ssh";
       Restart = "on-failure";
-      RestartSec = 1;
-      TimeoutStopSec = 10;
     };
   };
 
