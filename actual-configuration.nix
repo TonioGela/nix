@@ -27,9 +27,6 @@ in
     noctalia-shell.outputs.nixosModules.default
   ];
 
-  services.gnome.gnome-keyring.enable = true;
-  security.pam.services.greetd.enableGnomeKeyring = true;
-
   services.resolved.enable = true;
 
   virtualisation.vmVariant = {
