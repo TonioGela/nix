@@ -116,7 +116,6 @@ in
   };
 
   security.rtkit.enable = true;
-  security.polkit.enable = true;
 
   time.timeZone = "Europe/Rome";
 
@@ -184,6 +183,7 @@ in
       scala-cli
       bitwarden-desktop
       protonup-qt
+      claude-code
       (retroarch.withCores (
         cores: with cores; [
           mgba
