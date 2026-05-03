@@ -28,20 +28,9 @@ in
   ];
 
   services.gnome.gnome-keyring.enable = true;
-
   security.pam.services = {
-    login.enableGnomeKeyring = true;
     greetd.enableGnomeKeyring = true;
-  };
-
-  systemd.user.services.gnome-keyring = {
-    description = "GNOME Keyring daemon";
-    partOf = [ "graphical-session.target" ];
-    wantedBy = [ "graphical-session.target" ];
-    serviceConfig = {
-      ExecStart = "${sources.pkgs.gnome-keyring}/bin/gnome-keyring-daemon --start --foreground --components=pkcs11,secrets,ssh";
-      Restart = "on-failure";
-    };
+    login.enableGnomeKeyring = true;
   };
 
   services.resolved.enable = true;

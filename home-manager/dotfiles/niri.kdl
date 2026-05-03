@@ -1,4 +1,5 @@
 spawn-sh-at-startup "swaybg -i .config/.wallpapers/wallpaper.svg -m fill"
+spawn-at-startup "gnome-keyring-daemon" "--start" "--components=secrets,pkcs11,ssh"
 
 switch-events {
     lid-close { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
