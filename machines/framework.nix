@@ -82,15 +82,11 @@
   environment.systemPackages =
     with sources.pkgs;
     [
-      git
       bat
       eza
-      nh
       nixd
       nixfmt
       nixfmt-tree
-      npins
-      neovim
       mpv
       fd
       ripdrag

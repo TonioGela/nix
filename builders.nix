@@ -24,6 +24,12 @@
         system.copySystemConfiguration = true;
         system.stateVersion = "25.11";
 
+        environment.systemPackages = with sources.pkgs; [
+          git
+          nh
+          npins
+        ];
+
         time.timeZone = "Europe/Rome";
         fonts.packages = [ sources.pkgs.nerd-fonts.sauce-code-pro ];
         i18n = {
