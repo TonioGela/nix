@@ -1,15 +1,14 @@
-{ sources }:
+{
+  sources,
+  modules,
+  homeManagerModules,
+}:
 let
-  modules = import ../modules { inherit sources; };
-  homeManager = import ../home-manager {
-    username = "toniogela";
-    inherit sources;
-  };
   noctalia-shell = sources.compat { src = sources.noctalia; };
 in
 {
   imports = modules ++ [
-    homeManager
+    (homeManagerModules "toniogela")
     (import sources.nix-index-database)
     noctalia-shell.outputs.nixosModules.default
   ];

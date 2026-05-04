@@ -1,7 +1,6 @@
 { sources, ... }:
-
 sources.pkgs.stdenv.mkDerivation {
-  pname = "nixos-bgrt-2";
+  pname = "nixos-bgrt";
   version = "1.0.0";
 
   src = ./.;
@@ -12,9 +11,9 @@ sources.pkgs.stdenv.mkDerivation {
   installPhase = ''
     runHook preInstall
 
-    mkdir -p $out/share/plymouth/themes/nixos-bgrt-2
-    cp -r * $out/share/plymouth/themes/nixos-bgrt-2/
-    substituteInPlace $out/share/plymouth/themes/nixos-bgrt-2/*.plymouth --replace '@IMAGES@' "$out/share/plymouth/themes/nixos-bgrt-2/images"
+    mkdir -p $out/share/plymouth/themes/nixos-bgrt
+    cp -r * $out/share/plymouth/themes/nixos-bgrt/
+    substituteInPlace $out/share/plymouth/themes/nixos-bgrt/*.plymouth --replace '@IMAGES@' "$out/share/plymouth/themes/nixos-bgrt/images"
 
     runHook postInstall
   '';

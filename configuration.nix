@@ -11,11 +11,17 @@ let
     noctalia = pins.noctalia-shell;
     nix-index-database = pins.nix-index-database + "/nixos-module.nix";
   };
+  modules = import ./modules { inherit sources; };
+  homeManagerModules =
+    username:
+    import ./home-manager {
+      inherit username sources;
+    };
   builders = {
     nixos =
       system: config:
       import (pins.nixpkgs + "/nixos") {
-        configuration = import config { inherit sources; };
+        configuration = import config { inherit sources modules homeManagerModules; };
         inherit system;
       };
   };

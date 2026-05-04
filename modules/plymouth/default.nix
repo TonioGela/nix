@@ -20,10 +20,9 @@
     };
     plymouth = {
       enable = true;
-      theme = "nixos-bgrt-2";
+      theme = "nixos-bgrt";
       themePackages = [
-        sources.pkgs.nixos-bgrt-plymouth
-        (import ../../derivations/plymouth-nixos-theme { inherit sources; })
+        (import ./plymouth-nixos-theme { inherit sources; })
       ];
     };
   };
