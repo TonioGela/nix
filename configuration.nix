@@ -55,6 +55,7 @@ let
       };
   };
 in
+# TODO! You need to try to use the stuff in temp, that will make you name modules
 {
   framework = builders.nixos "x86_64-linux" ./machines/framework.nix;
   # work = builders.home-manager ./machines/work.nix;

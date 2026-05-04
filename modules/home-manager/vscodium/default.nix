@@ -27,12 +27,12 @@ let
     ++ newExtensions;
 
   marketPlaceExtensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-    {
-      name = "make-hidden";
-      publisher = "devine-davies";
-      version = "4.0.4";
-      sha256 = "sha256-wKeP8Ng2GLgcVZptFmvDAil51pQ3wtRHUNt2rd51vYA=";
-    }
+    # {
+    #   name = "make-hidden";
+    #   publisher = "devine-davies";
+    #   version = "4.0.4";
+    #   sha256 = "sha256-wKeP8Ng2GLgcVZptFmvDAil51pQ3wtRHUNt2rd51vYA=";
+    # }
   ];
 in
 {

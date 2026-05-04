@@ -3,12 +3,25 @@ let
   noctalia-shell = sources.compat { src = sources.noctalia; };
 in
 {
-  imports = modules.nixos ++ [
+  imports =  [
+    modules.nixos.hardware
+    modules.nixos.plymouth
+    modules.nixos.polkit
+    modules.nixos.smb
+    modules.nixos.virtualisation
     (import sources.nix-index-database)
     noctalia-shell.outputs.nixosModules.default
   ];
 
-  home-manager.users.toniogela.imports = modules.home-manager;
+  home-manager.users.toniogela.imports = with modules.home-manager; [
+    dotfiles
+    firefox
+    neovim
+    udiskie
+    vscodium
+    yazi
+    zsh
+  ];
 
   services.resolved.enable = true;
 
@@ -39,13 +52,12 @@ in
     channel.enable = false;
     settings.experimental-features = [ "nix-command" ];
     nixPath = [
-      "nixpkgs=/etc/nixos/nixpkgs"
+      "nixpkgs=${builtins.storePath sources.pkgs.path}"
       "nixos-config=/etc/nixos/configuration.nix"
     ];
   };
 
   environment = {
-    etc."nixos/nixpkgs".source = builtins.storePath sources.pkgs.path;
     variables."NH_FILE" = "/etc/nixos/configuration.nix";
     variables."NH_ATTRP" = "framework";
   };

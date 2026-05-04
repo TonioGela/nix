@@ -5,9 +5,8 @@
         "**/.hg": true,
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
-        "nixpkgs": true,
         "LICENSE": true,
-        ".gitignore": true,
+	"**/.gitignore" : true,
         ".vscode": true
     }
 }
