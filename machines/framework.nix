@@ -1,26 +1,35 @@
 { sources, modules }:
 {
-  imports = [
-    modules.nixos.hardware
-    modules.nixos.plymouth
-    modules.nixos.greetd
-    modules.nixos.network
-    modules.nixos.polkit
-    modules.nixos.postgres
-    modules.nixos.steam
-    modules.nixos.trimui
-    modules.nixos.virtualisation
-    sources.nix-index-database
-    sources.noctalia
-  ];
+  imports =
+    with modules.nixos;
+    [
+      hardware
+      plymouth
+      audio
+      greetd
+      network
+      postgres
+      power
+      printers
+      quiet-boot
+      security
+      steam
+      trimui
+      udisks
+      virtualisation
+      yazi
+      zsh
+    ]
+    ++ [
+      sources.nix-index-database
+      sources.noctalia
+    ];
 
   home-manager.users.toniogela.imports = with modules.home-manager; [
     dotfiles
     firefox
-    neovim
-    udiskie
     vscodium
-    yazi
+    neovim
     zsh
   ];
 
@@ -30,7 +39,7 @@
   };
 
   networking.hostName = "toniogela-nixos-fw13";
-  users.defaultUserShell = sources.pkgs.zsh;
+
   users.users.toniogela = {
     isNormalUser = true;
     extraGroups = [
@@ -42,130 +51,42 @@
     ];
   };
 
-  programs.nix-index-database.comma.enable = true;
-  programs.zsh.enable = true;
-  programs.zoxide.enable = true;
+  boot.kernelPackages = sources.pkgsUnstable.linuxPackages;
+
   programs.niri.enable = true;
-
-  boot = {
-    consoleLogLevel = 0;
-    kernelModules = [ "uinput" ];
-    kernelPackages = sources.pkgsUnstable.linuxPackages;
-    kernelParams = [
-      "quiet"
-      "loglevel=0"
-      "systemd.show_status=false"
-      "rd.systemd.show_status=false"
-      "udev.log_level=0"
-      "rd.udev.log_level=0"
-      "udev.log_priority=0"
-      "vt.global_cursor_default=0"
-      "nowatchdog"
-      "i8042.nopnp"
-      "pcie_aspm=off"
-      "8250.nr_uarts=0"
-    ];
-    loader = {
-      timeout = 0;
-      efi.canTouchEfiVariables = true;
-      systemd-boot = {
-        enable = true;
-        editor = false;
-        consoleMode = "5";
-        configurationLimit = 10;
-      };
-    };
-  };
-
-  security.rtkit.enable = true;
-
-  environment.systemPackages =
-    with sources.pkgs;
-    [
-      bat
-      eza
-      nixd
-      nixfmt
-      nixfmt-tree
-      mpv
-      fd
-      ripdrag
-      brightnessctl
-      playerctl
-      kitty
-      gh
-      ripgrep
-      qbittorrent
-      zathura
-      icdiff
-      vesktop
-      swaybg
-      qemu_full
-      pgcli
-      wl-clipboard-rs
-      scanmem
-      scala-cli
-      claude-code
-    ]
-    ++ [
-      sources.pkgsUnstable.bitwarden-desktop
-    ];
+  services.noctalia-shell.enable = true;
+  programs.nix-index-database.comma.enable = true;
 
   programs.nix-ld = {
     enable = true;
     libraries = with sources.pkgs; [ zlib ];
   };
 
-  services.udisks2 = {
-    enable = true;
-    mountOnMedia = true;
-  };
+  environment.systemPackages = with sources.pkgs; [
+    nixd
+    nixfmt
 
-  services.gvfs.enable = true;
+    # TODO Reference them in the niri config
+    brightnessctl
+    playerctl
+    swaybg
+    wl-clipboard-rs
 
-  services.noctalia-shell.enable = true;
+    # GUI programs
+    bitwarden-desktop
+    kitty
+    mpv
+    qbittorrent
+    vesktop
 
-  services.fprintd.enable = true;
-  services.upower.enable = true;
-
-  services.logind.settings.Login = {
-    HandleLidSwitch = "suspend-then-hibernate";
-    HandleLidSwitchExternalPower = "suspend-then-hibernate";
-    HandleLidSwitchDocked = "suspend-then-hibernate";
-    HoldoffTimeoutSec = 10;
-  };
-
-  systemd.sleep.extraConfig = "HibernateDelaySec=5m";
-
-  services.power-profiles-daemon.enable = true;
-
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-  };
-
-  services.printing = {
-    enable = true;
-    drivers = with sources.pkgs; [
-      cups-filters
-      cups-browsed
-      brlaser
-    ];
-  };
-
-  services.pulseaudio.enable = false;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  # https://github.com/NixOS/nixos-hardware/issues/1603
-  services.pipewire.wireplumber.extraConfig.no-ucm = {
-    "monitor.alsa.properties" = {
-      "alsa.use-ucm" = false;
-    };
-  };
+    # CLI Utilities
+    claude-code
+    fd
+    fzf
+    gh
+    icdiff
+    ripgrep
+    scala-cli
+  ];
 }
+# TODO merge it with the home-manager config in the other repo and move packages from systemPackages to home-manager packages

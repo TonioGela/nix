@@ -1,5 +1,7 @@
 { sources, ... }:
 {
+  environment.systemPackages = with sources.pkgs; [ qemu_full ];
+
   virtualisation.vmVariant = {
     environment.variables.SDL_VIDEODRIVER = "wayland";
     boot.kernelParams = [ "video=1920x1080" ];

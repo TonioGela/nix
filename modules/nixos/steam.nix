@@ -1,5 +1,7 @@
 { sources, ... }:
 {
+  # gamemoderun gamescope -w 1440 -h 960 -W 2880 -H 1920 -F fsr --adaptive-sync -f --mangoapp --force-grab-cursor -- %command%
+
   hardware.xpadneo.enable = true;
   hardware.steam-hardware.enable = true;
   programs.steam.enable = true;
@@ -17,6 +19,7 @@
   environment.systemPackages = with sources.pkgs; [
     xwayland-satellite
     mangohud
+    scanmem
   ];
 
   # TODO Test if these are still necessary

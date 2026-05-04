@@ -5,7 +5,6 @@
   ...
 }:
 let
-  zoxide = lib.getExe pkgs.zoxide;
   dotDir = ".config/zsh";
   absoluteDotDir = "${config.home.homeDirectory}/${dotDir}";
   opts = [
@@ -22,10 +21,16 @@ let
     "extended_glob"
   ];
 
+  zoxide = lib.getExe pkgs.zoxide;
+  git = lib.getExe pkgs.git;
+  eza = lib.getExe pkgs.eza;
+  bat = lib.getExe pkgs.bat;
+  zathura = lib.getExe pkgs.zathura;
+
   prompt_init = ''
     # Clone if necessary and source gitstatus
     if [[ ! -e ${absoluteDotDir}/gitstatus ]]; then
-      git clone --depth=1 https://github.com/romkatv/gitstatus.git ${absoluteDotDir}/gitstatus
+      ${git} clone --depth=1 https://github.com/romkatv/gitstatus.git ${absoluteDotDir}/gitstatus
     fi
 
     source ${absoluteDotDir}/gitstatus/gitstatus.plugin.zsh
@@ -47,15 +52,7 @@ let
 
   custom_functions = ''
     function zat() {
-      command zathura $@ &>/dev/null &|
-    }
-
-    function toChd() {
-      chdman createcd --input "$1" --output "''${1%.*}.chd"
-    }
-
-    function 7z() {
-       bsdtar --format 7zip -cf "''${1%.*}.7z" "$1"
+      command ${zathura} $@ &>/dev/null &|
     }
 
     function meteo() {
@@ -71,38 +68,27 @@ let
       curl "wttr.in/''${positional_arg:-Milan}?''$options"
     }
 
-    function repl() {
-      scala-cli repl --toolkit typelevel:default \
-       --repl-init-script \
-      "import cats.syntax.all.*, cats.*, cats.data.*, cats.effect.*, fs2.*, cats.effect.unsafe.implicits.global, scala.concurrent.duration.*"
-    }
-
     function cat() {
       for i in "$@"
       do
         if [[ -d "$i" ]] then
-          eza -l --group-directories-first -sname --git --icons "$i"
+          ${eza} -l --group-directories-first -sname --git --icons "$i"
         elif [[ -f "$i" ]] then
-          bat --plain "$i"
+          ${bat} --plain "$i"
         fi
       done
-    }
-
-    function toLong() {
-      printf '%d\n' "0x$1"
-    }
-
-    function toHex() {
-      echo "''${(l:16::0:)''$(printf '%x\n' $1)}"
-    }
-
-    function codium-patch() {
-      sudo chown -R $(whoami) ${pkgs.vscodium.outPath}
-      sudo chmod -R u+w ${pkgs.vscodium.outPath}
     }
   '';
 in
 {
+  home.packages = [
+    pkgs.zoxide
+    pkgs.git
+    pkgs.eza
+    pkgs.bat
+    pkgs.zathura
+  ];
+
   home.file."${dotDir}/create_prompt".text = ''
     create_prompt() {
       local GIT_STATUS
@@ -121,10 +107,6 @@ in
 
   home.activation.zoxide = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     ${zoxide} init zsh > ${absoluteDotDir}/zoxide_init
-  '';
-
-  home.activation.restish = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    ${lib.getExe pkgs.restish} completion zsh > ${absoluteDotDir}/_restish
   '';
 
   programs.direnv = {
@@ -153,14 +135,10 @@ in
     dotDir = absoluteDotDir;
 
     shellAliases = {
-      tf = "terraform";
-      hm = "codium ~/.config/home-manager";
-      ls = "eza -l --group-directories-first -sname --git --icons";
+      ls = "${eza} -l --group-directories-first -sname --git --icons";
       cp = "cp -i";
       mv = "mv -i";
       rm = "rm -i";
-      flushdns = "sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder";
-      off = "niri msg action quit && systemctl poweroff";
     };
 
     shellGlobalAliases = { };

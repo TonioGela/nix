@@ -11,9 +11,12 @@ let
     nixosBuilder = import (pins.nixpkgs + "/nixos");
     homeManagerBuilder = import (pins.home-manager + "/modules");
   };
-  modules = {
-    nixos = import ./modules/nixos { inherit sources; };
+  modules = rec {
     home-manager = import ./modules/home-manager;
+    nixos = import ./modules/nixos {
+      home-manager-modules = home-manager;
+      inherit sources;
+    };
   };
   builders = import ./builders.nix { inherit sources modules; };
 in

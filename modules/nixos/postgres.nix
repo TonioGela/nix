@@ -1,5 +1,9 @@
-{ ... }:
+{ sources, ... }:
 {
+  environment.systemPackages = [
+    sources.pkgs.pgcli
+  ];
+
   virtualisation.oci-containers.containers = {
     postgres = {
       image = "postgres:17.2";

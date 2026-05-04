@@ -7,6 +7,7 @@
     ./disko.nix
   ];
 
+  boot.loader.efi.canTouchEfiVariables = true;
   services.fwupd.enable = true;
   environment.systemPackages = [ sources.pkgs.framework-tool-tui ];
 
