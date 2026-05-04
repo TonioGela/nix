@@ -1,6 +1,5 @@
 { sources, username, ... }:
 let
-
   filterAttrs =
     pred: set:
     removeAttrs set (builtins.filter (name: !pred name set.${name}) (builtins.attrNames set));

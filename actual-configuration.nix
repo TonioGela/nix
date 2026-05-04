@@ -181,7 +181,6 @@ in
       wl-clipboard-rs
       scanmem
       scala-cli
-      bitwarden-desktop
       protonup-qt
       claude-code
       (retroarch.withCores (
@@ -193,6 +192,7 @@ in
     ]
     ++ [
       sources.pkgsUnstable.nix-fast-build
+      sources.pkgsUnstable.bitwarden-desktop
     ];
 
   programs.nix-ld = {
