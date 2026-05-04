@@ -1,4 +1,3 @@
-{ sources, username, ... }:
 let
   filterAttrs =
     pred: set:
@@ -6,15 +5,4 @@ let
   modules = filterAttrs (key: value: value == "directory") (builtins.readDir ./.);
   modulesImports = map (m: import ./${m}) (builtins.attrNames modules);
 in
-{
-  imports = [
-    sources.homeManager
-  ];
-
-  home-manager.users.${username} = {
-    imports = modulesImports;
-    _module.args = {
-      pkgsUnstable = sources.pkgsUnstable;
-    };
-  };
-}
+modulesImports

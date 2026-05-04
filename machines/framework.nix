@@ -1,17 +1,14 @@
-{
-  sources,
-  modules,
-  homeManagerModules,
-}:
+{ sources, modules }:
 let
   noctalia-shell = sources.compat { src = sources.noctalia; };
 in
 {
-  imports = modules ++ [
-    (homeManagerModules "toniogela")
+  imports = modules.nixos ++ [
     (import sources.nix-index-database)
     noctalia-shell.outputs.nixosModules.default
   ];
+
+  home-manager.users.toniogela.imports = modules.home-manager;
 
   services.resolved.enable = true;
 
@@ -122,15 +119,6 @@ in
       "input"
       "kvm"
     ];
-  };
-
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  # You should fix the modules to be as shallow as possible and to install packages in global packages (the reason some stuff is installed but not available is this one)
-  home-manager.users.toniogela = {
-    home.enableNixpkgsReleaseCheck = true;
-    programs.home-manager.enable = true;
-    home.stateVersion = "25.11";
   };
 
   environment.systemPackages =

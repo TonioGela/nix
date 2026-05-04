@@ -11,18 +11,36 @@ let
     noctalia = pins.noctalia-shell;
     nix-index-database = pins.nix-index-database + "/nixos-module.nix";
   };
-  modules = import ./modules { inherit sources; };
-  homeManagerModules =
-    username:
-    import ./home-manager {
-      inherit username sources;
-    };
+  modules = {
+    nixos = import ./modules/nixos { inherit sources; };
+    home-manager = import ./modules/home-manager;
+  };
   builders = {
     nixos =
       system: config:
       import (pins.nixpkgs + "/nixos") {
-        configuration = import config { inherit sources modules homeManagerModules; };
         inherit system;
+        configuration = {
+          imports = [
+            (import config { inherit sources modules; })
+            sources.homeManager
+          ];
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            sharedModules = [
+              {
+                _module.args = {
+                  pkgsUnstable = sources.pkgsUnstable;
+                };
+                home.enableNixpkgsReleaseCheck = true;
+                programs.home-manager.enable = true;
+                home.stateVersion = "25.11";
+              }
+            ];
+          };
+        };
+
       };
   };
 in
