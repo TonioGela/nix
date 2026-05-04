@@ -3,7 +3,20 @@
   imports = [
     sources.fw13-hardware
     ./hardware-configuration.nix
-    sources.diskoModule
+    sources.disko
     ./disko.nix
   ];
+
+  services.fwupd.enable = true;
+  environment.systemPackages = [ sources.pkgs.framework-tool-tui ];
+
+  hardware = {
+    bluetooth.enable = true;
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+    enableAllFirmware = true;
+    enableRedistributableFirmware = true;
+  };
 }
