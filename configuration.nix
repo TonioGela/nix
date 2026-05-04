@@ -3,7 +3,6 @@ let
   sources = {
     pkgs = import pins.nixpkgs { config.allowUnfree = true; };
     pkgsUnstable = import pins.nixpkgs-unstable { config.allowUnfree = true; };
-    nixos = import (pins.nixpkgs + "/nixos");
     homeManager = import (pins.home-manager + "/nixos");
     fw13-hardware = import (pins.nixos-hardware + "/framework/13-inch/amd-ai-300-series");
     diskoModule = pins.disko + "/module.nix";
@@ -26,8 +25,8 @@ let
             sources.homeManager
           ];
           home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
+            useGlobalPkgs = true; # use system's nixpkgs
+            useUserPackages = true; # installs user packages via users.users.<name>.packages
             sharedModules = [
               {
                 _module.args = {
@@ -39,11 +38,24 @@ let
               }
             ];
           };
+          system.copySystemConfiguration = true;
+          system.stateVersion = "25.11";
         };
-
+      };
+    home-manager =
+      config:
+      import (pins.home-manager + "/modules") {
+        pkgs = sources.pkgs;
+        configuration = {
+          imports = [ (import config { inherit sources modules; }) ];
+          config._module.args = {
+            pkgsUnstable = sources.pkgsUnstable;
+          };
+        };
       };
   };
 in
 {
   framework = builders.nixos "x86_64-linux" ./machines/framework.nix;
+  # work = builders.home-manager ./machines/work.nix;
 }
