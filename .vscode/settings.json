@@ -6,7 +6,7 @@
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
         "LICENSE": true,
-	"**/.gitignore" : true,
+        "**/.gitignore": true,
         ".vscode": true
     }
 }
