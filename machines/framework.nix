@@ -1,23 +1,10 @@
+{ sources }:
 let
-  pins = import ./npins;
-  sources = {
-    pkgs = import pins.nixpkgs { config.allowUnfree = true; };
-    pkgsUnstable = import pins.nixpkgs-unstable { config.allowUnfree = true; };
-    homeManager = import (pins.home-manager + "/nixos");
-    fw13-hardware = import (pins.nixos-hardware + "/framework/13-inch/amd-ai-300-series");
-    diskoModule = pins.disko + "/module.nix";
-    compat = import pins.flake-compat;
-    noctalia = pins.noctalia-shell;
-    nix-index-database = pins.nix-index-database + "/nixos-module.nix";
-  };
-
-  modules = import ./modules { inherit sources; };
-
-  homeManager = import ./home-manager {
+  modules = import ../modules { inherit sources; };
+  homeManager = import ../home-manager {
     username = "toniogela";
     inherit sources;
   };
-
   noctalia-shell = sources.compat { src = sources.noctalia; };
 in
 {
