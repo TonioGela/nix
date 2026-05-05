@@ -1,5 +1,5 @@
 let
-  sources = import ./npins;
+  sources = import ../npins;
   nixpkgs = sources.nixpkgs;
   pkgs = import nixpkgs { };
   nixos = import (nixpkgs + "/nixos");

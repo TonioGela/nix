@@ -15,7 +15,7 @@ let
     home-manager = import ./modules/home-manager;
     nixos = import ./modules/nixos;
   };
-  builders = import ./builders.nix { inherit sources modules; };
+  builders = import ./utils/builders.nix { inherit sources modules; };
 in
 {
   framework = builders.nixos "x86_64-linux" ./machines/framework;
