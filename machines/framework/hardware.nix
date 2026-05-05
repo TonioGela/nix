@@ -11,10 +11,10 @@ rec {
 
   nixpkgs.hostPlatform = sources.pkgs.lib.mkDefault "x86_64-linux";
   environment.systemPackages = [ sources.pkgs.framework-tool-tui ];
+  services.fwupd.enable = true;
 
   boot = {
     loader.efi.canTouchEfiVariables = true;
-    services.fwupd.enable = true;
     extraModulePackages = [ ];
     kernelModules = [ "kvm-amd" ];
     initrd = {

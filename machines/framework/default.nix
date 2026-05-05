@@ -20,7 +20,7 @@
       zsh
     ]
     ++ [
-      (import ./hardware.nix { inherit sources; })
+      ./hardware.nix
       sources.nix-index-database
       sources.noctalia
     ];

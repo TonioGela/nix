@@ -4,6 +4,10 @@
     system: config:
     sources.nixosBuilder {
       inherit system;
+      specialArgs = {
+        home-manager-modules = modules.home-manager;
+        inherit sources;
+      };
       configuration = {
         imports = [
           (import config { inherit sources modules; })

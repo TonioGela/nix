@@ -1,4 +1,3 @@
-{ sources, home-manager-modules, ... }:
 let
   # lib.filterAttrs
   filterAttrs =
@@ -21,7 +20,7 @@ let
   modules = filterAttrs (key: value: key != "default.nix") (builtins.readDir ./.);
   modulesList = map (m: {
     name = removeSuffix ".nix" m;
-    value = (import ./${m} { inherit sources home-manager-modules; });
+    value = (import ./${m});
   }) (builtins.attrNames modules);
 in
 builtins.listToAttrs modulesList
