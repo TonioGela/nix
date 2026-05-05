@@ -3,7 +3,6 @@
   imports =
     with modules.nixos;
     [
-      hardware
       plymouth
       audio
       greetd
@@ -21,6 +20,7 @@
       zsh
     ]
     ++ [
+      (import ./hardware.nix { inherit sources; })
       sources.nix-index-database
       sources.noctalia
     ];
@@ -30,7 +30,6 @@
     firefox
     vscodium
     neovim
-    zsh
   ];
 
   environment = {
@@ -90,3 +89,4 @@
   ];
 }
 # TODO merge it with the home-manager config in the other repo and move packages from systemPackages to home-manager packages
+# TODO Postgres is not running?
