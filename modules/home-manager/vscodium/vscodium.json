@@ -87,7 +87,7 @@
             },
             "options": {
                 "nixos": {
-                    "expr": "(import /home/toniogela/.config/nixos/configuration.nix).options"
+                    "expr": "(import /home/toniogela/.config/nixos/configuration.nix).${env:NH_ATTRP}.options"
                 }
             }
         }
@@ -170,7 +170,7 @@
     "editor.inlayHints.enabled": "offUnlessPressed",
     "window.menuBarVisibility": "toggle",
     "workbench.statusBar.visible": false,
-    "workbench.activityBar.location": "hidden",
     "explorer.excludeGitIgnore": true,
-    "explorer.confirmDragAndDrop": false
+    "explorer.confirmDragAndDrop": false,
+    "workbench.activityBar.location": "hidden"
 }
