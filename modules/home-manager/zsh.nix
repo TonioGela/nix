@@ -78,150 +78,187 @@ let
         fi
       done
     }
+
+    ${config.zsh.extraFunctions}
   '';
 in
 {
-  home.packages = [
-    pkgs.zoxide
-    pkgs.eza
-    pkgs.bat
-    pkgs.zathura
-  ];
+  options = {
+    zsh.extraFunctions = pkgs.lib.mkOption {
+      type = pkgs.lib.types.str;
+      description = "Extra functions to put into .zshrc";
+      default = "";
+    };
 
-  home.file."${dotDir}/create_prompt".text = ''
-    create_prompt() {
-      local GIT_STATUS
+    zsh.extraAliases = pkgs.lib.mkOption {
+      type = pkgs.lib.types.attrsOf pkgs.lib.types.str;
+      description = "Extra aliases to put into .zshrc";
+      default = { };
+    };
 
-      if gitstatus_query MY_PROMPT && [[ $VCS_STATUS_RESULT == ok-sync ]]; then
-        GIT_STATUS=" ''${''${VCS_STATUS_LOCAL_BRANCH:-@''${VCS_STATUS_COMMIT}}//\%/%%}" # escape %
-        (( VCS_STATUS_NUM_STAGED || VCS_STATUS_NUM_UNSTAGED || VCS_STATUS_NUM_UNTRACKED )) && GIT_STATUS+='*'
-        (( VCS_STATUS_COMMITS_BEHIND || VCS_STATUS_COMMITS_AHEAD)) && GIT_STATUS+=" "
-        (( VCS_STATUS_COMMITS_BEHIND )) && GIT_STATUS+="⇣"
-        (( VCS_STATUS_COMMITS_AHEAD ))  && GIT_STATUS+="⇡"
-      fi
+    zsh.extraSessionVariables = pkgs.lib.mkOption {
+      type = pkgs.lib.types.attrsOf pkgs.lib.types.str;
+      description = "Extra env variables to put into .zshrc";
+      default = { };
+    };
 
-      PROMPT="%F{blue}%~%F{red}''${GIT_STATUS} %B%F{%(?/green/red)}❯%f%b "
-    }
-  '';
-
-  home.activation.zoxide = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    ${zoxide} init zsh > ${absoluteDotDir}/zoxide_init
-  '';
-
-  programs.direnv = {
-    enable = true;
-    enableZshIntegration = true;
-    nix-direnv.enable = true;
-    silent = true;
-    stdlib = ''
-      if [ -f ./shell.nix ]; then use nix ; fi
-      export TERM="xterm-256color"
-    '';
-    config = {
-      disable_stdin = true;
-      strict_env = true;
-      hide_env_diff = true;
-      log_format = "-";
-      log_filter = "^$";
-      warn_timeout = "2s";
+    zsh.extraEnv = pkgs.lib.mkOption {
+      type = pkgs.lib.types.str;
+      description = "Extra env to put into .zshenv. It could be useful to put `eval \`/usr/libexec/path_helper -s\`` on darwin";
+      default = "";
     };
   };
 
-  programs.zsh = {
-    enable = true;
-    autocd = false;
-    cdpath = [ ];
-    dotDir = absoluteDotDir;
-
-    shellAliases = {
-      ls = "${eza} -l --group-directories-first -sname --git --icons";
-      cp = "cp -i";
-      mv = "mv -i";
-      rm = "rm -i";
-    };
-
-    shellGlobalAliases = { };
-
-    enableCompletion = true;
-    completionInit = "autoload -Uz compinit && compinit -d ${absoluteDotDir}/zcompdump";
-    zprof.enable = false;
-    syntaxHighlighting.enable = false;
-
-    # I do this manually
-    historySubstringSearch.enable = false;
-
-    autosuggestion.enable = false;
-    history = {
-      path = "${absoluteDotDir}/zsh_history";
-      append = true;
-      expireDuplicatesFirst = true;
-      extended = true;
-      ignoreAllDups = true;
-      ignoreDups = true;
-      saveNoDups = true;
-      findNoDups = true;
-      save = 100000000;
-      size = 1000000000;
-    };
-
-    sessionVariables = {
-      EDITOR = "nvim";
-      VISUAL = "nvim";
-      LESSHISTFILE = "-";
-      LANG = "en_GB.UTF-8";
-      GPG_TTY = "''$(tty)";
-      MANPAGER = "less -R --use-color -Dd+r -Du+b";
-      BAT_THEME = "Nord";
-      FZF_DEFAULT_OPTS = "--style minimal --border --reverse --highlight-line --margin=1,25%  --height=20%";
-      NO_TEST_LOGS = "1";
-      JAVA_OPTS = "-Xmx10G";
-    };
-
-    initContent = lib.mkMerge [
-      (lib.mkOrder 500 ''
-        if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-          . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-        fi
-
-        disable log
-        setopt ${builtins.concatStringsSep " " opts}
-
-        fpath+=(${absoluteDotDir})
-
-        ${prompt_init}'')
-      (lib.mkOrder 550 comp_settings)
-      (lib.mkOrder 1000 ''
-        # Running `bindkey` shows all the bindings
-        # Running `zle -al` shows all the existing widgets
-        # Running `cat -v` outputs the written form of a key combination
-        autoload -Uz history-search-end
-        autoload -Uz edit-command-line
-        zle -N history-beginning-search-backward-end history-search-end
-        zle -N history-beginning-search-forward-end history-search-end
-        zle -N edit-command-line
-        bindkey "^[[A" history-beginning-search-backward-end
-        bindkey "^[[B" history-beginning-search-forward-end
-        bindkey "^[[1;9D" beginning-of-line
-        bindkey "^[[1;9C" end-of-line
-        bindkey "^[[1;2D" backward-word
-        bindkey "^[[1;2C" forward-word
-        bindkey "^[[1;3D" backward-word
-        bindkey "^[[1;3C" forward-word
-        bindkey "^[[1;10D" backward-word
-        bindkey "^[[1;10C" forward-word
-        bindkey "^E" edit-command-line
-        bindkey "^[^?" vi-kill-eol
-        bindkey "^U" vi-kill-line
-      '')
-      (lib.mkOrder 1500 ''
-        ${zoxide_init}
-
-        ${custom_functions}
-      '')
+  config = {
+    home.packages = [
+      pkgs.zoxide
+      pkgs.eza
+      pkgs.bat
+      pkgs.zathura
     ];
 
-    envExtra = ''
-      setopt no_global_rcs
+    home.file."${dotDir}/create_prompt".text = ''
+      create_prompt() {
+        local GIT_STATUS
+
+        if gitstatus_query MY_PROMPT && [[ $VCS_STATUS_RESULT == ok-sync ]]; then
+          GIT_STATUS=" ''${''${VCS_STATUS_LOCAL_BRANCH:-@''${VCS_STATUS_COMMIT}}//\%/%%}" # escape %
+          (( VCS_STATUS_NUM_STAGED || VCS_STATUS_NUM_UNSTAGED || VCS_STATUS_NUM_UNTRACKED )) && GIT_STATUS+='*'
+          (( VCS_STATUS_COMMITS_BEHIND || VCS_STATUS_COMMITS_AHEAD)) && GIT_STATUS+=" "
+          (( VCS_STATUS_COMMITS_BEHIND )) && GIT_STATUS+="⇣"
+          (( VCS_STATUS_COMMITS_AHEAD ))  && GIT_STATUS+="⇡"
+        fi
+
+        PROMPT="%F{blue}%~%F{red}''${GIT_STATUS} %B%F{%(?/green/red)}❯%f%b "
+      }
     '';
+
+    home.activation.zoxide = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      ${zoxide} init zsh > ${absoluteDotDir}/zoxide_init
+    '';
+
+    programs.direnv = {
+      enable = true;
+      enableZshIntegration = true;
+      nix-direnv.enable = true;
+      silent = true;
+      stdlib = ''
+        export TERM="xterm-256color"
+        if [ -f ./shell.nix ]; then use nix ; fi
+      '';
+      config = {
+        disable_stdin = true;
+        strict_env = true;
+        hide_env_diff = true;
+        log_format = "-";
+        log_filter = "^$";
+        warn_timeout = "2s";
+      };
+    };
+
+    programs.zsh = {
+      enable = true;
+      autocd = false;
+      cdpath = [ ];
+      dotDir = absoluteDotDir;
+
+      shellAliases = (
+        config.zsh.extraAliases
+        // {
+          ls = "${eza} -l --group-directories-first -sname --git --icons";
+          cp = "cp -i";
+          mv = "mv -i";
+          rm = "rm -i";
+        }
+      );
+
+      shellGlobalAliases = { };
+
+      enableCompletion = true;
+      completionInit = "autoload -Uz compinit && compinit -d ${absoluteDotDir}/zcompdump";
+      zprof.enable = false;
+      syntaxHighlighting.enable = false;
+
+      # I do this manually
+      historySubstringSearch.enable = false;
+
+      autosuggestion.enable = false;
+      history = {
+        path = "${absoluteDotDir}/zsh_history";
+        append = true;
+        expireDuplicatesFirst = true;
+        extended = true;
+        ignoreAllDups = true;
+        ignoreDups = true;
+        saveNoDups = true;
+        findNoDups = true;
+        save = 100000000;
+        size = 1000000000;
+      };
+
+      sessionVariables = (
+        config.zsh.extraSessionVariables
+        // {
+          EDITOR = "nvim";
+          VISUAL = "nvim";
+          LESSHISTFILE = "-";
+          LANG = "en_GB.UTF-8";
+          GPG_TTY = "''$(tty)";
+          MANPAGER = "less -R --use-color -Dd+r -Du+b";
+          BAT_THEME = "Nord";
+          FZF_DEFAULT_OPTS = "--style minimal --border --reverse --highlight-line --margin=1,25%  --height=20%";
+          NO_TEST_LOGS = "1";
+          JAVA_OPTS = "-Xmx10G";
+        }
+      );
+
+      initContent = lib.mkMerge [
+        (lib.mkOrder 500 ''
+          if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+            . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+          fi
+
+          disable log
+          setopt ${builtins.concatStringsSep " " opts}
+
+          fpath+=(${absoluteDotDir})
+
+          ${prompt_init}'')
+        (lib.mkOrder 550 comp_settings)
+        (lib.mkOrder 1000 ''
+          # Running `bindkey` shows all the bindings
+          # Running `zle -al` shows all the existing widgets
+          # Running `cat -v` outputs the written form of a key combination
+          autoload -Uz history-search-end
+          autoload -Uz edit-command-line
+          zle -N history-beginning-search-backward-end history-search-end
+          zle -N history-beginning-search-forward-end history-search-end
+          zle -N edit-command-line
+          bindkey "^[[A" history-beginning-search-backward-end
+          bindkey "^[[B" history-beginning-search-forward-end
+          bindkey "^[[1;9D" beginning-of-line
+          bindkey "^[[1;9C" end-of-line
+          bindkey "^[[1;2D" backward-word
+          bindkey "^[[1;2C" forward-word
+          bindkey "^[[1;3D" backward-word
+          bindkey "^[[1;3C" forward-word
+          bindkey "^[[1;10D" backward-word
+          bindkey "^[[1;10C" forward-word
+          bindkey "^E" edit-command-line
+          bindkey "^[^?" vi-kill-eol
+          bindkey "^U" vi-kill-line
+        '')
+        (lib.mkOrder 1500 ''
+          ${zoxide_init}
+
+          ${custom_functions}
+        '')
+      ];
+
+      envExtra = ''
+        setopt no_global_rcs
+        ${config.zsh.extraEnv}
+      '';
+    };
   };
 }
