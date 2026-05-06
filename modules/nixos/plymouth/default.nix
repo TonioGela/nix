@@ -1,5 +1,11 @@
 { sources, ... }:
 {
+
+  # Have a look at these
+  # https://github.com/helsinki-systems/plymouth-theme-nixos-bgrt/blob/master/nixos-bgrt.plymouth
+  # https://github.com/NixOS/nixpkgs/blob/nixos-25.11/pkgs/by-name/ni/nixos-bgrt-plymouth/package.nix#L35
+  # https://github.com/adi1090x/plymouth-themes/blob/master/pack_4/spinner_alt/spinner_alt.script
+
   boot = {
     initrd = {
       verbose = false;
