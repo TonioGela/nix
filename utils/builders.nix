@@ -29,7 +29,6 @@
         system.stateVersion = "25.11";
 
         environment.systemPackages = with sources.pkgs; [
-          git
           nh
           npins
         ];
@@ -45,6 +44,7 @@
           useGlobalPkgs = true; # use system's nixpkgs
           useUserPackages = true; # installs user packages via users.users.<name>.packages
           sharedModules = [
+            modules.home-manager.options
             {
               _module.args = {
                 pkgsUnstable = sources.pkgsUnstable;
@@ -62,7 +62,10 @@
     sources.homeManagerBuilder {
       pkgs = sources.pkgs;
       configuration = {
-        imports = [ (import config { inherit sources modules; }) ];
+        imports = [
+          modules.home-manager.options
+          (import config { inherit sources modules; })
+        ];
         config._module.args = {
           pkgsUnstable = sources.pkgsUnstable;
         };

@@ -22,7 +22,7 @@ let
   ];
 
   zoxide = lib.getExe pkgs.zoxide;
-  git = lib.getExe pkgs.git;
+  git = lib.getExe config.programs.git.package;
   eza = lib.getExe pkgs.eza;
   bat = lib.getExe pkgs.bat;
   zathura = lib.getExe pkgs.zathura;
@@ -83,7 +83,6 @@ in
 {
   home.packages = [
     pkgs.zoxide
-    pkgs.git
     pkgs.eza
     pkgs.bat
     pkgs.zathura

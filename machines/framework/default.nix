@@ -28,9 +28,22 @@
   home-manager.users.toniogela.imports = with modules.home-manager; [
     dotfiles
     firefox
+    git
     vscodium
     neovim
   ];
+
+  home-manager.users.toniogela = {
+    # programs.gpg.enable = true;
+    # services.gpg-agent = {
+    #   enable = true;
+    #   enableZshIntegration = true;
+    #   pinentry.package = sources.pkgs.pinentry-tty;
+    # };
+    git.username = "Antonio Gelameris";
+    git.email = "toniogela89@gmail.com";
+    git.signingKey = "62C894CF4206D599";
+  };
 
   environment = {
     variables."NH_FILE" = "/etc/nixos/configuration.nix";

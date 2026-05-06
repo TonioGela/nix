@@ -1,4 +1,8 @@
-{ pkgs, pkgsUnstable, ... }:
+{
+  pkgs,
+  pkgsUnstable,
+  ...
+}:
 {
   programs.yazi = {
     package = pkgsUnstable.yazi;

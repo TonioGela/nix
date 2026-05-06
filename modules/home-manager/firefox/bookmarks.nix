@@ -1,6 +1,3 @@
-{
-  additionalBookmarks ? [ ],
-}:
 [
   {
     name = "Videos";
@@ -111,4 +108,3 @@
     url = "https://utcc.utoronto.ca/~cks/space/blog/programming/BashGoodSetEReports";
   }
 ]
-++ additionalBookmarks

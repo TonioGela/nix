@@ -150,7 +150,7 @@
       name = "Default";
       bookmarks = {
         force = true;
-        settings = (import ./bookmarks.nix { });
+        settings = config.additionalBookmarks ++ import ./bookmarks.nix;
       };
       extraConfig = "";
       search = {
