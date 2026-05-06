@@ -155,7 +155,6 @@ spark-*-bin-*.tgz
 spark-tests.log
 streaming-tests.log
 unit-tests.log
-work/
 docs/.jekyll-metadata
 
 # For Hive

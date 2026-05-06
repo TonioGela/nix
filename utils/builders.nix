@@ -23,6 +23,11 @@
             "nixpkgs=${builtins.storePath sources.pkgs.path}"
             "nixos-config=/etc/nixos/configuration.nix"
           ];
+          gc = {
+            automatic = true;
+            persistent = true;
+            dates = "monthly";
+          };
         };
 
         system.copySystemConfiguration = true;
@@ -48,9 +53,11 @@
               _module.args = {
                 pkgsUnstable = sources.pkgsUnstable;
               };
-              home.enableNixpkgsReleaseCheck = true;
+              home = {
+                enableNixpkgsReleaseCheck = true;
+                stateVersion = "25.11";
+              };
               programs.home-manager.enable = true;
-              home.stateVersion = "25.11";
             }
           ];
         };
@@ -64,6 +71,25 @@
         imports = [ (import config { inherit sources modules; }) ];
         config._module.args = {
           pkgsUnstable = sources.pkgsUnstable;
+        };
+        home = {
+          enableNixpkgsReleaseCheck = true;
+          stateVersion = "25.11";
+        };
+        programs.home-manager.enable = true;
+        nix = {
+          package = sources.pkgs.nix;
+          settings = {
+            experimental-features = "nix-command";
+            nix-path = [
+              "nixpkgs=${sources.nixpkgs.outPath}"
+            ];
+          };
+          gc = {
+            automatic = true;
+            persistent = true;
+            dates = "monthly";
+          };
         };
       };
     };

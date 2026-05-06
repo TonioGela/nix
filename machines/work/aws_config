@@ -1,0 +1,9 @@
+[default]
+region = eu-west-1
+credential_process = aws-vault export --duration=8h --format=json default
+mfa_serial = arn:aws:iam::242724708940:mfa/antonio.gelameris-yubikey
+mfa_process = ykman oath accounts code -s arn:aws:iam::242724708940:mfa/antonio.gelameris-yubikey 2>/dev/tty
+
+[profile vault]
+source_profile=default
+role_arn=arn:aws:iam::242724708940:role/rbac/staging-vault-operator

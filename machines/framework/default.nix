@@ -108,7 +108,6 @@
     gh
     icdiff
     ripgrep
-    scala-cli
   ];
 }
 # TODO merge it with the home-manager config in the other repo and move packages from systemPackages to home-manager packages

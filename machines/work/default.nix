@@ -1,0 +1,179 @@
+{ sources, modules }:
+let
+  derivations = import ./derivations.nix { inherit sources; };
+in
+{
+  imports = with modules.home-manager; [
+    dotfiles
+    firefox
+    git
+    neovim
+    scala
+    vscodium
+    yabai-skhd
+    zsh
+    darwin
+    neovim
+  ];
+
+  darwin.masAppIds = [
+    "1352778147" # Bitwarden
+    "1503136033" # Service Station
+  ];
+
+  zsh = {
+    extraEnv = "eval `/usr/libexec/path_helper -s`";
+    extraSessionVariables = {
+      TF_TOKEN_gitlab_com = "$(${sources.pkgs.lib.getExe sources.pkgs.yq} --exit-status --raw-output '.hosts[\"gitlab.com\"].token' ~/.config/glab-cli/config.yml)";
+    };
+    extraAliases = {
+      tf = "terraform";
+      flushdns = "sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder";
+    };
+    extraFunctions = ''
+      function toLong() {
+        printf '%d\n' "0x$1"
+      }
+
+      function toHex() {
+        echo "''${(l:16::0:)''$(printf '%x\n' $1)}"
+      }
+    '';
+  };
+
+  home = {
+    file.".aws/config".source = ./aws_config;
+    packages =
+      with sources;
+      [
+        pkgs.appcleaner
+        pkgs.aws-vault
+        pkgs.awscli2
+        pkgs.bat
+        pkgs.claude-code
+        pkgs.comma
+        pkgs.defaultbrowser
+        pkgs.eza
+        pkgs.fd
+        pkgs.fzf
+        pkgsUnstable.gh
+        pkgsUnstable.glab
+        pkgs.gnupg
+        pkgs.icdiff
+        pkgs.jwt-cli
+        pkgs.kitty
+        pkgs.nerd-fonts.sauce-code-pro
+        pkgs.nh
+        pkgs.nix-index
+        pkgs.nixd
+        pkgs.nixfmt-rfc-style
+        pkgs.npins
+        pkgs.pgcli
+        pkgs.ripgrep
+        pkgsUnstable.slacks
+        pkgs.terraform
+        pkgs.vault
+        pkgs.websocat
+        pkgs.wireshark
+        pkgs.yq
+        pkgs.yubikey-manager
+        pkgs.zathura
+        pkgs.zoxide
+      ]
+      ++ [
+        derivations.keeping-you-awake
+        derivations.qlmarkdown
+        derivations.source-code-syntax-highlight
+        derivations.ice-bar
+      ];
+  };
+
+  git = {
+    username = "Antonio Gelameris";
+    email = "antonio.gelameris@hypervolt.co.uk";
+    signingKey = "25901F702B062B05";
+    maintainedRepos = [
+      "/Users/toniogela/work/athena"
+      "/Users/toniogela/work/hypervolt-backend"
+    ];
+  };
+
+  launchd.agents.glabAuthRefresh = {
+    config = {
+      Label = "dev.toniogela.glabAuthRefresh";
+      ProgramArguments = [
+        "${sources.pkgs.lib.getExe sources.pkgsUnstable.glab}"
+        "auth"
+        "status"
+      ];
+      StartInterval = 1800;
+      LowPriorityIO = true;
+      LowPriorityBackgroundIO = true;
+      ProcessType = "Background";
+      RunAtLoad = true;
+      KeepAlive = false;
+      StandardOutPath = "/tmp/glabAuthRefresh.log";
+      StandardErrorPath = "/tmp/glabAuthRefresh.err";
+      WatchPaths = [
+        "/Users/toniogela/work/hypervolt-backend/.git"
+        "/Users/toniogela/work/athena/.git"
+      ];
+    };
+  };
+
+  firefox.additionalBookmarks = [
+    {
+      name = "Hypervolt";
+      bookmarks = [
+        {
+          name = "Jira";
+          url = "https://hypervolt.atlassian.net/jira/software/c/projects/CLOUD/boards/2?assignee=712020%3A3021ae5d-2ced-47ca-ae2c-eb4cbebc861e";
+        }
+        {
+          name = "Watson";
+          url = "https://w4tson.hypervolt.co.uk";
+        }
+        {
+          name = "Grafana-Staging";
+          url = "https://grafana.staging.hypervolt.dev/";
+        }
+        {
+          name = "Graphana-Prod";
+          url = "https://grafana.prod.hypervolt.dev/";
+        }
+        {
+          name = "Keycloak-Staging";
+          url = "https://kc.staging.hypervolt.co.uk/admin/master/console/";
+        }
+        {
+          name = "Keycloak-Prod";
+          url = "https://kc.prod.hypervolt.co.uk/admin/master/console";
+        }
+        {
+          name = "Hypervolt API";
+          url = "https://api.hypervolt.co.uk/docs/index.html";
+        }
+        {
+          name = "Athena API Staging";
+          url = "https://athena.staging.hypervolt.dev/docs/";
+        }
+        {
+          name = "Athena API Prod";
+          url = "https://athena.prod.hypervolt.dev/docs/";
+        }
+        {
+          name = "On-duty Rotation";
+          url = "https://docs.google.com/spreadsheets/d/1gyPrkOAPERQTtinOeQa6D-Cvnt10LYlq-aeiOtqc_yk";
+        }
+        {
+          name = "Confluence";
+          url = "https://hypervolt.atlassian.net/wiki";
+        }
+        {
+          name = "Chargers";
+          url = "https://hypervolt.atlassian.net/wiki/spaces/ENG/pages/881950721/Engineering+Cloud+Chargers";
+        }
+      ];
+    }
+  ];
+}
