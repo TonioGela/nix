@@ -9,5 +9,8 @@
         "**/.gitignore": true,
         ".vscode": true,
         "result": true
+    },
+    "files.watcherExclude": {
+        "**/target": true
     }
 }

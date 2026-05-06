@@ -1,42 +1,38 @@
 {
   pkgs,
   config,
-  pkgsUnstable,
   ...
 }:
 let
-  newExtensions = with pkgsUnstable.vscode-extensions; [
-    scala-lang.scala
-    scalameta.metals
+  extensions = with pkgs.vscode-extensions; [
+    aaron-bond.better-comments
+    usernamehw.errorlens
+    hashicorp.terraform
+    oderwat.indent-rainbow
+    marp-team.marp-vscode
+    jnoortheen.nix-ide
+    arcticicestudio.nord-visual-studio-code
+    vscode-icons-team.vscode-icons
+    mechatroner.rainbow-csv
+    rust-lang.rust-analyzer
   ];
 
-  extensions =
-    with pkgs.vscode-extensions;
-    [
-      aaron-bond.better-comments
-      usernamehw.errorlens
-      hashicorp.terraform
-      oderwat.indent-rainbow
-      marp-team.marp-vscode
-      jnoortheen.nix-ide
-      arcticicestudio.nord-visual-studio-code
-      vscode-icons-team.vscode-icons
-      mechatroner.rainbow-csv
-      rust-lang.rust-analyzer
-    ]
-    ++ newExtensions;
-
   marketPlaceExtensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-    # {
-    #   name = "make-hidden";
-    #   publisher = "devine-davies";
-    #   version = "4.0.4";
-    #   sha256 = "sha256-wKeP8Ng2GLgcVZptFmvDAil51pQ3wtRHUNt2rd51vYA=";
-    # }
+    {
+      name = "scala";
+      publisher = "scala-lang";
+      version = "0.5.9";
+      sha256 = "sha256-zgCqKwnP7Fm655FPUkD5GL+/goaplST8507X890Tnhc=";
+    }
+    {
+      name = "metals";
+      publisher = "scalameta";
+      version = "1.65.3";
+      sha256 = "sha256-Asxj9c+tFO6ziy/nbAN7z/SQjKJdUXufjVD3GnNAaJo=";
+    }
   ];
 in
 {
-
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium.override {

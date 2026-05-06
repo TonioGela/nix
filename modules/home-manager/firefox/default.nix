@@ -3,8 +3,24 @@
   config,
   ...
 }:
+let
+  bookmarksSort = builtins.sort (
+    a: b:
+    let
+      isFolderA = builtins.hasAttr "bookmarks" a;
+      isFolderB = builtins.hasAttr "bookmarks" b;
+    in
+    if isFolderA && !isFolderB then
+      true
+    else if !isFolderA && isFolderB then
+      false
+    else if isFolderA && isFolderB then
+      a.name < b.name
+    else
+      a.name < b.name
+  );
+in
 {
-
   options = {
     firefox.additionalBookmarks = pkgs.lib.mkOption {
       type = pkgs.lib.types.listOf pkgs.lib.types.anything;
@@ -178,7 +194,7 @@
         name = "Default";
         bookmarks = {
           force = true;
-          settings = config.firefox.additionalBookmarks ++ import ./bookmarks.nix;
+          settings = bookmarksSort (config.firefox.additionalBookmarks ++ import ./bookmarks.nix);
         };
         extraConfig = "";
         search = {

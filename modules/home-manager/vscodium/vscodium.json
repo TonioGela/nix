@@ -177,6 +177,5 @@
     "window.menuBarVisibility": "toggle",
     "workbench.statusBar.visible": false,
     "explorer.excludeGitIgnore": true,
-    "explorer.confirmDragAndDrop": false,
-    "workbench.activityBar.location": "hidden"
+    "explorer.confirmDragAndDrop": false
 }

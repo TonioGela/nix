@@ -30,6 +30,7 @@
       dotfiles
       firefox
       git
+      scala
       vscodium
       neovim
     ];
@@ -37,6 +38,7 @@
     git.username = "Antonio Gelameris";
     git.email = "toniogela89@gmail.com";
     git.signingKey = "";
+
     firefox.additionalExtensions = [
       {
         shortId = "my-online-learning-downloader";
