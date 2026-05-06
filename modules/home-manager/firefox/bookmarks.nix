@@ -77,6 +77,10 @@
         name = "Functional Distributed Effectfull System";
         url = "https://chollinger.com/blog/2023/06/building-a-functional-effectful-distributed-system-from-scratch-in-scala-3-just-to-avoid-leetcode-part-1/";
       }
+      {
+        name = "Paper backup of ssh and gpg keys for pass";
+        url = "https://ericeastwood.com/blog/paper-backup-and-recovery-guide-for-pass-password-store/#backup-necessary-keys-on-paper";
+      }
     ];
   }
   {
