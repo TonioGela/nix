@@ -21,6 +21,7 @@
     ]
     ++ [
       ./hardware.nix
+      ./amd-fix.nix
       sources.nix-index-database
       sources.noctalia
     ];
