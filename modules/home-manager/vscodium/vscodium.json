@@ -91,6 +91,9 @@
                 },
                 "home-manager": {
                     "expr": "(import /home/toniogela/.config/nixos/configuration.nix).${env:NH_ATTRP}.options.home-manager.users.type.getSubOptions []"
+                },
+                "user-options": {
+                    "expr": "(import /home/toniogela/.config/nixos/configuration.nix).${env:NH_ATTRP}.options.home-manager.users.valueMeta.attrs.${env:USER}.configuration.options"
                 }
             }
         }

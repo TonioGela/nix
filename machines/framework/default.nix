@@ -34,15 +34,16 @@
   ];
 
   home-manager.users.toniogela = {
+    git.username = "Antonio Gelameris";
+    git.email = "toniogela89@gmail.com";
+    git.signingKey = "";
+    # https://tsawyer87.github.io/posts/gpg-agent_on_nixos/
     # programs.gpg.enable = true;
     # services.gpg-agent = {
     #   enable = true;
     #   enableZshIntegration = true;
     #   pinentry.package = sources.pkgs.pinentry-tty;
     # };
-    git.username = "Antonio Gelameris";
-    git.email = "toniogela89@gmail.com";
-    git.signingKey = "62C894CF4206D599";
   };
 
   environment = {
