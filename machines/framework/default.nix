@@ -37,6 +37,12 @@
     git.username = "Antonio Gelameris";
     git.email = "toniogela89@gmail.com";
     git.signingKey = "";
+    firefox.additionalExtensions = [
+      {
+        shortId = "my-online-learning-downloader";
+        uuid = "{1b6043a9-46df-4352-adf6-553ce26b9106}";
+      }
+    ];
     # https://tsawyer87.github.io/posts/gpg-agent_on_nixos/
     # programs.gpg.enable = true;
     # services.gpg-agent = {

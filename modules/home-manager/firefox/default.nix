@@ -6,8 +6,24 @@
 {
 
   options = {
-    additionalBookmarks = pkgs.lib.mkOption {
+    firefox.additionalBookmarks = pkgs.lib.mkOption {
       type = pkgs.lib.types.listOf pkgs.lib.types.anything;
+      default = [ ];
+    };
+
+    firefox.additionalExtensions = pkgs.lib.mkOption {
+      type = pkgs.lib.types.listOf (
+        pkgs.lib.types.submodule {
+          options = {
+            shortId = pkgs.lib.mkOption { type = pkgs.lib.types.str; };
+            uuid = pkgs.lib.mkOption { type = pkgs.lib.types.str; };
+          };
+        }
+      );
+      description = ''
+        To add additional extensions, find it on addons.mozilla.org, find the short ID in the url (like https://addons.mozilla.org/en-US/firefox/addon/!SHORT_ID!/)
+        Then install it manually and go to about:debugging#/runtime/this-firefox to get the uuid
+      '';
       default = [ ];
     };
   };
@@ -102,22 +118,24 @@
               };
             };
           in
-          listToAttrs [
-            (extension "ublock-origin" "uBlock0@raymondhill.net")
-            (extension "new-tab-override" "newtaboverride@agenedia.com")
-            (extension "sponsorblock" "sponsorBlocker@ajay.app")
-            (extension "bitwarden-password-manager" "{446900e4-71c2-419f-a6a7-df9c091e268b}")
-            (extension "single-file" "{531906d3-e22f-4a6c-a102-8057b88a1a63}")
-            (extension "istilldontcareaboutcookies" "idcac-pub@guus.ninja")
-            (extension "decentraleyes" "jid1-BoFifL9Vbdl2zQ@jetpack")
-            (extension "watchmarker-for-youtube" "yourect@coderect.com")
-            (extension "duckduckgo-for-firefox" "jid1-ZAdIEUB7XOzOJw@jetpack")
-            (extension "netflix-prime-auto-skip" "NetflixPrime@Autoskip.io")
-            (extension "nord-firefox" "{f4c9e1d6-6630-4600-ad50-d223eab7f3e7}")
-            (extension "clearurls" "{74145f27-f039-47ce-a470-a662b129930a}")
-            (extension "vimium-ff" "{d7742d87-e61d-4b78-b8a1-b469842139fa}")
-            (extension "my-online-learning-downloader" "{1b6043a9-46df-4352-adf6-553ce26b9106}")
-          ];
+          listToAttrs (
+            [
+              (extension "ublock-origin" "uBlock0@raymondhill.net")
+              (extension "new-tab-override" "newtaboverride@agenedia.com")
+              (extension "sponsorblock" "sponsorBlocker@ajay.app")
+              (extension "bitwarden-password-manager" "{446900e4-71c2-419f-a6a7-df9c091e268b}")
+              (extension "single-file" "{531906d3-e22f-4a6c-a102-8057b88a1a63}")
+              (extension "istilldontcareaboutcookies" "idcac-pub@guus.ninja")
+              (extension "decentraleyes" "jid1-BoFifL9Vbdl2zQ@jetpack")
+              (extension "watchmarker-for-youtube" "yourect@coderect.com")
+              (extension "duckduckgo-for-firefox" "jid1-ZAdIEUB7XOzOJw@jetpack")
+              (extension "netflix-prime-auto-skip" "NetflixPrime@Autoskip.io")
+              (extension "nord-firefox" "{f4c9e1d6-6630-4600-ad50-d223eab7f3e7}")
+              (extension "clearurls" "{74145f27-f039-47ce-a470-a662b129930a}")
+              (extension "vimium-ff" "{d7742d87-e61d-4b78-b8a1-b469842139fa}")
+            ]
+            ++ builtins.map (e: (extension e.shortId e.uuid)) config.firefox.additionalExtensions
+          );
 
         # To add additional extensions, find it on addons.mozilla.org, find
         # the short ID in the url (like https://addons.mozilla.org/en-US/firefox/addon/!SHORT_ID!/)
@@ -160,7 +178,7 @@
         name = "Default";
         bookmarks = {
           force = true;
-          settings = config.additionalBookmarks ++ import ./bookmarks.nix;
+          settings = config.firefox.additionalBookmarks ++ import ./bookmarks.nix;
         };
         extraConfig = "";
         search = {
