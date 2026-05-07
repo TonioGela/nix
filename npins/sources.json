@@ -67,9 +67,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "af04cb78aa85b2a4d1c15fc7270347e0d0eda97b",
-      "url": "https://github.com/NixOS/nixos-hardware/archive/af04cb78aa85b2a4d1c15fc7270347e0d0eda97b.tar.gz",
-      "hash": "1qgqaxz1fmvysj2xdaygz81h9lynzipjgcb6zadfggbp37xn03lz"
+      "revision": "3bcaa367d4c550d687a17ac792fd5cda214ee871",
+      "url": "https://github.com/NixOS/nixos-hardware/archive/3bcaa367d4c550d687a17ac792fd5cda214ee871.tar.gz",
+      "hash": "0qjyrv1qfxzkp3mvf1w9znng9kw8yqjfrk52jsqnlpvnmiisqiwn"
     },
     "nixpkgs": {
       "type": "Channel",
@@ -80,8 +80,8 @@
     "nixpkgs-unstable": {
       "type": "Channel",
       "name": "nixpkgs-unstable",
-      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.05pre993032.ed67bc86e84e/nixexprs.tar.xz",
-      "hash": "1wjxchdddy9xd0iba0w2hwcam3d15qjg5b17didwabfwvw8rqv8r"
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.05pre993588.68a8af93ff42/nixexprs.tar.xz",
+      "hash": "1xxwxmmjaz9nblbcg0778p5d2wb8yawy0662lrxlg9vwhh78p6b7"
     },
     "noctalia-shell": {
       "type": "GitRelease",
@@ -94,10 +94,10 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": false,
-      "version": "v4.7.5",
-      "revision": "8b0c7c288063e5048a439ca308dd65f7044f42b6",
-      "url": "https://api.github.com/repos/noctalia-dev/noctalia-shell/tarball/v4.7.5",
-      "hash": "164r2jd7d76kw69bmblfgdp8n6hblp6xz5v0w8knfjcijjw046nk"
+      "version": "v4.7.6",
+      "revision": "2d8acc4aabf5003af1497323dc90d9cea636ed5b",
+      "url": "https://api.github.com/repos/noctalia-dev/noctalia-shell/tarball/v4.7.6",
+      "hash": "00g0ylp01y8yjbq8kb6rcisfkyxg7ybss8ib89qxiaplqdd1hqx0"
     }
   },
   "version": 5
