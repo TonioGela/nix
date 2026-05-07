@@ -1,9 +1,12 @@
 { sources, modules }:
 let
+  pins = import ./npins;
+  hypervolt-modules = import pins.hypervolt-modules;
   derivations = import ./derivations.nix { inherit sources; };
 in
 {
   imports = with modules.home-manager; [
+    hypervolt-modules
     dotfiles
     firefox
     git
@@ -16,8 +19,6 @@ in
     neovim
   ];
 
-  # Missing: Hypervolt HM module and restish autocomplete in zsh
-
   home = {
     username = "toniogela";
     homeDirectory = "/Users/toniogela";
@@ -28,6 +29,7 @@ in
   };
 
   home.file.".aws/config".source = ./aws_config;
+  home.file.".hushlogin".text = "";
 
   darwin.masAppIds = [
     "1352778147" # Bitwarden
