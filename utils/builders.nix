@@ -26,7 +26,12 @@
           gc = {
             automatic = true;
             persistent = true;
-            dates = "monthly";
+            dates = "weekly";
+          };
+          optimise = {
+            automatic = true;
+            persistent = true;
+            dates = "weekly";
           };
         };
 

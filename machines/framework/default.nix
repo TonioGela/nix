@@ -26,9 +26,6 @@
       sources.noctalia
     ];
 
-  # TODO Move packages from systemPackages to home-manager packages
-  # TODO Postgres is not running?
-
   home-manager.users.toniogela = {
     imports = with modules.home-manager; [
       dotfiles
