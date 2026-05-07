@@ -25,7 +25,7 @@ in
     homeDirectory = "/Users/toniogela";
     sessionVariables = {
       NIXD_PATH = sources.pkgs.lib.getExe sources.pkgs.nixd;
-      NH_FILE = "/Users/toniogela/.config/hm/configuration.nix";
+      NH_FILE = "/Users/toniogela/.config/home-manager/configuration.nix";
       NH_ATTRP = "work";
     };
   };
