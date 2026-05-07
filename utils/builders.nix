@@ -83,7 +83,7 @@
             settings = {
               experimental-features = "nix-command";
               nix-path = [
-                "nixpkgs=${sources.nixpkgs.outPath}"
+                "nixpkgs=${builtins.storePath sources.pkgs.path}"
               ];
             };
             gc = {
