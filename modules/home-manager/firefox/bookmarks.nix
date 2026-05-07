@@ -14,6 +14,10 @@
         name = "Scala Native Live Coding";
         url = "https://www.youtube.com/watch?v=rRPeZ6wT2mc";
       }
+      {
+        name = "Tips and tricks to fix you nix";
+        url = "https://fosdem.org/2026/schedule/event/GBNGRQ-tips-tricks-fix-nix/";
+      }
     ];
   }
   {
@@ -102,6 +106,10 @@
   {
     name = "CLIs with Scala Native";
     url = "https://slides.indoorvivants.com/clis-with-scala-native";
+  }
+  {
+    name = "Cyfra: GPU compute in Scala 3";
+    url = "https://cyfra.computenode.io/";
   }
   {
     name = "MirCrew";

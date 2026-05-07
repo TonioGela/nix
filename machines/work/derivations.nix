@@ -71,5 +71,4 @@ in
     description = "Quick look plugin for code highlight";
     platform = "aarch64-darwin";
   };
-
 }
