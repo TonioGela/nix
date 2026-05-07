@@ -41,52 +41,56 @@ in
     '';
   };
 
-  home = {
-    file.".aws/config".source = ./aws_config;
-    packages =
-      with sources;
-      [
-        pkgs.appcleaner
-        pkgs.aws-vault
-        pkgs.awscli2
-        pkgs.bat
-        pkgs.claude-code
-        pkgs.comma
-        pkgs.defaultbrowser
-        pkgs.eza
-        pkgs.fd
-        pkgs.fzf
-        pkgsUnstable.gh
-        pkgsUnstable.glab
-        pkgs.gnupg
-        pkgs.icdiff
-        pkgs.jwt-cli
-        pkgs.kitty
-        pkgs.nerd-fonts.sauce-code-pro
-        pkgs.nh
-        pkgs.nix-index
-        pkgs.nixd
-        pkgs.nixfmt-rfc-style
-        pkgs.npins
-        pkgs.pgcli
-        pkgs.ripgrep
-        pkgsUnstable.slacks
-        pkgs.terraform
-        pkgs.vault
-        pkgs.websocat
-        pkgs.wireshark
-        pkgs.yq
-        pkgs.yubikey-manager
-        pkgs.zathura
-        pkgs.zoxide
-      ]
-      ++ [
-        derivations.keeping-you-awake
-        derivations.qlmarkdown
-        derivations.source-code-syntax-highlight
-        derivations.ice-bar
-      ];
+  home.file.".aws/config".source = ./aws_config;
+
+  home.sessionVariables = {
+    NH_FILE = "/Users/toniogela/.config/nix/configuration.nix";
+    NH_ATTRP = "work";
   };
+
+  home.packages =
+    with sources;
+    [
+      pkgs.appcleaner
+      pkgs.aws-vault
+      pkgs.awscli2
+      pkgs.bat
+      pkgs.claude-code
+      pkgs.comma
+      pkgs.defaultbrowser
+      pkgs.eza
+      pkgs.fd
+      pkgs.fzf
+      pkgsUnstable.gh
+      pkgsUnstable.glab
+      pkgs.gnupg
+      pkgs.icdiff
+      pkgs.jwt-cli
+      pkgs.kitty
+      pkgs.nerd-fonts.sauce-code-pro
+      pkgs.nh
+      pkgs.nix-index
+      pkgs.nixd
+      pkgs.nixfmt-rfc-style
+      pkgs.npins
+      pkgs.pgcli
+      pkgs.ripgrep
+      pkgsUnstable.slacks
+      pkgs.terraform
+      pkgs.vault
+      pkgs.websocat
+      pkgs.wireshark
+      pkgs.yq
+      pkgs.yubikey-manager
+      pkgs.zathura
+      pkgs.zoxide
+    ]
+    ++ [
+      derivations.keeping-you-awake
+      derivations.qlmarkdown
+      derivations.source-code-syntax-highlight
+      derivations.ice-bar
+    ];
 
   git = {
     username = "Antonio Gelameris";

@@ -87,13 +87,13 @@
             },
             "options": {
                 "nixos": {
-                    "expr": "(import /home/toniogela/.config/nixos/configuration.nix).${env:NH_ATTRP}.options"
+                    "expr": "(import ${env:NH_FILE}).${env:NH_ATTRP}.options"
                 },
                 "home-manager": {
-                    "expr": "(import /home/toniogela/.config/nixos/configuration.nix).${env:NH_ATTRP}.options.home-manager.users.type.getSubOptions []"
+                    "expr": "(import ${env:NH_FILE}).${env:NH_ATTRP}.options.home-manager.users.type.getSubOptions []"
                 },
                 "user-options": {
-                    "expr": "(import /home/toniogela/.config/nixos/configuration.nix).${env:NH_ATTRP}.options.home-manager.users.valueMeta.attrs.${env:USER}.configuration.options"
+                    "expr": "(import ${env:NH_FILE}).${env:NH_ATTRP}.options.home-manager.users.valueMeta.attrs.${env:USER}.configuration.options"
                 }
             }
         }

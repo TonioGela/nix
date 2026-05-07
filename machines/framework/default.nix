@@ -7,7 +7,7 @@
       audio
       greetd
       network
-      postgres
+      # postgres
       power
       printers
       quiet-boot
@@ -56,7 +56,7 @@
   };
 
   environment = {
-    variables."NH_FILE" = "/etc/nixos/configuration.nix";
+    variables."NH_FILE" = "/home/toniogela/.config/nixos/configuration.nix";
     variables."NH_ATTRP" = "framework";
   };
 
