@@ -56,7 +56,7 @@
   };
 
   environment = {
-    variables."NH_FILE" = "/home/toniogela/.config/nixos/configuration.nix";
+    variables."NH_FILE" = "/home/toniogela/.config/nix/configuration.nix";
     variables."NH_ATTRP" = "framework";
   };
 
