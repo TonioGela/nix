@@ -85,6 +85,10 @@
         name = "Paper backup of ssh and gpg keys for pass";
         url = "https://ericeastwood.com/blog/paper-backup-and-recovery-guide-for-pass-password-store/#backup-necessary-keys-on-paper";
       }
+      {
+        name = "Appearing productive in the workspace";
+        url = "https://nooneshappy.com/article/appearing-productive-in-the-workplace/";
+      }
     ];
   }
   {
