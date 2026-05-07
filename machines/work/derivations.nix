@@ -62,7 +62,7 @@ in
     description = "Quick look plugin for markdown rendering";
     platform = "aarch64-darwin";
   };
-  source-code-syntax-highlight = {
+  source-code-syntax-highlight = fetchMacAppFromGhReleases {
     author = "sbarex";
     pname = "SourceCodeSyntaxHighlight";
     version = "2.1.26";

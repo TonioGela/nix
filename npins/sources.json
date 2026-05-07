@@ -74,14 +74,14 @@
     "nixpkgs": {
       "type": "Channel",
       "name": "nixos-25.11",
-      "url": "https://releases.nixos.org/nixos/25.11/nixos-25.11.5776.6c5e707c6b53/nixexprs.tar.xz",
-      "hash": "09710k3r97qrwihp5wmnc9bw1awlpkdcszpc8cx5vyxvwkvwwgjm"
+      "url": "https://releases.nixos.org/nixos/25.11/nixos-25.11.10470.0c88e1f2bdb9/nixexprs.tar.xz",
+      "hash": "037dm5f92b9n3f19mpfvl9bf3zndspi2bj1faakydpw5f5ikhrva"
     },
     "nixpkgs-unstable": {
       "type": "Channel",
       "name": "nixpkgs-unstable",
-      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.05pre988531.e75f25705c29/nixexprs.tar.xz",
-      "hash": "0hpnb50mxh3wqxwfn2dh8gavp2s9bvshbz0y70phn5nfkaxg7ghv"
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.05pre993032.ed67bc86e84e/nixexprs.tar.xz",
+      "hash": "1wjxchdddy9xd0iba0w2hwcam3d15qjg5b17didwabfwvw8rqv8r"
     },
     "noctalia-shell": {
       "type": "GitRelease",

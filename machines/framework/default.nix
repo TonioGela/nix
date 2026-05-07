@@ -26,6 +26,9 @@
       sources.noctalia
     ];
 
+  # TODO Move packages from systemPackages to home-manager packages
+  # TODO Postgres is not running?
+
   home-manager.users.toniogela = {
     imports = with modules.home-manager; [
       dotfiles
@@ -110,5 +113,3 @@
     ripgrep
   ];
 }
-# TODO merge it with the home-manager config in the other repo and move packages from systemPackages to home-manager packages
-# TODO Postgres is not running?

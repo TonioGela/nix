@@ -20,5 +20,5 @@ let
 in
 {
   framework = builders.nixos "x86_64-linux" ./machines/framework;
-  # work = builders.home-manager ./machines/work.nix;
+  work = builders.home-manager ./machines/work;
 }

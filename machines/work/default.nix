@@ -16,10 +16,33 @@ in
     neovim
   ];
 
+  # Missing: Hypervolt HM module and restish autocomplete in zsh
+
+  home = {
+    username = "toniogela";
+    homeDirectory = "/Users/toniogela";
+    sessionVariables = {
+      NH_FILE = "/Users/toniogela/.config/hm/configuration.nix";
+      NH_ATTRP = "work";
+    };
+  };
+
+  home.file.".aws/config".source = ./aws_config;
+
   darwin.masAppIds = [
     "1352778147" # Bitwarden
     "1503136033" # Service Station
   ];
+
+  git = {
+    username = "Antonio Gelameris";
+    email = "antonio.gelameris@hypervolt.co.uk";
+    signingKey = "25901F702B062B05";
+    maintainedRepos = [
+      "/Users/toniogela/work/athena"
+      "/Users/toniogela/work/hypervolt-backend"
+    ];
+  };
 
   zsh = {
     extraEnv = "eval `/usr/libexec/path_helper -s`";
@@ -39,13 +62,6 @@ in
         echo "''${(l:16::0:)''$(printf '%x\n' $1)}"
       }
     '';
-  };
-
-  home.file.".aws/config".source = ./aws_config;
-
-  home.sessionVariables = {
-    NH_FILE = "/Users/toniogela/.config/nix/configuration.nix";
-    NH_ATTRP = "work";
   };
 
   home.packages =
@@ -75,7 +91,7 @@ in
       pkgs.npins
       pkgs.pgcli
       pkgs.ripgrep
-      pkgsUnstable.slacks
+      pkgsUnstable.slack
       pkgs.terraform
       pkgs.vault
       pkgs.websocat
@@ -91,16 +107,6 @@ in
       derivations.source-code-syntax-highlight
       derivations.ice-bar
     ];
-
-  git = {
-    username = "Antonio Gelameris";
-    email = "antonio.gelameris@hypervolt.co.uk";
-    signingKey = "25901F702B062B05";
-    maintainedRepos = [
-      "/Users/toniogela/work/athena"
-      "/Users/toniogela/work/hypervolt-backend"
-    ];
-  };
 
   launchd.agents.glabAuthRefresh = {
     config = {

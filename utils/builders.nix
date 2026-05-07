@@ -69,26 +69,28 @@
       pkgs = sources.pkgs;
       configuration = {
         imports = [ (import config { inherit sources modules; }) ];
-        config._module.args = {
-          pkgsUnstable = sources.pkgsUnstable;
-        };
-        home = {
-          enableNixpkgsReleaseCheck = true;
-          stateVersion = "25.11";
-        };
-        programs.home-manager.enable = true;
-        nix = {
-          package = sources.pkgs.nix;
-          settings = {
-            experimental-features = "nix-command";
-            nix-path = [
-              "nixpkgs=${sources.nixpkgs.outPath}"
-            ];
+        config = {
+          _module.args = {
+            pkgsUnstable = sources.pkgsUnstable;
           };
-          gc = {
-            automatic = true;
-            persistent = true;
-            dates = "monthly";
+          home = {
+            enableNixpkgsReleaseCheck = true;
+            stateVersion = "25.11";
+          };
+          programs.home-manager.enable = true;
+          nix = {
+            package = sources.pkgs.nix;
+            settings = {
+              experimental-features = "nix-command";
+              nix-path = [
+                "nixpkgs=${sources.nixpkgs.outPath}"
+              ];
+            };
+            gc = {
+              automatic = true;
+              persistent = true;
+              dates = "monthly";
+            };
           };
         };
       };
