@@ -77,7 +77,7 @@
     "metals.superMethodLensesEnabled": false,
     "metals.verboseCompilation": true,
     "nix.enableLanguageServer": true,
-    "nix.serverPath": "/run/current-system/sw/bin/nixd",
+    "nix.serverPath": "${env:NIXD_PATH}",
     "nix.serverSettings": {
         "nixd": {
             "formatting": {

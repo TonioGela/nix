@@ -1,0 +1,91 @@
+{ pkgs, config, ...}: 
+{
+  options = {
+    kitty.fontSize = pkgs.lib.mkOption {
+      type = pkgs.lib.types.str;
+      default = "10.0";
+    };
+    kitty.extraConfig = pkgs.lib.mkOption {
+      type = pkgs.lib.types.str;
+      default = "";
+    };
+  };
+
+ config = {
+
+  home.packages = [ pkgs.kitty ];
+
+  home.file.".config/kitty/kitty.conf".text = ''
+  # Font
+  font_family      family="SauceCodePro Nerd Font Mono"
+  bold_font        auto
+  italic_font      auto
+  bold_italic_font auto
+  font_size ${config.kitty.fontSize}
+  
+  # Cosmetic
+  scrollback_indicator_opacity 1.0
+  window_padding_width         0 2
+  cursor_shape                 beam
+  background_opacity           1
+  dynamic_background_opacity   yes
+  active_border_color          none
+  hide_window_decorations      titlebar-only
+  
+  # Performance
+  repaint_delay 16
+  sync_to_monitor yes
+  
+  # Behaviour
+  mouse_hide_wait                    1.0
+  enable_audio_bell                  no
+  shell_integration                  disabled
+  confirm_os_window_close            0
+  
+  # Shortcuts
+  clear_all_shortcuts yes
+  map ctrl+c                copy_or_interrupt
+  map ctrl+v                paste_from_clipboard
+  map cmd+backspace         send_text all \x17
+  map cmd+shift+backspace   send_text all \x15
+  map cmd+alt+minus         change_font_size all -1.0
+  map cmd+alt+equal         change_font_size all +1.0
+  # This pairs with a config in nvim that toggles NvimTree
+  map cmd+b                 send_text all \x02
+  
+  # Nord Theme from https://github.com/connorholyday/nord-kitty/blob/master/nord.conf
+  foreground            #D8DEE9
+  background            #2E3440
+  selection_foreground  #000000
+  selection_background  #FFFACD
+  url_color             #0087BD
+  cursor                #81A1C1
+  # black
+  color0  #3B4252
+  color8    #4C566A
+  # red
+  color1   #BF616A
+  color9   #BF616A
+  # green
+  color2   #A3BE8C
+  color10  #A3BE8C
+  # yellow
+  color3   #EBCB8B
+  color11  #EBCB8B
+  # blue
+  color4  #81A1C1
+  color12 #81A1C1
+  # magenta
+  color5   #B48EAD
+  color13  #B48EAD
+  # cyan
+  color6   #88C0D0
+  color14  #8FBCBB
+  # white
+  color7   #E5E9F0
+  color15  #ECEFF4
+
+  ${config.kitty.extraConfig}
+ '';
+ };
+}

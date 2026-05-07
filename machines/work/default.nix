@@ -16,6 +16,7 @@ in
     yabai-skhd
     zsh
     darwin
+    kitty
     neovim
   ];
 
@@ -45,6 +46,16 @@ in
       "/Users/toniogela/work/athena"
       "/Users/toniogela/work/hypervolt-backend"
     ];
+  };
+
+  kitty = {
+    fontSize = "14.0";
+    extraConfig = ''
+      map cmd+c                 copy_to_clipboard
+      map cmd+v                 paste_from_clipboard
+      map cmd+w                 close_os_window
+      macos_quit_when_last_window_closed yes
+    '';
   };
 
   zsh = {

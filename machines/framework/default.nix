@@ -36,6 +36,7 @@
       git
       scala
       vscodium
+      kitty
       neovim
     ];
 
@@ -100,7 +101,6 @@
 
     # GUI programs
     bitwarden-desktop
-    kitty
     mpv
     qbittorrent
     vesktop
