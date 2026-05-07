@@ -23,6 +23,7 @@ in
     username = "toniogela";
     homeDirectory = "/Users/toniogela";
     sessionVariables = {
+      NIXD_PATH = sources.pkgs.lib.getExe sources.pkgs.nixd;
       NH_FILE = "/Users/toniogela/.config/hm/configuration.nix";
       NH_ATTRP = "work";
     };
@@ -111,6 +112,7 @@ in
     ];
 
   launchd.agents.glabAuthRefresh = {
+    enable = false;
     config = {
       Label = "dev.toniogela.glabAuthRefresh";
       ProgramArguments = [

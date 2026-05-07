@@ -59,8 +59,9 @@
   };
 
   environment = {
-    variables."NH_FILE" = "/home/toniogela/.config/nix/configuration.nix";
-    variables."NH_ATTRP" = "framework";
+    variables.NIXD_PATH = sources.pkgs.lib.getExe sources.pkgs.nixd;
+    variables.NH_FILE = "/home/toniogela/.config/nix/configuration.nix";
+    variables.NH_ATTRP = "framework";
   };
 
   networking.hostName = "toniogela-nixos-fw13";
