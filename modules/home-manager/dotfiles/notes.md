@@ -1,6 +1,6 @@
-Import git config from HM
-fix noctalia plugins and settings and use HM maybe
+settings cycler on vscodium
 
+fix noctalia plugins and settings and use HM maybe
 Learn how to manage gpg keys and then consider using pass
 firefox vim extension?
 disko: partition order and names in content

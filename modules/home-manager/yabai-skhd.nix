@@ -7,7 +7,6 @@
 let
   skhdExe = lib.getExe pkgs.skhd;
   yabaiExe = lib.getExe pkgs.yabai;
-  firefoxCommand = "cmd + shift - return : open '${config.home.homeDirectory}/Applications/Home Manager Apps/Firefox.app'";
 in
 {
   home.packages = [
@@ -37,7 +36,7 @@ in
     alt + cmd - r : ${skhdExe} --restart-service && ${yabaiExe} --restart-service
 
     cmd - return : /Users/toniogela/.nix-profile/bin/kitty "${config.home.homeDirectory}"
-    ${firefoxCommand}
+    cmd + shift - return : open '${config.home.homeDirectory}/Applications/Home Manager Apps/Firefox.app'
     cmd + shift - s: open "/Users/toniogela/Applications/Home Manager Apps/Slack.app"
 
     # Toggle window padding
