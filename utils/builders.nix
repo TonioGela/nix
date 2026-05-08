@@ -17,6 +17,7 @@
         nixpkgs.pkgs = sources.pkgs;
 
         nix = {
+          package = sources.pkgsUnstable.nix;
           channel.enable = false;
           settings.experimental-features = [ "nix-command" ];
           nixPath = [
@@ -38,9 +39,9 @@
         system.copySystemConfiguration = true;
         system.stateVersion = "25.11";
 
-        environment.systemPackages = with sources.pkgs; [
-          nh
-          npins
+        environment.systemPackages = [
+          sources.pkgsUnstable.nh
+          sources.pkgsUnstable.npins
         ];
 
         time.timeZone = "Europe/Rome";

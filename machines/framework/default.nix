@@ -7,7 +7,7 @@
       audio
       greetd
       network
-      # postgres
+      postgres
       power
       printers
       quiet-boot

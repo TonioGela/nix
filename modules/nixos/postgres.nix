@@ -14,7 +14,7 @@
         POSTGRES_DB = "postgres";
       };
       volumes = [
-        "/home/toniogela/postgres-volume:/var/lib/postgresql/data"
+        "/home/toniogela/.config/postgres-volume:/var/lib/postgresql/data"
         "/run/postgresql:/var/run/postgresql"
       ];
     };
