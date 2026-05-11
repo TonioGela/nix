@@ -42,6 +42,10 @@
           mime = "video/*";
           use = "play";
         }
+        {
+          mime = "text/html";
+          use = "html";
+        }
       ];
 
       # opener.image = [
@@ -56,7 +60,7 @@
       opener.play = [
         {
           run = "mpv \"$@\"";
-          desc = "mpv player";
+          desc = "Mpv Video Player";
           orphan = true;
         }
       ];
@@ -65,6 +69,14 @@
         {
           run = "zathura \"$@\"";
           desc = "Zathura PDF viewer";
+          orphan = true;
+        }
+      ];
+
+      opener.html = [
+        {
+          run = "firefox \"$@\"";
+          desc = "Firefox Web Browser";
           orphan = true;
         }
       ];

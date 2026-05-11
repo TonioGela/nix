@@ -238,10 +238,10 @@ in
           bindkey "^[[B" history-beginning-search-forward-end
           bindkey "^[[1;9D" beginning-of-line
           bindkey "^[[1;9C" end-of-line
-          bindkey "^[[1;2D" backward-word
-          bindkey "^[[1;2C" forward-word
-          bindkey "^[[1;3D" backward-word
-          bindkey "^[[1;3C" forward-word
+          bindkey "^[[1;2D" backward-word # shift+left
+          bindkey "^[[1;2C" forward-word  # shift+right
+          bindkey "^[[1;3D" backward-word # alt+left
+          bindkey "^[[1;3C" forward-word  # alt+right
           bindkey "^[[1;10D" backward-word
           bindkey "^[[1;10C" forward-word
           bindkey "^E" edit-command-line
