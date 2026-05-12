@@ -10,14 +10,14 @@ in
     dotfiles
     firefox
     git
-    neovim
     scala
     vscodium
-    yabai-skhd
-    zsh
     darwin
     kitty
     neovim
+    yabai-skhd
+    yazi
+    zsh
   ];
 
   home = {
@@ -102,7 +102,7 @@ in
       pkgs.nix-index
       pkgs.nixd
       pkgs.nixfmt-rfc-style
-      pkgs.npins
+      pkgsUnstable.npins
       pkgs.pgcli
       pkgs.ripgrep
       pkgsUnstable.slack
