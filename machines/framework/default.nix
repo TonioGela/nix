@@ -91,6 +91,8 @@
     nixd
     nixfmt
 
+    gtk3
+
     # TODO Reference them in the niri config
     brightnessctl
     playerctl
