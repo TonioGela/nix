@@ -6,8 +6,6 @@ recent-windows { off; }
 hotkey-overlay { skip-at-startup; }
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
-
-
 switch-events { lid-close { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }; }
 
 input {
@@ -86,6 +84,12 @@ window-rule {
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
+}
+
+window-rule {
+    match app-id="com.libretro.RetroArch"
+    open-focused true
+    open-fullscreen true
 }
 
 binds {
