@@ -198,6 +198,31 @@ in
           name = "Chargers";
           url = "https://hypervolt.atlassian.net/wiki/spaces/ENG/pages/881950721/Engineering+Cloud+Chargers";
         }
+        {
+          name = "Repos";
+          bookmarks = [
+            {
+              name = "Dashboard";
+              url = "https://dashboard.eng.hypervolt.dev";
+            }
+            {
+              name = "Repo: Backend";
+              url = "https://gitlab.com/hypervolt/hypervolt-backend";
+            }
+            {
+              name = "Repo: Libs";
+              url = "https://gitlab.com/hypervolt/cloud/hypervolt-libs";
+            }
+            {
+              name = "Repo: Athena";
+              url = "https://gitlab.com/hypervolt/checkout/athena";
+            }
+            {
+              name = "Repo: RFCs";
+              url = "https://gitlab.com/hypervolt/cloud/backend-rfcs/-/merge_requests";
+            }
+          ];
+        }
       ];
     }
   ];
