@@ -1,6 +1,7 @@
 { sources, modules }:
 {
   imports = [
+    modules.nixos.niri
     modules.nixos.noctalia
     modules.nixos.plymouth
     modules.nixos.audio
@@ -22,7 +23,6 @@
   home-manager.users.toniogela.imports = [
     modules.home-manager.firefox
     modules.home-manager.git
-    modules.home-manager.niri
     modules.home-manager.retro-gaming
     modules.home-manager.scala
     modules.home-manager.vscodium
@@ -98,8 +98,6 @@
 
   boot.kernelPackages = sources.pkgsUnstable.linuxPackages;
 
-  programs.niri.enable = true;
-
   programs.nix-ld = {
     enable = true;
     libraries = with sources.pkgs; [ zlib ];
@@ -108,12 +106,6 @@
   environment.systemPackages = with sources.pkgs; [
     nixd
     nixfmt
-
-    # TODO Reference them in the niri config
-    brightnessctl
-    playerctl
-    swaybg
-    wl-clipboard-rs
 
     # GUI programs
     bitwarden-desktop
