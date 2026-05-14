@@ -33,6 +33,7 @@
       git
       scala
       vscodium
+      hide-desktop-entries
       kitty
       neovim
       retro-gaming
@@ -55,6 +56,25 @@
       enableZshIntegration = true;
       pinentry.package = sources.pkgs.pinentry-tty;
     };
+
+    desktopEntriesToHide = [
+      {
+        filename = "cups";
+        name = "Manage Printing";
+      }
+      {
+        filename = "mpv";
+        name = "mpv Media Player";
+      }
+      {
+        filename = "nixos-manual";
+        name = "NixOS Manual";
+      }
+      {
+        filename = "nvim";
+        name = "Neovim wrapper";
+      }
+    ];
   };
 
   environment = {

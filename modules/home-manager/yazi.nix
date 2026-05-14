@@ -4,6 +4,11 @@
   ...
 }:
 {
+  xdg.desktopEntries.yazi = {
+    name = "yazi";
+    noDisplay = true;
+  };
+
   programs.yazi = {
     package = pkgsUnstable.yazi;
     enable = true;

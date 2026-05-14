@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }:
 let
@@ -33,6 +34,12 @@ let
   ];
 in
 {
+
+  xdg.desktopEntries.codium = lib.mkIf pkgs.stdenv.isLinux {
+    name = "VSCodium";
+    noDisplay = true;
+  };
+
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium.override {

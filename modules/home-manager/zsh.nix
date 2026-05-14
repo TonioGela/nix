@@ -156,6 +156,11 @@ in
       };
     };
 
+    xdg.desktopEntries."org.pwmt.zathura" = {
+      name = "Zathura";
+      noDisplay = true;
+    };
+
     programs.zsh = {
       enable = true;
       autocd = false;
