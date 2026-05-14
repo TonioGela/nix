@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgsUnstable,
   lib,
   config,
   ...
@@ -34,6 +35,7 @@ in
 {
   programs.retroarch = {
     enable = true;
+    package = pkgsUnstable.retroarch-bare;
     # Every core.<something>.enable uses pkgs.libretro.<something>
     cores = {
       mgba.enable = true;
