@@ -7,6 +7,7 @@ rec {
     sources.fw13-hardware
     sources.disko
     ./disko.nix
+    ./moon.nix
   ];
 
   nixpkgs.hostPlatform = sources.pkgs.lib.mkDefault "x86_64-linux";

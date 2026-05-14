@@ -35,7 +35,7 @@
       vscodium
       kitty
       neovim
-      retroarch
+      retro-gaming
     ];
 
     git.username = "Antonio Gelameris";
