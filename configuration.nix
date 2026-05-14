@@ -7,7 +7,7 @@ let
     fw13-hardware = import (pins.nixos-hardware + "/framework/13-inch/amd-ai-300-series");
     disko = pins.disko + "/module.nix";
     noctalia = (import pins.flake-compat { src = pins.noctalia-shell; }).outputs.nixosModules.default;
-    nix-index-database = import (pins.nix-index-database + "/nixos-module.nix");
+    nix-index-database = import (pins.nix-index-database + "/home-manager-module.nix");
     nixosBuilder = import (pins.nixpkgs + "/nixos");
     homeManagerBuilder = import (pins.home-manager + "/modules");
   };

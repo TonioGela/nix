@@ -15,7 +15,6 @@
     modules.nixos.trimui
     modules.nixos.udisks
     modules.nixos.virtualisation
-    sources.nix-index-database
     ./hardware.nix
     ./amd-fix.nix
   ];
@@ -31,6 +30,7 @@
     modules.home-manager.hide-desktop-entries
     modules.home-manager.kitty
     modules.home-manager.neovim
+    modules.home-manager.nix-index
     modules.home-manager.yazi
     modules.home-manager.zsh
   ];
@@ -99,7 +99,6 @@
   boot.kernelPackages = sources.pkgsUnstable.linuxPackages;
 
   programs.niri.enable = true;
-  programs.nix-index-database.comma.enable = true;
 
   programs.nix-ld = {
     enable = true;

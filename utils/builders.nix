@@ -54,6 +54,7 @@
         home-manager = {
           useGlobalPkgs = true; # use system's nixpkgs
           useUserPackages = true; # installs user packages via users.users.<name>.packages
+          extraSpecialArgs = { inherit sources; };
           sharedModules = [
             {
               _module.args = {
@@ -69,10 +70,11 @@
         };
       };
     };
-  home-manager =
+  home-manager = # TODO add nh and npins here instead that on conf itself
     config:
     sources.homeManagerBuilder {
       pkgs = sources.pkgs;
+      extraSpecialArgs = { inherit sources; };
       configuration = {
         imports = [ (import config { inherit sources modules; }) ];
         config = {

@@ -7,7 +7,6 @@ in
 {
   imports = with modules.home-manager; [
     hypervolt-modules
-    dotfiles
     firefox
     git
     scala
