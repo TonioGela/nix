@@ -178,6 +178,6 @@
     "explorer.excludeGitIgnore": true,
     "explorer.confirmDragAndDrop": false,
     "window.titleBarStyle": "native",
-    "workbench.activityBar.location": "hidden",
-    "metals.startMcpServer": true
+    "metals.startMcpServer": true,
+    "workbench.activityBar.location": "hidden"
 }
