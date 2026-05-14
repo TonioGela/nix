@@ -60,7 +60,7 @@ in
   home.file.".config/ES-DE/settings/es_settings.xml".source =
     config.lib.file.mkOutOfStoreSymlink ./es_settings.xml;
 
-  xdg.desktopEntries.emulationstation-de = {
+  xdg.desktopEntries.emulationstation-de = lib.mkIf pkgs.stdenv.isLinux {
     name = "EmulationStation DE";
     exec = "emulationstation-de %U";
     categories = [ "Game" ];

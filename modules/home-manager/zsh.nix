@@ -156,7 +156,7 @@ in
       };
     };
 
-    xdg.desktopEntries."org.pwmt.zathura" = {
+    xdg.desktopEntries."org.pwmt.zathura" = lib.mkIf pkgs.stdenv.isLinux {
       name = "Zathura";
       noDisplay = true;
     };

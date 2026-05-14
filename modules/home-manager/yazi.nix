@@ -1,10 +1,11 @@
 {
   pkgs,
+  lib,
   pkgsUnstable,
   ...
 }:
 {
-  xdg.desktopEntries.yazi = {
+  xdg.desktopEntries.yazi = lib.mkIf pkgs.stdenv.isLinux {
     name = "yazi";
     noDisplay = true;
   };
