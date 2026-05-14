@@ -62,6 +62,7 @@ in
     name = "EmulationStation DE";
     exec = "emulationstation-de %U";
     categories = [ "Game" ];
+    icon = ./ES-DE.ico;
     comment = "EmulationStation Desktop Edition";
   };
 }
