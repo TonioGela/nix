@@ -1,44 +1,41 @@
 { sources, modules }:
 {
-  imports =
-    with modules.nixos;
-    [
-      plymouth
-      audio
-      greetd
-      network
-      postgres
-      power
-      printers
-      quiet-boot
-      security
-      steam
-      trimui
-      udisks
-      virtualisation
-      yazi
-      zsh
-    ]
-    ++ [
-      ./hardware.nix
-      ./amd-fix.nix
-      sources.nix-index-database
-      sources.noctalia
-    ];
+  imports = [
+    modules.nixos.noctalia
+    modules.nixos.plymouth
+    modules.nixos.audio
+    modules.nixos.greetd
+    modules.nixos.network
+    modules.nixos.postgres
+    modules.nixos.power
+    modules.nixos.printers
+    modules.nixos.quiet-boot
+    modules.nixos.security
+    modules.nixos.steam
+    modules.nixos.trimui
+    modules.nixos.udisks
+    modules.nixos.virtualisation
+    sources.nix-index-database
+    ./hardware.nix
+    ./amd-fix.nix
+  ];
+
+  home-manager.users.toniogela.imports = [
+    modules.home-manager.firefox
+    modules.home-manager.git
+    modules.home-manager.niri
+    modules.home-manager.retro-gaming
+    modules.home-manager.scala
+    modules.home-manager.vscodium
+    modules.home-manager.zathura
+    modules.home-manager.hide-desktop-entries
+    modules.home-manager.kitty
+    modules.home-manager.neovim
+    modules.home-manager.yazi
+    modules.home-manager.zsh
+  ];
 
   home-manager.users.toniogela = {
-    imports = with modules.home-manager; [
-      dotfiles
-      firefox
-      git
-      scala
-      vscodium
-      hide-desktop-entries
-      kitty
-      neovim
-      retro-gaming
-    ];
-
     git.username = "Antonio Gelameris";
     git.email = "toniogela89@gmail.com";
     git.signingKey = "";
@@ -96,10 +93,12 @@
     ];
   };
 
+  programs.zsh.enable = true;
+  users.defaultUserShell = sources.pkgs.zsh;
+
   boot.kernelPackages = sources.pkgsUnstable.linuxPackages;
 
   programs.niri.enable = true;
-  services.noctalia-shell.enable = true;
   programs.nix-index-database.comma.enable = true;
 
   programs.nix-ld = {
@@ -110,8 +109,6 @@
   environment.systemPackages = with sources.pkgs; [
     nixd
     nixfmt
-
-    gtk3
 
     # TODO Reference them in the niri config
     brightnessctl
@@ -127,10 +124,5 @@
 
     # CLI Utilities
     claude-code
-    fd
-    fzf
-    gh
-    icdiff
-    ripgrep
   ];
 }

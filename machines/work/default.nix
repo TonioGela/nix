@@ -91,7 +91,6 @@ in
       pkgs.eza
       pkgs.fd
       pkgs.fzf
-      pkgsUnstable.gh
       pkgsUnstable.glab
       pkgs.gnupg
       pkgs.icdiff

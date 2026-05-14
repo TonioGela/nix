@@ -114,7 +114,10 @@ in
       pkgs.zoxide
       pkgs.eza
       pkgs.bat
-      pkgs.zathura
+      pkgs.fd
+      pkgs.fzf
+      pkgs.icdiff
+      pkgs.ripgrep
     ];
 
     home.file."${dotDir}/create_prompt".text = ''

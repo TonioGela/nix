@@ -10,6 +10,8 @@
     noDisplay = true;
   };
 
+  home.packages = [ pkgs.ripdrag ];
+
   programs.yazi = {
     package = pkgsUnstable.yazi;
     enable = true;

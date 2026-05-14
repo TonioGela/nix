@@ -193,6 +193,7 @@ in
     };
 
     home.packages = [
+      pkgsUnstable.gh
       pkgs.git-standup
       pkgs.git-absorb
       pkgs.git-crypt
