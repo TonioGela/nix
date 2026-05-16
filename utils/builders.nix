@@ -11,48 +11,52 @@
           sources.homeManager
         ];
 
-        nixpkgs.pkgs = sources.pkgs;
+        config = {
 
-        nix = {
-          package = sources.pkgsUnstable.nix;
-          channel.enable = false;
-          settings.experimental-features = [ "nix-command" ];
-          nixPath = [
-            "nixpkgs=${builtins.storePath sources.pkgs.path}"
-          ];
-          optimise = {
-            automatic = true;
-            persistent = true;
-            dates = "weekly";
+          nixpkgs.pkgs = sources.pkgs;
+
+          nix = {
+            package = sources.pkgsUnstable.nix;
+            channel.enable = false;
+            settings.experimental-features = [ "nix-command" ];
+            nixPath = [
+              "nixpkgs=${builtins.storePath sources.pkgs.path}"
+            ];
+            optimise = {
+              automatic = true;
+              persistent = true;
+              dates = "weekly";
+            };
           };
-        };
 
-        system.copySystemConfiguration = true;
-        system.stateVersion = "25.11";
+          system.copySystemConfiguration = true;
+          system.stateVersion = "25.11";
 
-        time.timeZone = "Europe/Rome";
-        fonts.packages = [ sources.pkgs.nerd-fonts.sauce-code-pro ];
-        i18n = {
-          defaultLocale = "en_GB.UTF-8";
-          extraLocales = [ "it_IT.UTF-8/UTF-8" ];
-        };
+          time.timeZone = "Europe/Rome";
+          fonts.packages = [ sources.pkgs.nerd-fonts.sauce-code-pro ];
+          i18n = {
+            defaultLocale = "en_GB.UTF-8";
+            extraLocales = [ "it_IT.UTF-8/UTF-8" ];
+          };
 
-        home-manager = {
-          useGlobalPkgs = true; # use system's nixpkgs
-          useUserPackages = true; # installs user packages via users.users.<name>.packages
-          extraSpecialArgs = { inherit sources; };
-          sharedModules = [
-            {
-              _module.args = {
-                pkgsUnstable = sources.pkgsUnstable;
-              };
-              home = {
-                enableNixpkgsReleaseCheck = true;
-                stateVersion = "25.11";
-              };
-              programs.home-manager.enable = true;
-            }
-          ];
+          home-manager = {
+            useGlobalPkgs = true; # use system's nixpkgs
+            useUserPackages = true; # installs user packages via users.users.<name>.packages
+            extraSpecialArgs = { inherit sources; };
+            sharedModules = [
+              {
+                _module.args = {
+                  pkgsUnstable = sources.pkgsUnstable;
+                };
+                home = {
+                  enableNixpkgsReleaseCheck = true;
+                  stateVersion = "25.11";
+                };
+                programs.home-manager.enable = true;
+              }
+            ];
+          };
+
         };
       };
     };
