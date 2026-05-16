@@ -1,17 +1,29 @@
 { sources, modules }:
 let
   stateVersion = "25.11";
+  specialArgs = { inherit sources modules; };
 
-  commonHomeManagerSettings = {
+  # Passed as a nixos module to nixos and as a hm module to hm
+  commonNixSettings =
+    { pkgs, pkgsUnstable, ... }:
+    {
+      nix.package = pkgsUnstable.nix;
+      nix.settings.experimental-features = [ "nix-command" ];
+      nix.nixPath = [ "nixpkgs=${builtins.storePath pkgs.path}" ];
+    };
+
+  # Passed as a hm module to both builders but also as a nixos module to nixos
+  additionsModuleArgs = {
     _module.args.pkgsUnstable = sources.pkgsUnstable;
+  };
 
+  # Passed as a hm module to both builders
+  commonHomeManagerSettings = {
+    imports = [ additionsModuleArgs ];
     programs.home-manager.enable = true;
     home.enableNixpkgsReleaseCheck = true;
     home.stateVersion = stateVersion;
   };
-
-  # This get passed both to nixos and home-manager modules
-  specialArgs = { inherit sources modules; };
 in
 {
   nixos =
@@ -21,25 +33,20 @@ in
       configuration = {
         imports = [
           sources.homeManager
+          commonNixSettings
+          additionsModuleArgs
           (import config)
         ];
 
         config = {
-          _module.args.pkgsUnstable = sources.pkgsUnstable;
-
           nixpkgs.pkgs = sources.pkgs;
           system.stateVersion = stateVersion;
 
-          nix = {
-            package = sources.pkgsUnstable.nix;
-            nixPath = [ "nixpkgs=${builtins.storePath sources.pkgs.path}" ];
-            channel.enable = false;
-            settings.experimental-features = [ "nix-command" ];
-            optimise = {
-              automatic = true;
-              persistent = true;
-              dates = "weekly";
-            };
+          nix.channel.enable = false;
+          nix.optimise = {
+            automatic = true;
+            persistent = true;
+            dates = "weekly";
           };
 
           home-manager = {
@@ -60,14 +67,9 @@ in
       configuration = {
         imports = [
           commonHomeManagerSettings
+          commonNixSettings
           (import config)
         ];
-
-        config = {
-          nix.package = sources.pkgsUnstable.nix;
-          nix.settings.experimental-features = [ "nix-command" ];
-          nix.nixPath = [ "nixpkgs=${builtins.storePath sources.pkgs.path}" ];
-        };
       };
     };
 }
