@@ -55,6 +55,9 @@
   users.defaultUserShell = pkgs.zsh;
 
   fonts.packages = [ pkgs.nerd-fonts.sauce-code-pro ];
+  time.timeZone = "Europe/Rome";
+  i18n.defaultLocale = "en_GB.UTF-8";
+  i18n.extraLocales = [ "it_IT.UTF-8/UTF-8" ];
 
   users.users.toniogela.isNormalUser = true;
   users.users.toniogela.extraGroups = [

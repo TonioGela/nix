@@ -1,4 +1,4 @@
-{ sources, modules }:
+{ sources, modules, ... }:
 let
   pins = import ./npins;
   hypervolt-modules = import pins.hypervolt-modules;

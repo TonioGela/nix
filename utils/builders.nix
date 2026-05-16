@@ -1,50 +1,52 @@
 { sources, modules }:
+let
+  stateVersion = "25.11";
+
+  commonHomeManagerSettings = {
+    _module.args.pkgsUnstable = sources.pkgsUnstable;
+
+    programs.home-manager.enable = true;
+    home.enableNixpkgsReleaseCheck = true;
+    home.stateVersion = stateVersion;
+  };
+
+  # This get passed both to nixos and home-manager modules
+  specialArgs = { inherit sources modules; };
+in
 {
   nixos =
     system: config:
     sources.nixosBuilder {
-      inherit system;
-      specialArgs = { inherit sources modules; };
+      inherit system specialArgs;
       configuration = {
         imports = [
-          (import config)
           sources.homeManager
+          (import config)
         ];
 
         config = {
           _module.args.pkgsUnstable = sources.pkgsUnstable;
 
-          nix.optimise.automatic = true;
-          nix.optimise.persistent = true;
-          nix.optimise.dates = "weekly";
-
-          # Can't set it to true if you don't have nixos-config in nix path
-          system.copySystemConfiguration = false;
-          system.stateVersion = "25.11";
-
-          time.timeZone = "Europe/Rome";
-          i18n.defaultLocale = "en_GB.UTF-8";
-          i18n.extraLocales = [ "it_IT.UTF-8/UTF-8" ];
-
           nixpkgs.pkgs = sources.pkgs;
-          nix.package = sources.pkgsUnstable.nix;
-          nix.channel.enable = false;
-          nix.settings.experimental-features = [ "nix-command" ];
-          nix.nixPath = [ "nixpkgs=${builtins.storePath sources.pkgs.path}" ];
+          system.stateVersion = stateVersion;
+
+          nix = {
+            package = sources.pkgsUnstable.nix;
+            nixPath = [ "nixpkgs=${builtins.storePath sources.pkgs.path}" ];
+            channel.enable = false;
+            settings.experimental-features = [ "nix-command" ];
+            optimise = {
+              automatic = true;
+              persistent = true;
+              dates = "weekly";
+            };
+          };
 
           home-manager = {
             useGlobalPkgs = true; # use system's nixpkgs
             useUserPackages = true; # installs user packages via users.users.<name>.packages
-            extraSpecialArgs = { inherit sources; };
-            sharedModules = [
-              {
-                _module.args.pkgsUnstable = sources.pkgsUnstable;
-
-                programs.home-manager.enable = true;
-                home.enableNixpkgsReleaseCheck = true;
-                home.stateVersion = "25.11";
-              }
-            ];
+            extraSpecialArgs = specialArgs;
+            sharedModules = [ commonHomeManagerSettings ];
           };
         };
       };
@@ -54,21 +56,17 @@
     config:
     sources.homeManagerBuilder {
       pkgs = sources.pkgs;
-      extraSpecialArgs = { inherit sources; };
+      extraSpecialArgs = specialArgs;
       configuration = {
-        imports = [ (import config { inherit sources modules; }) ]; # TODO Do the same on mac
+        imports = [
+          commonHomeManagerSettings
+          (import config)
+        ];
+
         config = {
-          _module.args.pkgsUnstable = sources.pkgsUnstable;
-
-          programs.home-manager.enable = true;
-          home.enableNixpkgsReleaseCheck = true;
-          home.stateVersion = "25.11";
-
-          nixpkgs.pkgs = sources.pkgs;
           nix.package = sources.pkgsUnstable.nix;
-          nix.channel.enable = false;
-          nix.settings.experimental-features = "nix-command";
-          nix.settings.nix-path = [ "nixpkgs=${builtins.storePath sources.pkgs.path}" ];
+          nix.settings.experimental-features = [ "nix-command" ];
+          nix.nixPath = [ "nixpkgs=${builtins.storePath sources.pkgs.path}" ];
         };
       };
     };
