@@ -41,6 +41,7 @@ in
       mgba.enable = true;
       snes9x.enable = true;
       gambatte.enable = true;
+      beetle-psx-hw.enable = true;
     };
     # settings = {};
   };
