@@ -10,7 +10,6 @@ let
       nix.package = pkgsUnstable.nix;
       nix.settings.experimental-features = [ "nix-command" ];
       nix.nixPath = [ "nixpkgs=${builtins.storePath pkgs.path}" ];
-      nixpkgs.config.allowUnfree = true;
     };
 
   # Passed as a hm module to both builders but also as a nixos module to nixos
@@ -71,6 +70,11 @@ in
           commonNixSettings
           (import config)
         ];
+
+        config = {
+          # I can't understand how to make it inherit from the externally created instance
+          nixpkgs.config.allowUnfree = true;
+        };
       };
     };
 }
