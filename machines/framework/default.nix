@@ -65,15 +65,14 @@
     "kvm"
   ];
 
-  # Move into home-manager
-  environment.systemPackages = with pkgs; [
-    bitwarden-desktop
-    qbittorrent
-    vesktop
-    claude-code
-  ];
-
   home-manager.users.toniogela = {
+    home.packages = [
+      pkgs.bitwarden-desktop
+      pkgs.qbittorrent
+      pkgs.vesktop
+      pkgs.claude-code
+    ];
+
     git = {
       username = "Antonio Gelameris";
       email = "toniogela89@gmail.com";
