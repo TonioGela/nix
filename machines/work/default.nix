@@ -1,4 +1,10 @@
-{ sources, modules, ... }:
+{
+  sources,
+  modules,
+  pkgs,
+  pkgsUnstable,
+  ...
+}:
 let
   pins = import ./npins;
   hypervolt-modules = import pins.hypervolt-modules;
@@ -11,7 +17,9 @@ in
     git
     scala
     vscodium
+    zathura
     darwin
+    gpg
     kitty
     neovim
     nh-npins
@@ -24,9 +32,6 @@ in
   home = {
     username = "toniogela";
     homeDirectory = "/Users/toniogela";
-    sessionVariables = {
-      NIXD_PATH = sources.pkgs.lib.getExe sources.pkgs.nixd;
-    };
   };
 
   programs.nh = {
@@ -65,7 +70,7 @@ in
   zsh = {
     extraEnv = "eval `/usr/libexec/path_helper -s`";
     extraSessionVariables = {
-      TF_TOKEN_gitlab_com = "$(${sources.pkgs.lib.getExe sources.pkgs.yq} --exit-status --raw-output '.hosts[\"gitlab.com\"].token' ~/.config/glab-cli/config.yml)";
+      TF_TOKEN_gitlab_com = "$(${pkgs.lib.getExe pkgs.yq} --exit-status --raw-output '.hosts[\"gitlab.com\"].token' ~/.config/glab-cli/config.yml)";
     };
     extraAliases = {
       tf = "terraform";
@@ -82,51 +87,37 @@ in
     '';
   };
 
-  home.packages =
-    with sources;
-    [
-      pkgs.appcleaner
-      pkgs.aws-vault
-      pkgs.awscli2
-      pkgs.bat
-      pkgs.claude-code
-      pkgs.defaultbrowser
-      pkgs.eza
-      pkgs.fd
-      pkgs.fzf
-      pkgsUnstable.glab
-      pkgs.gnupg
-      pkgs.icdiff
-      pkgs.jwt-cli
-      pkgs.kitty
-      pkgs.nerd-fonts.sauce-code-pro
-      pkgs.nixd
-      pkgs.nixfmt-rfc-style
-      pkgs.pgcli
-      pkgs.ripgrep
-      pkgsUnstable.slack
-      pkgs.terraform
-      pkgs.vault
-      pkgs.websocat
-      pkgs.wireshark
-      pkgs.yq
-      pkgs.yubikey-manager
-      pkgs.zathura
-      pkgs.zoxide
-    ]
-    ++ [
-      derivations.keeping-you-awake
-      derivations.qlmarkdown
-      derivations.source-code-syntax-highlight
-      derivations.ice-bar
-    ];
+  home.packages = [
+    pkgs.appcleaner
+    pkgs.aws-vault
+    pkgs.awscli2
+    pkgs.claude-code
+    pkgs.defaultbrowser
+    pkgsUnstable.glab
+    pkgs.jwt-cli
+    pkgs.nerd-fonts.sauce-code-pro
+    pkgs.pgcli
+    pkgsUnstable.slack
+    pkgs.terraform
+    pkgs.vault
+    pkgs.websocat
+    pkgs.wireshark
+    pkgs.yq
+    pkgs.yubikey-manager
+  ]
+  ++ [
+    derivations.keeping-you-awake
+    derivations.qlmarkdown
+    derivations.source-code-syntax-highlight
+    derivations.ice-bar
+  ];
 
   launchd.agents.glabAuthRefresh = {
     enable = false;
     config = {
       Label = "dev.toniogela.glabAuthRefresh";
       ProgramArguments = [
-        "${sources.pkgs.lib.getExe sources.pkgsUnstable.glab}"
+        "${pkgs.lib.getExe pkgsUnstable.glab}"
         "auth"
         "status"
       ];

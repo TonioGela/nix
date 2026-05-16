@@ -70,6 +70,12 @@ in
           commonNixSettings
           (import config)
         ];
+
+        config = {
+          nixpkgs.config = {
+            # nixpkgs.pkgs = sources.pkgs;
+          };
+        };
       };
     };
 }
