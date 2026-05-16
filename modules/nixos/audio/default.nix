@@ -1,5 +1,6 @@
 { ... }:
 {
+  security.rtkit.enable = true;
   services.pulseaudio.enable = false;
   services.pipewire = {
     enable = true;
@@ -14,4 +15,16 @@
       "alsa.use-ucm" = false;
     };
   };
+
+  home-manager.sharedModules = [
+    {
+      services.easyeffects = {
+        enable = true;
+        preset = "framework-mic";
+        extraPresets = {
+          framework-mic = builtins.fromJSON (builtins.readFile ./framework-mic.json);
+        };
+      };
+    }
+  ];
 }

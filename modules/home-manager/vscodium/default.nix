@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgsUnstable,
   config,
   lib,
   ...
@@ -38,6 +39,15 @@ in
   xdg.desktopEntries.codium = lib.mkIf pkgs.stdenv.isLinux {
     name = "VSCodium";
     noDisplay = true;
+  };
+
+  home.packages = [
+    pkgsUnstable.nixd
+    pkgsUnstable.nixfmt
+  ];
+
+  home.sessionVariables = {
+    NIXD_PATH = lib.getExe pkgsUnstable.nixd;
   };
 
   programs.vscode = {

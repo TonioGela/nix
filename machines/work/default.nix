@@ -14,6 +14,8 @@ in
     darwin
     kitty
     neovim
+    nh-npins
+    nix-index
     yabai-skhd
     yazi
     zsh
@@ -24,9 +26,12 @@ in
     homeDirectory = "/Users/toniogela";
     sessionVariables = {
       NIXD_PATH = sources.pkgs.lib.getExe sources.pkgs.nixd;
-      NH_FILE = "/Users/toniogela/.config/home-manager/configuration.nix";
-      NH_ATTRP = "work";
     };
+  };
+
+  programs.nh = {
+    nhFile = "/Users/toniogela/.config/home-manager/configuration.nix";
+    nhAttrPath = "work";
   };
 
   home.file.".aws/config".source = ./aws_config;
@@ -85,7 +90,6 @@ in
       pkgs.awscli2
       pkgs.bat
       pkgs.claude-code
-      pkgs.comma
       pkgs.defaultbrowser
       pkgs.eza
       pkgs.fd
@@ -96,11 +100,8 @@ in
       pkgs.jwt-cli
       pkgs.kitty
       pkgs.nerd-fonts.sauce-code-pro
-      pkgs.nh
-      pkgs.nix-index
       pkgs.nixd
       pkgs.nixfmt-rfc-style
-      pkgsUnstable.npins
       pkgs.pgcli
       pkgs.ripgrep
       pkgsUnstable.slack

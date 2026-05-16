@@ -7,7 +7,7 @@
 {
 
   options = {
-    desktopEntriesToHide = pkgs.lib.mkOption {
+    xdg.desktopEntriesToHide = pkgs.lib.mkOption {
       type = pkgs.lib.types.listOf (
         pkgs.lib.types.submodule {
           options = {
@@ -34,7 +34,7 @@
           name = m.name;
           noDisplay = true;
         };
-      }) config.desktopEntriesToHide
+      }) config.xdg.desktopEntriesToHide
     )
   );
 }

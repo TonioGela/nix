@@ -24,11 +24,6 @@
             "nixpkgs=${builtins.storePath sources.pkgs.path}"
             "nixos-config=/etc/nixos/configuration.nix"
           ];
-          gc = {
-            automatic = true;
-            persistent = true;
-            dates = "weekly";
-          };
           optimise = {
             automatic = true;
             persistent = true;
@@ -38,11 +33,6 @@
 
         system.copySystemConfiguration = true;
         system.stateVersion = "25.11";
-
-        environment.systemPackages = [
-          sources.pkgsUnstable.nh
-          sources.pkgsUnstable.npins
-        ];
 
         time.timeZone = "Europe/Rome";
         fonts.packages = [ sources.pkgs.nerd-fonts.sauce-code-pro ];
