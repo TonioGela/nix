@@ -6,12 +6,12 @@
       inherit system;
       specialArgs = { inherit sources; };
       configuration = {
-        # options = {
-        #   homeManagerModules = sources.pkgs.lib.mkOption {
-        #     type = sources.pkgs.lib.types.listOf sources.pkgs.lib.types.str;
-        #     default = [ ];
-        #   };
-        # };
+        options = {
+          homeManagerModules = sources.pkgs.lib.mkOption {
+            type = sources.pkgs.lib.types.listOf sources.pkgs.lib.types.str;
+            default = [ ];
+          };
+        };
 
         imports = [
           (import config { inherit sources modules; })
