@@ -9,6 +9,7 @@
       audio
       greetd
       network
+      nix-ld
       postgres
       power
       printers
@@ -31,6 +32,7 @@
     scala
     vscodium
     zathura
+    gpg
     hide-desktop-entries
     kitty
     mpv
@@ -47,21 +49,14 @@
   programs.zsh.enable = true;
   users.defaultUserShell = sources.pkgs.zsh;
 
-  users.users.toniogela = {
-    isNormalUser = true;
-    extraGroups = [
-      "wheel"
-      "gamemode"
-      "lpadmin"
-      "input"
-      "kvm"
-    ];
-  };
-
-  programs.nix-ld = {
-    enable = true;
-    libraries = with sources.pkgs; [ zlib ];
-  };
+  users.users.toniogela.isNormalUser = true;
+  users.users.toniogela.extraGroups = [
+    "wheel"
+    "gamemode"
+    "lpadmin"
+    "input"
+    "kvm"
+  ];
 
   environment.systemPackages = with sources.pkgs; [
     bitwarden-desktop
@@ -88,13 +83,6 @@
         uuid = "{1b6043a9-46df-4352-adf6-553ce26b9106}";
       }
     ];
-    # https://tsawyer87.github.io/posts/gpg-agent_on_nixos/
-    programs.gpg.enable = true;
-    services.gpg-agent = {
-      enable = true;
-      enableZshIntegration = true;
-      pinentry.package = sources.pkgs.pinentry-tty;
-    };
 
     xdg.desktopEntriesToHide = [
       {
