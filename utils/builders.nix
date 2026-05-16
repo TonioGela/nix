@@ -6,13 +6,6 @@
       inherit system;
       specialArgs = { inherit sources; };
       configuration = {
-        # options = {
-        #   homeManagerModules = sources.pkgs.lib.mkOption {
-        #     type = sources.pkgs.lib.types.listOf sources.pkgs.lib.types.str;
-        #     default = [ ];
-        #   };
-        # };
-
         imports = [
           (import config { inherit sources modules; })
           sources.homeManager
@@ -48,15 +41,6 @@
           useGlobalPkgs = true; # use system's nixpkgs
           useUserPackages = true; # installs user packages via users.users.<name>.packages
           extraSpecialArgs = { inherit sources; };
-
-          # (builtins.listToAttrs (
-          #   map (n: {
-          #     name = n;
-          #     value = modules.home-manager.${n};
-          #   }) config.homeManagerModules
-          # ))
-          # ++
-
           sharedModules = [
             {
               _module.args = {
