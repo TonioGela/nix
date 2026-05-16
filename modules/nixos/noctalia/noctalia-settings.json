@@ -89,31 +89,24 @@
                     "textColor": "none"
                 },
                 {
-                    "iconColor": "none",
-                    "id": "KeepAwake",
-                    "textColor": "none"
-                },
-                {
-                    "deviceNativePath": "__default__",
-                    "displayMode": "icon-hover",
-                    "hideIfIdle": false,
-                    "hideIfNotDetected": false,
-                    "id": "Battery",
-                    "showNoctaliaPerformance": true,
-                    "showPowerProfiles": true
-                },
-                {
-                    "iconColor": "none",
-                    "id": "NoctaliaPerformance"
-                },
-                {
-                    "clockColor": "primary",
-                    "customFont": "SauceCodePro Nerd Font",
-                    "formatHorizontal": "HH:mm",
-                    "formatVertical": "HH mm",
-                    "id": "Clock",
-                    "tooltipFormat": "HH:mm",
-                    "useCustomFont": true
+                    "defaultSettings": {
+                        "compactMode": false,
+                        "defaultPeerAction": "copy-ip",
+                        "hideDisconnected": false,
+                        "hideMullvadExitNodes": true,
+                        "loginServer": "",
+                        "pingCount": 5,
+                        "refreshInterval": 5000,
+                        "showIpAddress": true,
+                        "showPeerCount": true,
+                        "showSearchBar": false,
+                        "sshUsername": "",
+                        "taildropDownloadDir": "~/Downloads",
+                        "taildropEnabled": true,
+                        "taildropReceiveMode": "operator",
+                        "terminalCommand": ""
+                    },
+                    "id": "plugin:tailscale"
                 },
                 {
                     "displayMode": "onhover",
@@ -126,6 +119,41 @@
                     "iconColor": "none",
                     "id": "Microphone",
                     "middleClickCommand": "pwvucontrol || pavucontrol",
+                    "textColor": "none"
+                },
+                {
+                    "clockColor": "primary",
+                    "customFont": "SauceCodePro Nerd Font",
+                    "formatHorizontal": "HH:mm",
+                    "formatVertical": "HH mm",
+                    "id": "Clock",
+                    "tooltipFormat": "HH:mm",
+                    "useCustomFont": true
+                },
+                {
+                    "defaultSettings": {
+                        "autoMount": false,
+                        "fileBrowser": "yazi",
+                        "hideWhenEmpty": false,
+                        "iconColor": "none",
+                        "showBadge": false,
+                        "showNotifications": true,
+                        "terminalCommand": "kitty"
+                    },
+                    "id": "plugin:usb-drive-manager"
+                },
+                {
+                    "deviceNativePath": "__default__",
+                    "displayMode": "icon-hover",
+                    "hideIfIdle": false,
+                    "hideIfNotDetected": false,
+                    "id": "Battery",
+                    "showNoctaliaPerformance": true,
+                    "showPowerProfiles": true
+                },
+                {
+                    "iconColor": "none",
+                    "id": "KeepAwake",
                     "textColor": "none"
                 },
                 {
@@ -160,53 +188,6 @@
                     "id": "Tray",
                     "pinned": [
                     ]
-                },
-                {
-                    "defaultSettings": {
-                        "autoPaste": false,
-                        "autoPasteDelay": 300,
-                        "autoPasteOnRightClick": false,
-                        "cardColors": {
-                        },
-                        "customColors": {
-                        },
-                        "enableTodoIntegration": false,
-                        "fullscreenMode": false,
-                        "hidePanelBackground": false,
-                        "notecardsEnabled": true,
-                        "panelHeight": 0,
-                        "panelWidth": 1450,
-                        "pincardsEnabled": true,
-                        "showCloseButton": true
-                    },
-                    "id": "plugin:clipper"
-                },
-                {
-                    "defaultSettings": {
-                        "audioCodec": "opus",
-                        "audioSource": "default_output",
-                        "colorRange": "limited",
-                        "copyToClipboard": false,
-                        "customReplayDuration": "30",
-                        "directory": "",
-                        "filenamePattern": "recording_yyyyMMdd_HHmmss",
-                        "frameRate": "60",
-                        "hideInactive": false,
-                        "iconColor": "none",
-                        "quality": "very_high",
-                        "replayDuration": "30",
-                        "replayEnabled": false,
-                        "replayStorage": "ram",
-                        "resolution": "original",
-                        "restorePortalSession": false,
-                        "showCursor": true,
-                        "videoCodec": "h264",
-                        "videoSource": "portal"
-                    },
-                    "id": "plugin:screen-recorder"
-                },
-                {
-                    "id": "plugin:dns-switcher"
                 }
             ]
         }

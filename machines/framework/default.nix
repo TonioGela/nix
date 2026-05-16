@@ -20,6 +20,7 @@
     quiet-boot
     security
     steam
+    tailscale
     trimui
     udisks
     virtualisation
