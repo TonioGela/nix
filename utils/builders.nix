@@ -35,7 +35,7 @@ in
           sources.homeManager
           commonNixSettings
           additionsModuleArgs
-          (import config)
+          config
         ];
 
         config = {
@@ -68,13 +68,11 @@ in
         imports = [
           commonHomeManagerSettings
           commonNixSettings
-          (import config)
+          config
         ];
 
-        config = {
-          # I can't understand how to make it inherit from the externally created instance
-          nixpkgs.config.allowUnfree = true;
-        };
+        # Home Manager doesn't inherit it from the externally created instance
+        config.nixpkgs.config.allowUnfree = true;
       };
     };
 }
