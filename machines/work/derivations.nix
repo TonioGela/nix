@@ -1,4 +1,4 @@
-{ sources }:
+{ pkgs, ... }:
 let
   fetchMacAppFromGhReleases =
     {
@@ -10,9 +10,9 @@ let
       description,
       platform,
     }:
-    sources.pkgs.stdenv.mkDerivation {
+    pkgs.stdenv.mkDerivation {
       inherit pname version;
-      src = sources.pkgs.fetchzip {
+      src = pkgs.fetchzip {
         url = "https://github.com/${author}/${pname}/releases/download/${version}/${assetName}.zip";
         inherit sha256;
         stripRoot = false;
@@ -56,18 +56,18 @@ in
   qlmarkdown = fetchMacAppFromGhReleases {
     author = "sbarex";
     pname = "QLMarkdown";
-    version = "1.0.23";
+    version = "1.5.1";
     assetName = "QLMarkdown";
-    sha256 = "sha256-3cIdr5KBsjSjnSoKMV699J5R/b3idrjvqX/k2Ao5CT8=";
+    sha256 = "sha256-5NS1StWBv/mubNSp8Zc2a91Yqaw5kBHNo2/Z4JJpyaA=";
     description = "Quick look plugin for markdown rendering";
     platform = "aarch64-darwin";
   };
   source-code-syntax-highlight = fetchMacAppFromGhReleases {
     author = "sbarex";
     pname = "SourceCodeSyntaxHighlight";
-    version = "2.1.26";
+    version = "2.1.30";
     assetName = "Syntax.Highlight";
-    sha256 = "sha256-iAikrmKlY6AuJYVH4P/KwTPFOGFGPysAsWBK7TNVJoM=";
+    sha256 = "sha256-URjobIBo43xtc2S6Ppr88lzeTo5KdbhF2T5weUjaxsA=";
     description = "Quick look plugin for code highlight";
     platform = "aarch64-darwin";
   };

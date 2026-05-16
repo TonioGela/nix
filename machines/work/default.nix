@@ -1,5 +1,4 @@
 {
-  sources,
   modules,
   pkgs,
   pkgsUnstable,
@@ -8,7 +7,7 @@
 let
   pins = import ./npins;
   hypervolt-modules = import pins.hypervolt-modules;
-  derivations = import ./derivations.nix { inherit sources; };
+  derivations = import ./derivations.nix { inherit pkgs; };
 in
 {
   imports = with modules.home-manager; [
@@ -42,11 +41,6 @@ in
   home.file.".aws/config".source = ./aws_config;
   home.file.".hushlogin".text = "";
 
-  darwin.masAppIds = [
-    "1352778147" # Bitwarden
-    "1503136033" # Service Station
-  ];
-
   git = {
     username = "Antonio Gelameris";
     email = "antonio.gelameris@hypervolt.co.uk";
@@ -66,6 +60,11 @@ in
       macos_quit_when_last_window_closed yes
     '';
   };
+
+  darwin.masAppIds = [
+    "1352778147" # Bitwarden
+    "1503136033" # Service Station
+  ];
 
   zsh = {
     extraEnv = "eval `/usr/libexec/path_helper -s`";
@@ -104,12 +103,10 @@ in
     pkgs.wireshark
     pkgs.yq
     pkgs.yubikey-manager
-  ]
-  ++ [
     derivations.keeping-you-awake
     derivations.qlmarkdown
     derivations.source-code-syntax-highlight
-    derivations.ice-bar
+    derivations.ice-bar # TODO Replace with https://github.com/stonerl/Thaw
   ];
 
   launchd.agents.glabAuthRefresh = {
