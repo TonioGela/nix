@@ -10,6 +10,7 @@ let
       nix.package = pkgsUnstable.nix;
       nix.settings.experimental-features = [ "nix-command" ];
       nix.nixPath = [ "nixpkgs=${builtins.storePath pkgs.path}" ];
+      nixpkgs.config.allowUnfree = true;
     };
 
   # Passed as a hm module to both builders but also as a nixos module to nixos

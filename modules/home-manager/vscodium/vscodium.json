@@ -88,9 +88,6 @@
             "options": {
                 "nixos": {
                     "expr": "(import ${env:NH_FILE}).${env:NH_ATTRP}.options"
-                },
-                "home-manager": {
-                    "expr": "(import ${env:NH_FILE}).${env:NH_ATTRP}.options.home-manager.users.type.getSubOptions []"
                 }
             }
         }
