@@ -1,4 +1,4 @@
-{ sources, ... }:
+{ pkgs, ... }:
 {
   services.greetd = {
     enable = true;
@@ -11,7 +11,7 @@
       };
 
       default_session = {
-        command = "${sources.pkgs.tuigreet}/bin/tuigreet --time --cmd 'niri-session &> /dev/null' --asterisks --remember --theme 'border=white;time=black;title=white;prompt=white;button=black;action=black'";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'niri-session &> /dev/null' --asterisks --remember --theme 'border=white;time=black;title=white;prompt=white;button=black;action=black'";
         user = "toniogela";
       };
     };

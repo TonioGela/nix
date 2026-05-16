@@ -1,7 +1,7 @@
-{ sources, ... }:
+{ pkgs, ... }:
 {
   programs.nix-ld = {
     enable = true;
-    libraries = with sources.pkgs; [ zlib ];
+    libraries = with pkgs; [ zlib ];
   };
 }

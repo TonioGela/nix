@@ -4,12 +4,16 @@
     system: config:
     sources.nixosBuilder {
       inherit system;
-      specialArgs = { inherit sources; };
+      specialArgs = { inherit sources modules; };
       configuration = {
         imports = [
-          (import config { inherit sources modules; })
+          (import config)
           sources.homeManager
         ];
+
+        _module.args = {
+          pkgsUnstable = sources.pkgsUnstable;
+        };
 
         nixpkgs.pkgs = sources.pkgs;
 

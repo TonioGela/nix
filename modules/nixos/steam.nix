@@ -1,4 +1,4 @@
-{ sources, ... }:
+{ pkgs, ... }:
 {
   # gamemoderun gamescope -w 1440 -h 960 -W 2880 -H 1920 -F fsr --adaptive-sync -f --mangoapp --force-grab-cursor -- %command%
 
@@ -16,14 +16,14 @@
     };
   };
 
-  environment.systemPackages = with sources.pkgs; [
+  environment.systemPackages = with pkgs; [
     xwayland-satellite
     mangohud
     scanmem
   ];
 
   # TODO Test if these are still necessary
-  services.udev.packages = [ sources.pkgs.game-devices-udev-rules ];
+  services.udev.packages = [ pkgs.game-devices-udev-rules ];
   services.udev.extraRules = ''
     KERNEL=="event*", SUBSYSTEM=="input", MODE="0660", GROUP="input"
     # Allow Dolphin emulator to access the Bluetooth adapter directly for Passthrough

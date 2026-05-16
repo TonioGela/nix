@@ -1,4 +1,9 @@
-{ sources, modules }:
+{
+  pkgs,
+  pkgsUnstable,
+  modules,
+  ...
+}:
 {
   imports =
     with modules.nixos;
@@ -43,11 +48,11 @@
     zsh
   ];
 
-  boot.kernelPackages = sources.pkgsUnstable.linuxPackages;
+  boot.kernelPackages = pkgsUnstable.linuxPackages;
   networking.hostName = "toniogela-nixos-fw13";
 
   programs.zsh.enable = true;
-  users.defaultUserShell = sources.pkgs.zsh;
+  users.defaultUserShell = pkgs.zsh;
 
   users.users.toniogela.isNormalUser = true;
   users.users.toniogela.extraGroups = [
@@ -58,7 +63,7 @@
     "kvm"
   ];
 
-  environment.systemPackages = with sources.pkgs; [
+  environment.systemPackages = with pkgs; [
     bitwarden-desktop
     qbittorrent
     vesktop

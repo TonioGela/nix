@@ -1,8 +1,6 @@
-{ sources, ... }:
+{ pkgs, ... }:
 {
-  environment.systemPackages = [
-    sources.pkgs.pgcli
-  ];
+  environment.systemPackages = [ pkgs.pgcli ];
 
   virtualisation.oci-containers.containers = {
     postgres = {

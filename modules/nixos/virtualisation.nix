@@ -1,6 +1,6 @@
-{ sources, ... }:
+{ pkgs, ... }:
 {
-  environment.systemPackages = with sources.pkgs; [ qemu_full ];
+  environment.systemPackages = with pkgs; [ qemu_full ];
 
   virtualisation.vmVariant = {
     environment.variables.SDL_VIDEODRIVER = "wayland";
@@ -15,9 +15,8 @@
       "-device virtio-vga-gl"
       "-display sdl,gl=on"
     ];
-    disko.devices.disk.main.device = sources.pkgs.lib.mkForce "/dev/vda";
-    disko.devices.disk.main.content.partitions.swap.size = sources.pkgs.lib.mkForce "1G";
-    disko.devices.disk.main.content.partitions.swap.content.resumeDevice =
-      sources.pkgs.lib.mkForce false;
+    disko.devices.disk.main.device = pkgs.lib.mkForce "/dev/vda";
+    disko.devices.disk.main.content.partitions.swap.size = pkgs.lib.mkForce "1G";
+    disko.devices.disk.main.content.partitions.swap.content.resumeDevice = pkgs.lib.mkForce false;
   };
 }

@@ -1,5 +1,5 @@
-{ sources, ... }:
-sources.pkgs.stdenv.mkDerivation {
+{ pkgs, ... }:
+pkgs.stdenv.mkDerivation {
   pname = "nixos-bgrt";
   version = "1.0.0";
 
@@ -20,7 +20,7 @@ sources.pkgs.stdenv.mkDerivation {
 
   meta = {
     description = "My custom Plymouth theme";
-    license = sources.pkgs.lib.licenses.gpl2Only;
-    platforms = sources.pkgs.lib.platforms.linux;
+    license = pkgs.lib.licenses.gpl2Only;
+    platforms = pkgs.lib.platforms.linux;
   };
 }

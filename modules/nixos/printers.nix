@@ -1,8 +1,8 @@
-{ sources, ... }:
+{ pkgs, ... }:
 {
   services.printing = {
     enable = true;
-    drivers = with sources.pkgs; [
+    drivers = with pkgs; [
       cups-filters
       cups-browsed
       brlaser

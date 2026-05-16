@@ -1,4 +1,4 @@
-{ sources, ... }:
+{ pkgs, ... }:
 {
 
   # Have a look at these
@@ -27,9 +27,7 @@
     plymouth = {
       enable = true;
       theme = "nixos-bgrt";
-      themePackages = [
-        (import ./plymouth-nixos-theme { inherit sources; })
-      ];
+      themePackages = [ (import ./plymouth-nixos-theme { inherit pkgs; }) ];
     };
   };
 }
