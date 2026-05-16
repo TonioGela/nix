@@ -8,6 +8,7 @@ rec {
     sources.disko
     ./disko.nix
     ./moon.nix
+    ./amd-fix.nix
   ];
 
   nixpkgs.hostPlatform = sources.pkgs.lib.mkDefault "x86_64-linux";

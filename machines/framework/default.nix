@@ -5,30 +5,25 @@
   ...
 }:
 {
-  imports =
-    with modules.nixos;
-    [
-      niri
-      noctalia
-      plymouth
-      audio
-      greetd
-      network
-      nix-ld
-      postgres
-      power
-      printers
-      quiet-boot
-      security
-      steam
-      trimui
-      udisks
-      virtualisation
-    ]
-    ++ [
-      ./hardware.nix
-      ./amd-fix.nix
-    ];
+  imports = with modules.nixos; [
+    ./hardware
+    niri
+    noctalia
+    plymouth
+    audio
+    greetd
+    network
+    nix-ld
+    postgres
+    power
+    printers
+    quiet-boot
+    security
+    steam
+    trimui
+    udisks
+    virtualisation
+  ];
 
   home-manager.users.toniogela.imports = with modules.home-manager; [
     firefox
