@@ -11,52 +11,41 @@
           sources.homeManager
         ];
 
-        _module.args = {
-          pkgsUnstable = sources.pkgsUnstable;
-        };
+        config = {
+          _module.args.pkgsUnstable = sources.pkgsUnstable;
 
-        nixpkgs.pkgs = sources.pkgs;
+          nix.optimise.automatic = true;
+          nix.optimise.persistent = true;
+          nix.optimise.dates = "weekly";
 
-        nix = {
-          package = sources.pkgsUnstable.nix;
-          channel.enable = false;
-          settings.experimental-features = [ "nix-command" ];
-          nixPath = [
-            "nixpkgs=${builtins.storePath sources.pkgs.path}"
-          ];
-          optimise = {
-            automatic = true;
-            persistent = true;
-            dates = "weekly";
+          # Can't set it to true if you don't have nixos-config in nix path
+          system.copySystemConfiguration = false;
+          system.stateVersion = "25.11";
+
+          time.timeZone = "Europe/Rome";
+          i18n.defaultLocale = "en_GB.UTF-8";
+          i18n.extraLocales = [ "it_IT.UTF-8/UTF-8" ];
+
+          nixpkgs.pkgs = sources.pkgs;
+          nix.package = sources.pkgsUnstable.nix;
+          nix.channel.enable = false;
+          nix.settings.experimental-features = [ "nix-command" ];
+          nix.nixPath = [ "nixpkgs=${builtins.storePath sources.pkgs.path}" ];
+
+          home-manager = {
+            useGlobalPkgs = true; # use system's nixpkgs
+            useUserPackages = true; # installs user packages via users.users.<name>.packages
+            extraSpecialArgs = { inherit sources; };
+            sharedModules = [
+              {
+                _module.args.pkgsUnstable = sources.pkgsUnstable;
+
+                programs.home-manager.enable = true;
+                home.enableNixpkgsReleaseCheck = true;
+                home.stateVersion = "25.11";
+              }
+            ];
           };
-        };
-
-        # Can't set it to true if you don't have nixos-config in nix path
-        system.copySystemConfiguration = false;
-        system.stateVersion = "25.11";
-
-        time.timeZone = "Europe/Rome";
-        i18n = {
-          defaultLocale = "en_GB.UTF-8";
-          extraLocales = [ "it_IT.UTF-8/UTF-8" ];
-        };
-
-        home-manager = {
-          useGlobalPkgs = true; # use system's nixpkgs
-          useUserPackages = true; # installs user packages via users.users.<name>.packages
-          extraSpecialArgs = { inherit sources; };
-          sharedModules = [
-            {
-              _module.args = {
-                pkgsUnstable = sources.pkgsUnstable;
-              };
-              home = {
-                enableNixpkgsReleaseCheck = true;
-                stateVersion = "25.11";
-              };
-              programs.home-manager.enable = true;
-            }
-          ];
         };
       };
     };
@@ -67,25 +56,19 @@
       pkgs = sources.pkgs;
       extraSpecialArgs = { inherit sources; };
       configuration = {
-        imports = [ (import config { inherit sources modules; }) ];
+        imports = [ (import config { inherit sources modules; }) ]; # TODO Do the same on mac
         config = {
-          _module.args = {
-            pkgsUnstable = sources.pkgsUnstable;
-          };
-          home = {
-            enableNixpkgsReleaseCheck = true;
-            stateVersion = "25.11";
-          };
+          _module.args.pkgsUnstable = sources.pkgsUnstable;
+
           programs.home-manager.enable = true;
-          nix = {
-            package = sources.pkgs.nix;
-            settings = {
-              experimental-features = "nix-command";
-              nix-path = [
-                "nixpkgs=${builtins.storePath sources.pkgs.path}"
-              ];
-            };
-          };
+          home.enableNixpkgsReleaseCheck = true;
+          home.stateVersion = "25.11";
+
+          nixpkgs.pkgs = sources.pkgs;
+          nix.package = sources.pkgsUnstable.nix;
+          nix.channel.enable = false;
+          nix.settings.experimental-features = "nix-command";
+          nix.settings.nix-path = [ "nixpkgs=${builtins.storePath sources.pkgs.path}" ];
         };
       };
     };
