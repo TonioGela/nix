@@ -54,6 +54,8 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
+  fonts.packages = [ pkgs.nerd-fonts.sauce-code-pro ];
+
   users.users.toniogela.isNormalUser = true;
   users.users.toniogela.extraGroups = [
     "wheel"
@@ -63,6 +65,7 @@
     "kvm"
   ];
 
+  # Move into home-manager
   environment.systemPackages = with pkgs; [
     bitwarden-desktop
     qbittorrent

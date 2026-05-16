@@ -31,11 +31,11 @@
           };
         };
 
-        system.copySystemConfiguration = true;
+        # Can't set it to true if you don't have nixos-config in nix path
+        system.copySystemConfiguration = false;
         system.stateVersion = "25.11";
 
         time.timeZone = "Europe/Rome";
-        fonts.packages = [ sources.pkgs.nerd-fonts.sauce-code-pro ];
         i18n = {
           defaultLocale = "en_GB.UTF-8";
           extraLocales = [ "it_IT.UTF-8/UTF-8" ];
