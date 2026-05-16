@@ -1,4 +1,3 @@
-{ ... }:
 {
   boot = {
     consoleLogLevel = 0;

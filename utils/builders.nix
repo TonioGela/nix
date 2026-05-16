@@ -4,11 +4,15 @@
     system: config:
     sources.nixosBuilder {
       inherit system;
-      specialArgs = {
-        home-manager-modules = modules.home-manager;
-        inherit sources;
-      };
+      specialArgs = { inherit sources; };
       configuration = {
+        # options = {
+        #   homeManagerModules = sources.pkgs.lib.mkOption {
+        #     type = sources.pkgs.lib.types.listOf sources.pkgs.lib.types.str;
+        #     default = [ ];
+        #   };
+        # };
+
         imports = [
           (import config { inherit sources modules; })
           sources.homeManager
@@ -22,7 +26,6 @@
           settings.experimental-features = [ "nix-command" ];
           nixPath = [
             "nixpkgs=${builtins.storePath sources.pkgs.path}"
-            "nixos-config=/etc/nixos/configuration.nix"
           ];
           optimise = {
             automatic = true;
@@ -45,6 +48,15 @@
           useGlobalPkgs = true; # use system's nixpkgs
           useUserPackages = true; # installs user packages via users.users.<name>.packages
           extraSpecialArgs = { inherit sources; };
+
+          # (builtins.listToAttrs (
+          #   map (n: {
+          #     name = n;
+          #     value = modules.home-manager.${n};
+          #   }) config.homeManagerModules
+          # ))
+          # ++
+
           sharedModules = [
             {
               _module.args = {
@@ -60,7 +72,7 @@
         };
       };
     };
-  home-manager = # TODO add nh and npins here instead that on conf itself
+  home-manager =
     config:
     sources.homeManagerBuilder {
       pkgs = sources.pkgs;
@@ -83,11 +95,6 @@
               nix-path = [
                 "nixpkgs=${builtins.storePath sources.pkgs.path}"
               ];
-            };
-            gc = {
-              automatic = true;
-              persistent = true;
-              dates = "monthly";
             };
           };
         };

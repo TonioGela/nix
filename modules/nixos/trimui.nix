@@ -1,4 +1,3 @@
-{ ... }:
 {
   fileSystems."/media/trimui" = {
     device = "//trimui.local/share";

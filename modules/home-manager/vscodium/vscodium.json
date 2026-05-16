@@ -91,9 +91,6 @@
                 },
                 "home-manager": {
                     "expr": "(import ${env:NH_FILE}).${env:NH_ATTRP}.options.home-manager.users.type.getSubOptions []"
-                },
-                "user-options": {
-                    "expr": "(import ${env:NH_FILE}).${env:NH_ATTRP}.options.home-manager.users.valueMeta.attrs.${env:USER}.configuration.options"
                 }
             }
         }

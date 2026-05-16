@@ -1,9 +1,5 @@
 path:
 let
-  # lib.filterAttrs
-  filterAttrs =
-    pred: set:
-    removeAttrs set (builtins.filter (name: !pred name set.${name}) (builtins.attrNames set));
   # lib.strings.removeSuffix
   removeSuffix =
     suffix: str:
@@ -18,10 +14,10 @@ let
         str
     );
 
-  modules = filterAttrs (key: value: key != "default.nix") (builtins.readDir path);
+  moduleNames = builtins.attrNames (builtins.readDir path);
   modulesList = map (m: {
     name = removeSuffix ".nix" m;
     value = (import (path + "/${m}"));
-  }) (builtins.attrNames modules);
+  }) moduleNames;
 in
 builtins.listToAttrs modulesList

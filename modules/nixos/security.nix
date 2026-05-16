@@ -1,4 +1,3 @@
-{ ... }:
 {
   # if there's no ~/.local/share/keyrings/login.keyring you need to
   # input the password in the lockscreen or tuigreet
