@@ -72,7 +72,10 @@
       pkgs.claude-code
     ];
 
-    vscodium.profileFile = "nixos";
+    programs.nh = {
+      nhFile = "/home/toniogela/.config/nix/configuration.nix";
+      nhAttrPath = "framework";
+    };
 
     git = {
       username = "Antonio Gelameris";
@@ -80,10 +83,7 @@
       signingKey = "";
     };
 
-    programs.nh = {
-      nhFile = "/home/toniogela/.config/nix/configuration.nix";
-      nhAttrPath = "framework";
-    };
+    vscodium.profileFile = "nixos";
 
     firefox.additionalExtensions = [
       {

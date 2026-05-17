@@ -601,27 +601,7 @@
         "activeTemplates": [
             {
                 "enabled": true,
-                "id": "niri"
-            },
-            {
-                "enabled": true,
                 "id": "yazi"
-            },
-            {
-                "enabled": true,
-                "id": "zathura"
-            },
-            {
-                "enabled": true,
-                "id": "kitty"
-            },
-            {
-                "enabled": true,
-                "id": "discord"
-            },
-            {
-                "enabled": true,
-                "id": "qt"
             }
         ],
         "enableUserTheming": false

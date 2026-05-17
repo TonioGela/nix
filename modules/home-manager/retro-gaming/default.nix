@@ -36,6 +36,7 @@ in
   programs.retroarch = {
     enable = true;
     package = pkgsUnstable.retroarch-bare;
+    settings = import ./retroarch-settings.nix;
     # Every core.<something>.enable uses pkgs.libretro.<something>
     cores = {
       mgba.enable = true;
@@ -43,8 +44,9 @@ in
       gambatte.enable = true;
       beetle-psx-hw.enable = true;
     };
-    # settings = {};
   };
+
+  home.file.".config/retroarch/system".source = ./bios;
 
   home.packages = [ emulationStationDE ];
 
