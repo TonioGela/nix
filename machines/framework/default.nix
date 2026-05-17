@@ -72,6 +72,8 @@
       pkgs.claude-code
     ];
 
+    vscodium.profileFile = "nixos";
+
     git = {
       username = "Antonio Gelameris";
       email = "toniogela89@gmail.com";

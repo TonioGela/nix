@@ -33,6 +33,8 @@ in
     homeDirectory = "/Users/toniogela";
   };
 
+  vscodium.profileFile = "home-manager";
+
   programs.nh = {
     nhFile = "/Users/toniogela/.config/home-manager/configuration.nix";
     nhAttrPath = "work";
