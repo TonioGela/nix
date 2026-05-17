@@ -1,10 +1,5 @@
 # TO-DO
-- Find a way to express the options setting as a unique one in vscodium's settings.json
 - generalise and fix the bindkey for zsh
-- Move packages from systemPackages to home-manager packages
-- Split the dotfiles properly
-- Try settings cycler on vscodium for the native <-> custom bar style
-- Setup tailscale
 - Fix the noctalia bar mess with all the plugins and possibly use HM for the config (not sure about this)
 - Switch to a grafical pinentry
 - Read the paper backup thingie about gpg keys and switch to pass
