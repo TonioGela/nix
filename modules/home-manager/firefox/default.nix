@@ -160,7 +160,7 @@ in
               (extension "clearurls" "{74145f27-f039-47ce-a470-a662b129930a}")
               (extension "vimium-ff" "{d7742d87-e61d-4b78-b8a1-b469842139fa}")
             ]
-            ++ builtins.map (e: (extension e.shortId e.uuid)) config.firefox.additionalExtensions
+            ++ map (e: (extension e.shortId e.uuid)) config.firefox.additionalExtensions
           );
 
         # To add additional extensions, find it on addons.mozilla.org, find

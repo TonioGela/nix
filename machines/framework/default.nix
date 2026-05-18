@@ -27,6 +27,7 @@
   ];
 
   home-manager.users.toniogela.imports = with modules.home-manager; [
+    calibre
     firefox
     git
     retro-gaming

@@ -123,4 +123,8 @@
     name = "Error reporting in bash";
     url = "https://utcc.utoronto.ca/~cks/space/blog/programming/BashGoodSetEReports";
   }
+  {
+    name = "Bitwarden Changes";
+    url = "https://blog.ppb1701.com/the-quiet-renovation-at-bitwarden";
+  }
 ]
