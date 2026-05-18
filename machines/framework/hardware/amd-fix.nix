@@ -18,5 +18,13 @@
   # not involved in the actual 3D rendering pipeline. The "cost" is basically a few extra MB of
   # memory overhead and slightly more work for the kernel's memory allocator. On a modern system
   # with 16GB+ RAM, you'd never notice it.
-  boot.kernelParams = [ "amdgpu.sg_display=0" ];
+
+  # The amdgpu.runpm=0 kernel parameter disables GPU runtime power management, which is the most
+  # commonly documented fix for freeze pattern on RDNA 3/3.5 laptops. Downside: slightly higher
+  # idle GPU power consumption
+
+  boot.kernelParams = [
+    "amdgpu.sg_display=0"
+    "amdgpu.runpm=0"
+  ];
 }
