@@ -6,25 +6,29 @@
 let
   bookmarksSort =
     items:
-    builtins.map (
-      item:
-      if builtins.hasAttr "bookmarks" item then
-        item // { bookmarks = bookmarksSort item.bookmarks; }
-      else
-        item
-    ) (builtins.sort (
-      a: b:
-      let
-        isFolderA = builtins.hasAttr "bookmarks" a;
-        isFolderB = builtins.hasAttr "bookmarks" b;
-      in
-      if isFolderA && !isFolderB then
-        true
-      else if !isFolderA && isFolderB then
-        false
-      else
-        a.name < b.name
-    ) items);
+    map
+      (
+        item:
+        if builtins.hasAttr "bookmarks" item then
+          item // { bookmarks = bookmarksSort item.bookmarks; }
+        else
+          item
+      )
+      (
+        builtins.sort (
+          a: b:
+          let
+            isFolderA = builtins.hasAttr "bookmarks" a;
+            isFolderB = builtins.hasAttr "bookmarks" b;
+          in
+          if isFolderA && !isFolderB then
+            true
+          else if !isFolderA && isFolderB then
+            false
+          else
+            a.name < b.name
+        ) items
+      );
 in
 {
   options = {

@@ -1,4 +1,6 @@
 # TO-DO
+- Stuff from self-host.it
+- Scanner configuration
 - generalise and fix the bindkey for zsh
 - Fix the noctalia bar mess with all the plugins and possibly use HM for the config (not sure about this)
 - Switch to a grafical pinentry
