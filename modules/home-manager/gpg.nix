@@ -1,7 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   # https://tsawyer87.github.io/posts/gpg-agent_on_nixos/
-  programs.gpg.enable = true;
+  programs.gpg = {
+    enable = true;
+    homedir = "${config.home.homeDirectory}/.local/state/gnupg";
+  };
+
   services.gpg-agent = {
     enable = true;
     enableZshIntegration = true;
