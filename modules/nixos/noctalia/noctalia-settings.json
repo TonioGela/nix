@@ -152,11 +152,6 @@
                     "showPowerProfiles": true
                 },
                 {
-                    "iconColor": "none",
-                    "id": "KeepAwake",
-                    "textColor": "none"
-                },
-                {
                     "hideWhenZero": false,
                     "hideWhenZeroUnread": false,
                     "iconColor": "none",
@@ -233,7 +228,7 @@
                 "id": "profile-card"
             },
             {
-                "enabled": false,
+                "enabled": true,
                 "id": "shortcuts-card"
             },
             {
@@ -258,25 +253,13 @@
         "shortcuts": {
             "left": [
                 {
-                    "id": "Network"
-                },
-                {
-                    "id": "Bluetooth"
-                },
-                {
-                    "id": "NoctaliaPerformance"
-                }
-            ],
-            "right": [
-                {
-                    "id": "PowerProfile"
+                    "id": "plugin:dns-switcher"
                 },
                 {
                     "id": "KeepAwake"
-                },
-                {
-                    "id": "NightLight"
                 }
+            ],
+            "right": [
             ]
         }
     },
