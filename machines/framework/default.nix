@@ -11,6 +11,7 @@
     niri
     noctalia
     plymouth
+    de-channel
     greetd
     network
     nix-ld
