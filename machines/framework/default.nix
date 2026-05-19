@@ -7,10 +7,10 @@
 {
   imports = with modules.nixos; [
     ./hardware
+    audio
     niri
     noctalia
     plymouth
-    audio
     greetd
     network
     nix-ld
@@ -34,6 +34,7 @@
     scala
     vscodium
     zathura
+    claude
     gpg
     hide-desktop-entries
     kitty
@@ -70,7 +71,6 @@
       pkgs.bitwarden-desktop
       pkgs.qbittorrent
       pkgs.vesktop
-      pkgs.claude-code
     ];
 
     programs.nh = {

@@ -1,4 +1,4 @@
-spawn-sh-at-startup "swaybg -i .config/.wallpapers/wallpaper.svg -m fill"
+spawn-sh-at-startup "swaybg -i .config/wallpaper.svg -m fill"
 layer-rule { place-within-backdrop true; }
 overview { workspace-shadow { off; }; }
 gestures { hot-corners { off; }; }

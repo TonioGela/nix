@@ -332,7 +332,7 @@
         "animationDisabled": true,
         "animationSpeed": 1,
         "autoStartAuth": true,
-        "avatarImage": "/home/toniogela/.face",
+        "avatarImage": "/home/toniogela/.config/face.jpg",
         "boxRadiusRatio": 1,
         "clockFormat": "HH\\nmm",
         "clockStyle": "custom",

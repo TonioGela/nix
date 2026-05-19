@@ -9,8 +9,8 @@
         home.file = {
           ".config/noctalia/settings.json".source =
             config.lib.file.mkOutOfStoreSymlink ./noctalia-settings.json;
-          ".face".source = ./avatar.jpg;
-          ".config/.wallpapers/wallpaper.svg".source = ./wallpaper.svg;
+          ".config/face.jpg".source = ./avatar.jpg;
+          ".config/wallpaper.svg".source = ./wallpaper.svg;
         };
       }
     )
