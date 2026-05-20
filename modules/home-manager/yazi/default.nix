@@ -17,6 +17,11 @@
     enable = true;
     enableZshIntegration = true;
     shellWrapperName = "y";
+    flavors.nord = ./nord;
+    theme.flavor = {
+      dark = "nord";
+      light = "nord";
+    };
     plugins = {
       mount = pkgs.yaziPlugins.mount;
       full-border = pkgs.yaziPlugins.full-border;
@@ -57,38 +62,40 @@
         }
       ];
 
-      # opener.image = [
-      #   {
-      #     run = "loupe \"$@\"";
-      #     desc = "Loupe image viewer";
-      #     orphan = true;
-      #     for = "unix";
-      #   }
-      # ];
+      opener = {
+        image = [
+          {
+            run = "loupe \"$@\"";
+            desc = "Loupe image viewer";
+            orphan = true;
+            for = "unix";
+          }
+        ];
 
-      opener.play = [
-        {
-          run = "mpv \"$@\"";
-          desc = "Mpv Video Player";
-          orphan = true;
-        }
-      ];
+        play = [
+          {
+            run = "mpv \"$@\"";
+            desc = "Mpv Video Player";
+            orphan = true;
+          }
+        ];
 
-      opener.pdf = [
-        {
-          run = "zathura \"$@\"";
-          desc = "Zathura PDF viewer";
-          orphan = true;
-        }
-      ];
+        pdf = [
+          {
+            run = "zathura \"$@\"";
+            desc = "Zathura PDF viewer";
+            orphan = true;
+          }
+        ];
 
-      opener.html = [
-        {
-          run = "firefox \"$@\"";
-          desc = "Firefox Web Browser";
-          orphan = true;
-        }
-      ];
+        html = [
+          {
+            run = "firefox \"$@\"";
+            desc = "Firefox Web Browser";
+            orphan = true;
+          }
+        ];
+      };
     };
 
     keymap = {
@@ -96,6 +103,7 @@
         {
           run = "shell 'ripdrag \"$@\" -x -a 2>/dev/null &' --confirm";
           on = [ "<C-n>" ];
+          desc = "Drag the file";
         }
         {
           run = "plugin chmod";
