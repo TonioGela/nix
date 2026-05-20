@@ -145,10 +145,7 @@ in
       enableZshIntegration = true;
       nix-direnv.enable = true;
       silent = true;
-      stdlib = ''
-        export TERM="xterm-256color"
-        if [ -f ./shell.nix ]; then use nix ; fi
-      '';
+      # stdlib = "";
       config = {
         disable_stdin = true;
         strict_env = true;
