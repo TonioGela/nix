@@ -1,9 +1,8 @@
 # TO-DO
-- Calendar support in noctalia, see docs
+- use the HM noctalia module to set the config
 - Stuff from self-host.it
 - Scanner configuration
 - generalise and fix the bindkey for zsh
-- Fix the noctalia bar mess with all the plugins and possibly use HM for the config (not sure about this)
 - Switch to a grafical pinentry
 - Read the paper backup thingie about gpg keys and switch to pass
 - Read niri documentation to see if you forgot something

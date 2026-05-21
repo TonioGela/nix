@@ -63,6 +63,7 @@
     "wheel"
     "gamemode"
     "lpadmin"
+    "scanner"
     "input"
     "kvm"
   ];

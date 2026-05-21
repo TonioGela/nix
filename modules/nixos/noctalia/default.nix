@@ -1,7 +1,8 @@
 { sources, ... }:
 {
-  imports = [ sources.noctalia ];
+  imports = [ sources.noctalia.nixosModule ];
   services.noctalia-shell.enable = true;
+  services.noctalia-shell.package = sources.noctalia.package;
   home-manager.sharedModules = [
     (
       { config, ... }:

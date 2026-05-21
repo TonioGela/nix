@@ -83,6 +83,22 @@
       "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.05pre993588.68a8af93ff42/nixexprs.tar.xz",
       "hash": "sha256-Z5mLDoR8p0d7psIY4LnyaHHRykXngMcWXTZ9JWvtvPc="
     },
+    "noctalia-qs": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "noctalia-dev",
+        "repo": "noctalia-qs"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": "v",
+      "submodules": false,
+      "version": "v0.0.12",
+      "revision": "e7224b756dcd10eec040df818a4c7a0fda5d6eff",
+      "url": "https://api.github.com/repos/noctalia-dev/noctalia-qs/tarball/refs/tags/v0.0.12",
+      "hash": "sha256-79JP2QTdvp1jg7HGxAW+xzhzhLnlKUi8yGXq9nDCeH0="
+    },
     "noctalia-shell": {
       "type": "GitRelease",
       "repository": {
@@ -92,7 +108,7 @@
       },
       "pre_releases": false,
       "version_upper_bound": null,
-      "release_prefix": null,
+      "release_prefix": "v",
       "submodules": false,
       "version": "v4.7.6",
       "revision": "2d8acc4aabf5003af1497323dc90d9cea636ed5b",
