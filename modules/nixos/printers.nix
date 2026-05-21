@@ -36,7 +36,16 @@
   # User must be in "scanner" group
   hardware.sane.enable = true;
   hardware.sane.extraBackends = [ pkgs.sane-airscan ];
-  environment.systemPackages = [ pkgs.simple-scan ];
+
+  environment.systemPackages = [
+    (pkgs.makeDesktopItem {
+      name = "manage-printing";
+      desktopName = "Printers";
+      exec = "xdg-open http://localhost:631";
+      # icon = "my-app";
+    })
+    pkgs.simple-scan
+  ];
 
   # TODO Consider re-enabling this after 26.05
   # hardware.sane.brscan4.enable = true;

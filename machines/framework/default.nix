@@ -112,6 +112,10 @@
         filename = "nvim";
         name = "Neovim wrapper";
       }
+      {
+        filename = "org.gnome.Loupe";
+        name = "Image viewer";
+      }
     ];
   };
 }
