@@ -10,9 +10,9 @@
     noDisplay = true;
   };
 
-  home.packages = [
+  home.packages = lib.mkIf pkgs.stdenv.isLinux [
     pkgs.ripdrag
-    pkgs.loupe
+    pkgs.loupe # TODO Remove the loupe binding on darwin
   ];
 
   programs.yazi = {
