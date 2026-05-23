@@ -1,7 +1,6 @@
 # TO-DO
 - use the HM noctalia module to set the config
 - Stuff from self-host.it
-- Scanner configuration
 - generalise and fix the bindkey for zsh
 - Switch to a grafical pinentry
 - Read the paper backup thingie about gpg keys and switch to pass

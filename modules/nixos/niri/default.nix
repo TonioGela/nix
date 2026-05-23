@@ -10,6 +10,8 @@
           pkgs.playerctl
           pkgs.swaybg
           pkgs.wl-clipboard-rs
+          pkgs.wl-mirror
+          pkgs.jq
         ];
       }
     )
