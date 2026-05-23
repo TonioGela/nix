@@ -96,7 +96,7 @@ binds {
 
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    Mod+P repeat=false { spawn-sh "wl-mirror $(niri msg --json focused-output | jq -r .name)"; }
+    Mod+M repeat=false { spawn-sh "wl-mirror $(niri msg --json focused-output | jq -r .name)"; }
 
     Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
     Alt+Y hotkey-overlay-title="Open yazi in kitty" { spawn-sh "kitty --hold -d /home/toniogela zsh -ci 'y'"; }
