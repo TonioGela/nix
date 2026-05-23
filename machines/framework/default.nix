@@ -73,6 +73,12 @@
       pkgs.bitwarden-desktop
       pkgs.qbittorrent
       pkgs.vesktop
+      pkgs.nix-tree
+      (pkgs.symlinkJoin {
+        name = "wormhole";
+        paths = [ pkgs.wormhole-rs ];
+        postBuild = "ln -s $out/bin/wormhole-rs $out/bin/wormhole";
+      })
     ];
 
     programs.nh = {
