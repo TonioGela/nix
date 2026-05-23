@@ -74,6 +74,7 @@
       pkgs.qbittorrent
       pkgs.vesktop
       pkgs.nix-tree
+      pkgs.nix-diff
       (pkgs.symlinkJoin {
         name = "wormhole";
         paths = [ pkgs.wormhole-rs ];
