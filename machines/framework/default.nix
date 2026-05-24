@@ -75,6 +75,7 @@
       pkgs.vesktop
       pkgs.nix-tree
       pkgs.nix-diff
+      pkgsUnstable.vulnix
       (pkgs.symlinkJoin {
         name = "wormhole";
         paths = [ pkgs.wormhole-rs ];
