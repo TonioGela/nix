@@ -42,7 +42,7 @@
       name = "manage-printing";
       desktopName = "Printers";
       exec = "xdg-open http://localhost:631";
-      # icon = "my-app";
+      icon = ./printer.svg;
     })
     pkgs.simple-scan
   ];
