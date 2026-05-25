@@ -71,7 +71,13 @@
             run = "loupe \"$@\"";
             desc = "Loupe image viewer";
             orphan = true;
-            for = "unix";
+            for = "linux";
+          }
+          {
+            run = "open -a Preview -F \"$@\"";
+            desc = "Preview";
+            orphan = true;
+            for = "macos";
           }
         ];
 
