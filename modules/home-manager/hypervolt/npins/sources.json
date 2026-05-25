@@ -4,7 +4,7 @@
       "type": "Git",
       "repository": {
         "type": "Git",
-        "url": "ssh://git@gitlab.com/hypervolt/nix/shared-home-manager-modules.git"
+        "url": "https://gitlab.com/hypervolt/nix/shared-home-manager-modules.git/"
       },
       "branch": "master",
       "submodules": false,
