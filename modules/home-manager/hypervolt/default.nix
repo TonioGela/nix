@@ -10,7 +10,7 @@
   # - Import .sbt/.credentials # TODO Actually this can be made a template with sops-nix
   # - On nixos set services.pcscd.enable = true; and services.udev.packages = [ pkgs.yubikey-personalization ];
 
-  # imports = [ (import (import ./npins).hypervolt-modules) ];
+  imports = [ (import (import ./npins).hypervolt-modules) ];
 
   home.file.".aws/config".source = ./aws_config;
 

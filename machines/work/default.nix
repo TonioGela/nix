@@ -39,10 +39,15 @@ in
 
   home.file.".hushlogin".text = "";
 
-  git.maintainedRepos = [
-    "/Users/toniogela/work/athena"
-    "/Users/toniogela/work/hypervolt-backend"
-  ];
+  git = {
+    username = "Antonio Gelameris";
+    email = "antonio.gelameris@hypervolt.co.uk";
+    signingKey = "25901F702B062B05";
+    maintainedRepos = [
+      "/Users/toniogela/work/athena"
+      "/Users/toniogela/work/hypervolt-backend"
+    ];
+  };
 
   kitty = {
     fontSize = "14.0";
