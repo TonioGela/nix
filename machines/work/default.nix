@@ -1,7 +1,6 @@
 {
   modules,
   pkgs,
-  pkgsUnstable,
   ...
 }:
 let
@@ -62,9 +61,7 @@ in
 
   zsh = {
     extraEnv = "eval `/usr/libexec/path_helper -s`";
-    extraAliases = {
-      flushdns = "sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder";
-    };
+    extraAliases.flushdns = "sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder";
   };
 
   home.packages = [
@@ -78,29 +75,5 @@ in
     derivations.source-code-syntax-highlight
     derivations.ice-bar # TODO Replace with https://github.com/stonerl/Thaw
   ];
-
-  launchd.agents.glabAuthRefresh = {
-    enable = false;
-    config = {
-      Label = "dev.toniogela.glabAuthRefresh";
-      ProgramArguments = [
-        "${pkgs.lib.getExe pkgsUnstable.glab}"
-        "auth"
-        "status"
-      ];
-      StartInterval = 1800;
-      LowPriorityIO = true;
-      LowPriorityBackgroundIO = true;
-      ProcessType = "Background";
-      RunAtLoad = true;
-      KeepAlive = false;
-      StandardOutPath = "/tmp/glabAuthRefresh.log";
-      StandardErrorPath = "/tmp/glabAuthRefresh.err";
-      WatchPaths = [
-        "/Users/toniogela/work/hypervolt-backend/.git"
-        "/Users/toniogela/work/athena/.git"
-      ];
-    };
-  };
 
 }
