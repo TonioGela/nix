@@ -183,6 +183,9 @@
                     "id": "Tray",
                     "pinned": [
                     ]
+                },
+                {
+                    "id": "plugin:screen-recorder"
                 }
             ]
         }

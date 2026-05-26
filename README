@@ -1,4 +1,7 @@
 # TO-DO
+- fix the git config
+- Create a module for gpu-screen-recorder
+- pdf arranger, minesweep-rs, file light, planify, anytype, defuse, kasts, optimage, obs
 - use the HM noctalia module to set the config
 - Stuff from self-host.it
 - generalise and fix the bindkey for zsh

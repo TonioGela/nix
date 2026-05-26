@@ -70,6 +70,8 @@
     "kvm"
   ];
 
+  programs.gpu-screen-recorder.enable = true;
+
   home-manager.users.toniogela = {
     home.packages = [
       pkgs.bitwarden-desktop

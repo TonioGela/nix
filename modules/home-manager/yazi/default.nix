@@ -26,15 +26,15 @@
       light = "nord";
     };
     plugins = {
-      mount = pkgs.yaziPlugins.mount;
-      full-border = pkgs.yaziPlugins.full-border;
-      smart-enter = pkgs.yaziPlugins.smart-enter;
-      chmod = pkgs.yaziPlugins.chmod;
-      compress = pkgs.yaziPlugins.compress;
+      mount = pkgsUnstable.yaziPlugins.mount;
+      full-border = pkgsUnstable.yaziPlugins.full-border;
+      smart-enter = pkgsUnstable.yaziPlugins.smart-enter;
+      chmod = pkgsUnstable.yaziPlugins.chmod;
+      compress = pkgsUnstable.yaziPlugins.compress;
     };
     initLua = ''
       -- Available values: ui.Border.PLAIN, ui.Border.ROUNDED
-      require("full-border"):setup { type = ui.Border.ROUNDED }
+      -- require("full-border"):setup { type = ui.Border.ROUNDED }
       -- Hide StatusBar and Header
       local old_layout = Tab.layout
       Status.redraw = function() return {} end
