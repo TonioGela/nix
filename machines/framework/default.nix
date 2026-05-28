@@ -70,7 +70,7 @@
     "kvm"
   ];
 
-  programs.gpu-screen-recorder.enable = true;
+  programs.gpu-screen-recorder.enable = true; # TODO separate package, add the program
 
   home-manager.users.toniogela = {
     home.packages = [
@@ -80,6 +80,7 @@
       pkgs.nix-tree
       pkgs.nix-diff
       pkgsUnstable.vulnix
+      pkgs.mkvtoolnix # TODO separate package
       (pkgs.symlinkJoin {
         name = "wormhole";
         paths = [ pkgs.wormhole-rs ];
