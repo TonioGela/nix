@@ -1,8 +1,8 @@
 # TO-DO
 - fix the git config
 - Create a module for gpu-screen-recorder
+- Fix the noctalia warning creating a niri config renderer
 - pdf arranger, minesweep-rs, file light, planify, anytype, defuse, kasts, optimage, obs
-- use the HM noctalia module to set the config
 - Stuff from self-host.it
 - generalise and fix the bindkey for zsh
 - Switch to a grafical pinentry
