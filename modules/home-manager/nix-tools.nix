@@ -1,5 +1,7 @@
 {
   lib,
+  pkgs,
+  sources,
   pkgsUnstable,
   config,
   ...
@@ -16,7 +18,11 @@
     };
   };
 
+  imports = [ sources.nix-index-database ];
+
   config = {
+    programs.nix-index-database.comma.enable = true;
+
     programs.nh = {
       enable = true;
       package = pkgsUnstable.nh;
@@ -32,6 +38,12 @@
       NH_ATTRP = config.programs.nh.nhAttrPath;
     };
 
-    home.packages = [ pkgsUnstable.npins ];
+    home.packages = [
+      pkgs.nix-tree
+      pkgs.nix-diff
+      pkgsUnstable.vulnix
+      pkgsUnstable.npins
+    ];
+
   };
 }

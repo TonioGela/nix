@@ -18,8 +18,7 @@ in
     gpg
     kitty
     neovim
-    nh-npins
-    nix-index
+    nix-tools
     yabai-skhd
     yazi
     zsh

@@ -1,4 +1,5 @@
 spawn-sh-at-startup "swaybg -i .config/wallpaper.svg -m fill"
+spawn-sh-at-startup "noctalia-shell -dn"
 layer-rule { place-within-backdrop true; }
 overview { workspace-shadow { off; }; }
 gestures { hot-corners { off; }; }

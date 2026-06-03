@@ -37,10 +37,7 @@
         TF_TOKEN_gitlab_com = token;
         GITLAB_TOKEN = token;
       };
-    extraAliases = {
-      tf = "terraform";
-      flushdns = "sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder";
-    };
+    extraAliases.tf = "terraform";
     extraFunctions = ''
       function toLong() {
         printf '%d\n' "0x$1"
