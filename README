@@ -1,12 +1,11 @@
 # TO-DO
 - fix the git config
 - Fix Calibre library
-- Fix the noctalia warning creating a niri config renderer
-- pdf arranger, minesweep-rs, file light, planify, anytype, defuse, kasts, optimage, obs
-- Stuff from self-host.it
+- pdf arranger, file light, planify, anytype, defuse, kasts, optimage, obs
 - generalise and fix the bindkey for zsh
 - Switch to a grafical pinentry
 - Read the paper backup thingie about gpg keys and switch to pass
+- wifi with sops
 - Read niri documentation to see if you forgot something
 - Try tridactyl on firefox
 - Set dark mode in system to tell apps to be dark (requires dbus + dconf I think)
