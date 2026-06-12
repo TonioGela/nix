@@ -77,6 +77,7 @@
       pkgs.qbittorrent
       pkgs.vesktop
       pkgs.mkvtoolnix
+      pkgs.zbar
     ];
 
     programs.nh = {
