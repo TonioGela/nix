@@ -1,6 +1,6 @@
 { sources, modules }:
 let
-  stateVersion = "25.11";
+  stateVersion = "26.05";
   specialArgs = { inherit sources modules; };
 
   # Passed as a nixos module to nixos and as a hm module to hm

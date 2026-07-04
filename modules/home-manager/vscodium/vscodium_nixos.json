@@ -171,10 +171,13 @@
     "rust-analyzer.completion.fullFunctionSignatures.enable": true,
     "editor.inlayHints.enabled": "offUnlessPressed",
     "window.menuBarVisibility": "toggle",
-    "workbench.statusBar.visible": false,
     "explorer.excludeGitIgnore": true,
     "explorer.confirmDragAndDrop": false,
     "window.titleBarStyle": "native",
     "metals.startMcpServer": true,
+    "rust-analyzer.testExplorer": true,
+    "rust-analyzer.lens.run.enable": false,
+    "rust-analyzer.lens.debug.enable": false,
+    "workbench.statusBar.visible": false,
     "workbench.activityBar.location": "hidden"
 }

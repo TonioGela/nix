@@ -1,10 +1,10 @@
 # TO-DO
+- Read the paper backup thingie about gpg keys and switch to pass, there is a really exhaustive conversation with Claude about the topic.
 - fix the git config
-- Fix Calibre library
-- pdf arranger, file light, planify, anytype, defuse, kasts, optimage, obs
+- try foot on Nix
 - generalise and fix the bindkey for zsh
 - Switch to a grafical pinentry
-- Read the paper backup thingie about gpg keys and switch to pass
+- pdf arranger, file light, planify, anytype, defuse, kasts, optimage, obs
 - wifi with sops
 - Read niri documentation to see if you forgot something
 - Try tridactyl on firefox

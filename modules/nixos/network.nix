@@ -2,10 +2,10 @@
   services.resolved = {
     enable = true;
     # Avahi takes care of multicastDNS
-    extraConfig = ''
-      MulticastDNS=no
-      LLMNR=no
-    '';
+    settings.Resolve = {
+      MulticastDNS = false;
+      LLMNR = false;
+    };
   };
   systemd.services.NetworkManager-wait-online.enable = false;
   networking.networkmanager.enable = true;

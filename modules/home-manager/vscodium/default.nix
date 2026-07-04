@@ -17,6 +17,7 @@ let
     vscode-icons-team.vscode-icons
     mechatroner.rainbow-csv
     rust-lang.rust-analyzer
+    mkhl.direnv
   ];
 
   marketPlaceExtensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
@@ -59,7 +60,7 @@ in
       NIXD_PATH = lib.getExe pkgsUnstable.nixd;
     };
 
-    programs.vscode = {
+    programs.vscodium = {
       enable = true;
       package = pkgs.vscodium.override {
         commandLineArgs = [ "--ozone-platform=wayland" ];

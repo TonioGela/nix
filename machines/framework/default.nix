@@ -73,11 +73,12 @@
 
   home-manager.users.toniogela = {
     home.packages = [
-      pkgs.bitwarden-desktop
       pkgs.qbittorrent
-      pkgs.vesktop
+      pkgsUnstable.vesktop
       pkgs.mkvtoolnix
       pkgs.zbar
+      pkgs.mediainfo
+      pkgs.ffmpeg-full
     ];
 
     programs.nh = {

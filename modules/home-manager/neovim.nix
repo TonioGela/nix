@@ -17,7 +17,7 @@
       colorscheme nordic
       let g:rooter_silent_chdir = 1
     '';
-    extraLuaConfig = ''
+    initLua = ''
       vim.opt.termguicolors = true
       require("nvim-tree").setup({
         disable_netrw = true,
