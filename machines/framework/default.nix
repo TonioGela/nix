@@ -88,7 +88,7 @@
     git = {
       username = "Antonio Gelameris";
       email = "toniogela89@gmail.com";
-      signingKey = "";
+      signingKey = "0x1D9D8B09A88D614A";
     };
 
     vscodium.profileFile = "nixos";
