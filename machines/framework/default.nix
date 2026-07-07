@@ -76,7 +76,6 @@
       pkgs.qbittorrent
       pkgsUnstable.vesktop
       pkgs.mkvtoolnix
-      pkgs.zbar
       pkgs.mediainfo
       pkgs.ffmpeg-full
     ];
