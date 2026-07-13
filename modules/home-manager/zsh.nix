@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  pkgsUnstable,
   config,
   ...
 }:
@@ -25,7 +26,7 @@ let
   git = lib.getExe config.programs.git.package;
   eza = lib.getExe pkgs.eza;
   bat = lib.getExe pkgs.bat;
-  zathura = lib.getExe pkgs.zathura;
+  zathura = lib.getExe pkgsUnstable.zathura;
 
   prompt_init = ''
     # Clone if necessary and source gitstatus

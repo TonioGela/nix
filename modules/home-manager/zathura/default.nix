@@ -1,7 +1,12 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  pkgsUnstable,
+  lib,
+  ...
+}:
 {
   home = {
-    packages = [ pkgs.zathura ];
+    packages = [ pkgsUnstable.zathura ];
     file.".config/zathura/zathurarc".source = ./zathurarc;
   };
 

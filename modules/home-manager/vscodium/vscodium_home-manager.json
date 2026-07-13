@@ -68,7 +68,10 @@
     "metals.enableIndentOnPaste": true,
     "metals.excludedPackages": [
         ".*javadsl.*",
-        "akka.actor.typed.javadsl"
+        "akka.actor.typed.javadsl",
+        "mercator.*",
+        "squants.*",
+        "magnolia1.*"
     ],
     "metals.serverProperties": [
         "-Xmx2G",

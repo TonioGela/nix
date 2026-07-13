@@ -1,6 +1,5 @@
 {
   lib,
-  pkgs,
   sources,
   pkgsUnstable,
   config,
@@ -39,11 +38,10 @@
     };
 
     home.packages = [
-      pkgs.nix-tree
-      pkgs.nix-diff
+      pkgsUnstable.nix-tree
+      pkgsUnstable.nix-diff
       pkgsUnstable.vulnix
       pkgsUnstable.npins
     ];
-
   };
 }
