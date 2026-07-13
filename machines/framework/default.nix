@@ -45,6 +45,7 @@
     mpv
     neovim
     nix-tools
+    pass
     wormhole
     yazi
     zsh
@@ -69,7 +70,14 @@
     "scanner"
     "input"
     "kvm"
+    "dialout"
   ];
+
+  services.udev.extraRules = ''
+    # Epilogue GB Operator
+    SUBSYSTEM=="usb", ATTR{idVendor}=="16d0", ATTR{idProduct}=="123d", MODE="0666"
+    KERNEL=="ttyACM*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="16d0", MODE="0666"
+  '';
 
   home-manager.users.toniogela = {
     home.packages = [

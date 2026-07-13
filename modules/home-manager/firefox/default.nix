@@ -58,6 +58,16 @@ in
     programs.firefox = {
       enable = true;
       languagePacks = [ "en-GB" ];
+      nativeMessagingHosts = [
+        (pkgs.passff-host.overrideAttrs (old: {
+          dontStrip = true;
+          patchPhase = ''
+            sed -i 's#COMMAND = "pass"#COMMAND = "${
+              pkgs.pass.withExtensions (ext: with ext; [ pass-otp ])
+            }/bin/pass"#' src/passff.py
+          '';
+        }))
+      ];
       policies = {
         BlockAboutConfig = false;
         BlockAboutAddons = false;
@@ -149,7 +159,6 @@ in
               (extension "ublock-origin" "uBlock0@raymondhill.net")
               (extension "new-tab-override" "newtaboverride@agenedia.com")
               (extension "sponsorblock" "sponsorBlocker@ajay.app")
-              (extension "bitwarden-password-manager" "{446900e4-71c2-419f-a6a7-df9c091e268b}")
               (extension "single-file" "{531906d3-e22f-4a6c-a102-8057b88a1a63}")
               (extension "istilldontcareaboutcookies" "idcac-pub@guus.ninja")
               (extension "decentraleyes" "jid1-BoFifL9Vbdl2zQ@jetpack")
@@ -159,6 +168,7 @@ in
               (extension "nord-firefox" "{f4c9e1d6-6630-4600-ad50-d223eab7f3e7}")
               (extension "clearurls" "{74145f27-f039-47ce-a470-a662b129930a}")
               (extension "vimium-ff" "{d7742d87-e61d-4b78-b8a1-b469842139fa}")
+              (extension "passff" "passff@invicem.pro")
             ]
             ++ map (e: (extension e.shortId e.uuid)) config.firefox.additionalExtensions
           );
