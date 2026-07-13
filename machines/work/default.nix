@@ -19,6 +19,7 @@ in
     kitty
     neovim
     nix-tools
+    pass
     yabai-skhd
     yazi
     zsh
@@ -47,6 +48,10 @@ in
       "/Users/toniogela/work/hypervolt-backend"
     ];
   };
+
+  gpg.sshKeys = [
+    # "65014B28CA93A00A77A764610942A029901F5E77" # Keygrip of the 0x6D2351BB1BF7ACA9
+  ];
 
   kitty = {
     fontSize = "14.0";

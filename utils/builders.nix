@@ -8,7 +8,10 @@ let
     { pkgs, pkgsUnstable, ... }:
     {
       nix.package = pkgsUnstable.nix;
-      nix.settings.experimental-features = [ "nix-command" ];
+      nix.settings.experimental-features = [
+        "nix-command"
+        "pipe-operators"
+      ];
       nix.nixPath = [ "nixpkgs=${builtins.storePath pkgs.path}" ];
     };
 

@@ -178,6 +178,6 @@
     "rust-analyzer.testExplorer": true,
     "rust-analyzer.lens.run.enable": false,
     "rust-analyzer.lens.debug.enable": false,
-    "workbench.statusBar.visible": false,
-    "workbench.activityBar.location": "hidden"
+    "workbench.activityBar.location": "hidden",
+    "workbench.statusBar.visible": false
 }
