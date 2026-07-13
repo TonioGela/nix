@@ -1,14 +1,8 @@
 # TO-DO
-- Read the paper backup thingie about gpg keys and switch to pass, there is a really exhaustive conversation with Claude about the topic.
-- fix the git config
 - try foot on Nix
 - generalise and fix the bindkey for zsh
-- Switch to a grafical pinentry
-- pdf arranger, file light, planify, anytype, defuse, kasts, optimage, obs
 - wifi with sops
-- Read niri documentation to see if you forgot something
 - Try tridactyl on firefox
-- Set dark mode in system to tell apps to be dark (requires dbus + dconf I think)
 - Rework the plymouth theme as a script so that it won't show text
 - Setup the server config here and use it as a remote builder
   - Use it as a storage in place of google drive as the free tier is only 15 gb
