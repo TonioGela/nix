@@ -1,4 +1,8 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  ...
+}:
 {
 
   options = {
@@ -6,6 +10,16 @@
       type = pkgs.lib.types.listOf pkgs.lib.types.str;
       description = "The list of ssh keys to add to the gpg-agent";
       default = [ ];
+    };
+    gpg.defaultSigningKeyId = pkgs.lib.mkOption {
+      type = pkgs.lib.types.nullOr pkgs.lib.types.str;
+      description = "programs.gpg.settings.default-key";
+      default = null;
+    };
+    gpg.trustedKeyId = pkgs.lib.mkOption {
+      type = pkgs.lib.types.nullOr pkgs.lib.types.str;
+      description = "programs.gpg.settings.trusted-key";
+      default = null;
     };
   };
 
@@ -32,8 +46,8 @@
       homedir = "${config.home.homeDirectory}/.local/state/gnupg";
 
       settings = {
-        default-key = "0x6D2351BB1BF7ACA9";
-        trusted-key = "0x6D2351BB1BF7ACA9";
+        default-key = pkgs.lib.mkIf (config.gpg.defaultSigningKeyId != null) config.gpg.defaultSigningKeyId;
+        trusted-key = pkgs.lib.mkIf (config.gpg.trustedKeyId != null) config.gpg.trustedKeyId;
         personal-cipher-preferences = "AES256 AES192 AES";
         personal-digest-preferences = "SHA512 SHA384 SHA256";
         personal-compress-preferences = "ZLIB BZIP2 ZIP Uncompressed";
