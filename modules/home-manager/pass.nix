@@ -5,6 +5,7 @@
       exts.pass-otp
       exts.pass-update
       exts.pass-audit
+      exts.pass-genphrase
     ]))
   ];
 }

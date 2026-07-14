@@ -333,6 +333,7 @@ in
                 "forward-button"
                 "urlbar-container"
                 "downloads-button"
+                "passff_invicem_pro-browser-action"
                 "fxa-toolbar-menu-button"
                 "unified-extensions-button"
               ];
@@ -343,8 +344,8 @@ in
             };
             seen = [ ];
             dirtyAreaCache = [ ];
-            currentVersion = 23;
-            newElementCount = 4;
+            currentVersion = 24;
+            newElementCount = 6;
           };
         };
         # TODO https://github.com/akkva/gwfox
