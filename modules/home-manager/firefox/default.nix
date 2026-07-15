@@ -55,6 +55,19 @@ in
   };
 
   config = {
+    home.file.".config/tridactyl/tridactylrc".text = ''
+      " General Settings
+      " This is supposed to sync setting on firefox cache with the ones written here
+      sanitise tridactyllocal tridactylsync
+      set update.lastchecktime 1784128384688
+      set configversion 2.0
+      set theme dark
+      set modeindicatormodes {"normal":"false","insert":"true","input":"true","ignore":"true","ex":"true","hint":"true","visual":"true"} 
+
+      " For syntax highlighting see https://github.com/tridactyl/vim-tridactyl
+      " vim: set filetype=tridactyl
+    '';
+
     programs.firefox = {
       enable = true;
       languagePacks = [ "en-GB" ];
