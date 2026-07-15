@@ -37,6 +37,7 @@
       enableZshIntegration = true;
       pinentry.package = if pkgs.stdenv.isLinux then pkgs.pinentry-gnome3 else pkgs.pinentry_mac;
       sshKeys = config.gpg.sshKeys;
+      noAllowExternalCache = true;
     };
 
     # https://tsawyer87.github.io/posts/gpg-agent_on_nixos/

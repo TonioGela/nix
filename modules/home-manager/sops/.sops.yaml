@@ -1,0 +1,7 @@
+keys:
+  - &toniogela 48B37417C51A5D5B7FD59A2F249CF446C408D4E2
+creation_rules:
+  - path_regex: .*\.[yaml|yml]
+    key_groups:
+    - pgp:
+      - *toniogela

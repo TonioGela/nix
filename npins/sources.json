@@ -116,6 +116,19 @@
       "revision": "32259a8d9357b75c22cbb984e1224e2019830276",
       "url": "https://api.github.com/repos/noctalia-dev/noctalia-shell/tarball/refs/tags/v4.7.7",
       "hash": "sha256-QszLpoDPD7JEv8B/w1U2u1ksBw/CYBDmwUTLhJrekF0="
+    },
+    "sops-nix": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "Mic92",
+        "repo": "sops-nix"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "f1406619a3884cd5c47992a70b8b35c9c0fcb4c9",
+      "url": "https://github.com/Mic92/sops-nix/archive/f1406619a3884cd5c47992a70b8b35c9c0fcb4c9.tar.gz",
+      "hash": "sha256-aCWC8ngycU7OdJrU2+Je3qf+1a2ykuBvpPhZT/9tXMc="
     }
   },
   "version": 8

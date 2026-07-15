@@ -13,6 +13,7 @@ let
         gitRev = pins.noctalia-qs.revision;
       };
     };
+    sops = import (pins.sops-nix + "/modules/home-manager/sops.nix");
     nix-index-database = import (pins.nix-index-database + "/home-manager-module.nix");
     nixosBuilder = import (pins.nixpkgs + "/nixos");
     homeManagerBuilder = import (pins.home-manager + "/modules");
