@@ -58,6 +58,7 @@ in
 
     # https://macos-defaults.com/
     targets.darwin.defaults = {
+      "org.gpgtools.common".UseKeychain = false;
       "com.apple.dock" = {
         orientation = "bottom";
         autohide = true;

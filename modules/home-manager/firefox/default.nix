@@ -59,6 +59,7 @@ in
       enable = true;
       languagePacks = [ "en-GB" ];
       nativeMessagingHosts = [
+        pkgs.tridactyl-native
         (pkgs.passff-host.overrideAttrs (old: {
           dontStrip = true;
           patchPhase = ''
@@ -167,7 +168,7 @@ in
               (extension "netflix-prime-auto-skip" "NetflixPrime@Autoskip.io")
               (extension "nord-firefox" "{f4c9e1d6-6630-4600-ad50-d223eab7f3e7}")
               (extension "clearurls" "{74145f27-f039-47ce-a470-a662b129930a}")
-              (extension "vimium-ff" "{d7742d87-e61d-4b78-b8a1-b469842139fa}")
+              (extension "tridactyl-vim" "tridactyl.vim@cmcaine.co.uk")
               (extension "passff" "passff@invicem.pro")
             ]
             ++ map (e: (extension e.shortId e.uuid)) config.firefox.additionalExtensions
