@@ -32,12 +32,13 @@
     calibre
     firefox
     git
-    hypervolt
     retro-gaming
     scala
+    sops
     vscodium
     zathura
     claude
+    foot
     gpg
     hide-desktop-entries
     kitty
@@ -87,6 +88,8 @@
       pkgs.mediainfo
       pkgs.ffmpeg-full
     ];
+
+    sops.secrets.desktop-note.path = "/home/toniogela/note.txt";
 
     programs.nh = {
       nhFile = "/home/toniogela/.config/nix/configuration.nix";
