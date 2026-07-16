@@ -15,7 +15,7 @@
     loader = {
       timeout = 0;
       systemd-boot = {
-        enable = true;
+        enable = false; # lanzaboote requires this to be false
         editor = false;
         consoleMode = "5";
         configurationLimit = 10;

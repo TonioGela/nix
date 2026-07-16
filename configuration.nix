@@ -1,6 +1,6 @@
 let
   pins = import ./npins;
-  sources = {
+  sources = rec {
     pkgs = import pins.nixpkgs { config.allowUnfree = true; };
     pkgsUnstable = import pins.nixpkgs-unstable { config.allowUnfree = true; };
     homeManager = import (pins.home-manager + "/nixos");
@@ -14,6 +14,7 @@ let
       };
     };
     sops = import (pins.sops-nix + "/modules/home-manager/sops.nix");
+    lanzaboote = (import pins.lanzaboote { inherit pkgs; }).nixosModules.lanzaboote;
     nix-index-database = import (pins.nix-index-database + "/home-manager-module.nix");
     nixosBuilder = import (pins.nixpkgs + "/nixos");
     homeManagerBuilder = import (pins.home-manager + "/modules");

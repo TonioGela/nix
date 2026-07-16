@@ -11,14 +11,15 @@
     niri
     noctalia
     plymouth
+    printers
     de-channel
     gpu-screen-recorder
     greetd
+    lanzaboote
     network
     nix-ld
     postgres
     power
-    printers
     quiet-boot
     security
     steam
