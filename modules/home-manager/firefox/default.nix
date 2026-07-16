@@ -56,16 +56,44 @@ in
 
   config = {
     home.file.".config/tridactyl/tridactylrc".text = ''
-      " General Settings
-      " This is supposed to sync setting on firefox cache with the ones written here
-      sanitise tridactyllocal tridactylsync
+      " This wipes all existing settings. This means that if a setting in this file
+      " is removed, then it will return to default. In other words, this file serves
+      " as an enforced single point of truth for Tridactyl's configuration.
+      sanitize tridactyllocal tridactylsync
+
       set update.lastchecktime 1784128384688
       set configversion 2.0
+
+      "" Styling
       set theme dark
+      "" Not working, replaced with css in usercontent
       set modeindicatormodes {"normal":"false","insert":"true","input":"true","ignore":"true","ex":"true","hint":"true","visual":"true"} 
 
-      " For syntax highlighting see https://github.com/tridactyl/vim-tridactyl
-      " vim: set filetype=tridactyl
+      " Tridactyl search
+      bind / fillcmdline find
+      bind ? fillcmdline find -?
+      bind n findnext 1
+      bind N findnext -1
+      " Remove search highlighting.
+      bind ,<Space> nohlsearch
+      " Use sensitive case. Smart case would be nice here, but it doesn't work.
+      set findcase sensitive
+
+      " Smooth scrolling, yes please. This is still a bit janky in Tridactyl.
+      set smoothscroll true
+      " The default jump of 10 is a bit much.
+      bind j scrollline 5
+      bind k scrollline -5
+
+      " Disable all searchurls
+      jsb Object.keys(tri.config.get("searchurls")).reduce((prev, u) => prev.catch(()=>{}).then(_ => tri.excmds.setnull("searchurls." + u)), Promise.resolve())
+      " Add our own
+      set searchurls.ddg https://duckduckgo.com/html?q=%s
+      set searchurls.g https://www.google.com/search?q=%s
+      set searchurls.gh https://github.com/search?utf8=%E2%9C%93&q=%s&ref=simplesearch
+      set searchurls.gi https://www.google.com/search?q=%s&tbm=isch
+      set searchurls.gmaps https://www.google.com/maps/search/%s
+      set searchurls.y https://www.youtube.com/results?search_query=%s
     '';
 
     programs.firefox = {
@@ -338,6 +366,7 @@ in
           "devtools.browsertoolbox.scope" = "parent-process";
           "browser.urlbar.trimHttps" = true;
           "browser.urlbar.trimURLs" = true;
+          "security.sandbox.content.read_path_whitelist" = "/nix/store/";
           "browser.uiCustomization.state" = {
             placements = {
               widget-overflow-fixed-list = [ ];
@@ -427,7 +456,9 @@ in
                     opacity: 100%;
                   }
         '';
-        userContent = "";
+        userContent = ''
+          .TridactylStatusIndicator.TridactylModenormal { display: none !important; }
+        '';
       };
     };
   };
