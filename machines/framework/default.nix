@@ -16,6 +16,7 @@
     gpu-screen-recorder
     greetd
     lanzaboote
+    minidlna
     network
     nix-ld
     postgres
@@ -27,6 +28,7 @@
     trimui
     udisks
     virtualisation
+    waydroid
   ];
 
   home-manager.users.toniogela.imports = with modules.home-manager; [

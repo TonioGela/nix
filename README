@@ -1,6 +1,6 @@
 # TO-DO
 - generalise and fix the bindkey for zsh
-- wifi with sops
+- wifi with sops?
 - Rework the plymouth theme as a script so that it won't show text
 - Setup the server config here and use it as a remote builder
   - Use it as a storage in place of google drive as the free tier is only 15 gb
@@ -8,4 +8,3 @@
   - 3-2-1 Backups
   - Time machine for Giulia's mac
   - YACC Reader server
-- Try WayDroid
