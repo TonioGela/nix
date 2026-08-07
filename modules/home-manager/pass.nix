@@ -6,6 +6,7 @@
       exts.pass-update
       exts.pass-audit
       exts.pass-genphrase
+      exts.pass-file
     ]))
   ];
 }

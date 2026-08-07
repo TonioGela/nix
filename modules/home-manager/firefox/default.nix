@@ -85,6 +85,8 @@ in
       bind j scrollline 5
       bind k scrollline -5
 
+      bind gh js document.evaluate("//a[contains(text(), 'Add to favorites')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click()
+
       " Disable all searchurls
       jsb Object.keys(tri.config.get("searchurls")).reduce((prev, u) => prev.catch(()=>{}).then(_ => tri.excmds.setnull("searchurls." + u)), Promise.resolve())
       " Add our own
