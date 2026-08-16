@@ -69,7 +69,7 @@ in
       "" Not working, replaced with css in usercontent
       set modeindicatormodes {"normal":"false","insert":"true","input":"true","ignore":"true","ex":"true","hint":"true","visual":"true"} 
 
-      " Tridactyl search
+      " Tridactyl search 
       bind / fillcmdline find
       bind ? fillcmdline find -?
       bind n findnext 1
