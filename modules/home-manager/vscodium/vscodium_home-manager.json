@@ -71,7 +71,8 @@
         "akka.actor.typed.javadsl",
         "mercator.*",
         "squants.*",
-        "magnolia1.*"
+        "magnolia1.*",
+        ".*squants.*"
     ],
     "metals.serverProperties": [
         "-Xmx2G",
@@ -178,6 +179,6 @@
     "rust-analyzer.testExplorer": true,
     "rust-analyzer.lens.run.enable": false,
     "rust-analyzer.lens.debug.enable": false,
-    "workbench.activityBar.location": "hidden",
-    "workbench.statusBar.visible": false
+    "workbench.statusBar.visible": false,
+    "workbench.activityBar.location": "hidden"
 }

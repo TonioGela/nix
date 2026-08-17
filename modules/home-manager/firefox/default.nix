@@ -76,16 +76,16 @@ in
       bind N findnext -1
       " Remove search highlighting.
       bind ,<Space> nohlsearch
-      " Use sensitive case. Smart case would be nice here, but it doesn't work.
-      set findcase sensitive
 
-      " Smooth scrolling, yes please. This is still a bit janky in Tridactyl.
+      " Smooth scrolling
       set smoothscroll true
-      " The default jump of 10 is a bit much.
+      " The default jump of 10 is a bit much
       bind j scrollline 5
       bind k scrollline -5
 
       bind gh js document.evaluate("//a[contains(text(), 'Add to favorites')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.click()
+      " open bookmark
+      bind ,b fillcmdline bmarks -t
 
       " Disable all searchurls
       jsb Object.keys(tri.config.get("searchurls")).reduce((prev, u) => prev.catch(()=>{}).then(_ => tri.excmds.setnull("searchurls." + u)), Promise.resolve())
