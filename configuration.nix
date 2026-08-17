@@ -27,7 +27,7 @@ let
   builders = import ./utils/builders.nix { inherit sources modules; };
 in
 {
-  framework = builders.nixos "x86_64-linux" ./machines/framework;
+  ronnie = builders.nixos "x86_64-linux" ./machines/ronnie;
   work = builders.home-manager ./machines/work;
   eddie = builders.nixos "x86_64-linux" ./machines/eddie;
 }

@@ -56,7 +56,7 @@
   ];
 
   boot.kernelPackages = pkgsUnstable.linuxPackages;
-  networking.hostName = "toniogela-nixos-fw13";
+  networking.hostName = "ronnie";
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
@@ -96,7 +96,7 @@
 
     programs.nh = {
       nhFile = "/home/toniogela/.config/nix/configuration.nix";
-      nhAttrPath = "framework";
+      nhAttrPath = "ronnie";
     };
 
     git = {
