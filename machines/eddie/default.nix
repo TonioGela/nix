@@ -30,6 +30,7 @@
   ];
 
   environment.systemPackages = [
+    pkgs.git
     pkgs.neovim
     pkgsUnstable.nh
     pkgsUnstable.npins
