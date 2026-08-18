@@ -29,7 +29,12 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILWwmMYuP1GUPSBRiven+ia4YQhwoNXNyjw6OOTYL/Md (none)"
   ];
 
-  environment.systemPackages = [ pkgs.neovim ];
+  environment.systemPackages = [
+    pkgs.neovim
+    pkgsUnstable.nh
+    pkgsUnstable.npins
+  ];
+
   services.openssh.enable = true;
 
   tailscale.routingFeatures = "server";
