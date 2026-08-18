@@ -5,36 +5,6 @@
   lib,
   ...
 }:
-let
-  extensions = with pkgs.vscode-extensions; [
-    aaron-bond.better-comments
-    usernamehw.errorlens
-    hashicorp.terraform
-    oderwat.indent-rainbow
-    marp-team.marp-vscode
-    jnoortheen.nix-ide
-    arcticicestudio.nord-visual-studio-code
-    vscode-icons-team.vscode-icons
-    mechatroner.rainbow-csv
-    rust-lang.rust-analyzer
-    mkhl.direnv
-  ];
-
-  marketPlaceExtensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-    {
-      name = "scala";
-      publisher = "scala-lang";
-      version = "0.5.9";
-      sha256 = "sha256-zgCqKwnP7Fm655FPUkD5GL+/goaplST8507X890Tnhc=";
-    }
-    {
-      name = "metals";
-      publisher = "scalameta";
-      version = "1.65.3";
-      sha256 = "sha256-Asxj9c+tFO6ziy/nbAN7z/SQjKJdUXufjVD3GnNAaJo=";
-    }
-  ];
-in
 {
 
   options = {
@@ -69,7 +39,22 @@ in
       profiles.default = {
         enableExtensionUpdateCheck = true;
         enableUpdateCheck = true;
-        extensions = extensions ++ marketPlaceExtensions;
+        extensions = with pkgs; [
+          vscode-marketplace.aaron-bond.better-comments
+          vscode-marketplace.usernamehw.errorlens
+          vscode-marketplace.hashicorp.terraform
+          vscode-marketplace.oderwat.indent-rainbow
+          vscode-marketplace.marp-team.marp-vscode
+          vscode-marketplace.jnoortheen.nix-ide
+          vscode-marketplace.arcticicestudio.nord-visual-studio-code
+          vscode-marketplace.vscode-icons-team.vscode-icons
+          vscode-marketplace.mechatroner.rainbow-csv
+          vscode-marketplace.rust-lang.rust-analyzer
+          vscode-marketplace.mkhl.direnv
+          vscode-marketplace.scalameta.metals
+          vscode-marketplace.scala-lang.scala
+          open-vsx.pcode-pl.hide-files-toggle
+        ];
         userTasks = {
           version = "2.0.0";
           tasks = [

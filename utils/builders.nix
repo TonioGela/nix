@@ -47,6 +47,7 @@ in
 
         config = {
           nixpkgs.pkgs = sources.pkgs;
+          nixpkgs.overlays = [ sources.nix-vscode-extensions ];
           system.stateVersion = stateVersion;
 
           nix.channel.enable = false;
@@ -80,6 +81,7 @@ in
 
         # Home Manager doesn't inherit it from the externally created instance
         config.nixpkgs.config.allowUnfree = true;
+        config.nixpkgs.overlays = [ sources.nix-vscode-extensions ];
       };
     };
 }

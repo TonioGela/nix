@@ -82,7 +82,7 @@ in
     derivations.keeping-you-awake
     derivations.qlmarkdown
     derivations.source-code-syntax-highlight
-    derivations.ice-bar # TODO Replace with https://github.com/stonerl/Thaw
+    derivations.thaw
   ];
 
 }

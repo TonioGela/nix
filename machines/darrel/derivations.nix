@@ -35,12 +35,12 @@ let
     };
 in
 {
-  ice-bar = fetchMacAppFromGhReleases {
-    author = "jordanbaird";
-    pname = "Ice";
-    version = "0.11.13-dev.2";
-    assetName = "Ice";
-    sha256 = "sha256-B/uTyCnWlLkXZgwFX9HTJhy6aOyWN8aPOxPa93He4uc=";
+  thaw = fetchMacAppFromGhReleases rec {
+    author = "thaw-app";
+    pname = "Thaw";
+    version = "1.2.0";
+    assetName = "Thaw_${version}";
+    sha256 = "sha256-Q2D5E26JeOGctdko6RPBOddm13ZyO1TYpQBbAriJbEc=";
     description = "Powerful menu bar manager for macOS";
     platform = "aarch64-darwin";
   };

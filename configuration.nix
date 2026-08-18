@@ -1,6 +1,7 @@
 let
   pins = import ./npins;
   sources = rec {
+    nix-vscode-extensions = (import pins.nix-vscode-extensions).overlays.default;
     pkgs = import pins.nixpkgs { config.allowUnfree = true; };
     pkgsUnstable = import pins.nixpkgs-unstable { config.allowUnfree = true; };
     homeManager = import (pins.home-manager + "/nixos");

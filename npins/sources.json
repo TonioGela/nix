@@ -74,6 +74,19 @@
       "url": "https://github.com/nix-community/nix-index-database/archive/c7962dc97b45129df8d751bedaf37beb5a17706e.tar.gz",
       "hash": "sha256-IM5CYtf86W4w8eUPpKcY/LpdHElmVBtJhaKnoTKxZEA="
     },
+    "nix-vscode-extensions": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nix-community",
+        "repo": "nix-vscode-extensions"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "596319216632f6e6da839787295a350c027d39be",
+      "url": "https://github.com/nix-community/nix-vscode-extensions/archive/596319216632f6e6da839787295a350c027d39be.tar.gz",
+      "hash": "sha256-6B98mtehXRht8nSiX+1tqm8WyeQvjCjhf8IjCKLh/dU="
+    },
     "nixos-hardware": {
       "type": "Git",
       "repository": {
