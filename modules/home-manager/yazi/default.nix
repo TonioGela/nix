@@ -68,13 +68,13 @@
       opener = {
         image = [
           {
-            run = "loupe \"$@\"";
+            run = "loupe %s";
             desc = "Loupe image viewer";
             orphan = true;
             for = "linux";
           }
           {
-            run = "open -a Preview -F \"$@\"";
+            run = "open -a Preview -F %s";
             desc = "Preview";
             orphan = true;
             for = "macos";
@@ -83,7 +83,7 @@
 
         play = [
           {
-            run = "mpv \"$@\"";
+            run = "mpv %s";
             desc = "Mpv Video Player";
             orphan = true;
           }
@@ -91,7 +91,7 @@
 
         pdf = [
           {
-            run = "zathura \"$@\"";
+            run = "zathura %s";
             desc = "Zathura PDF viewer";
             orphan = true;
           }
@@ -99,7 +99,7 @@
 
         html = [
           {
-            run = "firefox \"$@\"";
+            run = "firefox %s";
             desc = "Firefox Web Browser";
             orphan = true;
           }
@@ -110,7 +110,7 @@
     keymap = {
       mgr.prepend_keymap = [
         {
-          run = "shell 'ripdrag \"$@\" -x -a 2>/dev/null &' --confirm";
+          run = "shell 'ripdrag %s -x -a 2>/dev/null &' --confirm";
           on = [ "<C-n>" ];
           desc = "Drag the file";
         }

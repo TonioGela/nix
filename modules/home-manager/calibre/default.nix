@@ -1,7 +1,12 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  pkgsUnstable,
+  lib,
+  ...
+}:
 {
   home.packages = [
-    (pkgs.calibre.overrideAttrs (old: {
+    (pkgsUnstable.calibre.overrideAttrs (old: {
       postFixup = (old.postFixup or "") + ''
         wrapProgram $out/bin/calibre \
           --set ACSM_LIBCRYPTO ${lib.getLib pkgs.libressl}/lib/libcrypto.so \

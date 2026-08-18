@@ -55,7 +55,7 @@
     zsh
   ];
 
-  boot.kernelPackages = pkgsUnstable.linuxPackages;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   networking.hostName = "ronnie";
 
   programs.zsh.enable = true;
