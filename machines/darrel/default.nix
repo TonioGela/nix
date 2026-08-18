@@ -34,7 +34,7 @@ in
 
   programs.nh = {
     nhFile = "/Users/toniogela/.config/home-manager/configuration.nix";
-    nhAttrPath = "work";
+    nhAttrPath = "darrel";
   };
 
   home.file.".hushlogin".text = "";

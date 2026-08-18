@@ -12,6 +12,10 @@ let
         "nix-command"
         "pipe-operators"
       ];
+      nix.settings.trusted-users = [
+        "root"
+        "toniogela"
+      ];
       nix.nixPath = [ "nixpkgs=${builtins.storePath pkgs.path}" ];
     };
 

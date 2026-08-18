@@ -1,5 +1,4 @@
 # TO-DO
-- nix.package declarative in nixos builder
 - generalise and fix the bindkey for zsh
 - wifi with sops?
 - Rework the plymouth theme as a script so that it won't show text

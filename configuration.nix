@@ -28,6 +28,6 @@ let
 in
 {
   ronnie = builders.nixos "x86_64-linux" ./machines/ronnie;
-  work = builders.home-manager ./machines/work;
+  darrel = builders.home-manager ./machines/darrel;
   eddie = builders.nixos "x86_64-linux" ./machines/eddie;
 }
