@@ -47,8 +47,8 @@
     "files.insertFinalNewline": false,
     "files.watcherExclude": {
         "**/.ammonite": true,
-        "**/.bloop": true,
-        "**/.metals": true
+        "**/.bloop/**": true,
+        "**/.metals/**/*.{java,scala}": true
     },
     "git.autofetch": true,
     "git.blame.editorDecoration.enabled": false,
@@ -75,7 +75,7 @@
         ".*squants.*"
     ],
     "metals.serverProperties": [
-        "-Xmx2G",
+        "-Xmx12G",
         "-Dmetals.enable-best-effort=true"
     ],
     "metals.superMethodLensesEnabled": false,
@@ -180,5 +180,6 @@
     "rust-analyzer.lens.run.enable": false,
     "rust-analyzer.lens.debug.enable": false,
     "workbench.statusBar.visible": false,
-    "workbench.activityBar.location": "hidden"
+    "workbench.activityBar.location": "hidden",
+    "metals.serverVersion": "2.0.0-M18"
 }
