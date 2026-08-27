@@ -31,4 +31,5 @@ in
   ronnie = builders.nixos "x86_64-linux" ./machines/ronnie;
   darrel = builders.home-manager ./machines/darrel;
   eddie = builders.nixos "x86_64-linux" ./machines/eddie;
+  gilderien = builders.nixos "x86_64-linux" ./machines/gilderien;
 }

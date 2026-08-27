@@ -8,6 +8,8 @@
   imports = with modules.nixos; [
     ./hardware
     de-channel
+    passwordless-sudoer
+    ssh-keys
     tailscale
   ];
 
@@ -22,12 +24,7 @@
   time.timeZone = "Europe/Rome";
   i18n.defaultLocale = "en_GB.UTF-8";
   i18n.extraLocales = [ "it_IT.UTF-8/UTF-8" ];
-
-  users.users.toniogela.isNormalUser = true;
-  users.users.toniogela.extraGroups = [ "wheel" ];
-  users.users.toniogela.openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILWwmMYuP1GUPSBRiven+ia4YQhwoNXNyjw6OOTYL/Md (none)"
-  ];
+  passwordlessSudoer = "toniogela";
 
   environment.systemPackages = [
     pkgs.git

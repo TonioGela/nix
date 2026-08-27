@@ -97,6 +97,19 @@
     programs.nh = {
       nhFile = "/home/toniogela/.config/nix/configuration.nix";
       nhAttrPath = "ronnie";
+      deployments = [
+        {
+          configurationName = "eddie";
+          configurationKind = "nixos";
+          targetHost = "eddie.shrimp-pogona.ts.net";
+          tailscale = true;
+        }
+        {
+          configurationName = "gilderien";
+          configurationKind = "nixos";
+          targetHost = "gilderien.toniogela.dev";
+        }
+      ];
     };
 
     git = {
