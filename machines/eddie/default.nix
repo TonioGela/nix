@@ -35,6 +35,15 @@
 
   services.openssh.enable = true;
 
+  services.caddy = {
+    enable = true;
+    virtualHosts."hello-world.toniogela.dev".extraConfig = ''
+      respond "Hello, world!"
+    '';
+  };
+
+  networking.firewall.trustedInterfaces = [ "tailscale0" ];
+
   tailscale.routingFeatures = "server";
 
   services.avahi = {

@@ -32,6 +32,25 @@
     443
   ];
 
+  services.nginx = {
+    enable = true;
+    streamConfig = ''
+      resolver 100.100.100.100 valid=10s;
+
+      map $ssl_preread_server_name $backend {
+        hello-world.toniogela.dev  eddie.shrimp-pogona.ts.net:443;
+        default                    "";
+      }
+
+      server {
+        listen 443;
+        listen [::]:443;
+        proxy_pass $backend;
+        ssl_preread on;
+      }
+    '';
+  };
+
   passwordlessSudoer = "toniogela";
 
   tailscale.routingFeatures = "client";
