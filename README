@@ -1,4 +1,6 @@
 # TO-DO
+- Read the comments in nix-tools
+- Set up distributed builds
 - generalise and fix the bindkey for zsh
 - wifi with sops?
 - Rework the plymouth theme as a script so that it won't show text
