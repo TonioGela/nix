@@ -90,6 +90,8 @@
       pkgs.mkvtoolnix
       pkgs.mediainfo
       pkgs.ffmpeg-full
+      pkgs.terranix
+      pkgs.opentofu
     ];
 
     sops.secrets.desktop-note.path = "/home/toniogela/note.txt";
