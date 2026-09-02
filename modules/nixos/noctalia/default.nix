@@ -258,7 +258,7 @@
                 enabled = true;
                 locked_timeout = 0.0;
                 resume_command = "";
-                timeout = 600.0;
+                timeout = 60.0;
               };
               lock-and-suspend = {
                 action = "lock_and_suspend";
@@ -272,9 +272,9 @@
                 action = "screen_off";
                 command = "";
                 enabled = true;
-                locked_timeout = 0.0;
+                locked_timeout = 60.0;
                 resume_command = "";
-                timeout = 660.0;
+                timeout = 0.0;
               };
             };
           };
@@ -402,7 +402,7 @@
               dnd = true;
               keyboard_backlight = true;
               keyboard_layout = true;
-              lock_keys = true;
+              lock_keys = false;
               media = true;
               nightlight = true;
               power_profile = true;

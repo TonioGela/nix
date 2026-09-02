@@ -8,7 +8,8 @@
   imports = with modules.nixos; [
     ./hardware
     de-channel
-    immich
+    #    immich
+    #    jellyfin
     passwordless-sudoer
     ssh-keys
     tailscale
@@ -36,13 +37,6 @@
 
   services.openssh.enable = true;
 
-  # Temporary stand-in for /mnt/photos until a real disk is mounted there.
-  # Lives on the root disk, not on /tmp: immich-server/immich-machine-learning
-  # run with PrivateTmp=true, so a path under /tmp is invisible to them.
-  systemd.tmpfiles.rules = [
-    "d /mnt/photos 0750 immich immich -"
-  ];
-
   services.caddy = {
     enable = true;
     virtualHosts."hello-world.toniogela.dev".extraConfig = ''
@@ -50,6 +44,9 @@
     '';
     virtualHosts."photos.toniogela.dev".extraConfig = ''
       reverse_proxy localhost:2283
+    '';
+    virtualHosts."netflix.toniogela.dev".extraConfig = ''
+      reverse_proxy localhost:8096
     '';
   };
 
