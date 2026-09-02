@@ -8,6 +8,7 @@
     (
       { pkgs, ... }:
       {
+        home.file.".config/face.jpg".source = ./avatar.jpg;
         home.file.".config/wallpaper.png".source = pkgs.runCommand "wallpaper.png" {
           nativeBuildInputs = [ pkgs.librsvg ];
         } "rsvg-convert -w 4096 -h 4096 -o $out ${./wallpaper.svg}";
@@ -44,14 +45,16 @@
               auto_hide = true;
               start = [
                 "control-center"
-                "notifications"
               ];
               center = [
                 "bar"
                 "clock"
                 "battery"
               ];
-              end = [ "tray" ];
+              end = [
+                "notifications"
+                "tray"
+              ];
               background_opacity = 1.0;
               border = "tertiary";
               border_width = 1.0;
