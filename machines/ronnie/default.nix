@@ -2,7 +2,6 @@
   pkgs,
   pkgsUnstable,
   modules,
-  sources,
   ...
 }:
 {
@@ -29,7 +28,6 @@
     trimui
     udisks
     virtualisation
-    waydroid
   ];
 
   home-manager.users.toniogela.imports = with modules.home-manager; [
@@ -100,7 +98,6 @@
       pkgs.ffmpeg-full
       pkgs.terranix
       pkgs.opentofu
-      sources.noctalia5.package
     ];
 
     sops.secrets.desktop-note.path = "/home/toniogela/note.txt";
