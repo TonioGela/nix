@@ -2,6 +2,7 @@
   pkgs,
   pkgsUnstable,
   modules,
+  sources,
   ...
 }:
 {
@@ -83,6 +84,13 @@
     KERNEL=="ttyACM*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="16d0", MODE="0666"
   '';
 
+  nix.settings = {
+    extra-substituters = [ "https://noctalia.cachix.org" ];
+    extra-trusted-public-keys = [
+      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+    ];
+  };
+
   home-manager.users.toniogela = {
     home.packages = [
       pkgs.qbittorrent
@@ -92,6 +100,7 @@
       pkgs.ffmpeg-full
       pkgs.terranix
       pkgs.opentofu
+      sources.noctalia5.package
     ];
 
     sops.secrets.desktop-note.path = "/home/toniogela/note.txt";

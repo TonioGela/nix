@@ -1,5 +1,4 @@
-spawn-sh-at-startup "swaybg -i .config/wallpaper.svg -m fill"
-spawn-sh-at-startup "noctalia-shell -dn"
+spawn-at-startup "noctalia"
 layer-rule { place-within-backdrop true; }
 overview { workspace-shadow { off; }; }
 gestures { hot-corners { off; }; }
@@ -7,7 +6,8 @@ recent-windows { off; }
 hotkey-overlay { skip-at-startup; }
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
-switch-events { lid-close { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }; }
+switch-events { lid-close { spawn "noctalia" "msg" "session" "lock-and-suspend"; }; }
+debug { honor-xdg-activation-with-invalid-serial; }
 
 input {
     warp-mouse-to-focus
@@ -102,9 +102,9 @@ binds {
     Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "footclient"; }
     Alt+Y hotkey-overlay-title="Open yazi in foot" { spawn-sh "footclient --hold --working-directory=/home/toniogela zsh -ci 'y'"; }
     Mod+Shift+Return hotkey-overlay-title="Open Firefox" { spawn "firefox"; }
-    Alt+Space hotkey-overlay-title="Spawn launcher" { spawn-sh "noctalia-shell ipc call launcher toggle"; }
+    Alt+Space hotkey-overlay-title="Spawn launcher" { spawn-sh "noctalia msg panel-toggle launcher"; }
 
-    Mod+Shift+Delete { spawn "sh" "-c" "noctalia-shell ipc call sessionMenu toggle"; }
+    Mod+Shift+Delete { spawn "sh" "-c" "noctalia msg panel-toggle session"; }
     Mod+N hotkey-overlay-title="Open Nixos config in VsCodium" { spawn "sh" "-c" "codium ~/.config/nix"; }
 
     XF86AudioRaiseVolume  allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }

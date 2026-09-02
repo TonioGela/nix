@@ -5,7 +5,6 @@
   cheevos_enable = "true";
   cheevos_hardcore_mode_enable = "false";
   cheevos_richpresence_enable = "false";
-  cheevos_token = "TNEj1xIeeqc0efZx";
   cheevos_unlock_sound_enable = "true";
   cheevos_username = "toniogela";
   content_show_add_entry = "0";
@@ -21,6 +20,7 @@
   fastforward_frameskip = "false";
   fps_show = "true";
   input_audio_mute = "nul";
+  load_dummy_on_core_shutdown = "false";
   input_cheat_index_minus = "nul";
   input_cheat_index_plus = "nul";
   input_cheat_toggle = "nul";
@@ -31,13 +31,15 @@
   input_fps_toggle = "nul";
   input_fps_toggle_btn = "2";
   input_frame_advance = "nul";
-  input_game_focus_toggle = "nul";
+  input_auto_mouse_grab = "true";
+  input_auto_game_focus = "2";
+  input_game_focus_toggle = "backquote";
   input_grab_mouse_toggle = "nul";
   input_hold_fast_forward = "nul";
   input_hold_slowmotion = "nul";
   input_load_state = "nul";
   input_load_state_btn = "4";
-  input_menu_toggle = "nul";
+  input_menu_toggle = "f1";
   input_menu_toggle_btn = "3";
   input_netplay_game_watch = "nul";
   input_netplay_player_chat = "nul";

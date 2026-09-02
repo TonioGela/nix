@@ -114,6 +114,19 @@
       "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1058374.07e1d92cdc0e/nixexprs.tar.xz",
       "hash": "sha256-LS/aXgJh+/1UgtrOxdS5Wum/PgmQYa1AMFZHdH+xGyo="
     },
+    "noctalia": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "noctalia-dev",
+        "repo": "noctalia"
+      },
+      "branch": "cachix",
+      "submodules": false,
+      "revision": "1af7c7e47ae6626e94690dc7aba0b4d0c8d14f39",
+      "url": "https://github.com/noctalia-dev/noctalia/archive/1af7c7e47ae6626e94690dc7aba0b4d0c8d14f39.tar.gz",
+      "hash": "sha256-A6vJpmPIB5qCxy8RqT9TM5useJfluUCsSKwr6TyHDys="
+    },
     "noctalia-qs": {
       "type": "GitRelease",
       "repository": {

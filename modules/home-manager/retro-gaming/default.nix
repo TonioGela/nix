@@ -43,6 +43,7 @@ in
       snes9x.enable = true;
       gambatte.enable = true;
       swanstation.enable = true;
+      dosbox-pure.enable = true;
     };
   };
 
