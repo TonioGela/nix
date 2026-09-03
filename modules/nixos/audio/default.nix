@@ -18,7 +18,7 @@
   home-manager.sharedModules = [
     {
       services.easyeffects = {
-        enable = true;
+        enable = false;
         preset = "framework-mic";
         extraPresets = {
           framework-mic = builtins.fromJSON (builtins.readFile ./framework-mic.json);

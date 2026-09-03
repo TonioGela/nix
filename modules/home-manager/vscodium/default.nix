@@ -53,6 +53,7 @@
           vscode-marketplace.mkhl.direnv
           vscode-marketplace.scalameta.metals
           vscode-marketplace.scala-lang.scala
+          open-vsx.v1hz.kdl
           open-vsx.pcode-pl.hide-files-toggle
         ];
         userTasks = {

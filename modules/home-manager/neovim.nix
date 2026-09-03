@@ -6,6 +6,7 @@
     plugins = with pkgs.vimPlugins; [
       nvim-treesitter.withAllGrammars
       nordic-nvim
+      nord-nvim
       nvim-tree-lua
       vim-rooter
     ];
@@ -14,7 +15,7 @@
       set laststatus=0
       set number relativenumber
       set clipboard+=unnamedplus
-      colorscheme nordic
+      colorscheme nord
       let g:rooter_silent_chdir = 1
     '';
     initLua = ''
