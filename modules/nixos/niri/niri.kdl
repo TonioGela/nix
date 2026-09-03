@@ -95,34 +95,36 @@ window-rule {
 
 binds {
 
-    Mod+Shift+Slash { show-hotkey-overlay; }
+    Mod+Shift+Slash                   { show-hotkey-overlay; }
+    Mod+Shift+E                       { quit; }
+    Mod+Q repeat=false                { close-window; }
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+    
+    Print      { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print  { screenshot-window; }
 
-    Mod+M repeat=false { spawn-sh "wl-mirror $(niri msg --json focused-output | jq -r .name)"; }
+    Mod+Return       hotkey-overlay-title="Open a Terminal: foot"                         { spawn "footclient"; }
+    Mod+Shift+Return hotkey-overlay-title="Open Firefox"                                  { spawn "firefox"; }
+    Alt+Space        hotkey-overlay-title="Spawn applications launcher"                   { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Alt+Y            hotkey-overlay-title="Open yazi in foot"                             { spawn-sh "footclient --hold --working-directory=/home/toniogela zsh -ci 'y'"; }
+    Mod+Shift+Delete hotkey-overlay-title="Show session commands"                         { spawn "sh" "-c" "noctalia msg panel-toggle session"; }
+    Mod+N            hotkey-overlay-title="Open Nixos config in VsCodium"                 { spawn "sh" "-c" "codium ~/.config/nix"; }
+    Mod+M            hotkey-overlay-title="Present focused window" repeat=false           { spawn-sh "wl-mirror $(niri msg --json focused-output | jq -r .name)"; }
+    F12              hotkey-overlay-title="Shut down screen"       allow-when-locked=true { spawn-sh "noctalia msg dpms-off"; }
 
-    Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "footclient"; }
-    Alt+Y hotkey-overlay-title="Open yazi in foot" { spawn-sh "footclient --hold --working-directory=/home/toniogela zsh -ci 'y'"; }
-    Mod+Shift+Return hotkey-overlay-title="Open Firefox" { spawn "firefox"; }
-    Alt+Space hotkey-overlay-title="Spawn launcher" { spawn-sh "noctalia msg panel-toggle launcher"; }
+    XF86AudioRaiseVolume  allow-when-locked=true { spawn-sh "noctalia msg volume-up"; }
+    XF86AudioLowerVolume  allow-when-locked=true { spawn-sh "noctalia msg volume-down"; }
+    XF86AudioMute         allow-when-locked=true { spawn-sh "noctalia msg volume-mute"; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn-sh "noctalia msg brightness-up"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn-sh "noctalia msg brightness-down"; }
+    XF86AudioPlay         allow-when-locked=true { spawn-sh "noctalia msg media toggle"; }
+    XF86AudioPrev         allow-when-locked=true { spawn-sh "noctalia msg media prev"; }
+    XF86AudioNext         allow-when-locked=true { spawn-sh "noctalia msg media next"; }
+    // XF86AudioMedia is the F12 key
 
-    Mod+Shift+Delete { spawn "sh" "-c" "noctalia msg panel-toggle session"; }
-    Mod+N hotkey-overlay-title="Open Nixos config in VsCodium" { spawn "sh" "-c" "codium ~/.config/nix"; }
-
-    XF86AudioRaiseVolume  allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
-    XF86AudioLowerVolume  allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1- -l 1.0"; }
-    XF86AudioMute         allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    XF86AudioMicMute      allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
-
-    XF86AudioPlay         allow-when-locked=true { spawn-sh "playerctl play-pause"; }
-    XF86AudioStop         allow-when-locked=true { spawn-sh "playerctl stop"; }
-    XF86AudioPrev         allow-when-locked=true { spawn-sh "playerctl previous"; }
-    XF86AudioNext         allow-when-locked=true { spawn-sh "playerctl next"; }
-
-    XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
-
-    F12 allow-when-locked=true { spawn "niri" "msg" "action" "power-off-monitors"; }
-
-    Mod+Q repeat=false { close-window; }
+    Mod+V       { toggle-window-floating; }
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
     Mod+Left  { focus-column-left; }
     Mod+Down  { focus-window-down; }
@@ -134,8 +136,8 @@ binds {
     Mod+Ctrl+Up    { move-window-up; }
     Mod+Ctrl+Right { move-column-right; }
 
-    Mod+Home { focus-column-first; }
-    Mod+End  { focus-column-last; }
+    Mod+Home      { focus-column-first; }
+    Mod+End       { focus-column-last; }
     Mod+Ctrl+Home { move-column-to-first; }
     Mod+Ctrl+End  { move-column-to-last; }
 
@@ -149,34 +151,21 @@ binds {
     Mod+Shift+U         { move-workspace-down; }
     Mod+Shift+I         { move-workspace-up; }
 
-    // The following binds move the focused window in and out of a column.
-    // If the window is alone, they will consume it into the nearby column to the side.
-    // If the window is already in a column, they will expel it out.
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
 
-    Mod+R { switch-preset-column-width; }
+    Mod+R       { switch-preset-column-width; }
     Mod+Shift+R { switch-preset-window-height; }
-    Mod+Ctrl+R { reset-window-height; }
-    Mod+F { maximize-column; }
-    Mod+Alt+F { toggle-windowed-fullscreen; }
+    Mod+Ctrl+R  { reset-window-height; }
+    Mod+F       { maximize-column; }
+    Mod+Alt+F   { toggle-windowed-fullscreen; }
     Mod+Shift+F { fullscreen-window; }
 
-    Mod+Minus { set-column-width "-10%"; }
-    Mod+Equal { set-column-width "+10%"; }
+    Mod+Minus       { set-column-width "-10%"; }
+    Mod+Equal       { set-column-width "+10%"; }
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
 
-    Mod+V       { toggle-window-floating; }
-    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
-
-    // Mod+Space       { switch-layout "next"; }
+    Mod+Space       { switch-layout "next"; }
     Mod+Shift+Space { switch-layout "prev"; }
-
-    Print { screenshot; }
-    Ctrl+Print { screenshot-screen; }
-    Alt+Print { screenshot-window; }
-
-    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
-    Mod+Shift+E { quit; }
 }
