@@ -49,6 +49,7 @@
     neovim
     nix-tools
     pass
+    todo
     wormhole
     yazi
     zsh

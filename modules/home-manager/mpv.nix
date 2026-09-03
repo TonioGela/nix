@@ -1,7 +1,11 @@
 { pkgs, ... }:
 {
-  home.packages = [ pkgs.mpv ];
-  home.file.".config/mpv/mpv.conf".text = ''
-    hwdec=auto
-  '';
+  programs.mpv = {
+    enable = true;
+    scripts = [
+      pkgs.mpvScripts.mpris
+      pkgs.mpvScripts.autosubsync-mpv
+    ];
+    config.hwdec = "auto";
+  };
 }
