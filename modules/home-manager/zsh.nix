@@ -214,7 +214,7 @@ in
           BAT_THEME = "Nord";
           FZF_DEFAULT_OPTS = "--style minimal --border --reverse --highlight-line --margin=1,25%  --height=20%";
           NO_TEST_LOGS = "1";
-          JAVA_OPTS = "-Xmx10G";
+          SBT_OPTS = "-Xmx10G";
         }
       );
 
