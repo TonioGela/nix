@@ -8,6 +8,7 @@
   imports = with modules.nixos; [
     ./hardware
     de-channel
+    home-assistant
     #    immich
     #    jellyfin
     passwordless-sudoer
@@ -47,6 +48,9 @@
     '';
     virtualHosts."netflix.toniogela.dev".extraConfig = ''
       reverse_proxy localhost:8096
+    '';
+    virtualHosts."home.toniogela.dev".extraConfig = ''
+      reverse_proxy localhost:8123
     '';
   };
 

@@ -1,19 +1,20 @@
-{ sources, ... }:
+{ sources, pkgs, ... }:
 {
   # This conflicts with noctalia automatically calling fprintd
   security.pam.services.login.fprintAuth = false;
 
   home-manager.sharedModules = [
     sources.noctalia5.homeModule
-    (
-      { pkgs, ... }:
-      {
-        home.file.".config/face.jpg".source = ./avatar.jpg;
-        home.file.".config/wallpaper.png".source = pkgs.runCommand "wallpaper.png" {
-          nativeBuildInputs = [ pkgs.librsvg ];
-        } "rsvg-convert -w 4096 -h 4096 -o $out ${./wallpaper.svg}";
-      }
-    )
+    {
+      home.packages = [
+        pkgs.dig
+        pkgs.udiskie
+      ];
+      home.file.".config/face.jpg".source = ./avatar.jpg;
+      home.file.".config/wallpaper.png".source = pkgs.runCommand "wallpaper.png" {
+        nativeBuildInputs = [ pkgs.librsvg ];
+      } "rsvg-convert -w 4096 -h 4096 -o $out ${./wallpaper.svg}";
+    }
     {
       programs.noctalia = {
         enable = true;
@@ -47,20 +48,50 @@
                 "control-center"
               ];
               center = [
-                "bar"
+                "group:g1"
                 "clock"
-                "battery"
+                "group:g2"
               ];
               end = [
                 "notifications"
                 "tray"
+              ];
+              capsule_group = [
+                {
+                  enabled = true;
+                  id = "g1";
+                  accordion = true;
+                  accordion_direction = "start";
+                  fill = "surface_variant";
+                  members = [
+                    "network"
+                    "dns-switcher"
+                    "bar"
+                  ];
+                  opacity = 0.0;
+                  padding = 6.0;
+                }
+                {
+                  enabled = true;
+                  id = "g2";
+                  accordion = true;
+                  accordion_direction = "end";
+                  fill = "surface_variant";
+                  members = [
+                    "battery"
+                    "status"
+                    "caffeine"
+                  ];
+                  opacity = 0.0;
+                  padding = 6.0;
+                }
               ];
               background_opacity = 1.0;
               border = "tertiary";
               border_width = 1.0;
               capsule = false;
               capsule_fill = "surface_variant";
-              capsule_group = [ ];
+
               capsule_opacity = 1.0;
               capsule_padding = 6.0;
               capsule_thickness = 0.76;
@@ -417,7 +448,9 @@
             };
           };
 
-          plugin_settings = { };
+          plugin_settings = {
+            "aristides/udiskie".file_manager_cmd = "footclient --hold zsh -ci 'y \"$@\"' zsh";
+          };
 
           plugins = {
             auto_update = "all";
@@ -425,6 +458,7 @@
               "rylos/tailnet"
               "aristides/udiskie"
               "emrtnn/pass"
+              "nightwatch75/dns-switcher"
             ];
 
             source = [
@@ -677,7 +711,7 @@
 
             templates = {
               builtin_ids = [ ];
-              community_ids = [ "neovim" ];
+              community_ids = [ ];
               enable_builtin_templates = true;
               enable_community_templates = true;
             };
@@ -759,6 +793,12 @@
               type = "clock";
             };
 
+            dns-switcher = {
+              enable_scroll = false;
+              show_label = false;
+              type = "nightwatch75/dns-switcher:dns-switcher";
+            };
+
             input_volume = {
               device = "input";
               type = "volume";
@@ -821,9 +861,22 @@
               type = "spacer";
             };
 
+            status = {
+              color = "primary";
+              enable_scroll = false;
+              icon_color = "primary";
+              show_count = false;
+              type = "aristides/udiskie:status";
+            };
+
             temp = {
               stat = "cpu_temp";
               type = "sysmon";
+            };
+
+            tray = {
+              color = "tertiary";
+              match_adjacent_spacing = true;
             };
 
             volume = {
