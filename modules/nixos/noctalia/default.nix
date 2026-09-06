@@ -761,8 +761,8 @@
             };
 
             battery = {
-              hide_when_full = true;
-              hide_when_plugged = true;
+              hide_when_full = false;
+              hide_when_plugged = false;
               show_label = false;
               type = "battery";
             };

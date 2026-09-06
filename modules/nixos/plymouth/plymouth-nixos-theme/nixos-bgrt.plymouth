@@ -4,7 +4,7 @@ Description=BGRT theme with a spinning NixOS logo
 ModuleName=two-step
 
 [two-step]
-Font=Cantarell 20
+Font=Cantarell 0
 ImageDir=@IMAGES@
 
 DialogHorizontalAlignment=.5
@@ -22,11 +22,14 @@ MessageBelowAnimation=false
 [boot-up]
 UseEndAnimation=false
 UseFirmwareBackground=true
+SuppressMessages=true
 
 [shutdown]
 UseEndAnimation=false
 UseFirmwareBackground=true
+SuppressMessages=true
 
 [reboot]
 UseEndAnimation=false
 UseFirmwareBackground=true
+SuppressMessages=true
