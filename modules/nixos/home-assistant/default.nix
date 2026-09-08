@@ -1,5 +1,12 @@
 { pkgs, ... }:
 {
+  imports = [ ./dashboard.nix ];
+
+  systemd.services.home-assistant = {
+    after = [ "tailscaled.service" ];
+    wants = [ "tailscaled.service" ];
+  };
+
   services.home-assistant = {
     enable = true;
 

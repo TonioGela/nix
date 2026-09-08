@@ -13,6 +13,7 @@
     plymouth
     printers
     de-channel
+    esp
     gpu-screen-recorder
     greetd
     lanzaboote
@@ -32,6 +33,7 @@
 
   home-manager.users.toniogela.imports = with modules.home-manager; [
     calibre
+    esp
     firefox
     git
     retro-gaming
