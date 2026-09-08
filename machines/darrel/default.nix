@@ -20,6 +20,7 @@ in
     neovim
     nix-tools
     pass
+    todo
     yabai-skhd
     yazi
     zsh
