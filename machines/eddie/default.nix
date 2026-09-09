@@ -77,6 +77,37 @@
     wants = [ "tailscaled.service" ];
   };
 
+  hass.ringPhone = {
+    title = "Trova telefono";
+    selectLabel = "Telefono";
+    buttonLabel = "Suona";
+    notificationTitle = "Trova telefono";
+    notificationMessage = "Qualcuno sta cercando questo telefono.";
+
+    volume.level = 100;
+    ringerMode = "normal";
+    dndMode = "off";
+
+    repeat = {
+      count = 10;
+      interval = 3;
+    };
+
+    targets.antonio = {
+      title = "Antonio";
+      order = 1;
+      service = "mobile_app_fairphone";
+      platform = "android";
+    };
+
+    targets.giulia = {
+      title = "Giulia";
+      order = 2;
+      service = "mobile_app_iphone";
+      platform = "ios";
+    };
+  };
+
   hass.dashboard = {
     climate.living_room = {
       title = "Condizionatore Salotto";

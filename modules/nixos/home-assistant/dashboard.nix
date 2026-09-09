@@ -106,6 +106,18 @@ let
 in
 {
   options.hass.dashboard = {
+    extraViews = lib.mkOption {
+      internal = true;
+      default = [ ];
+      type = lib.types.listOf (lib.types.attrsOf lib.types.anything);
+      description = ''
+        Views contributed by the sibling hass modules. lovelaceConfig.views is
+        a plain list inside an attrsOf anything, and two definitions of such a
+        list conflict instead of merging, so everything that is not climate or
+        appliances has to come in through here.
+      '';
+    };
+
     climate = lib.mkOption {
       default = { };
       description = ''
@@ -219,7 +231,7 @@ in
     };
   };
 
-  config = lib.mkIf (cfg.climate != { } || cfg.appliances != { }) {
+  config = lib.mkIf (cfg.climate != { } || cfg.appliances != { } || cfg.extraViews != [ ]) {
     services.home-assistant.lovelaceConfig.views =
       lib.optional (cfg.climate != { }) {
         title = "Climate";
@@ -236,7 +248,8 @@ in
         type = "sections";
         max_columns = 2;
         sections = map applianceSection (ordered cfg.appliances);
-      };
+      }
+      ++ cfg.extraViews;
 
     # The module would otherwise title this "Overview", which collides with the
     # UI-managed dashboard of the same name in the sidebar. require_admin is the

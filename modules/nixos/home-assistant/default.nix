@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
-  imports = [ ./dashboard.nix ];
+  imports = [
+    ./dashboard.nix
+    ./ring-phone.nix
+  ];
 
   systemd.services.home-assistant = {
     after = [ "tailscaled.service" ];
