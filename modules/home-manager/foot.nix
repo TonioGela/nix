@@ -30,6 +30,8 @@
         main = {
           font = "SauceCodePro Nerd Font Mono:size=${config.foot.fontSize}";
           pad = "4x4";
+          # Auto-copy selections to the clipboard too, so Ctrl+C stays SIGINT
+          selection-target = "both";
         };
 
         cursor.style = "beam";

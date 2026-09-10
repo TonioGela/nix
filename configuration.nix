@@ -7,13 +7,6 @@ let
     homeManager = import (pins.home-manager + "/nixos");
     fw13-hardware = import (pins.nixos-hardware + "/framework/13-inch/amd-ai-300-series");
     disko = pins.disko + "/module.nix";
-    noctalia = sources.pkgs.callPackage (pins.noctalia-shell + "/nix/package.nix") {
-      version = sources.pkgs.lib.removePrefix pins.noctalia-shell.release_prefix pins.noctalia-shell.version;
-      quickshell = sources.pkgs.callPackage (pins.noctalia-qs + "/nix/package.nix") {
-        version = sources.pkgs.lib.removePrefix pins.noctalia-qs.release_prefix pins.noctalia-qs.version;
-        gitRev = pins.noctalia-qs.revision;
-      };
-    };
     noctalia5 = import pins.noctalia { };
     sops = import (pins.sops-nix + "/modules/home-manager/sops.nix");
     lanzaboote = (import pins.lanzaboote { inherit pkgs; }).nixosModules.lanzaboote;
