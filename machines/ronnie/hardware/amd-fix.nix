@@ -23,14 +23,8 @@
   # commonly documented fix for freeze pattern on RDNA 3/3.5 laptops. Downside: slightly higher
   # idle GPU power consumption
 
-  # The amdgpu.seamless=1 parameter keeps the firmware's display configuration lit while the driver
-  # initialises, instead of blanking the panel for the modeset. Without it the Framework logo drawn by
-  # the firmware disappears when amdgpu takes over from simpledrm, and only comes back ~1s later when
-  # plymouth starts. The default (-1, auto) does not enable it on this machine.
-
   boot.kernelParams = [
     "amdgpu.sg_display=0"
     "amdgpu.runpm=0"
-    "amdgpu.seamless=1"
   ];
 }
