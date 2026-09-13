@@ -49,11 +49,18 @@ let
 
   service = target: "notify.${lib.removePrefix "notify." target.service}";
 
+  # ttl/priority matter as much here as on the notification itself: without
+  # them the command goes out at FCM's normal priority, which a locked phone
+  # defers to its next doze maintenance window -- so it rings before it has
+  # been turned up.
   command = target: name: data: {
     action = service target;
     data = {
       message = "command_${name}";
-      inherit data;
+      data = data // {
+        ttl = 0;
+        priority = "high";
+      };
     };
   };
 

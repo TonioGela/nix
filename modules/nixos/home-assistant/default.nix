@@ -3,6 +3,7 @@
   imports = [
     ./dashboard.nix
     ./ring-phone.nix
+    ./appliance-notify.nix
   ];
 
   systemd.services.home-assistant = {
@@ -64,7 +65,6 @@
       # need somewhere writable to put what they create. The "<domain> <name>"
       # keys are split back to the bare domain by home-assistant, which is how
       # both a declarative and a UI-managed list can coexist.
-      "automation manual" = [ ];
       "automation ui" = "!include automations.yaml";
       "scene manual" = [ ];
       "scene ui" = "!include scenes.yaml";

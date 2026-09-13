@@ -147,6 +147,8 @@
       statusLabel = "Stato";
       remainingLabel = "Tempo rimanente";
       status = "sensor.lavatrice_machine_status";
+      notify = [ "antonio" ];
+      finishedMessage = "Il bucato e' pronto.";
       remaining = "sensor.lavatrice_time_remaining";
       sensors = [
         {
@@ -174,6 +176,8 @@
       statusLabel = "Stato";
       remainingLabel = "Tempo rimanente";
       status = "sensor.asciugatrice_machine_status";
+      notify = [ "antonio" ];
+      finishedMessage = "L'asciugatura e' finita.";
       remaining = "sensor.asciugatrice_time_remaining";
       sensors = [
         {

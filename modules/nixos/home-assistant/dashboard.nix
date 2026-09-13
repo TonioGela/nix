@@ -219,6 +219,34 @@ in
                   Entity holding the time left. Null drops the countdown card.
                 '';
               };
+              notify = lib.mkOption {
+                type = lib.types.listOf lib.types.str;
+                default = [ ];
+                example = [ "antonio" ];
+                description = ''
+                  Phones to tell when this appliance finishes a cycle, as keys
+                  into `hass.ringPhone.targets`. Empty notifies nobody and no
+                  automation is generated.
+                '';
+              };
+              finishedStates = lib.mkOption {
+                type = lib.types.listOf lib.types.str;
+                default = [
+                  "ending"
+                  "ready"
+                ];
+                description = ''
+                  States of `status` that mean the cycle is over. Only the
+                  first transition out of `running` counts, so listing both a
+                  terminal and a resting state is safe either way round, and a
+                  reconnect from unavailable never fires.
+                '';
+              };
+              finishedMessage = lib.mkOption {
+                type = lib.types.str;
+                default = "Cycle finished.";
+                description = "Body of that notification; the title is `title`.";
+              };
               sensors = lib.mkOption {
                 type = sensorRow;
                 default = [ ];
