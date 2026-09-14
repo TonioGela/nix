@@ -96,6 +96,7 @@ in
     };
 
     home.packages = [
+      pkgsUnstable.nix-output-monitor
       pkgsUnstable.nix-tree
       pkgsUnstable.nix-diff
       pkgsUnstable.vulnix

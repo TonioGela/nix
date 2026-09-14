@@ -75,6 +75,7 @@ in
   };
 
   home.packages = [
+    pkgs.nodejs_26
     pkgs.appcleaner
     pkgs.claude-code
     pkgs.defaultbrowser
