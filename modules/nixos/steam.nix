@@ -22,6 +22,20 @@
     scanmem
   ];
 
+  home-manager.sharedModules = [
+    {
+      home.file.".config/MangoHud/MangoHud.conf".text = ''
+        gpu_name
+        vulkan_driver
+        gpu_stats
+        cpu_stats
+        fps
+        frametime
+        gpu_list=0,1
+      '';
+    }
+  ];
+
   # TODO Test if these are still necessary
   services.udev.packages = [ pkgs.game-devices-udev-rules ];
   services.udev.extraRules = ''

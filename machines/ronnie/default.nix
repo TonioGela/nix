@@ -85,6 +85,8 @@
     KERNEL=="ttyACM*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="16d0", MODE="0666"
   '';
 
+  services.hardware.bolt.enable = true;
+
   nix.settings = {
     extra-substituters = [ "https://noctalia.cachix.org" ];
     extra-trusted-public-keys = [

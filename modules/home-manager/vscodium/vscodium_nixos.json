@@ -47,8 +47,8 @@
     "files.insertFinalNewline": false,
     "files.watcherExclude": {
         "**/.ammonite": true,
-        "**/.bloop": true,
-        "**/.metals": true
+        "**/.bloop/**": true,
+        "**/.metals/**/*.{java,scala}": true
     },
     "git.autofetch": true,
     "git.blame.editorDecoration.enabled": false,

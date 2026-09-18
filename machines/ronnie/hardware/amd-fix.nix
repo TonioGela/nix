@@ -26,5 +26,6 @@
   boot.kernelParams = [
     "amdgpu.sg_display=0"
     "amdgpu.runpm=0"
+    "amd_prefcore=enable"
   ];
 }
