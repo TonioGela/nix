@@ -70,9 +70,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "a74e173407559083a412ea89a1cc58ea389c3b65",
-      "url": "https://github.com/nix-community/nix-index-database/archive/a74e173407559083a412ea89a1cc58ea389c3b65.tar.gz",
-      "hash": "sha256-xVstyCdg0DpzjyrEacm72VJAIP9DMhfWJdPDzhWxHuo="
+      "revision": "9ad722673ab3b3f91f02135e53775825b240b869",
+      "url": "https://github.com/nix-community/nix-index-database/archive/9ad722673ab3b3f91f02135e53775825b240b869.tar.gz",
+      "hash": "sha256-Dkg4VKPmDPqTwaiw2WH5br73tXoL1qrOO0xJnR4TlcA="
     },
     "nix-vscode-extensions": {
       "type": "Git",
@@ -83,9 +83,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "47789e27b5a7a147c6f4c70d5e40ac5636417ab4",
-      "url": "https://github.com/nix-community/nix-vscode-extensions/archive/47789e27b5a7a147c6f4c70d5e40ac5636417ab4.tar.gz",
-      "hash": "sha256-qdXKYk7gEuUIuOCQ/KuMIJyx4EriuALzaI+eK4vBK0I="
+      "revision": "fa4ec37adf8d8c725bfd8915c497ed41c7cb0f70",
+      "url": "https://github.com/nix-community/nix-vscode-extensions/archive/fa4ec37adf8d8c725bfd8915c497ed41c7cb0f70.tar.gz",
+      "hash": "sha256-L+tPmy48VrsS/qVrj504pETaGEcVFMs1QpU5kKpBo0U="
     },
     "nixos-hardware": {
       "type": "Git",
@@ -96,23 +96,23 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "24cfdc1f9344b90a1eee329a3906e2f39f4d0f1e",
-      "url": "https://github.com/NixOS/nixos-hardware/archive/24cfdc1f9344b90a1eee329a3906e2f39f4d0f1e.tar.gz",
-      "hash": "sha256-vL/Fpo7Zxa7wvO8V5FAToUBvP+K3XsMB1wUglTtd/J0="
+      "revision": "9ebcb7766700d7e006d9505247bd7ce0426f4232",
+      "url": "https://github.com/NixOS/nixos-hardware/archive/9ebcb7766700d7e006d9505247bd7ce0426f4232.tar.gz",
+      "hash": "sha256-FIRXajv1pPZ+l6On6ekkmcQ6le0Zi0ncRUoR3nB0vKA="
     },
     "nixpkgs": {
       "type": "Channel",
       "name": "nixos-26.05",
       "artifact": "nixexprs.tar.xz",
-      "url": "https://releases.nixos.org/nixos/26.05/nixos-26.05.9729.c3eea5b2156d/nixexprs.tar.xz",
-      "hash": "sha256-it+7kNGnOOHBCEnl4SfZ7QtfGziH3EryzHqwvJpjAfg="
+      "url": "https://releases.nixos.org/nixos/26.05/nixos-26.05.10304.6d663c0533ff/nixexprs.tar.xz",
+      "hash": "sha256-lIL3uDaS4Q9Ks6klLrBlDr+XS71sbjMJFSipIp2yPjs="
     },
     "nixpkgs-unstable": {
       "type": "Channel",
       "name": "nixpkgs-unstable",
       "artifact": "nixexprs.tar.xz",
-      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1072974.02f5696b0e60/nixexprs.tar.xz",
-      "hash": "sha256-iR1Jj6svMpvLxPWA40qp+WUpg3MStLXJy5TZrP2cPes="
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1076565.79b35bf0bda5/nixexprs.tar.xz",
+      "hash": "sha256-eaRzSAxpJwnr2Imug6prPsN7xhtnk4cj3ZTopGJOgiY="
     },
     "noctalia": {
       "type": "Git",
@@ -123,9 +123,9 @@
       },
       "branch": "cachix",
       "submodules": false,
-      "revision": "b7eda68e5a7731fa727b0f7c796be8ade98d4fc3",
-      "url": "https://github.com/noctalia-dev/noctalia/archive/b7eda68e5a7731fa727b0f7c796be8ade98d4fc3.tar.gz",
-      "hash": "sha256-IOm8R/hyqQWdTTXjmLxW+vYaXqsYnqPNx7dLajzsQPU="
+      "revision": "e61100350bc9a45a7279edad165813b61ee828b2",
+      "url": "https://github.com/noctalia-dev/noctalia/archive/e61100350bc9a45a7279edad165813b61ee828b2.tar.gz",
+      "hash": "sha256-+wR7MuoNdV53Iwee7xib4OrkN6IHy2Ba0nSN3pD0y2o="
     },
     "sops-nix": {
       "type": "Git",
@@ -136,9 +136,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "13616fff713a9f94055c66f15687ebdc17a335df",
-      "url": "https://github.com/Mic92/sops-nix/archive/13616fff713a9f94055c66f15687ebdc17a335df.tar.gz",
-      "hash": "sha256-4GuMPW90JSxXWDPUB9M+1m7fYbe3H0apOd86/zBQ2Kw="
+      "revision": "7214124c20c1542c90deb54af50e2f53ae02711f",
+      "url": "https://github.com/Mic92/sops-nix/archive/7214124c20c1542c90deb54af50e2f53ae02711f.tar.gz",
+      "hash": "sha256-GKwH3zpy7tartuJMG0Rv/xUsdetG1QLmTVv8UKgJLmA="
     }
   },
   "version": 8
