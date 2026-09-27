@@ -8,6 +8,7 @@
       nordic-nvim
       nord-nvim
       nvim-tree-lua
+      toggleterm-nvim
       vim-rooter
     ];
     extraConfig = ''
@@ -25,6 +26,13 @@
         hijack_netrw = true,
         prefer_startup_root = false,
         sync_root_with_cwd = true,
+      })
+      require("toggleterm").setup({
+        open_mapping = '<C-\\>',
+        direction = "horizontal",
+        size = 15,
+        start_in_insert = true,
+        shade_terminals = false,
       })
       vim.keymap.set('n', '<C-b>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
       -- https://github.com/nvim-tree/nvim-tree.lua/wiki/Auto-Close

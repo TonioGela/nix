@@ -1,4 +1,6 @@
+{ pkgs }:
 {
+  video_shader_dir = "${pkgs.libretro-shaders-slang}/share/libretro/shaders/shaders_slang";
   audio_driver = "pipewire";
   audio_fastforward_mute = "true";
   cheevos_badges_enable = "true";

@@ -36,7 +36,7 @@ in
   programs.retroarch = {
     enable = true;
     package = pkgsUnstable.retroarch-bare;
-    settings = import ./retroarch-settings.nix;
+    settings = import ./retroarch-settings.nix { pkgs = pkgsUnstable; };
     # Every core.<something>.enable uses pkgs.libretro.<something>
     cores = {
       mgba.enable = true;

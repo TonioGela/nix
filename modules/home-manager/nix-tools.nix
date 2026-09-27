@@ -7,7 +7,8 @@
   ...
 }:
 # Add extra args to the generated commands so that shit can be overridden
-# Add a $conf.deploy command behind a boolean flag that simply calls nix-instantiate
+# Add a $conf.deploy command behind a boolean flag that simply calls nixos-anywhere
+# nixos-anywhere --store-paths $(nix-build configuration.nix -A gilderien.config.system.build.diskoScript -A gilderien.config.system.build.toplevel --no-out-link) root@92.222.78.133
 let
   deploymentSubmodule = lib.types.submodule {
     options = {
