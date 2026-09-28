@@ -103,6 +103,8 @@ in
       pkgsUnstable.vulnix
       pkgsUnstable.npins
       pkgsUnstable.nixos-anywhere
+      pkgsUnstable.deadnix
+      pkgsUnstable.statix
     ]
     ++ lib.concatMap (
       dm: map (command: commandTemplate dm command) commands

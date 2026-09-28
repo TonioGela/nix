@@ -75,6 +75,8 @@ in
   };
 
   home.packages = [
+    pkgs.python315
+    pkgs.google-cloud-sdk
     pkgs.nodejs_26
     pkgs.appcleaner
     pkgs.claude-code
