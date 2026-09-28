@@ -165,6 +165,8 @@ in
     programs.zsh = {
       enable = true;
       autocd = false;
+      # EDITOR=nvim would otherwise make zsh pick vi mode
+      defaultKeymap = "emacs";
       cdpath = [ ];
       dotDir = absoluteDotDir;
 
@@ -250,6 +252,11 @@ in
           bindkey "^[[1;3C" forward-word  # alt+right
           bindkey "^[[1;10D" backward-word
           bindkey "^[[1;10C" forward-word
+          bindkey "^[[1;5D" backward-word  # ctrl+left
+          bindkey "^[[1;5C" forward-word   # ctrl+right
+          bindkey "^[[H" beginning-of-line # home
+          bindkey "^[[F" end-of-line       # end
+          bindkey "^[[3~" delete-char      # delete
           bindkey "^E" edit-command-line
           bindkey "^[^?" vi-kill-eol
           bindkey "^U" vi-kill-line
