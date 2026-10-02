@@ -1,10 +1,3 @@
 # TO-DO
 - Read the comments in nix-tools
-- generalise and fix the bindkey for zsh
-- wifi with sops?
-- eddie:
-  - Use it as a storage in place of google drive as the free tier is only 15 gb
-  - Immich specifically
-  - 3-2-1 Backups
-  - Time machine for Giulia's mac
-  - YACC Reader server
+- wifi with sops

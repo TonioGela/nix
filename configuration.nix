@@ -9,6 +9,7 @@ let
     disko = pins.disko + "/module.nix";
     noctalia5 = import pins.noctalia { };
     sops = import (pins.sops-nix + "/modules/home-manager/sops.nix");
+    sopsNixos = import (pins.sops-nix + "/modules/sops");
     lanzaboote = (import pins.lanzaboote { inherit pkgs; }).nixosModules.lanzaboote;
     nix-index-database = import (pins.nix-index-database + "/home-manager-module.nix");
     nixosBuilder = import (pins.nixpkgs + "/nixos");

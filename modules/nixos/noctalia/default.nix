@@ -348,6 +348,7 @@
             lock_before_suspend = true;
             monitors = [ ];
             tint_intensity = 0.0;
+            transition = [ ];
             wallpaper = "";
           };
 
@@ -406,7 +407,7 @@
             collapse_on_dismiss = true;
             enable_daemon = true;
             history_retention_hours = 0;
-            layer = "top";
+            layer = "overlay";
             max_visible = 0;
             monitors = [ ];
             offset_x = 20;
