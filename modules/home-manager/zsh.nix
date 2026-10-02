@@ -80,6 +80,8 @@ let
       done
     }
 
+    function \$ { eval "''${(q)@}" }
+
     ${config.zsh.extraFunctions}
   '';
 in

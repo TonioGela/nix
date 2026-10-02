@@ -36,7 +36,7 @@
       enableSshSupport = true;
       enableZshIntegration = true;
       pinentry.package = if pkgs.stdenv.isLinux then pkgs.pinentry-gnome3 else pkgs.pinentry_mac;
-      sshKeys = config.gpg.sshKeys;
+      sshKeys = if config.gpg.sshKeys == [ ] then null else config.gpg.sshKeys;
       noAllowExternalCache = true;
     };
 

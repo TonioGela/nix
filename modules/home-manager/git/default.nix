@@ -56,7 +56,6 @@ in
       };
 
       settings.alias = {
-        co = "checkout";
         diffw = "diff --ignore-space-change";
         rbi = "rebase --interactive";
         fpush = "push --force-with-lease";
@@ -65,6 +64,7 @@ in
         wip = "!${gitExe} add --all . && ${gitExe} commit -m 'wip' && ${gitExe} push -o ci.skip";
         branches = "!${gitExe} for-each-ref --format='%(authorname)~%(refname)' --sort authorname | grep -v prefetch | cut -d'~' -f1 | sort | uniq -c | sort -nr";
         branches-of = "!${gitExe} for-each-ref --format='%(authorname) %(refname)' --sort authorname | grep -v prefetch | grep";
+	push-stack = "!${gitExe} push --force-with-lease --force-if-includes --atomic origin $(git for-each-ref --format=\"%(refname:short)\" --merged HEAD --no-merged origin/develop refs/heads/)";
       };
 
       ignores = gitIgnoreLines;

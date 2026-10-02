@@ -1,6 +1,7 @@
 {
   modules,
   pkgs,
+  pkgsUnstable,
   ...
 }:
 let
@@ -72,6 +73,9 @@ in
   zsh = {
     extraEnv = "eval `/usr/libexec/path_helper -s`";
     extraAliases.flushdns = "sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder";
+    extraSessionVariables = {
+      "AWS_DEFAULT_REGION" = "eu-west-1";
+    };
   };
 
   home.packages = [
@@ -79,7 +83,7 @@ in
     pkgs.google-cloud-sdk
     pkgs.nodejs_26
     pkgs.appcleaner
-    pkgs.claude-code
+    pkgsUnstable.claude-code
     pkgs.defaultbrowser
     pkgs.nerd-fonts.sauce-code-pro
     pkgs.wireshark
