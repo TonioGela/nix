@@ -42,6 +42,7 @@
         photos.toniogela.dev       eddie.shrimp-pogona.ts.net:443;
         netflix.toniogela.dev      eddie.shrimp-pogona.ts.net:443;
         home.toniogela.dev         eddie.shrimp-pogona.ts.net:443;
+        retroarch.toniogela.dev    eddie.shrimp-pogona.ts.net:443;
         default                    "";
       }
 

@@ -111,8 +111,8 @@
       "type": "Channel",
       "name": "nixpkgs-unstable",
       "artifact": "nixexprs.tar.xz",
-      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1080404.3181085bfd08/nixexprs.tar.xz",
-      "hash": "sha256-KveNUoALIFda3G7m2VWk38jiTIky80vwY3h9gGOoF2g="
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1084597.73e728ddb6b7/nixexprs.tar.xz",
+      "hash": "sha256-4ettaZ6zgjT1Zgjq6zrmIg87gBvLMvPJGA8u0BBTn6Y="
     },
     "noctalia": {
       "type": "Git",

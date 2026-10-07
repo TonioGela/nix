@@ -6,7 +6,7 @@
   ...
 }:
 let
-  es_de_version = "288156961";
+  es_de_version = "357718352";
   es_de_home_path = "$HOME/.config/"; # it will use an ES-DE folder
   cores_path = "/etc/profiles/per-user/toniogela/lib/retroarch/cores"; # This is necessary as I use home.useUserPackages
 
@@ -16,7 +16,7 @@ let
     version = es_de_version;
     src = pkgs.fetchurl {
       url = "https://gitlab.com/es-de/emulationstation-de/-/package_files/${es_de_version}/download";
-      sha256 = "sha256-PGGkTXONVRY9qljt5wcgtCWg32JGDATcI908pYZyNYE=";
+      sha256 = "sha256-q8KZmhI4X4V3W9P5hvqJHHa2nfN5H3wS5MeDzzw2MPU=";
     };
   };
   # This wrapping is necessary with my configuration as libgit2 used by es-de
@@ -39,6 +39,7 @@ in
     settings = import ./retroarch-settings.nix { pkgs = pkgsUnstable; };
     # Every core.<something>.enable uses pkgs.libretro.<something>
     cores = {
+      mesen.enable = true;
       mgba.enable = true;
       snes9x.enable = true;
       gambatte.enable = true;

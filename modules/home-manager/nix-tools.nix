@@ -80,6 +80,7 @@ in
 
   config = {
     programs.nix-index-database.comma.enable = true;
+    home.shellAliases.",," = "NIX_PATH=nixpkgs=${builtins.storePath pkgsUnstable.path} ,";
 
     programs.nh = {
       enable = true;

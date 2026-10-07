@@ -12,8 +12,10 @@
     #    immich
     #    jellyfin
     passwordless-sudoer
+    sops
     ssh-keys
     tailscale
+    webdav
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -39,6 +41,14 @@
 
   services.openssh.enable = true;
 
+  # See modules/nixos/sops.nix
+  sops.defaultSopsFile = ./secrets.yml;
+
+  # The served directory lives in toniogela's home (0700), so run as him
+  webdav.directory = "/home/toniogela/retroarch";
+  services.webdav.user = "toniogela";
+  services.webdav.group = "users";
+
   services.caddy = {
     enable = true;
     virtualHosts."hello-world.toniogela.dev".extraConfig = ''
@@ -52,6 +62,9 @@
     '';
     virtualHosts."home.toniogela.dev".extraConfig = ''
       reverse_proxy localhost:8123
+    '';
+    virtualHosts."retroarch.toniogela.dev".extraConfig = ''
+      reverse_proxy localhost:8090
     '';
   };
 

@@ -24,11 +24,13 @@
     power
     quiet-boot
     security
+    sops
     steam
     tailscale
     trimui
     udisks
     virtualisation
+    wifi
   ];
 
   home-manager.users.toniogela.imports = with modules.home-manager; [
@@ -38,7 +40,6 @@
     git
     retro-gaming
     scala
-    sops
     vscodium
     zathura
     claude
@@ -63,7 +64,10 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
-  fonts.packages = [ pkgs.nerd-fonts.sauce-code-pro ];
+  fonts.packages = [
+    pkgs.nerd-fonts.sauce-code-pro
+    pkgs.vegur
+  ];
   time.timeZone = "Europe/Rome";
   i18n.defaultLocale = "en_GB.UTF-8";
   i18n.extraLocales = [ "it_IT.UTF-8/UTF-8" ];
@@ -85,6 +89,9 @@
     KERNEL=="ttyACM*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="16d0", MODE="0666"
   '';
 
+  # See modules/nixos/sops.nix
+  sops.defaultSopsFile = ./secrets.yml;
+
   services.hardware.bolt.enable = true;
 
   nix.settings = {
@@ -101,9 +108,8 @@
       pkgs.mkvtoolnix
       pkgs.mediainfo
       pkgs.ffmpeg-full
+      pkgs.sops
     ];
-
-    sops.secrets.desktop-note.path = "/home/toniogela/note.txt";
 
     programs.nh = {
       nhFile = "/home/toniogela/.config/nix/configuration.nix";
