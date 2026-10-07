@@ -19,7 +19,17 @@
   ];
 
   boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 2;
+  boot.loader.systemd-boot.configurationLimit = 1;
+
+  # Keep only the current generation: every switch kicks off a gc that drops the old ones
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-old";
+  };
+  system.activationScripts.gcAfterSwitch = ''
+    ${pkgs.systemd}/bin/systemctl start --no-block nix-gc.service || true
+  '';
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgsUnstable.linuxPackages;
 
@@ -51,6 +61,18 @@
 
   services.caddy = {
     enable = true;
+    # gilderien passes TLS through and prepends a PROXY header with the real
+    # client IP; without it home-assistant bans gilderien for everyone's failures
+    globalConfig = ''
+      servers :443 {
+        listener_wrappers {
+          proxy_protocol {
+            allow 100.80.95.0/32
+          }
+          tls
+        }
+      }
+    '';
     virtualHosts."hello-world.toniogela.dev".extraConfig = ''
       respond "Hello, world!"
     '';

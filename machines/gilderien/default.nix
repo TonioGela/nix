@@ -51,6 +51,8 @@
         listen [::]:443;
         proxy_pass $backend;
         ssl_preread on;
+        # Tell eddie's caddy the real client IP, see services.caddy.globalConfig there
+        proxy_protocol on;
       }
     '';
   };
