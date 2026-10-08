@@ -321,6 +321,8 @@ in
           "browser.urlbar.suggest.pocket" = false;
           "browser.urlbar.suggest.fakespot" = false;
           "media.autoplay.default" = 0;
+          "media.navigator.video.default_width" = 1920;
+          "media.navigator.video.default_height" = 1080;
           "extensions.update.enabled" = true;
           "extensions.webcompat.enable_picture_in_picture_overrides" = true;
           "print.print_footerleft" = "";
