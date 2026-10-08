@@ -64,7 +64,7 @@ in
         wip = "!${gitExe} add --all . && ${gitExe} commit -m 'wip' && ${gitExe} push -o ci.skip";
         branches = "!${gitExe} for-each-ref --format='%(authorname)~%(refname)' --sort authorname | grep -v prefetch | cut -d'~' -f1 | sort | uniq -c | sort -nr";
         branches-of = "!${gitExe} for-each-ref --format='%(authorname) %(refname)' --sort authorname | grep -v prefetch | grep";
-	push-stack = "!${gitExe} push --force-with-lease --force-if-includes --atomic origin $(git for-each-ref --format=\"%(refname:short)\" --merged HEAD --no-merged origin/develop refs/heads/)";
+        push-stack = "!${gitExe} push --force-with-lease --force-if-includes --atomic origin $(git for-each-ref --format=\"%(refname:short)\" --merged HEAD --no-merged origin/develop refs/heads/)";
       };
 
       ignores = gitIgnoreLines;
@@ -197,6 +197,23 @@ in
       pkgs.git-standup
       pkgs.git-absorb
       pkgs.git-crypt
+      (pkgs.writeShellApplication {
+        name = "git-tree";
+        runtimeInputs = [
+          pkgs.git
+          pkgs.gnugrep
+        ];
+        text = ''
+          base=''${1:-develop}
+          mapfile -t branches < <(git branch --no-merged "$base" --format='%(refname:short)')
+          decorate=()
+          for b in "$base" "''${branches[@]}"; do decorate+=("--decorate-refs=refs/heads/$b"); done
+          fork=$(git merge-base --octopus "$base" "''${branches[@]}")
+          git log --graph --first-parent --color --format='%C(auto)%d %C(dim)%cr' \
+            "''${decorate[@]}" "$base" "''${branches[@]}" --not "$fork^" \
+            | grep -E '\(|^[^*]*$'
+        '';
+      })
       (pkgs.writeShellScriptBin "git-rebase-since" ''
         ${gitExe} rebase --interactive $(git merge-base HEAD $1)
       '')

@@ -58,6 +58,7 @@ in
   kitty = {
     fontSize = "14.0";
     extraConfig = ''
+      paste_actions             no-op
       map cmd+c                 copy_to_clipboard
       map cmd+v                 paste_from_clipboard
       map cmd+w                 close_os_window
