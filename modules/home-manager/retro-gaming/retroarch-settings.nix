@@ -1,8 +1,23 @@
 { pkgs }:
 {
   video_shader_dir = "${pkgs.libretro-shaders-slang}/share/libretro/shaders/shaders_slang";
+  joypad_autoconfig_dir = "${pkgs.symlinkJoin {
+    name = "retroarch-joypad-autoconfig-custom";
+    paths = [
+      "${pkgs.retroarch-joypad-autoconfig}/share/libretro/autoconfig"
+      ./autoconfig
+    ];
+  }}";
   audio_driver = "pipewire";
   audio_fastforward_mute = "true";
+  cloud_sync_enable = "false"; # syncthing handles saves, see default.nix
+  # Same layout as knulli (saves/<rom folder>/, states alongside) so syncthing can share it with the trimui
+  savefile_directory = "~/.config/retroarch/saves";
+  savestate_directory = "~/.config/retroarch/saves";
+  sort_savefiles_enable = "false";
+  sort_savestates_enable = "false";
+  sort_savefiles_by_content_enable = "true";
+  sort_savestates_by_content_enable = "true";
   cheevos_badges_enable = "true";
   cheevos_enable = "true";
   cheevos_hardcore_mode_enable = "false";
@@ -47,35 +62,6 @@
   input_netplay_player_chat = "nul";
   input_overlay_show_mouse_cursor = "true";
   input_pause_toggle = "nul";
-  input_player1_a_btn = "1";
-  input_player1_analog_dpad_mode = "1";
-  input_player1_b_btn = "0";
-  input_player1_down_btn = "h0down";
-  input_player1_gun_select = "nul";
-  input_player1_gun_select_mbtn = "nul";
-  input_player1_gun_start = "nul";
-  input_player1_gun_start_mbtn = "nul";
-  input_player1_l2_axis = "+2";
-  input_player1_l3_axis = "+1";
-  input_player1_l_btn = "4";
-  input_player1_l_x_minus_axis = "-0";
-  input_player1_l_x_plus_axis = "+0";
-  input_player1_l_y_minus_axis = "-1";
-  input_player1_l_y_plus_axis = "+1";
-  input_player1_left_btn = "h0left";
-  input_player1_r2_axis = "+5";
-  input_player1_r3_btn = "10";
-  input_player1_r_btn = "5";
-  input_player1_r_x_minus_axis = "-3";
-  input_player1_r_x_plus_axis = "+3";
-  input_player1_r_y_minus_axis = "-4";
-  input_player1_r_y_plus_axis = "+4";
-  input_player1_right_btn = "h0right";
-  input_player1_select_btn = "6";
-  input_player1_start_btn = "7";
-  input_player1_up_btn = "h0up";
-  input_player1_x_btn = "3";
-  input_player1_y_btn = "2";
   input_reset = "nul";
   input_reset_btn = "0";
   input_rewind = "nul";

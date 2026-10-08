@@ -49,6 +49,17 @@ in
   };
 
   home.file.".config/retroarch/system".source = ./bios;
+  # Saves/states synced through eddie with the trimui (see modules/nixos/syncthing.nix)
+  services.syncthing = {
+    enable = true;
+    settings = {
+      devices.eddie.id = "ITEN6PF-J4WDTDK-3RLD4ZB-7RSI4FG-JVK4KMU-2MOJTL3-3OYH7ON-JZAMZQB";
+      folders.retroarch-saves = {
+        path = "${config.home.homeDirectory}/.config/retroarch/saves";
+        devices = [ "eddie" ];
+      };
+    };
+  };
 
   home.packages = [ emulationStationDE ];
 

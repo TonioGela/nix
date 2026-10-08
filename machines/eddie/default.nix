@@ -14,8 +14,8 @@
     passwordless-sudoer
     sops
     ssh-keys
+    syncthing
     tailscale
-    webdav
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -54,11 +54,6 @@
   # See modules/nixos/sops.nix
   sops.defaultSopsFile = ./secrets.yml;
 
-  # The served directory lives in toniogela's home (0700), so run as him
-  webdav.directory = "/home/toniogela/retroarch";
-  services.webdav.user = "toniogela";
-  services.webdav.group = "users";
-
   services.caddy = {
     enable = true;
     # gilderien passes TLS through and prepends a PROXY header with the real
@@ -85,8 +80,11 @@
     virtualHosts."home.toniogela.dev".extraConfig = ''
       reverse_proxy localhost:8123
     '';
+    # Syncthing GUI rejects requests whose Host isn't localhost
     virtualHosts."retroarch.toniogela.dev".extraConfig = ''
-      reverse_proxy localhost:8090
+      reverse_proxy localhost:8384 {
+        header_up Host {upstream_hostport}
+      }
     '';
   };
 

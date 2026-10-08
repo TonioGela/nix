@@ -109,6 +109,7 @@
       pkgs.mediainfo
       pkgs.ffmpeg-full
       pkgs.sops
+      pkgsUnstable.prismlauncher
     ];
 
     programs.nh = {
