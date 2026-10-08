@@ -28,9 +28,7 @@
           audio = {
             enable_overdrive = false;
             enable_sounds = false;
-            notification_sound = "";
             sound_volume = 0.5;
-            volume_change_sound = "";
           };
 
           backdrop = {
@@ -135,6 +133,8 @@
           };
 
           calendar = {
+            event_date_format = "%A %e %B";
+            event_time_format = "%H:%M";
             enabled = true;
             refresh_minutes = 15;
 
@@ -166,8 +166,6 @@
             width = 700;
 
             calendar = {
-              event_date_format = "%A %e %B";
-              event_time_format = "%H:%M";
               show_events_card = true;
               show_week_numbers = false;
             };
@@ -218,7 +216,6 @@
             main_axis_padding = 16;
             margin_edge = 0;
             margin_ends = 0;
-            monitors = [ ];
             pinned = [ ];
             position = "bottom";
             radius = 16;
