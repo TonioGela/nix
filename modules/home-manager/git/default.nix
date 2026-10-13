@@ -88,6 +88,10 @@ in
           helper = "";
           "https://github.com".helper = "!${ghExe} auth git-credential";
           "https://gitlab.com".helper = "!${glabExe} auth git-credential";
+          "https://codeberg.org".helper = [
+            "cache --timeout 21600"
+            "${pkgs.git-credential-oauth}/bin/git-credential-oauth"
+          ];
         };
         diff = {
           algorithm = "histogram";

@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   security.rtkit.enable = true;
   services.pulseaudio.enable = false;
@@ -37,10 +38,12 @@
   hardware.framework.laptop13.audioEnhancement = {
     enable = true;
     rawDeviceName = "alsa_output.pci-0000_c1_00.6.analog-stereo";
+    # echo-cancel must reach the raw speaker's monitor; hidden nodes can't be linked from pipewire-side modules
+    hideRawDevice = false;
   };
 
   # WebRTC echo cancellation: stops the mic picking up the speakers.
-  # monitor.mode uses the default sink's monitor as reference, so no extra sink to route through.
+  # monitor.mode taps a sink monitor as reference, so no extra sink to route through.
   services.pipewire.extraConfig.pipewire."60-echo-cancel" = {
     "context.modules" = [
       {
@@ -50,6 +53,12 @@
           "monitor.mode" = true;
           # call apps already run their own noise suppression; doing it twice sounds boxy
           "aec.args"."webrtc.noise_suppression" = false;
+          # reference = raw speaker monitor, i.e. after the speaker tuning: the bass boost and
+          # compressor are non-linear, so referencing the pre-tuning signal leaves echo behind
+          "sink.props" = {
+            "node.name" = "echo-cancel-sink";
+            "target.object" = "alsa_output.pci-0000_c1_00.6.analog-stereo";
+          };
           # pin to the raw mic: following the default source would capture "Microphone (tuned)", a loop
           "capture.props" = {
             "node.name" = "echo-cancel-capture";
@@ -110,9 +119,9 @@
                 name = "gain";
                 label = "linear";
                 control = {
-                  Mult = 4.0;
+                  Mult = 1.0;
                 };
-              } # +12 dB
+              } # level is set on the raw mic instead (100%); gain here amplified a -48 dB signal
             ];
             links = [
               {
@@ -146,5 +155,31 @@
         };
       }
     ];
+  };
+
+  # Pin the two hidden-gain levels on every wireplumber start, so they never depend on ~/.local/state:
+  # raw speaker at 100% (volume is controlled on "Framework Speakers"), internal mic at 35% (it has +50 dB hw gain; higher clips).
+  systemd.user.services.audio-levels = {
+    description = "Set fixed internal mic and raw speaker levels";
+    after = [ "wireplumber.service" ];
+    partOf = [ "wireplumber.service" ];
+    wantedBy = [ "wireplumber.service" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = pkgs.writeShellScript "audio-levels" ''
+        PATH=${pkgs.lib.makeBinPath [ pkgs.pipewire pkgs.wireplumber pkgs.jq pkgs.coreutils ]}
+        set_vol() {
+          for _ in $(seq 30); do # nodes appear a moment after wireplumber starts
+            id=$(pw-dump | jq -r --arg n "$1" '.[] | select(.info.props."node.name"? == $n) | .id')
+            [ -n "$id" ] && { wpctl set-volume "$id" "$2"; return; }
+            sleep 1
+          done
+          echo "$1 not found" >&2
+        }
+        set_vol alsa_output.pci-0000_c1_00.6.analog-stereo 1.0
+        set_vol alsa_input.pci-0000_c1_00.6.analog-stereo 0.35
+      '';
+    };
   };
 }
