@@ -7,8 +7,6 @@
   ...
 }:
 # Add extra args to the generated commands so that shit can be overridden
-# Add a $conf.deploy command behind a boolean flag that simply calls nixos-anywhere
-# nixos-anywhere --store-paths $(nix-build configuration.nix -A gilderien.config.system.build.diskoScript -A gilderien.config.system.build.toplevel --no-out-link) root@92.222.78.133
 let
   deploymentSubmodule = lib.types.submodule {
     options = {
@@ -42,7 +40,11 @@ let
         type = lib.types.str;
         default = "passwordless";
       };
-    };
+      installable = lib.mkOption {
+        type = lib.types.bool;
+        description = "Whether to add a $configurationName.install command that WIPES targetHost and installs the config with nixos-anywhere (needs disko)";
+        default = false;
+      };    };
   };
   commands = [
     "switch"
@@ -57,6 +59,11 @@ let
       } ${command} --target-host ${dm.targetHost} ${
         if (dm.useSubstitutes) then "--use-substitutes" else ""
       }
+    '';
+  installTemplate =
+    dm:
+    pkgs.writeShellScriptBin "${dm.configurationName}.install" ''
+      nixos-anywhere --store-paths $(nix-build ${dm.configurationPath} -A ${dm.configurationName}.config.system.build.diskoScript -A ${dm.configurationName}.config.system.build.toplevel --no-out-link) "$@" root@${dm.targetHost}
     '';
 in
 {
@@ -108,7 +115,9 @@ in
       pkgsUnstable.statix
     ]
     ++ lib.concatMap (
-      dm: map (command: commandTemplate dm command) commands
-    ) config.programs.nh.deployments;
+      dm:
+      map (command: commandTemplate dm command) commands
+      ++ lib.optional dm.installable (installTemplate dm)
+    )config.programs.nh.deployments;
   };
 }

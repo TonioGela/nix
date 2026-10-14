@@ -61,7 +61,10 @@ in
     };
   };
 
-  home.packages = [ emulationStationDE ];
+  home.packages = [ 
+    emulationStationDE
+    pkgs.pcsx2
+  ];
 
   home.file.".config/ES-DE/custom_systems/es_find_rules.xml".text = ''
     <ruleList>

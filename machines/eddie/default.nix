@@ -57,12 +57,13 @@
   services.caddy = {
     enable = true;
     # gilderien passes TLS through and prepends a PROXY header with the real
-    # client IP; without it home-assistant bans gilderien for everyone's failures
+    # client IP; without it home-assistant bans gilderien for everyone's failures.
+    # Whole tailnet range so gilderien's tailscale IP can change on reinstall.
     globalConfig = ''
       servers :443 {
         listener_wrappers {
           proxy_protocol {
-            allow 100.80.95.0/32
+            allow 100.64.0.0/10
           }
           tls
         }

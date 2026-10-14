@@ -126,6 +126,7 @@
           configurationName = "gilderien";
           configurationKind = "nixos";
           targetHost = "gilderien.toniogela.dev";
+          installable = true;
         }
       ];
     };
