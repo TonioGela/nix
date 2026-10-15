@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgsUnstable,
   config,
   ...
 }:
@@ -100,6 +101,7 @@ in
 
     programs.firefox = {
       enable = true;
+      package = pkgsUnstable.firefox;
       languagePacks = [ "en-GB" ];
       nativeMessagingHosts = [
         pkgs.tridactyl-native
