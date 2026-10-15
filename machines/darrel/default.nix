@@ -66,11 +66,6 @@ in
     '';
   };
 
-  darwin.masAppIds = [
-    # "1352778147" # Bitwarden
-    # "1503136033" # Service Station can't be find for some reason
-  ];
-
   zsh = {
     extraEnv = "eval `/usr/libexec/path_helper -s`";
     extraAliases.flushdns = "sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder";
@@ -93,5 +88,4 @@ in
     derivations.source-code-syntax-highlight
     derivations.thaw
   ];
-
 }
