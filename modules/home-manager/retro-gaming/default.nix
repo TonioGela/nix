@@ -64,6 +64,7 @@ in
   home.packages = [ 
     emulationStationDE
     pkgs.pcsx2
+    pkgs.dolphin-emu
   ];
 
   home.file.".config/ES-DE/custom_systems/es_find_rules.xml".text = ''
