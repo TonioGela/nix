@@ -42,6 +42,8 @@ in
   };
 
   config = {
+    home.sessionVariables.GIT_CONFIG_GLOBAL = "${config.xdg.configHome}/git/config";
+
     # `echo "test" | gpg2 --clearsign` will check if gpg2 works
     # `gpgconf --kill gpg-agent` reboots the agent if necessary
     programs.git = {
