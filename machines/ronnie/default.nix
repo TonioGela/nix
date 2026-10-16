@@ -87,7 +87,10 @@
     # Epilogue GB Operator
     SUBSYSTEM=="usb", ATTR{idVendor}=="16d0", ATTR{idProduct}=="123d", MODE="0666"
     KERNEL=="ttyACM*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="16d0", MODE="0666"
+    # Fake CSR BT dongle, for Dolphin Bluetooth Passthrough (Dolphin detaches btusb itself)
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="0a12", ATTRS{idProduct}=="0001", MODE="0660", GROUP="input"
   '';
+  services.udev.packages = [ pkgs.game-devices-udev-rules ];
 
   # See modules/nixos/sops.nix
   sops.defaultSopsFile = ./secrets.yml;
@@ -149,6 +152,10 @@
       {
         shortId = "my-online-learning-downloader";
         uuid = "{1b6043a9-46df-4352-adf6-553ce26b9106}";
+      }
+      {
+        shortId = "fabamore-do-more-faba";
+        uuid = "fabamore@mircobabini.dev";
       }
     ];
 

@@ -7,7 +7,7 @@ let
   commonNixSettings =
     { pkgs, pkgsUnstable, ... }:
     {
-      nix.package = pkgsUnstable.nix;
+      nix.package = pkgsUnstable.nixVersions.latest;
       nix.settings.experimental-features = [
         "nix-command"
         "pipe-operators"
