@@ -59,6 +59,7 @@
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   networking.hostName = "ronnie";
 
   programs.zsh.enable = true;
@@ -130,6 +131,12 @@
           configurationKind = "nixos";
           targetHost = "gilderien.toniogela.dev";
           installable = true;
+        }
+        {
+          configurationName = "angus";
+          configurationKind = "nixos";
+          targetHost = "angus.shrimp-pogona.ts.net";
+          tailscale = true;
         }
       ];
     };

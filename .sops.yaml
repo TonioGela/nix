@@ -2,6 +2,7 @@ keys:
   - &toniogela 48B37417C51A5D5B7FD59A2F249CF446C408D4E2
   - &ronnie D4170B95804C583DC5B5E15D69FED5E1652AB837
   - &eddie 4A78858205B41336310243C9286A9A5DBB3A47A0
+  - &angus 8A877358279DAD498E58CEE42362D11C846BD9A1
 creation_rules:
   - path_regex: machines/ronnie/secrets\.yml$
     key_groups:
@@ -13,3 +14,8 @@ creation_rules:
     - pgp:
       - *toniogela
       - *eddie
+  - path_regex: machines/angus/secrets\.yml$
+    key_groups:
+    - pgp:
+      - *toniogela
+      - *angus

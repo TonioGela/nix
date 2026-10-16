@@ -19,14 +19,24 @@ let
       nix.nixPath = [ "nixpkgs=${builtins.storePath pkgs.path}" ];
     };
 
+  pkgsForSystem =
+    system: p:
+    import p.path {
+      inherit system;
+      config.allowUnfree = true;
+    };
+
+  pkgsFor = system: pkgsForSystem system sources.pkgs;
+  pkgsUnstableFor = system: pkgsForSystem system sources.pkgsUnstable;
+
   # Passed as a hm module to both builders but also as a nixos module to nixos
-  additionsModuleArgs = {
-    _module.args.pkgsUnstable = sources.pkgsUnstable;
+  additionsModuleArgs = pkgsUnstable: {
+    _module.args.pkgsUnstable = pkgsUnstable;
   };
 
   # Passed as a hm module to both builders
-  commonHomeManagerSettings = {
-    imports = [ additionsModuleArgs ];
+  commonHomeManagerSettings = pkgsUnstable: {
+    imports = [ (additionsModuleArgs pkgsUnstable) ];
     programs.home-manager.enable = true;
     home.enableNixpkgsReleaseCheck = true;
     home.stateVersion = stateVersion;
@@ -35,18 +45,22 @@ in
 {
   nixos =
     system: config:
+    let
+      pkgs = pkgsFor system;
+      pkgsUnstable = pkgsUnstableFor system;
+    in
     sources.nixosBuilder {
       inherit system specialArgs;
       configuration = {
         imports = [
           sources.homeManager
           commonNixSettings
-          additionsModuleArgs
+          (additionsModuleArgs pkgsUnstable)
           config
         ];
 
         config = {
-          nixpkgs.pkgs = sources.pkgs;
+          nixpkgs.pkgs = pkgs;
           nixpkgs.overlays = [ sources.nix-vscode-extensions ];
           system.stateVersion = stateVersion;
 
@@ -61,20 +75,24 @@ in
             useGlobalPkgs = true; # use system's nixpkgs
             useUserPackages = true; # installs user packages via users.users.<name>.packages
             extraSpecialArgs = specialArgs;
-            sharedModules = [ commonHomeManagerSettings ];
+            sharedModules = [ (commonHomeManagerSettings pkgsUnstable) ];
           };
         };
       };
     };
 
   home-manager =
-    config:
+    system: config:
+    let
+      pkgs = pkgsFor system;
+      pkgsUnstable = pkgsUnstableFor system;
+    in
     sources.homeManagerBuilder {
-      pkgs = sources.pkgs;
+      inherit pkgs;
       extraSpecialArgs = specialArgs;
       configuration = {
         imports = [
-          commonHomeManagerSettings
+          (commonHomeManagerSettings pkgsUnstable)
           commonNixSettings
           config
         ];

@@ -23,7 +23,8 @@ let
 in
 {
   ronnie = builders.nixos "x86_64-linux" ./machines/ronnie;
-  darrel = builders.home-manager ./machines/darrel;
+  darrel = builders.home-manager "aarch64-darwin" ./machines/darrel;
   eddie = builders.nixos "x86_64-linux" ./machines/eddie;
   gilderien = builders.nixos "x86_64-linux" ./machines/gilderien;
+  angus = builders.nixos "aarch64-linux" ./machines/angus;
 }
