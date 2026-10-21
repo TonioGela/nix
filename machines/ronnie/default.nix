@@ -47,6 +47,7 @@
     gpg
     hide-desktop-entries
     kitty
+    microscope-viewer
     minesweep
     mpv
     neovim
@@ -90,6 +91,10 @@
     KERNEL=="ttyACM*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="16d0", MODE="0666"
     # Fake CSR BT dongle, for Dolphin Bluetooth Passthrough (Dolphin detaches btusb itself)
     SUBSYSTEM=="usb", ATTRS{idVendor}=="0a12", ATTRS{idProduct}=="0001", MODE="0660", GROUP="input"
+    # Geek szitman supercamera USB microscope (non-UVC), for microscope-viewer
+    SUBSYSTEM=="usb", ATTR{idVendor}=="0329", ATTR{idProduct}=="2022", MODE="0666"
+    # TP-Link UB500 (RTL8761BU), same purpose
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="2357", ATTRS{idProduct}=="0604", MODE="0660", GROUP="input"
   '';
   services.udev.packages = [ pkgs.game-devices-udev-rules ];
 
