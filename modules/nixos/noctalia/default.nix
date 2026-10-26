@@ -352,7 +352,9 @@
           lockscreen_widgets = {
             enabled = true;
             schema_version = 2;
-            widget_order = [ "lockscreen-login-box@eDP-1" ];
+            widget_order = [
+              "lockscreen-login-box@eDP-1"
+            ];
 
             grid = {
               cell_size = 8;
@@ -384,6 +386,7 @@
                 show_keyboard_layout = false;
                 show_login_button = false;
                 show_media = false;
+                show_password_reveal = false;
                 show_session_buttons = true;
                 show_unlock_hint = false;
                 show_weather = false;
@@ -526,6 +529,7 @@
               categories = false;
               compact = true;
               fetch_exchange_rates = false;
+              layout = "simple";
               pinned = [ ];
               provider_prefix = "/";
               show_app_actions = false;

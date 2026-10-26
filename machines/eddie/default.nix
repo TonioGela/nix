@@ -1,7 +1,9 @@
 {
+  config,
   pkgs,
   pkgsUnstable,
   modules,
+  sources,
   ...
 }:
 {
@@ -53,6 +55,18 @@
 
   # See modules/nixos/sops.nix
   sops.defaultSopsFile = ./secrets.yml;
+
+  # Grocery-list Telegram bot, see https://github.com/TonioGela/spesa_bot
+  sops.secrets.spesa-telegram-token.owner = "toniogela";
+  users.users.toniogela.linger = true; # user services run without a login
+  home-manager.users.toniogela = {
+    imports = [ sources.spesa ];
+    services.spesa = {
+      enable = true;
+      tokenFile = config.sops.secrets.spesa-telegram-token.path;
+      users = [ 524811522 ];
+    };
+  };
 
   services.caddy = {
     enable = true;

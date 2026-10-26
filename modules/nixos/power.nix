@@ -23,6 +23,27 @@
   # https://community.frame.work/t/hibernate-resume-failures-on-framework-13-amd-ryzen-ai-300-krackan-a-b-tested-workaround-pm-async-0/83040
   systemd.tmpfiles.rules = [ "w /sys/power/pm_async - - - - 0" ];
 
+  # Turn the fingerprint/power-button LED off together with the keyboard backlight
+  # (fn+space). The EC handles fn+space on its own and has no setting to link the two,
+  # so mirror it from sysfs: brightness 0 switches the LED off, the chromeos-auto
+  # trigger hands it back to the EC.
+  # ponytail: 1s polling (kbd_backlight has no brightness_hw_changed), ~1s lag after fn+space
+  systemd.services.fp-led-follow-kbd = {
+    wantedBy = [ "multi-user.target" ];
+    script = ''
+      kbd=/sys/class/leds/chromeos::kbd_backlight/brightness
+      led=/sys/class/leds/chromeos:white:power
+      prev=
+      while sleep 1; do
+        read -r b < $kbd
+        if [ "$b" -eq 0 ]; then state=off; else state=on; fi
+        [ "$state" = "$prev" ] && continue
+        if [ "$state" = off ]; then echo 0 > $led/brightness; else echo chromeos-auto > $led/trigger; fi
+        prev=$state
+      done
+    '';
+  };
+
   environment.etc."systemd/system-sleep/pre-hibernate-drop-cache" = {
     mode = "0755";
     text = ''

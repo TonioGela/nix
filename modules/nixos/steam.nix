@@ -20,6 +20,7 @@
     xwayland-satellite
     mangohud
     scanmem
+    r2modman
   ];
 
   home-manager.sharedModules = [

@@ -114,7 +114,7 @@ binds {
     Mod+Return       hotkey-overlay-title="Open a Terminal: foot"                         { spawn "footclient"; }
     Mod+Shift+Return hotkey-overlay-title="Open Firefox"                                  { spawn "firefox"; }
     Alt+Space        hotkey-overlay-title="Spawn applications launcher"                   { spawn-sh "noctalia msg panel-toggle launcher"; }
-    Alt+Y            hotkey-overlay-title="Open yazi in foot"                             { spawn-sh "footclient --hold --working-directory=/home/toniogela zsh -ci 'y'"; }
+    Alt+Y            hotkey-overlay-title="Open yazi in foot"                             { spawn-sh "footclient --working-directory=/home/toniogela zsh -ic 'y; exec zsh'"; }
     Mod+Shift+Delete hotkey-overlay-title="Show session commands"                         { spawn "sh" "-c" "noctalia msg panel-toggle session"; }
     Mod+N            hotkey-overlay-title="Open Nixos config in VsCodium"                 { spawn "sh" "-c" "codium ~/.config/nix"; }
     Mod+M            hotkey-overlay-title="Present focused window" repeat=false           { spawn-sh "wl-mirror $(niri msg --json focused-output | jq -r .name)"; }

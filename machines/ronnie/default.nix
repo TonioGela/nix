@@ -35,7 +35,7 @@
 
   home-manager.users.toniogela.imports = with modules.home-manager; [
     calibre
-    esp
+    modernfontstacks
     firefox
     git
     retro-gaming

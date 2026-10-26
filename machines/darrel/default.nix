@@ -18,6 +18,7 @@ in
     darwin
     gpg
     kitty
+    modernfontstacks
     neovim
     nix-tools
     pass

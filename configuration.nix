@@ -7,6 +7,7 @@ let
     homeManager = import (pins.home-manager + "/nixos");
     fw13-hardware = import (pins.nixos-hardware + "/framework/13-inch/amd-ai-300-series");
     disko = pins.disko + "/module.nix";
+    spesa = pins.spesa + "/default.nix";
     noctalia5 = import pins.noctalia { };
     sopsNixos = import (pins.sops-nix + "/modules/sops");
     lanzaboote = (import pins.lanzaboote { inherit pkgs; }).nixosModules.lanzaboote;
