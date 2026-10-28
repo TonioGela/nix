@@ -83,6 +83,7 @@
     "input"
     "kvm"
     "dialout"
+    "ydotool"
   ];
 
   services.udev.extraRules = ''

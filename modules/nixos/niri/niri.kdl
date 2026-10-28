@@ -118,6 +118,7 @@ binds {
     Mod+Shift+Delete hotkey-overlay-title="Show session commands"                         { spawn "sh" "-c" "noctalia msg panel-toggle session"; }
     Mod+N            hotkey-overlay-title="Open Nixos config in VsCodium"                 { spawn "sh" "-c" "codium ~/.config/nix"; }
     Mod+M            hotkey-overlay-title="Present focused window" repeat=false           { spawn-sh "wl-mirror $(niri msg --json focused-output | jq -r .name)"; }
+    Mod+F9           hotkey-overlay-title="Toggle autoclicker"                            { spawn "autoclick"; }
     F12              hotkey-overlay-title="Shut down screen"       allow-when-locked=true { spawn-sh "noctalia msg dpms-off"; }
 
     XF86AudioRaiseVolume  allow-when-locked=true { spawn-sh "noctalia msg volume-up"; }
