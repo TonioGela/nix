@@ -60,7 +60,7 @@
                   id = "g1";
                   accordion = true;
                   accordion_direction = "start";
-                  fill = "surface_variant";
+                  fill = "surface_container";
                   members = [
                     "network"
                     "dns-switcher"
@@ -74,7 +74,7 @@
                   id = "g2";
                   accordion = true;
                   accordion_direction = "end";
-                  fill = "surface_variant";
+                  fill = "surface_container";
                   members = [
                     "battery"
                     "status"
@@ -88,7 +88,7 @@
               border = "tertiary";
               border_width = 1.0;
               capsule = false;
-              capsule_fill = "surface_variant";
+              capsule_fill = "surface_container";
 
               capsule_opacity = 1.0;
               capsule_padding = 6.0;
@@ -197,7 +197,7 @@
             active_scale = 1.0;
             auto_hide = false;
             background_opacity = 0.88;
-            border = "outline";
+            border = "outline_variant";
             border_width = 0.0;
             concave_edge_corners = true;
             cross_axis_padding = 8;
@@ -375,7 +375,7 @@
               type = "login_box";
 
               settings = {
-                background_color = "surface_variant";
+                background_color = "surface_container";
                 background_opacity = 0.88;
                 background_radius = 12.0;
                 center_password_text = true;
@@ -780,7 +780,7 @@
             };
 
             control-center = {
-              custom_image = "/home/toniogela/Pictures/nixos-logo-black.png";
+              custom_image = "${pkgs.nixos-icons}/share/icons/hicolor/256x256/apps/nix-snowflake-white.png";
               custom_image_colorize = true;
               type = "control-center";
             };
