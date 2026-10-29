@@ -80,7 +80,7 @@ in
     pkgs.google-cloud-sdk
     pkgs.nodejs_26
     pkgs.appcleaner
-    pkgsUnstable.claude-code
+    pkgs.claude-code
     pkgs.defaultbrowser
     pkgs.nerd-fonts.sauce-code-pro
     pkgs.wireshark
