@@ -15,6 +15,7 @@ in
     scala
     vscodium
     zathura
+    claude
     darwin
     gpg
     kitty
@@ -80,7 +81,6 @@ in
     pkgs.google-cloud-sdk
     pkgs.nodejs_26
     pkgs.appcleaner
-    pkgs.claude-code
     pkgs.defaultbrowser
     pkgs.nerd-fonts.sauce-code-pro
     pkgs.wireshark
