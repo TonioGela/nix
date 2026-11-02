@@ -34,6 +34,10 @@
           selection-target = "both";
         };
 
+        # Ctrl+- is "go back" in nvim, so zoom out is Ctrl+Shift+= (Ctrl+plus no longer zooms in, to not clash)
+        key-bindings.font-increase = "Control+equal Control+KP_Add";
+        key-bindings.font-decrease = "Control+Shift+equal Control+KP_Subtract";
+
         cursor.style = "beam";
         mouse.hide-when-typing = "yes";
 

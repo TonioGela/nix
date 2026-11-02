@@ -184,3 +184,5 @@ result
 # AI Shit
 **/.claude/settings.local.json
 AGENTS.md
+# nvim-tree paths hidden via right-click
+.nvim-tree-hidden

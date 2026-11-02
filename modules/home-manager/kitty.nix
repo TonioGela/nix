@@ -62,6 +62,10 @@
       map cmd+alt+equal         change_font_size all +1.0
       # This pairs with a config in nvim that toggles NvimTree
       map cmd+b                 send_text all \x02
+      # This pairs with a config in nvim that opens the file picker
+      map cmd+p                 send_text all \x10
+      # This pairs with a config in nvim that opens the command palette
+      map cmd+shift+p           send_key ctrl+shift+p
 
       # Nord Theme from https://github.com/connorholyday/nord-kitty/blob/master/nord.conf
       foreground            #D8DEE9
