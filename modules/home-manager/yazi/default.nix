@@ -10,7 +10,10 @@
     noDisplay = true;
   };
 
-  home.packages = lib.mkIf pkgs.stdenv.isLinux [
+  home.packages = [
+    pkgsUnstable.mdfried
+  ]
+  ++ lib.optionals pkgs.stdenv.isLinux [
     pkgs.ripdrag
     pkgs.loupe # TODO Remove the loupe binding on darwin
   ];
@@ -63,6 +66,14 @@
           mime = "text/html";
           use = "html";
         }
+        {
+          url = "*.{xlsx,xls}";
+          use = "spreadsheet";
+        }
+        {
+          url = "*.md";
+          use = "markdown";
+        }
       ];
 
       opener = {
@@ -102,6 +113,22 @@
             run = "firefox %s";
             desc = "Firefox Web Browser";
             orphan = true;
+          }
+        ];
+
+        spreadsheet = [
+          {
+            run = "gnumeric %s";
+            desc = "Gnumeric";
+            orphan = true;
+          }
+        ];
+
+        markdown = [
+          {
+            run = "mdfried %s";
+            desc = "mdfried markdown viewer";
+            block = true;
           }
         ];
       };

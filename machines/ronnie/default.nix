@@ -105,9 +105,13 @@
   services.hardware.bolt.enable = true;
 
   nix.settings = {
-    extra-substituters = [ "https://noctalia.cachix.org" ];
+    extra-substituters = [
+      "https://noctalia.cachix.org"
+      "https://cache.numtide.com" # iets
+    ];
     extra-trusted-public-keys = [
       "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+      "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
     ];
   };
 
@@ -118,13 +122,21 @@
       pkgs.mkvtoolnix
       pkgs.mediainfo
       pkgs.ffmpeg-full
+      pkgs.footage
+      (pkgs.writeShellScriptBin "whatsapp-video" ''
+        # usage: whatsapp-video in.mp4 [out.mp4] — 720p, small enough for WhatsApp's 16 MB cap
+        exec env -u LD_LIBRARY_PATH ${pkgs.ffmpeg-full}/bin/ffmpeg -hide_banner -loglevel error -stats \
+          -i "$1" -vf scale=-2:720 -c:v libx264 -crf 28 -preset slow -c:a aac -b:a 96k "''${2:-''${1%.*}-whatsapp.mp4}"
+      '')
       pkgs.sops
+      pkgs.gnumeric
       pkgsUnstable.prismlauncher
     ];
 
     programs.nh = {
       nhFile = "/home/toniogela/.config/nix/configuration.nix";
       nhAttrPath = "ronnie";
+      useIets = true;
       deployments = [
         {
           configurationName = "eddie";

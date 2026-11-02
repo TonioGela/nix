@@ -65,6 +65,22 @@ let
     pkgs.writeShellScriptBin "${dm.configurationName}.install" ''
       nixos-anywhere --store-paths $(nix-build ${dm.configurationPath} -A ${dm.configurationName}.config.system.build.diskoScript -A ${dm.configurationName}.config.system.build.toplevel --no-out-link) "$@" root@${dm.targetHost}
     '';
+  # iets classic mode in front of the real nix; whatever iets doesn't implement falls back to config.nix.package
+  ietsNix = sources.iets.lib.mkClassic pkgs
+    sources.iets.packages.${pkgs.stdenv.hostPlatform.system}.default
+    config.nix.package;
+  # nom's --log-format internal-json makes iets fall back to nix, so builds get --no-nom
+  ietsNh = pkgs.writeShellScriptBin "nh" ''
+    export PATH=${ietsNix}/bin:$PATH
+    case "$1 $2" in
+      "os switch" | "os boot" | "os test" | "os build" | "home switch" | "home build")
+        a=$1 b=$2
+        shift 2
+        set -- "$a" "$b" --no-nom "$@"
+        ;;
+    esac
+    exec ${pkgsUnstable.nh}/bin/nh "$@"
+  '';
 in
 {
   options = {
@@ -81,6 +97,7 @@ in
       description = "List of deployment targets for nh";
       default = [ ];
     };
+    programs.nh.useIets = lib.mkEnableOption "running nh's nix calls through iets (github:numtide/iets)";
   };
 
   imports = [ sources.nix-index-database ];
@@ -91,7 +108,19 @@ in
 
     programs.nh = {
       enable = true;
-      package = pkgsUnstable.nh;
+      package =
+        if config.programs.nh.useIets then
+          # ietsNh first so its bin/nh shadows the real one; completions etc. come from nh
+          pkgs.symlinkJoin {
+            name = "nh-iets";
+            meta.mainProgram = "nh";
+            paths = [
+              ietsNh
+              pkgsUnstable.nh
+            ];
+          }
+        else
+          pkgsUnstable.nh;
       clean = {
         enable = true;
         dates = "weekly";
