@@ -10,6 +10,7 @@
   imports = with modules.nixos; [
     ./hardware
     de-channel
+    gokapi
     home-assistant
     #    immich
     #    jellyfin
@@ -35,6 +36,13 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgsUnstable.linuxPackages;
 
+  # Without swap, memory pressure thrashed eddie into a hang with no OOM kill
+  zramSwap.enable = true;
+  systemd.oomd = {
+    enableRootSlice = true;
+    enableSystemSlice = true;
+  };
+
   networking.hostName = "eddie";
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
@@ -43,6 +51,7 @@
   i18n.defaultLocale = "en_GB.UTF-8";
   i18n.extraLocales = [ "it_IT.UTF-8/UTF-8" ];
   passwordlessSudoer = "toniogela";
+  gokapi.domain = "transfer.toniogela.dev";
 
   environment.systemPackages = [
     pkgs.git

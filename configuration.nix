@@ -14,7 +14,6 @@ let
     nix-index-database = import (pins.nix-index-database + "/home-manager-module.nix");
     nixosBuilder = import (pins.nixpkgs + "/nixos");
     homeManagerBuilder = import (pins.home-manager + "/modules");
-    iets = (import pins.flake-compat { src = pins.iets; }).defaultNix;
   };
   import-modules = import ./utils/import-modules.nix;
   modules = {

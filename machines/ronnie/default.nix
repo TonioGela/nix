@@ -107,11 +107,9 @@
   nix.settings = {
     extra-substituters = [
       "https://noctalia.cachix.org"
-      "https://cache.numtide.com" # iets
     ];
     extra-trusted-public-keys = [
       "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
-      "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
     ];
   };
 
@@ -136,7 +134,6 @@
     programs.nh = {
       nhFile = "/home/toniogela/.config/nix/configuration.nix";
       nhAttrPath = "ronnie";
-      useIets = true;
       deployments = [
         {
           configurationName = "eddie";

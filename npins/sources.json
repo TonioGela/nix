@@ -45,19 +45,6 @@
       "url": "https://github.com/nix-community/home-manager/archive/24f2190587513b9c2f73db112a17844ae912d965.tar.gz",
       "hash": "sha256-199i7ubVSXTMl+0AAlL7cVCXSjcI+jWByMcimYjeMX0="
     },
-    "iets": {
-      "type": "Git",
-      "repository": {
-        "type": "GitHub",
-        "owner": "numtide",
-        "repo": "iets"
-      },
-      "branch": "main",
-      "submodules": false,
-      "revision": "e171eb868c8558ff61e407f671f58f3e48c24728",
-      "url": "https://github.com/numtide/iets/archive/e171eb868c8558ff61e407f671f58f3e48c24728.tar.gz",
-      "hash": "sha256-EtfSeZgBLJweh+QCfD/qyvcpRyNFZ7TWTRyLyZSoZxo="
-    },
     "lanzaboote": {
       "type": "GitRelease",
       "repository": {
