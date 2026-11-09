@@ -1,4 +1,5 @@
 {
+  pkgsUnstable,
   modulesPath,
   sources,
   modules,
@@ -15,6 +16,7 @@
     tailscale
   ];
 
+  boot.kernelPackages = pkgsUnstable.linuxPackages_latest;
   boot.loader.grub = {
     # no need to set devices, disko adds every disk with an EF02 partition already
     efiSupport = true;

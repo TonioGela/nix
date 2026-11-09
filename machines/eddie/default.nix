@@ -34,7 +34,7 @@
     ${pkgs.systemd}/bin/systemctl start --no-block nix-gc.service || true
   '';
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgsUnstable.linuxPackages;
+  boot.kernelPackages = pkgsUnstable.linuxPackages_latest;
 
   # Without swap, memory pressure thrashed eddie into a hang with no OOM kill
   zramSwap.enable = true;

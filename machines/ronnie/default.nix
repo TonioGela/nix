@@ -14,6 +14,7 @@
     printers
     de-channel
     esp
+    fixhub
     gpu-screen-recorder
     greetd
     lanzaboote
