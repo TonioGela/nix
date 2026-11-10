@@ -215,6 +215,7 @@ in
               (extension "clearurls" "{74145f27-f039-47ce-a470-a662b129930a}")
               (extension "tridactyl-vim" "tridactyl.vim@cmcaine.co.uk")
               (extension "passff" "passff@invicem.pro")
+              (extension "tab-session-manager" "Tab-Session-Manager@sienori")
             ]
             ++ map (e: (extension e.shortId e.uuid)) config.firefox.additionalExtensions
           );
@@ -223,36 +224,36 @@ in
         # the short ID in the url (like https://addons.mozilla.org/en-US/firefox/addon/!SHORT_ID!/)
         # Then install it manually and go to about:debugging#/runtime/this-firefox to get the uuid
         "3rdparty".Extensions = {
-          "uBlock0@raymondhill.net".adminSettings = {
-            # userSettings = {
-            #   uiTheme = "dark";
-            #   uiAccentCustom = true;
-            #   uiAccentCustom0 = "#8300ff";
-            #   cloudStorageEnabled = false;
-            #   importedLists = [ ];
-            #   externalLists = ''
-            #     https://filters.adtidy.org/extension/ublock/filters/3.txt
-            #     https://github.com/DandelionSprout/adfilt/raw/master/LegitimateURLShortener.txt
-            #   '';
-            # };
-            # selectedFilterLists = [
-            #   "CZE-0"
-            #   "adguard-generic"
-            #   "adguard-annoyance"
-            #   "adguard-social"
-            #   "adguard-spyware-url"
-            #   "easylist"
-            #   "easyprivacy"
-            #   "plowe-0"
-            #   "ublock-abuse"
-            #   "ublock-badware"
-            #   "ublock-filters"
-            #   "ublock-privacy"
-            #   "ublock-quick-fixes"
-            #   "ublock-unbreak"
-            #   "urlhaus-1"
-            # ];
+          # Reapplied on every start: filter lists and trusted sites changed
+          # in the uBlock UI get reset. "My filters" stay editable.
+          "uBlock0@raymondhill.net".toOverwrite = {
+            filterLists = [
+              "user-filters"
+              "ublock-filters"
+              "ublock-badware"
+              "ublock-privacy"
+              "ublock-unbreak"
+              "ublock-quick-fixes"
+              "easylist"
+              "easyprivacy"
+              "urlhaus-1"
+              "plowe-0"
+            ];
+            trustedSiteDirectives = [
+              "chrome-extension-scheme"
+              "moz-extension-scheme"
+              "www.wizzair.com"
+            ];
           };
+          "jid1-BoFifL9Vbdl2zQ@jetpack" = {
+            blockMissing = false;
+            disablePrefetch = true;
+            showIconBadge = true;
+            showReleaseNotes = true;
+            stripMetadata = true;
+          };
+          "newtaboverride@agenedia.com".type = "homepage";
+          "jid1-ZAdIEUB7XOzOJw@jetpack".hasSeenPostInstall = true;
         };
       };
       profiles.default = {

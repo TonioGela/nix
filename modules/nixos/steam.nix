@@ -4,7 +4,11 @@
 
   hardware.xpadneo.enable = true;
   hardware.steam-hardware.enable = true;
-  programs.steam.enable = true;
+  programs.steam = {
+    enable = true;
+    # Windward (Unity 4) needs its own pid namespace: bwrap --dev-bind / / --unshare-pid --proc /proc -- %command%
+    extraPackages = [ pkgs.bubblewrap ];
+  };
   programs.gamescope.enable = true;
   programs.gamemode = {
     enable = true;
