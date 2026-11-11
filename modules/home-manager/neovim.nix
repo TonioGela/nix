@@ -190,6 +190,25 @@ in
       vim.keymap.set("n", "<X2Mouse>", "<C-i>", { desc = "Go forward" })
       -- Go to definition with option+click
       vim.keymap.set({ "n", "i" }, "<M-LeftMouse>", "<LeftMouse><Cmd>lua vim.lsp.buf.definition()<CR>", { desc = "Go to definition" })
+      -- Clicking a symbol in normal mode shows its signature/docs in a popup, which closes when the cursor moves
+      vim.keymap.set("n", "<LeftMouse>", function()
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<LeftMouse>", true, false, true), "nx", false)
+        if vim.bo.buftype == "" and #vim.lsp.get_clients({ bufnr = 0, method = "textDocument/hover" }) > 0 then
+          vim.lsp.buf.hover({ silent = true, border = "rounded" })
+        end
+      end, { desc = "Click and show hover" })
+      -- Clear a :command from the command line once it has run, unless it printed something (output or an error)
+      vim.api.nvim_create_autocmd("CmdlineLeave", {
+        callback = function()
+          if vim.fn.getcmdtype() ~= ":" or vim.v.event.abort then return end
+          local typed = ":" .. vim.fn.getcmdline()
+          vim.schedule(function()
+            local shown = ""
+            for c = 1, math.min(#typed, vim.o.columns) do shown = shown .. vim.fn.screenstring(vim.o.lines, c) end
+            if shown == typed:sub(1, vim.o.columns) then vim.cmd.echo([[""]]) end
+          end)
+        end
+      })
       local metals_config = require("metals").bare_config()
       metals_config.settings = { metalsBinaryPath = "${metals}/bin/metals" }
       -- Report progress through standard LSP progress (shown above) rather than a statusline

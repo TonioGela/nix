@@ -66,7 +66,7 @@ in
         wip = "!${gitExe} add --all . && ${gitExe} commit -m 'wip' && ${gitExe} push -o ci.skip";
         branches = "!${gitExe} for-each-ref --format='%(authorname)~%(refname)' --sort authorname | grep -v prefetch | cut -d'~' -f1 | sort | uniq -c | sort -nr";
         branches-of = "!${gitExe} for-each-ref --format='%(authorname) %(refname)' --sort authorname | grep -v prefetch | grep";
-        push-stack = "!${gitExe} push --force-with-lease --force-if-includes --atomic origin $(git for-each-ref --format=\"%(refname:short)\" --merged HEAD --no-merged origin/develop refs/heads/)";
+        push-stack = "!f() { base=; for c in develop main master; do if ${gitExe} show-ref --verify --quiet refs/remotes/origin/$c; then base=origin/$c; break; fi; done; [ -n \"$base\" ] || { echo 'push-stack: no origin/develop, origin/main or origin/master found' >&2; return 1; }; ${gitExe} push --force-with-lease --force-if-includes --atomic origin $(${gitExe} for-each-ref --format=\"%(refname:short)\" --merged HEAD --no-merged \"$base\" refs/heads/); }; f";
       };
 
       ignores = gitIgnoreLines;
@@ -210,7 +210,19 @@ in
           pkgs.gnugrep
         ];
         text = ''
-          base=''${1:-develop}
+          base=''${1:-}
+          if [ -z "$base" ]; then
+            for candidate in develop main master; do
+              if git show-ref --verify --quiet "refs/heads/$candidate"; then
+                base=$candidate
+                break
+              fi
+            done
+          fi
+          if [ -z "$base" ]; then
+            echo "git-tree: no develop/main/master branch found, pass the base branch explicitly" >&2
+            exit 1
+          fi
           mapfile -t branches < <(git branch --no-merged "$base" --format='%(refname:short)')
           decorate=()
           for b in "$base" "''${branches[@]}"; do decorate+=("--decorate-refs=refs/heads/$b"); done
