@@ -75,7 +75,22 @@
       tokenFile = config.sops.secrets.spesa-telegram-token.path;
       users = [ 524811522 ];
     };
+    # spesa's heap grows until Scala Native's GC gives up, then the process hangs
+    # spinning instead of exiting; the cgroup limit gets it OOM-killed so
+    # Restart=always brings it back
+    systemd.user.services.spesa.Service.MemoryMax = "512M";
   };
+
+  # KOReader progress sync. Not in nixpkgs, so the official image.
+  # Accounts are created from KOReader itself (Register); once yours exists,
+  # set ENABLE_USER_REGISTRATION to "false" so strangers can't sign up.
+  virtualisation.oci-containers.containers.kosync = {
+    image = "koreader/kosync:latest";
+    ports = [ "127.0.0.1:17200:17200" ]; # plain http, caddy does TLS
+    volumes = [ "/var/lib/kosync:/var/lib/redis" ];
+    environment.ENABLE_USER_REGISTRATION = "true";
+  };
+  systemd.tmpfiles.rules = [ "d /var/lib/kosync 0700 root root -" ];
 
   services.caddy = {
     enable = true;
@@ -100,6 +115,9 @@
     '';
     virtualHosts."netflix.toniogela.dev".extraConfig = ''
       reverse_proxy localhost:8096
+    '';
+    virtualHosts."kosync.toniogela.dev".extraConfig = ''
+      reverse_proxy localhost:17200
     '';
     virtualHosts."home.toniogela.dev".extraConfig = ''
       reverse_proxy localhost:8123

@@ -214,6 +214,12 @@ in
               (extension "nord-firefox" "{f4c9e1d6-6630-4600-ad50-d223eab7f3e7}")
               (extension "clearurls" "{74145f27-f039-47ce-a470-a662b129930a}")
               (extension "tridactyl-vim" "tridactyl.vim@cmcaine.co.uk")
+              # PassFF can't be configured by policy nor export its settings.
+              # Non-default preferences to set by hand:
+              #   checkOnlyAuto = true, enterBehavior = 2, ctrlEnterBehavior = 0,
+              #   tbMenuShortcut = "Ctrl+Alt+P", indexMetaUrls = true,
+              #   showStatus = false, showNewPassButton = false,
+              #   recognisedSuffixes = "co.uk,org.uk,me.uk,co.jp,com.au,it"
               (extension "passff" "passff@invicem.pro")
               (extension "tab-session-manager" "Tab-Session-Manager@sienori")
             ]
@@ -238,11 +244,14 @@ in
               "easyprivacy"
               "urlhaus-1"
               "plowe-0"
+              "adguard-spyware-url"
             ];
             trustedSiteDirectives = [
               "chrome-extension-scheme"
               "moz-extension-scheme"
               "www.wizzair.com"
+              # Google SSO breaks with URL cleaning
+              "accounts.google.com"
             ];
           };
           "jid1-BoFifL9Vbdl2zQ@jetpack" = {
@@ -303,6 +312,11 @@ in
           "browser.sessionstore.max_resumed_crashes" = -1;
           "browser.aboutConfig.showWarning" = false;
           "browser.uidensity" = 1;
+          "browser.compactmode.show" = true;
+          "browser.translations.neverTranslateLanguages" = "it";
+          "privacy.trackingprotection.allow_list.baseline.enabled" = false;
+          "privacy.trackingprotection.allow_list.convenience.enabled" = false;
+          "extensions.webextensions.allow_executeScript_in_moz_extension" = true;
           "browser.translations.select.enable" = false;
           "screenshots.browser.component.enabled" = false;
           "dom.text_fragments.enabled" = false;

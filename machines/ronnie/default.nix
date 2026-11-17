@@ -40,6 +40,7 @@
     firefox
     git
     retro-gaming
+    rust
     scala
     vscodium
     zathura
@@ -180,7 +181,20 @@
         shortId = "fabamore-do-more-faba";
         uuid = "fabamore@mircobabini.dev";
       }
+      {
+        shortId = "video-downloadhelper";
+        uuid = "{b9db16a4-6edc-47ec-a1f4-b86292ed211d}";
+      }
     ];
+
+    # Not on addons.mozilla.org
+    programs.firefox.policies.ExtensionSettings."magnolia@12.34" = {
+      install_url = "https://gitflic.ru/project/magnolia1234/bpc_uploads/blob/raw?file=bypass_paywalls_clean-latest.xpi";
+      installation_mode = "force_installed";
+      default_area = "menupanel";
+    };
+    programs.firefox.profiles.default.settings."extensions.quarantineIgnoredByUser.fabamore@mircobabini.dev" =
+      true;
 
     xdg.desktopEntriesToHide = [
       {

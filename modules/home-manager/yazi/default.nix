@@ -14,6 +14,7 @@
     pkgsUnstable.mdfried
   ]
   ++ lib.optionals pkgs.stdenv.isLinux [
+    pkgs.glib # gio, needed by the gvfs plugin
     pkgs.ripdrag
     pkgs.loupe # TODO Remove the loupe binding on darwin
   ];
@@ -34,8 +35,23 @@
       smart-enter = pkgsUnstable.yaziPlugins.smart-enter;
       chmod = pkgsUnstable.yaziPlugins.chmod;
       compress = pkgsUnstable.yaziPlugins.compress;
+      # Deprecated upstream, supports yazi <= 26.9.1: drop it if it breaks
+      simple-tag = pkgs.fetchFromGitHub {
+        owner = "boydaihungst";
+        repo = "simple-tag.yazi";
+        rev = "7728d5c506feadc8cb5b7ef699845af7fe92457d";
+        hash = "sha256-h3aN1+Ekl+Tg0KCM3hbqMPgSHSYD6RAAcPJUJ0j6UJg=";
+      };
+    }
+    // lib.optionalAttrs pkgs.stdenv.isLinux {
+      gvfs = pkgsUnstable.yaziPlugins.gvfs;
     };
     initLua = ''
+      require("simple-tag"):setup {
+        colors = { w = "green" },
+        icons = { w = "✓" },
+      }
+      ${lib.optionalString pkgs.stdenv.isLinux ''require("gvfs"):setup {}''}
       -- Available values: ui.Border.PLAIN, ui.Border.ROUNDED
       -- require("full-border"):setup { type = ui.Border.ROUNDED }
       -- Hide StatusBar and Header
@@ -49,6 +65,20 @@
     '';
     settings = {
       mgr.linemode = "size";
+      plugin.prepend_fetchers = [
+        {
+          id = "simple-tag";
+          url = "*";
+          run = "simple-tag";
+          group = "simple-tag";
+        }
+        {
+          id = "simple-tag";
+          url = "*/";
+          run = "simple-tag";
+          group = "simple-tag";
+        }
+      ];
       open.prepend_rules = [
         {
           mime = "image/*";
@@ -217,6 +247,34 @@
           ];
           run = "plugin compress -phl";
           desc = "Archive selected files (password+header+level)";
+        }
+        {
+          on = [ "b" ];
+          run = "plugin simple-tag -- toggle-tag --key=w";
+          desc = "Toggle watched tag";
+        }
+        {
+          on = [ "B" ];
+          run = "plugin simple-tag -- filter --key=w --mode=nor";
+          desc = "Show only unwatched";
+        }
+      ]
+      ++ lib.optionals pkgs.stdenv.isLinux [
+        {
+          on = [
+            "g"
+            "m"
+          ];
+          run = "plugin gvfs -- select-then-mount --jump";
+          desc = "Mount a gvfs device (phone via MTP) and jump to it";
+        }
+        {
+          on = [
+            "g"
+            "u"
+          ];
+          run = "plugin gvfs -- select-then-unmount --eject";
+          desc = "Unmount a gvfs device";
         }
       ];
     };

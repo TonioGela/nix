@@ -149,9 +149,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "8742bba331b4237fbb13784e9e63303c31f614db",
-      "url": "https://github.com/TonioGela/spesa_bot/archive/8742bba331b4237fbb13784e9e63303c31f614db.tar.gz",
-      "hash": "sha256-IF1FuXzsV3wCdEEy3IWpsVU5F8cIubgNyx0kUxf3XK4="
+      "revision": "5a70420e5b52f6a537ada8ece1d0c2b7e69c8573",
+      "url": "https://github.com/TonioGela/spesa_bot/archive/5a70420e5b52f6a537ada8ece1d0c2b7e69c8573.tar.gz",
+      "hash": "sha256-jAtm/NpvynyIX9nnAOfGzaZiO/OHeTw3h8PykD4nsrM="
     }
   },
   "version": 8

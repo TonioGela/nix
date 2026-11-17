@@ -46,6 +46,7 @@
         home.toniogela.dev         eddie.shrimp-pogona.ts.net:443;
         retroarch.toniogela.dev    eddie.shrimp-pogona.ts.net:443;
         transfer.toniogela.dev     eddie.shrimp-pogona.ts.net:443;
+        kosync.toniogela.dev       eddie.shrimp-pogona.ts.net:443;
         default                    "";
       }
 

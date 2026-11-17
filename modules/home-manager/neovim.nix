@@ -190,6 +190,11 @@ in
       vim.keymap.set("n", "<X2Mouse>", "<C-i>", { desc = "Go forward" })
       -- Go to definition with option+click
       vim.keymap.set({ "n", "i" }, "<M-LeftMouse>", "<LeftMouse><Cmd>lua vim.lsp.buf.definition()<CR>", { desc = "Go to definition" })
+      -- Format on save through the LSP (rustfmt via rust-analyzer, scalafmt via Metals)
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        pattern = { "*.rs", "*.scala", "*.sbt", "*.sc" },
+        callback = function() vim.lsp.buf.format() end,
+      })
       -- Clicking a symbol in normal mode shows its signature/docs in a popup, which closes when the cursor moves
       vim.keymap.set("n", "<LeftMouse>", function()
         vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<LeftMouse>", true, false, true), "nx", false)
