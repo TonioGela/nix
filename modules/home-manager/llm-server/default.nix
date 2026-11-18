@@ -22,10 +22,12 @@ let
     export PATH=${binPath}:/usr/bin:/bin:/usr/sbin:/sbin
 
     until ${tsCli} status --json 2>/dev/null | grep -q '"BackendState": "Running"'; do sleep 15; done
-    ${tsCli} set --hostname=llm
     ${tsCli} serve --bg --tcp=443 tcp://127.0.0.1:8443
-    # tag:llm must exist in the tailnet ACL first, so retry until it does
-    until ${tsCli} set --advertise-tags=tag:llm; do sleep 60; done
+    # SSH from the tailnet, needs Remote Login enabled once (see the sudo block)
+    ${tsCli} serve --bg --tcp=22 tcp://127.0.0.1:22
+    # On this tailscale version the tag is applied with `up`, not `set`. It needs tag:llm in the ACL,
+    # without it the command fails and the next login retries. It must not block the rest.
+    ${tsCli} up --hostname=llm --advertise-tags=tag:llm || true
 
     until docker info >/dev/null 2>&1; do sleep 15; done
     docker compose -f ${anythingDir}/compose.yaml up -d
@@ -128,6 +130,16 @@ in
     {
       https_port 8443
       auto_https disable_redirects
+      servers {
+        # gilderien sends a PROXY protocol header before the TLS bytes. Tailscale serve
+        # forwards from localhost, so only accept it from there.
+        listener_wrappers {
+          proxy_protocol {
+            allow 127.0.0.1/32
+          }
+          tls
+        }
+      }
     }
 
     llm.toniogela.dev {
