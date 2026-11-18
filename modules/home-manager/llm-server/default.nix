@@ -149,9 +149,6 @@ in
           disable_http_challenge
         }
       }
-      basic_auth {
-        llm {file.${home}/.config/caddy/llm-basic-auth}
-      }
       reverse_proxy 127.0.0.1:3001
     }
   '';
