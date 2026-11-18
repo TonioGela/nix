@@ -45,10 +45,18 @@ in
       gambatte.enable = true;
       swanstation.enable = true;
       dosbox-pure.enable = true;
+      freej2me-plus = {
+        enable = true;
+        package = pkgsUnstable.callPackage ./freej2me-plus.nix { };
+      };
     };
   };
 
-  home.file.".config/retroarch/system".source = ./bios;
+  # recursive: system/ must stay writable, freej2me writes freej2me_system/ there
+  home.file.".config/retroarch/system" = {
+    source = ./bios;
+    recursive = true;
+  };
   # Saves/states synced through eddie with the trimui (see modules/nixos/syncthing.nix)
   services.syncthing = {
     enable = true;
@@ -75,6 +83,26 @@ in
             </rule>
         </core>
     </ruleList>
+  '';
+
+  # The core grabs the keyboard, so auto game focus kicks in and blocks hotkeys
+  home.file.".config/retroarch/config/FreeJ2ME-Plus/FreeJ2ME-Plus.cfg".text = ''
+    input_auto_game_focus = "0"
+  '';
+
+  # Upstream j2me only knows SquirrelJME; same-named custom system replaces it
+  home.file.".config/ES-DE/custom_systems/es_systems.xml".text = ''
+    <systemList>
+        <system>
+            <name>j2me</name>
+            <fullname>Java 2 Micro Edition (J2ME)</fullname>
+            <path>%ROMPATH%/j2me</path>
+            <extension>.jar .JAR .7z .7Z .zip .ZIP</extension>
+            <command label="FreeJ2ME-Plus">%EMULATOR_RETROARCH% -L %CORE_RETROARCH%/freej2me_plus_libretro.so %ROM%</command>
+            <platform>j2me</platform>
+            <theme>j2me</theme>
+        </system>
+    </systemList>
   '';
 
   home.file.".config/ES-DE/settings/es_settings.xml".source =
