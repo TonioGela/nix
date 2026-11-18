@@ -186,6 +186,16 @@ in
         environment:
           - STORAGE_DIR=/app/server/storage
           - DISABLE_TELEMETRY=true
+          # Models and providers. Ollama runs on the host, reached from the colima VM as host.lima.internal.
+          # Names from upstream AnythingLLM docs, not checked against this image: verify in the UI.
+          - LLM_PROVIDER=ollama
+          - OLLAMA_BASE_PATH=http://host.lima.internal:11434
+          - OLLAMA_MODEL_PREF=gemma3:12b
+          - OLLAMA_MODEL_TOKEN_LIMIT=8192
+          - EMBEDDING_ENGINE=ollama
+          - EMBEDDING_BASE_PATH=http://host.lima.internal:11434
+          - EMBEDDING_MODEL_PREF=bge-m3
+          - VECTOR_DB=lancedb
         volumes:
           - ${anythingDir}/storage:/app/server/storage
           - ${anythingDir}/storage/.env:/app/server/.env
