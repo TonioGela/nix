@@ -193,6 +193,8 @@ in
           - EMBEDDING_BASE_PATH=http://host.lima.internal:11434
           - EMBEDDING_MODEL_PREF=bge-m3
           - VECTOR_DB=lancedb
+          # OCR languages for scanned PDFs and images. Default is eng only.
+          - TARGET_OCR_LANG=ita,eng
         volumes:
           - ${anythingDir}/storage:/app/server/storage
           - ${anythingDir}/storage/.env:/app/server/.env
