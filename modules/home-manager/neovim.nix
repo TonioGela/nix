@@ -22,6 +22,7 @@ in
       snacks-nvim
       nvim-web-devicons
       nvim-metals
+      gitsigns-nvim
     ];
     extraPackages = with pkgs; [
       fd
@@ -45,6 +46,7 @@ in
     '';
     initLua = ''
       vim.opt.termguicolors = true
+      vim.o.winborder = "rounded"
       -- Paths hidden from the tree via the right-click menu, saved per project (cwd) in this file
       local tree_hidden_file = ".nvim-tree-hidden"
       local tree_hidden = { cwd = nil, paths = {} }
@@ -138,7 +140,13 @@ in
           vim.cmd("amenu " .. state .. [[ PopUp.Unhide\ all]])
         end
       })
-      require("snacks").setup({ picker = { enabled = true }, notifier = { enabled = true } })
+      require("gitsigns").setup()
+      vim.api.nvim_create_user_command("GitsignsBasePreviousCommit", "Gitsigns change_base HEAD~1 true", {})
+      vim.api.nvim_create_user_command("GitsignsBaseReset", "Gitsigns reset_base true", {})
+      vim.api.nvim_create_user_command("GitsignsBase", function(opts)
+        require("gitsigns").change_base(opts.args, true)
+      end, { nargs = 1 })
+      require("snacks").setup({ picker = { enabled = true, layouts = { vscode = { layout = { border = "rounded" } } } }, notifier = { enabled = true } })
       -- LSP progress (e.g. Metals indexing/compiling) as a notification with a spinner, as there's no statusline
       vim.api.nvim_create_autocmd("LspProgress", {
         callback = function(ev)

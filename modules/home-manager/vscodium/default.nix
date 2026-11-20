@@ -32,7 +32,7 @@
 
     programs.vscodium = {
       enable = true;
-      package = pkgs.vscodium.override {
+      package = pkgsUnstable.vscodium.override {
         commandLineArgs = [ "--ozone-platform=wayland" ];
       };
       mutableExtensionsDir = false;
@@ -53,6 +53,7 @@
           vscode-marketplace.mkhl.direnv
           vscode-marketplace.scalameta.metals
           vscode-marketplace.scala-lang.scala
+          vscode-marketplace.bitbased.bitbased-source-tracker
           open-vsx.v1hz.kdl
           open-vsx.pcode-pl.hide-files-toggle
         ];

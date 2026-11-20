@@ -83,9 +83,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "5ad4f81467801d2e81502bddea1158540bd72823",
-      "url": "https://github.com/nix-community/nix-vscode-extensions/archive/5ad4f81467801d2e81502bddea1158540bd72823.tar.gz",
-      "hash": "sha256-PJF5PGqDNDZ+BjbwVyK6KYB2vegm1WRx0QMzjfhXJSU="
+      "revision": "f80658b487635b3e7156ad61606033f0dc5316bf",
+      "url": "https://github.com/nix-community/nix-vscode-extensions/archive/f80658b487635b3e7156ad61606033f0dc5316bf.tar.gz",
+      "hash": "sha256-cV7fcenrEpJ1s1AjI8X3BnAQVqmzMYt5oPV/fjR9P1c="
     },
     "nixos-hardware": {
       "type": "Git",
