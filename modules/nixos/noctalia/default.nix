@@ -460,6 +460,7 @@
               "aristides/udiskie"
               "emrtnn/pass"
               "nightwatch75/dns-switcher"
+              "toniogela/comma"
             ];
 
             source = [
@@ -474,6 +475,12 @@
                 kind = "git";
                 location = "https://github.com/noctalia-dev/community-plugins";
                 name = "community";
+              }
+              {
+                enabled = true;
+                kind = "git";
+                location = "https://github.com/TonioGela/noctalia-plugins";
+                name = "toniogela";
               }
             ];
           };
