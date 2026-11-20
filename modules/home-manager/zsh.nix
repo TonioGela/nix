@@ -35,7 +35,7 @@ let
     fi
 
     source ${absoluteDotDir}/gitstatus/gitstatus.plugin.zsh
-    gitstatus_stop 'MY_PROMPT' && gitstatus_start 'MY_PROMPT'
+    gitstatus_start 'MY_PROMPT'
 
     # zcompile if necessary, autoload the prompt and add it to precmd_functions
     [[ ${absoluteDotDir}/create_prompt.zwc -nt ${absoluteDotDir}/create_prompt ]] || zcompile -M ${absoluteDotDir}/create_prompt ${absoluteDotDir}/create_prompt.zwc
@@ -46,6 +46,19 @@ let
     [[ ${absoluteDotDir}/zcompdump.zwc -nt ${absoluteDotDir}/zcompdump ]] || zcompile -R ${absoluteDotDir}/zcompdump ${absoluteDotDir}/zcompdump.zwc
     _comp_options+=(globdots) # Complete with hidden files too
     zstyle ':completion:*' menu select'';
+
+  # Full compinit (with the slow security audit) at most once a day, otherwise
+  # trust the existing dump. Dropped by the activation script on every switch.
+  completion_init = ''
+    autoload -Uz compinit
+    local zcd=${absoluteDotDir}/zcompdump
+    local -a zcd_fresh=( $zcd(N.mh-24) )
+    if (( $#zcd_fresh )); then
+      compinit -C -d $zcd
+    else
+      rm -f $zcd
+      compinit -d $zcd
+    fi'';
 
   zoxide_init = ''
     [[ ${absoluteDotDir}/zoxide_init.zwc -nt ${absoluteDotDir}/zoxide_init ]] || zcompile -M ${absoluteDotDir}/zoxide_init ${absoluteDotDir}/zoxide_init.zwc
@@ -143,6 +156,11 @@ in
       ${zoxide} init zsh > ${absoluteDotDir}/zoxide_init
     '';
 
+    # Force a full compinit on the next shell so new completions appear after a switch
+    home.activation.zcompdumpReset = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      rm -f ${absoluteDotDir}/zcompdump
+    '';
+
     programs.direnv = {
       enable = true;
       enableZshIntegration = true;
@@ -185,7 +203,7 @@ in
       shellGlobalAliases = { };
 
       enableCompletion = true;
-      completionInit = "autoload -Uz compinit && compinit -d ${absoluteDotDir}/zcompdump";
+      completionInit = completion_init;
       zprof.enable = false;
       syntaxHighlighting.enable = false;
 

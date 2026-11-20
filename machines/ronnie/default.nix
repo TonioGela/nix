@@ -63,6 +63,9 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
+  # Keep tailscaled off the boot path: start it with the graphical session instead of multi-user.target.
+  systemd.services.tailscaled.wantedBy = pkgs.lib.mkForce [ "graphical.target" ];
   networking.hostName = "ronnie";
 
   programs.zsh.enable = true;
