@@ -46,6 +46,7 @@
     zathura
     claude
     foot
+    gif
     gpg
     hide-desktop-entries
     kitty
