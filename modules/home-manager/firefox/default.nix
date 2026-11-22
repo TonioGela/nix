@@ -214,12 +214,6 @@ in
               (extension "nord-firefox" "{f4c9e1d6-6630-4600-ad50-d223eab7f3e7}")
               (extension "clearurls" "{74145f27-f039-47ce-a470-a662b129930a}")
               (extension "tridactyl-vim" "tridactyl.vim@cmcaine.co.uk")
-              # PassFF can't be configured by policy nor export its settings.
-              # Non-default preferences to set by hand:
-              #   checkOnlyAuto = true, enterBehavior = 2, ctrlEnterBehavior = 0,
-              #   tbMenuShortcut = "Ctrl+Alt+P", indexMetaUrls = true,
-              #   showStatus = false, showNewPassButton = false,
-              #   recognisedSuffixes = "co.uk,org.uk,me.uk,co.jp,com.au,it"
               (extension "passff" "passff@invicem.pro")
               (extension "tab-session-manager" "Tab-Session-Manager@sienori")
             ]
@@ -263,6 +257,56 @@ in
           };
           "newtaboverride@agenedia.com".type = "homepage";
           "jid1-ZAdIEUB7XOzOJw@jetpack".hasSeenPostInstall = true;
+          # PassFF managed storage: full settings snapshot. Managed keys are locked in the UI.
+          "passff@invicem.pro" = {
+            autoFill = false;
+            autoFillBlacklist = "";
+            autoSubmit = false;
+            buttonInputQueries = "button:not([type=reset])\ninput[type=submit]\ninput[type=button]\n[role=button]";
+            caseInsensitiveSearch = true;
+            checkDomain = 1;
+            checkFullUrl = 0;
+            checkOnlyAuto = true;
+            checkProtocol = 1;
+            checkSubdomain = 0;
+            contextMenu = true;
+            ctrlEnterBehavior = 0;
+            defaultIncludeSymbols = true;
+            defaultLogin = "";
+            defaultPasswordLength = 16;
+            directoriesFirst = false;
+            enableLogging = false;
+            enforceDomainMatch = false;
+            enterBehavior = 2;
+            filterPathRegex = "notes\nattributes\nattachments";
+            handleHttpAuth = true;
+            iconOffset = "0px";
+            indexMetaUrls = true;
+            inputAttributes = "id,name,placeholder,label,formcontrolname,autocomplete";
+            loginFieldNames = "login,user,username,id";
+            loginInputNames = "login,user,mail,email,tel,username,opt_login,log,usr_name";
+            lookMenuInPopup = false;
+            lookMenuWidth = "28rem";
+            lookPopupWidth = "25rem";
+            markFillable = true;
+            markFillableBlacklist = "";
+            matchDirnameOnly = false;
+            otpInputNames = "otp,code,otc,user[otp_attempt],one-time-password,twofactor_token";
+            otpauthFieldNames = "otpauth,otp";
+            passwordFieldNames = "passwd,password,pass";
+            passwordInputNames = "passwd,password,pass";
+            preferInsert = 0;
+            prefillLoginDefault = "<username>";
+            prefillLoginTab = false;
+            prefillUrl = false;
+            recognisedSuffixes = "co.uk,org.uk,me.uk,co.jp,com.au,it";
+            shiftEnterBehavior = 4;
+            showNewPassButton = false;
+            showStatus = false;
+            submitFillable = true;
+            tbMenuShortcut = "Ctrl+Alt+P";
+            urlFieldNames = "url,http,https";
+          };
         };
       };
       profiles.default = {
