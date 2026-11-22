@@ -46,6 +46,9 @@ in
     '';
     initLua = ''
       vim.opt.termguicolors = true
+      -- Terminal window title: "nvim <file name>" (%t is the tail of the file name, %f would give the path)
+      vim.opt.title = true
+      vim.opt.titlestring = "nvim %t"
       vim.o.winborder = "rounded"
       -- Paths hidden from the tree via the right-click menu, saved per project (cwd) in this file
       local tree_hidden_file = ".nvim-tree-hidden"
