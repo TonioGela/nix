@@ -9,6 +9,7 @@ let
     disko = pins.disko + "/module.nix";
     spesa = pins.spesa + "/default.nix";
     noctalia5 = import pins.noctalia { };
+    todo-txt-rs = pkgs: import pins.todo-txt-rs { inherit pkgs; };
     sopsNixos = import (pins.sops-nix + "/modules/sops");
     lanzaboote = (import pins.lanzaboote { inherit pkgs; }).nixosModules.lanzaboote;
     nix-index-database = import (pins.nix-index-database + "/home-manager-module.nix");

@@ -152,6 +152,22 @@
       "revision": "5a70420e5b52f6a537ada8ece1d0c2b7e69c8573",
       "url": "https://github.com/TonioGela/spesa_bot/archive/5a70420e5b52f6a537ada8ece1d0c2b7e69c8573.tar.gz",
       "hash": "sha256-jAtm/NpvynyIX9nnAOfGzaZiO/OHeTw3h8PykD4nsrM="
+    },
+    "todo-txt-rs": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "TonioGela",
+        "repo": "todo-txt-rs"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "v0.1.0",
+      "revision": "d6bc5fc4af333d91ba1440ba5dfbacc657c77c43",
+      "url": "https://api.github.com/repos/TonioGela/todo-txt-rs/tarball/refs/tags/v0.1.0",
+      "hash": "sha256-h39K4d3DpAKxOkr/qEWiXr41/+b1HI6QEV4Rw7obNws="
     }
   },
   "version": 8
