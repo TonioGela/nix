@@ -86,7 +86,7 @@ let
       for i in "$@"
       do
         if [[ -d "$i" ]] then
-          ${eza} -l --group-directories-first -sname --git --icons "$i"
+          ${eza} -l --group-directories-first -sname --git --icons=auto "$i"
         elif [[ -f "$i" ]] then
           ${bat} --plain "$i"
         fi
@@ -193,7 +193,7 @@ in
       shellAliases = (
         config.zsh.extraAliases
         // {
-          ls = "${eza} -l --group-directories-first -sname --git --icons";
+          ls = "${eza} -l --group-directories-first -sname --git --icons=auto";
           cp = "cp -i";
           mv = "mv -i";
           rm = "rm -i";
