@@ -458,7 +458,6 @@
             enabled = [
               "rylos/tailnet"
               "aristides/udiskie"
-              "emrtnn/pass"
               "nightwatch75/dns-switcher"
               "toniogela/comma"
             ];
@@ -487,7 +486,6 @@
 
           shell = {
             app_icon_color = "primary";
-            app_icon_colorize = false;
             avatar_path = "/home/toniogela/.config/face.jpg";
             button_borders = false;
             card_borders = false;

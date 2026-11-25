@@ -37,6 +37,9 @@
         # Ctrl+- is "go back" in nvim, so zoom out is Ctrl+Shift+= (Ctrl+plus no longer zooms in, to not clash)
         key-bindings.font-increase = "Control+equal Control+KP_Add";
         key-bindings.font-decrease = "Control+Shift+equal Control+KP_Subtract";
+        # Alt+c / Alt+v copy and paste (defaults kept). Overrides readline's Alt+c (capitalize-word)
+        key-bindings.clipboard-copy = "Control+Shift+c XF86Copy Alt+c";
+        key-bindings.clipboard-paste = "Control+Shift+v XF86Paste Alt+v";
 
         cursor.style = "beam";
         mouse.hide-when-typing = "yes";
